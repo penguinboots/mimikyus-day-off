@@ -11,6 +11,7 @@ $button: $dark-blue;
   margin: 8rem 10%;
   width: 80%;
   padding-bottom: 2rem;
+  border-radius: 2rem;
 }
 
 body {
@@ -65,7 +66,8 @@ body {
   margin: 2rem;
   width: 50%;
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 2rem;
 }
 
 .poke-info-card, .move-info-card {
