@@ -1,0 +1,78 @@
+/** VARIABLES **/
+
+$light-blue: #d1d1ff;
+$dark-blue: #b4b4ff;
+
+$button: $dark-blue;
+
+
+.app-wrapper {
+  background-color: yellow;
+  margin: 8rem 10%;
+  width: 80%;
+  padding-bottom: 2rem;
+  border-radius: 2rem;
+}
+
+body {
+  max-height: 100vh;
+}
+
+
+/** NAVBAR **/
+.nav-bar {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  .nav-left {
+    .logo {
+      position: relative;
+      transform: translateY(-50%);
+
+      height: 5rem;
+      width: 25rem;
+      border-radius: 2.5rem;
+
+      background-color: $button;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .nav-right {
+    display: flex;
+    justify-content: space-around;
+    .icon-button {
+      position: relative;
+      transform: translateY(-50%);
+
+      background-color: $button;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+/** CHARINFO **/
+
+.char-info {
+  margin: 2rem;
+  width: 50%;
+  display: flex;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.poke-info-card, .move-info-card {
+  background-color: white;
+  height: 30rem;
+  width: 20rem;
+  border-radius: 3rem;
+}
