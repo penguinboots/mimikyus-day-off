@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Game(user) {
+export default function Game(character) {
   return (
     <></>
   );
