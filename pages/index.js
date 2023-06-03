@@ -1,31 +1,50 @@
 import { Inter, Play } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
 //import { PrismaClient } from '@prisma/client';
-import Nav from '@/components/home/Nav';
-import CharInfo from '@/components/home/CharInfo';
-import PlayWindow from '@/components/home/PlayWindow';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Landing from '@/components/home/Landing';
+import Dashboard from '@/components/home/Dashboard/Dashboard';
+import Login from '@/components/home/Login';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
+  const [mode, setMode] = useState("LANDING");
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>{error.message}</div>;
 
-  if (user) {
-    return (
-      <div>
-        Welcome {user.name}! <a href="/api/auth/logout">Logout</a>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (user) {
+      setMode("DASH");
+    }
+  }, [user]);
+
   return (
-    <a href="/api/auth/login">Login</a>
-  );
+    <div className="app-wrapper">
+      {mode === "LANDING" &&
+        <Landing setMode={setMode} user={user} />}
+      {mode === "LOGIN" &&
+        <Login />}
+      {mode === "DASH" &&
+        <Dashboard />
+      }
+    </div>
+  )
 }
+
+//   if (user) {
+//     return (
+//       <div>
+//         {/* <div>Welcome {user.name}! <a href="/api/auth/logout">Logout</a></div> */}
+//       </div>
+//     )
+//   } else return (
+//     <a href="/api/auth/login">Login</a>
+//   );
+// }
 
 // export async function getStaticProps() {
 //   const prisma = new PrismaClient();
