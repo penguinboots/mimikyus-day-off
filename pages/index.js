@@ -17,6 +17,6 @@ export async function getStaticProps() {
   const prisma = new PrismaClient();
 
   return {
-    props : { blogs }
+    props : {}
   };
 }
