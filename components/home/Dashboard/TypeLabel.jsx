@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function TypeLabel({ type }) {
-  
+
   const getTypeColor = (type) => {
     switch (type) {
       case 'normal':
@@ -52,7 +52,7 @@ export default function TypeLabel({ type }) {
       style={{
         backgroundColor: typeColor,
         color: '#FFFFFF',
-        padding: '0.25rem 0.5rem',
+        padding: '0.4rem 1.8rem',
         borderRadius: '0.25rem',
         marginRight: '0.5rem',
         textTransform: 'capitalize',
