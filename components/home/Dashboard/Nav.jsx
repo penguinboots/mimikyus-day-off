@@ -8,9 +8,12 @@ export default function Nav() {
           <div className="logo">PLACEHOLDER LOGO</div>
         </div>
         <div className="nav-right">
-          <IconButton buttonName="Stickers"/>
-          <IconButton buttonName="Settings"/>
-          <IconButton buttonName="Mute"/>
+          <IconButton buttonName="Stickers" />
+          <IconButton buttonName="Settings" />
+          <IconButton buttonName="Mute" />
+          <a href="/api/auth/logout">
+            <IconButton buttonName="Logout" />
+          </a>
         </div>
       </nav>
     </div>
