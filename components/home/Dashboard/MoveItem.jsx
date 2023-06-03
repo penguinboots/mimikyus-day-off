@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function MoveItem() {
+export default function MoveItem({ moveName, power, description }) {
   return (
-    <div>MoveItem</div>
-  )
+    <div className="move-item">
+      <h3>{moveName}</h3>
+      <p>Power: {power}</p>
+      <p>{description}</p>
+    </div>
+  );
 }
