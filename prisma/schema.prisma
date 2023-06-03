@@ -17,11 +17,11 @@ model User {
   name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Post      Post[]
+  Room      Room[]
   Blog      Blog[]
 }
 
-model Post {
+model Room {
   id        Int     @id @default(autoincrement())
   title     String
   content   String?
