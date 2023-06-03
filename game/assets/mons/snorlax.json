@@ -1,0 +1,470 @@
+{
+  "abilities": [
+    {
+      "ability": {
+        "name": "immunity"
+      },
+      "is_hidden": false,
+      "slot": 1
+    },
+    {
+      "ability": {
+        "name": "thick-fat"
+      },
+      "is_hidden": false,
+      "slot": 2
+    },
+    {
+      "ability": {
+        "name": "gluttony"
+      },
+      "is_hidden": true,
+      "slot": 3
+    }
+  ],
+  "height": 21,
+  "id": 143,
+  "is_default": true,
+  "moves": [
+    {
+      "name": "mega-punch"
+    },
+    {
+      "name": "pay-day"
+    },
+    {
+      "name": "fire-punch"
+    },
+    {
+      "name": "ice-punch"
+    },
+    {
+      "name": "thunder-punch"
+    },
+    {
+      "name": "whirlwind"
+    },
+    {
+      "name": "mega-kick"
+    },
+    {
+      "name": "headbutt"
+    },
+    {
+      "name": "tackle"
+    },
+    {
+      "name": "body-slam"
+    },
+    {
+      "name": "take-down"
+    },
+    {
+      "name": "double-edge"
+    },
+    {
+      "name": "bite"
+    },
+    {
+      "name": "flamethrower"
+    },
+    {
+      "name": "water-gun"
+    },
+    {
+      "name": "hydro-pump"
+    },
+    {
+      "name": "surf"
+    },
+    {
+      "name": "ice-beam"
+    },
+    {
+      "name": "blizzard"
+    },
+    {
+      "name": "bubble-beam"
+    },
+    {
+      "name": "hyper-beam"
+    },
+    {
+      "name": "submission"
+    },
+    {
+      "name": "counter"
+    },
+    {
+      "name": "seismic-toss"
+    },
+    {
+      "name": "strength"
+    },
+    {
+      "name": "solar-beam"
+    },
+    {
+      "name": "thunderbolt"
+    },
+    {
+      "name": "thunder"
+    },
+    {
+      "name": "earthquake"
+    },
+    {
+      "name": "fissure"
+    },
+    {
+      "name": "toxic"
+    },
+    {
+      "name": "psychic"
+    },
+    {
+      "name": "rage"
+    },
+    {
+      "name": "mimic"
+    },
+    {
+      "name": "screech"
+    },
+    {
+      "name": "double-team"
+    },
+    {
+      "name": "harden"
+    },
+    {
+      "name": "defense-curl"
+    },
+    {
+      "name": "reflect"
+    },
+    {
+      "name": "bide"
+    },
+    {
+      "name": "metronome"
+    },
+    {
+      "name": "self-destruct"
+    },
+    {
+      "name": "lick"
+    },
+    {
+      "name": "fire-blast"
+    },
+    {
+      "name": "skull-bash"
+    },
+    {
+      "name": "amnesia"
+    },
+    {
+      "name": "psywave"
+    },
+    {
+      "name": "rest"
+    },
+    {
+      "name": "rock-slide"
+    },
+    {
+      "name": "substitute"
+    },
+    {
+      "name": "snore"
+    },
+    {
+      "name": "curse"
+    },
+    {
+      "name": "flail"
+    },
+    {
+      "name": "protect"
+    },
+    {
+      "name": "belly-drum"
+    },
+    {
+      "name": "mud-slap"
+    },
+    {
+      "name": "zap-cannon"
+    },
+    {
+      "name": "icy-wind"
+    },
+    {
+      "name": "outrage"
+    },
+    {
+      "name": "sandstorm"
+    },
+    {
+      "name": "endure"
+    },
+    {
+      "name": "charm"
+    },
+    {
+      "name": "rollout"
+    },
+    {
+      "name": "swagger"
+    },
+    {
+      "name": "attract"
+    },
+    {
+      "name": "sleep-talk"
+    },
+    {
+      "name": "return"
+    },
+    {
+      "name": "frustration"
+    },
+    {
+      "name": "dynamic-punch"
+    },
+    {
+      "name": "encore"
+    },
+    {
+      "name": "pursuit"
+    },
+    {
+      "name": "hidden-power"
+    },
+    {
+      "name": "rain-dance"
+    },
+    {
+      "name": "sunny-day"
+    },
+    {
+      "name": "crunch"
+    },
+    {
+      "name": "psych-up"
+    },
+    {
+      "name": "shadow-ball"
+    },
+    {
+      "name": "rock-smash"
+    },
+    {
+      "name": "whirlpool"
+    },
+    {
+      "name": "uproar"
+    },
+    {
+      "name": "stockpile"
+    },
+    {
+      "name": "swallow"
+    },
+    {
+      "name": "facade"
+    },
+    {
+      "name": "focus-punch"
+    },
+    {
+      "name": "superpower"
+    },
+    {
+      "name": "recycle"
+    },
+    {
+      "name": "brick-break"
+    },
+    {
+      "name": "yawn"
+    },
+    {
+      "name": "snatch"
+    },
+    {
+      "name": "secret-power"
+    },
+    {
+      "name": "hyper-voice"
+    },
+    {
+      "name": "rock-tomb"
+    },
+    {
+      "name": "block"
+    },
+    {
+      "name": "covet"
+    },
+    {
+      "name": "shock-wave"
+    },
+    {
+      "name": "water-pulse"
+    },
+    {
+      "name": "hammer-arm"
+    },
+    {
+      "name": "natural-gift"
+    },
+    {
+      "name": "fling"
+    },
+    {
+      "name": "gastro-acid"
+    },
+    {
+      "name": "last-resort"
+    },
+    {
+      "name": "seed-bomb"
+    },
+    {
+      "name": "focus-blast"
+    },
+    {
+      "name": "giga-impact"
+    },
+    {
+      "name": "zen-headbutt"
+    },
+    {
+      "name": "rock-climb"
+    },
+    {
+      "name": "gunk-shot"
+    },
+    {
+      "name": "iron-head"
+    },
+    {
+      "name": "captivate"
+    },
+    {
+      "name": "smack-down"
+    },
+    {
+      "name": "heavy-slam"
+    },
+    {
+      "name": "after-you"
+    },
+    {
+      "name": "round"
+    },
+    {
+      "name": "chip-away"
+    },
+    {
+      "name": "incinerate"
+    },
+    {
+      "name": "retaliate"
+    },
+    {
+      "name": "bulldoze"
+    },
+    {
+      "name": "work-up"
+    },
+    {
+      "name": "wild-charge"
+    },
+    {
+      "name": "heat-crash"
+    },
+    {
+      "name": "belch"
+    },
+    {
+      "name": "confide"
+    },
+    {
+      "name": "power-up-punch"
+    },
+    {
+      "name": "darkest-lariat"
+    },
+    {
+      "name": "high-horsepower"
+    },
+    {
+      "name": "stomping-tantrum"
+    },
+    {
+      "name": "body-press"
+    },
+    {
+      "name": "steel-roller"
+    },
+    {
+      "name": "terrain-pulse"
+    }
+  ],
+  "name": "snorlax",
+  "order": 235,
+  "past_types": [],
+  "species": {
+    "name": "snorlax"
+  },
+  "stats": [
+    {
+      "base_stat": 160,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 110,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 65,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 65,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 110,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 30,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "normal"
+      }
+    }
+  ],
+  "weight": 4600
+}
