@@ -191,7 +191,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "swords-dance",
       "power": null,
       "pp": 20,
       "priority": 0,
@@ -279,7 +278,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "tackle",
       "power": 40,
       "pp": 35,
       "priority": 0,
@@ -401,7 +399,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "double-edge",
       "power": 120,
       "pp": 15,
       "priority": 0,
@@ -442,7 +439,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "bite",
       "power": 60,
       "pp": 25,
       "priority": 0,
@@ -483,7 +479,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "flamethrower",
       "power": 90,
       "pp": 15,
       "priority": 0,
@@ -524,7 +519,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "hydro-pump",
       "power": 110,
       "pp": 5,
       "priority": 0,
@@ -566,7 +560,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "ice-beam",
       "power": 90,
       "pp": 10,
       "priority": 0,
@@ -607,7 +600,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "blizzard",
       "power": 110,
       "pp": 5,
       "priority": 0,
@@ -736,7 +728,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "solar-beam",
       "power": 120,
       "pp": 10,
       "priority": 0,
@@ -777,7 +768,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "thunderbolt",
       "power": 90,
       "pp": 15,
       "priority": 0,
@@ -818,7 +808,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "thunder-wave",
       "power": null,
       "pp": 20,
       "priority": 0,
@@ -859,7 +848,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "thunder",
       "power": 110,
       "pp": 10,
       "priority": 0,
@@ -941,7 +929,6 @@
         "min_turns": 15,
         "stat_chance": 0
       },
-      "name": "toxic",
       "power": null,
       "pp": 10,
       "priority": 0,
@@ -1111,7 +1098,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "lick",
       "power": 30,
       "pp": 30,
       "priority": 0,
@@ -1152,7 +1138,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "fire-blast",
       "power": 110,
       "pp": 5,
       "priority": 0,
@@ -1194,7 +1179,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "skull-bash",
       "power": 130,
       "pp": 10,
       "priority": 0,
@@ -1236,7 +1220,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "leech-life",
       "power": 80,
       "pp": 10,
       "priority": 0,
@@ -1318,7 +1301,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "rock-slide",
       "power": 75,
       "pp": 10,
       "priority": 0,
@@ -1400,7 +1382,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "struggle",
       "power": 50,
       "pp": 1,
       "priority": 0,
@@ -1561,7 +1542,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "giga-drain",
       "power": 75,
       "pp": 10,
       "priority": 0,
@@ -1602,7 +1582,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "charm",
       "power": null,
       "pp": 20,
       "priority": 0,
@@ -1746,7 +1725,6 @@
         "min_turns": null,
         "stat_chance": 50
       },
-      "name": "rock-smash",
       "power": 40,
       "pp": 15,
       "priority": 0,
@@ -2009,7 +1987,6 @@
         "min_turns": null,
         "stat_chance": 100
       },
-      "name": "rock-tomb",
       "power": 60,
       "pp": 15,
       "priority": 0,
@@ -2231,7 +2208,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "drain-punch",
       "power": 75,
       "pp": 10,
       "priority": 0,
@@ -2479,7 +2455,6 @@
         "min_turns": null,
         "stat_chance": 0
       },
-      "name": "gunk-shot",
       "power": 120,
       "pp": 5,
       "priority": 0,
