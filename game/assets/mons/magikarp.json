@@ -20,29 +20,19 @@
   "is_default": true,
   "moves": [
     {
-      "move": {
-        "name": "tackle"
-      }
+      "name": "tackle"
     },
     {
-      "move": {
         "name": "hydro-pump"
-      }
     },
     {
-      "move": {
         "name": "splash"
-      }
     },
     {
-      "move": {
         "name": "flail"
-      }
     },
     {
-      "move": {
         "name": "bounce"
-      }
     }
   ],
   "name": "magikarp",
