@@ -114,9 +114,6 @@
       "name": "earthquake"
     },
     {
-      "name": "fissure"
-    },
-    {
       "name": "toxic"
     },
     {
@@ -145,9 +142,6 @@
     },
     {
       "name": "bide"
-    },
-    {
-      "name": "metronome"
     },
     {
       "name": "self-destruct"
@@ -222,33 +216,6 @@
       "name": "attract"
     },
     {
-      "name": "sleep-talk"
-    },
-    {
-      "name": "return"
-    },
-    {
-      "name": "frustration"
-    },
-    {
-      "name": "dynamic-punch"
-    },
-    {
-      "name": "encore"
-    },
-    {
-      "name": "pursuit"
-    },
-    {
-      "name": "hidden-power"
-    },
-    {
-      "name": "rain-dance"
-    },
-    {
-      "name": "sunny-day"
-    },
-    {
       "name": "crunch"
     },
     {
@@ -262,15 +229,6 @@
     },
     {
       "name": "whirlpool"
-    },
-    {
-      "name": "uproar"
-    },
-    {
-      "name": "stockpile"
-    },
-    {
-      "name": "swallow"
     },
     {
       "name": "facade"
@@ -289,9 +247,6 @@
     },
     {
       "name": "yawn"
-    },
-    {
-      "name": "snatch"
     },
     {
       "name": "secret-power"
@@ -327,9 +282,6 @@
       "name": "gastro-acid"
     },
     {
-      "name": "last-resort"
-    },
-    {
       "name": "seed-bomb"
     },
     {
@@ -361,18 +313,6 @@
     },
     {
       "name": "after-you"
-    },
-    {
-      "name": "round"
-    },
-    {
-      "name": "chip-away"
-    },
-    {
-      "name": "incinerate"
-    },
-    {
-      "name": "retaliate"
     },
     {
       "name": "bulldoze"
