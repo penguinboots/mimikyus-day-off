@@ -1,0 +1,3 @@
+function damageCalc(move, user) {
+  
+}

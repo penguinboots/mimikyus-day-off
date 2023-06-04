@@ -3040,5 +3040,54 @@
       "target": "selected-pokemon",
       "type": "fighting",
     }
+  },
+  {
+    "name": "poison-jab",
+    "data": {
+      "accuracy": 100,
+      "damage_class": {
+        "name": "physical",
+      },
+      "effect_chance": 30,
+      "effect_changes": [],
+      "effect_entries": [
+        {
+          "effect": "Inflicts regular damage.  Has a $effect_chance% chance to poison the target.",
+          "language": {
+            "name": "en",
+          },
+          "short_effect": "Has a $effect_chance% chance to poison the target."
+        }
+      ],
+      "id": 398,
+      "meta": {
+        "ailment": {
+          "name": "poison",
+        },
+        "ailment_chance": 30,
+        "category": {
+          "name": "damage+ailment",
+        },
+        "crit_rate": 0,
+        "drain": 0,
+        "flinch_chance": 0,
+        "healing": 0,
+        "max_hits": null,
+        "max_turns": null,
+        "min_hits": null,
+        "min_turns": null,
+        "stat_chance": 0
+      },
+      "power": 80,
+      "pp": 20,
+      "priority": 0,
+      "stat_changes": [],
+      "target": {
+        "name": "selected-pokemon",
+      },
+      "type": {
+        "name": "poison",
+      }
+    }
   }
 ]
