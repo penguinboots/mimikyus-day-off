@@ -294,10 +294,7 @@ const snorlax1 = {
   ],
   "types": [
     {
-      "slot": 1,
-      "type": {
-        "name": "normal"
-      }
+      "name": "normal"
     }
   ],
   "height": 21,
