@@ -289,8 +289,7 @@
   {
     "name": "body-slam",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "physical",
       "effect_chance": 30,
       "effect_entries": [
@@ -530,8 +529,7 @@
   {
     "name": "ice-beam",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "special",
       "effect_chance": 10,
       "effect_entries": [
@@ -658,8 +656,7 @@
   {
     "name": "hyper-beam",
     "data": {
-      "accuracy": 90, {
-      },
+      "accuracy": 90, 
       "damage_class": "special",
       "effect_chance": null,
       "effect_entries": [
@@ -899,8 +896,7 @@
   {
     "name": "toxic",
     "data": {
-      "accuracy": 90, {
-      },
+      "accuracy": 90, 
       "damage_class": "status",
       "effect_chance": null,
       "effect_entries": [
@@ -980,8 +976,7 @@
   {
     "name": "mimic",
     "data": {
-      "accuracy": null, {
-      },
+      "accuracy": null, 
       "damage_class": "status",
       "effect_chance": null,
       "effect_entries": [
@@ -1068,8 +1063,7 @@
   {
     "name": "lick",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "physical",
       "effect_chance": 30,
       "effect_entries": [
@@ -1149,8 +1143,7 @@
   {
     "name": "skull-bash",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "physical",
       "effect_chance": 100,
       "effect_entries": [
@@ -1190,8 +1183,7 @@
   {
     "name": "leech-life",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "physical",
       "effect_chance": null,
       "effect_entries": [
@@ -1231,8 +1223,7 @@
   {
     "name": "splash",
     "data": {
-      "accuracy": null, {
-      },
+      "accuracy": null, 
       "damage_class": "status",
       "effect_chance": null,
       "effect_entries": [
@@ -1352,8 +1343,7 @@
   {
     "name": "struggle",
     "data": {
-      "accuracy": null, {
-      },
+      "accuracy": null, 
       "damage_class": "physical",
       "effect_chance": null,
       "effect_entries": [
@@ -1647,8 +1637,7 @@
   {
     "name": "shadow-ball",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "special",
       "effect_chance": 20,
       "effect_entries": [
@@ -1695,8 +1684,7 @@
   {
     "name": "rock-smash",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "physical",
       "effect_chance": 50,
       "effect_entries": [
@@ -1876,8 +1864,7 @@
   {
     "name": "hyper-voice",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "special",
       "effect_chance": null,
       "effect_entries": [
@@ -1917,8 +1904,7 @@
   {
     "name": "astonish",
     "data": {
-      "accuracy": 100, {
-      },
+      "accuracy": 100, 
       "damage_class": "physical",
       "effect_chance": 30,
       "effect_entries": [
@@ -2005,8 +1991,7 @@
   {
     "name": "bulk-up",
     "data": {
-      "accuracy": null, {
-      },
+      "accuracy": null, 
       "damage_class": "status",
       "effect_chance": null,
       "effect_entries": [
