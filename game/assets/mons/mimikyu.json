@@ -13,439 +13,217 @@
   "is_default": true,
   "moves": [
     {
-      "move": {
-        "name": "scratch"
-      }
+      "name": "scratch"
     },
     {
-      "move": {
-        "name": "swords-dance"
-      }
+      "name": "swords-dance"
     },
     {
-      "move": {
-        "name": "take-down"
-      }
+      "name": "take-down"
     },
     {
-      "move": {
-        "name": "hyper-beam"
-      }
+      "name": "hyper-beam"
     },
     {
-      "move": {
-        "name": "thunderbolt"
-      }
+      "name": "thunderbolt"
     },
     {
-      "move": {
-        "name": "thunder-wave"
-      }
+      "name": "thunder-wave"
     },
     {
-      "move": {
-        "name": "thunder"
-      }
+      "name": "thunder"
     },
     {
-      "move": {
-        "name": "toxic"
-      }
+      "name": "toxic"
     },
     {
-      "move": {
-        "name": "psychic"
-      }
+      "name": "psychic"
     },
     {
-      "move": {
-        "name": "night-shade"
-      }
+      "name": "night-shade"
     },
     {
-      "move": {
-        "name": "mimic"
-      }
+      "name": "mimic"
     },
     {
-      "move": {
-        "name": "screech"
-      }
+      "name": "screech"
     },
     {
-      "move": {
-        "name": "double-team"
-      }
+      "name": "confuse-ray"
     },
     {
-      "move": {
-        "name": "confuse-ray"
-      }
+      "name": "light-screen"
     },
     {
-      "move": {
-        "name": "light-screen"
-      }
+      "name": "dream-eater"
     },
     {
-      "move": {
-        "name": "dream-eater"
-      }
+      "name": "leech-life"
     },
     {
-      "move": {
-        "name": "leech-life"
-      }
+      "name": "splash"
     },
     {
-      "move": {
-        "name": "splash"
-      }
+      "name": "rest"
     },
     {
-      "move": {
-        "name": "rest"
-      }
+      "name": "slash"
     },
     {
-      "move": {
-        "name": "slash"
-      }
+      "name": "substitute"
     },
     {
-      "move": {
-        "name": "substitute"
-      }
+      "name": "nightmare"
     },
     {
-      "move": {
-        "name": "thief"
-      }
+      "name": "snore"
     },
     {
-      "move": {
-        "name": "nightmare"
-      }
+      "name": "curse"
     },
     {
-      "move": {
-        "name": "snore"
-      }
+      "name": "spite"
     },
     {
-      "move": {
-        "name": "curse"
-      }
+      "name": "protect"
     },
     {
-      "move": {
-        "name": "spite"
-      }
+      "name": "feint-attack"
     },
     {
-      "move": {
-        "name": "protect"
-      }
+      "name": "destiny-bond"
     },
     {
-      "move": {
-        "name": "feint-attack"
-      }
+      "name": "giga-drain"
     },
     {
-      "move": {
-        "name": "destiny-bond"
-      }
+      "name": "endure"
     },
     {
-      "move": {
-        "name": "giga-drain"
-      }
+      "name": "charm"
     },
     {
-      "move": {
-        "name": "endure"
-      }
+      "name": "swagger"
     },
     {
-      "move": {
-        "name": "charm"
-      }
+      "name": "safeguard"
     },
     {
-      "move": {
-        "name": "swagger"
-      }
+      "name": "psych-up"
     },
     {
-      "move": {
-        "name": "attract"
-      }
+      "name": "shadow-ball"
     },
     {
-      "move": {
-        "name": "sleep-talk"
-      }
+      "name": "beat-up"
     },
     {
-      "move": {
-        "name": "return"
-      }
+      "name": "will-o-wisp"
     },
     {
-      "move": {
-        "name": "frustration"
-      }
+      "name": "facade"
     },
     {
-      "move": {
-        "name": "safeguard"
-      }
+      "name": "taunt"
     },
     {
-      "move": {
-        "name": "pain-split"
-      }
+      "name": "grudge"
     },
     {
-      "move": {
-        "name": "hidden-power"
-      }
+      "name": "astonish"
     },
     {
-      "move": {
-        "name": "rain-dance"
-      }
+      "name": "bulk-up"
     },
     {
-      "move": {
-        "name": "sunny-day"
-      }
+      "name": "covet"
     },
     {
-      "move": {
-        "name": "psych-up"
-      }
+      "name": "payback"
     },
     {
-      "move": {
-        "name": "shadow-ball"
-      }
+      "name": "embargo"
     },
     {
-      "move": {
-        "name": "beat-up"
-      }
+      "name": "fling"
     },
     {
-      "move": {
-        "name": "will-o-wisp"
-      }
+      "name": "copycat"
     },
     {
-      "move": {
-        "name": "facade"
-      }
+      "name": "dark-pulse"
     },
     {
-      "move": {
-        "name": "taunt"
-      }
+      "name": "x-scissor"
     },
     {
-      "move": {
-        "name": "trick"
-      }
+      "name": "drain-punch"
     },
     {
-      "move": {
-        "name": "grudge"
-      }
+      "name": "giga-impact"
     },
     {
-      "move": {
-        "name": "snatch"
-      }
+      "name": "shadow-claw"
     },
     {
-      "move": {
-        "name": "astonish"
-      }
+      "name": "shadow-sneak"
     },
     {
-      "move": {
-        "name": "bulk-up"
-      }
+      "name": "trick-room"
     },
     {
-      "move": {
-        "name": "covet"
-      }
+      "name": "charge-beam"
     },
     {
-      "move": {
-        "name": "payback"
-      }
+      "name": "wood-hammer"
     },
     {
-      "move": {
-        "name": "embargo"
-      }
+      "name": "hone-claws"
     },
     {
-      "move": {
-        "name": "fling"
-      }
+      "name": "telekinesis"
     },
     {
-      "move": {
-        "name": "copycat"
-      }
+      "name": "magic-room"
     },
     {
-      "move": {
-        "name": "last-resort"
-      }
+      "name": "after-you"
     },
     {
-      "move": {
-        "name": "dark-pulse"
-      }
+      "name": "hex"
     },
     {
-      "move": {
-        "name": "x-scissor"
-      }
+      "name": "work-up"
     },
     {
-      "move": {
-        "name": "drain-punch"
-      }
+      "name": "phantom-force"
     },
     {
-      "move": {
-        "name": "giga-impact"
-      }
+      "name": "draining-kiss"
     },
     {
-      "move": {
-        "name": "shadow-claw"
-      }
+      "name": "play-rough"
     },
     {
-      "move": {
-        "name": "shadow-sneak"
-      }
+      "name": "confide"
     },
     {
-      "move": {
-        "name": "trick-room"
-      }
+      "name": "dazzling-gleam"
     },
     {
-      "move": {
-        "name": "charge-beam"
-      }
+      "name": "baby-doll-eyes"
     },
     {
-      "move": {
-        "name": "wood-hammer"
-      }
+      "name": "burning-jealousy"
     },
     {
-      "move": {
-        "name": "hone-claws"
-      }
+      "name": "tera-blast"
     },
     {
-      "move": {
-        "name": "telekinesis"
-      }
+      "name": "pounce"
     },
     {
-      "move": {
-        "name": "magic-room"
-      }
-    },
-    {
-      "move": {
-        "name": "after-you"
-      }
-    },
-    {
-      "move": {
-        "name": "round"
-      }
-    },
-    {
-      "move": {
-        "name": "hex"
-      }
-    },
-    {
-      "move": {
-        "name": "work-up"
-      }
-    },
-    {
-      "move": {
-        "name": "phantom-force"
-      }
-    },
-    {
-      "move": {
-        "name": "draining-kiss"
-      }
-    },
-    {
-      "move": {
-        "name": "misty-terrain"
-      }
-    },
-    {
-      "move": {
-        "name": "play-rough"
-      }
-    },
-    {
-      "move": {
-        "name": "confide"
-      }
-    },
-    {
-      "move": {
-        "name": "dazzling-gleam"
-      }
-    },
-    {
-      "move": {
-        "name": "baby-doll-eyes"
-      }
-    },
-    {
-      "move": {
-        "name": "infestation"
-      }
-    },
-    {
-      "move": {
-        "name": "burning-jealousy"
-      }
-    },
-    {
-      "move": {
-        "name": "tera-blast"
-      }
-    },
-    {
-      "move": {
-        "name": "pounce"
-      }
-    },
-    {
-      "move": {
-        "name": "trailblaze"
-      }
+      "name": "trailblaze"
     }
   ],
   "name": "mimikyu-disguised",
