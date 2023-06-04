@@ -1,11 +1,11 @@
-import CharInfo from "../Dashboard/CharInfo";
+import CharSection from "./CharSection";
 import Nav from "../Dashboard/Nav";
 
 export default function Dashboard() {
   return (
     <div>
       <Nav />
-      <CharInfo />
+      <CharSection />
     </div>
   )
 }
