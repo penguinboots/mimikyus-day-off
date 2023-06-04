@@ -420,42 +420,36 @@
   "stats": [
     {
       "base_stat": 135,
-      "effort": 1,
       "stat": {
         "name": "hp"
       }
     },
     {
       "base_stat": 85,
-      "effort": 0,
       "stat": {
         "name": "attack"
       }
     },
     {
       "base_stat": 40,
-      "effort": 0,
       "stat": {
         "name": "defense"
       }
     },
     {
       "base_stat": 40,
-      "effort": 0,
       "stat": {
         "name": "special-attack"
       }
     },
     {
       "base_stat": 85,
-      "effort": 0,
       "stat": {
         "name": "special-defense"
       }
     },
     {
       "base_stat": 5,
-      "effort": 0,
       "stat": {
         "name": "speed"
       }
