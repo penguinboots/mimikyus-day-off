@@ -16,7 +16,7 @@ model User {
   auth0Sub     String      @unique
   password     String?
   name         String
-  achievements Achieved[]
+  achievements Achievement[]
   Character    Character[]
 }
 
