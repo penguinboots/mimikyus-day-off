@@ -337,7 +337,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../assets/grass_bg.png');
+  background-image: url('../public/grass_bg.png');
   background-size: contain;
 }
 .play-viewport {
@@ -358,6 +358,20 @@ body {
 
     font-size: 28px;
   }
+  .battle-floor {
+    display: flex;
+
+    gap: 200px;
+    position: absolute;
+    left: 50px;
+    bottom: 70px;
+    .pokemon {
+      width: 400px;
+      height: 400px;
+      // border: 1px solid white;
+      background-size: contain;
+    }
+  }
   .move-select {
     display: flex;
     justify-content: space-between;
@@ -366,7 +380,7 @@ body {
 
     position: absolute;
     right: 300px;
-    bottom: 100px;
+    bottom: 70px;
 
     .move-item {
       display: flex;
