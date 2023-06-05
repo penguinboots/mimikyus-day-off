@@ -1,8 +1,7 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
 import { useEffect } from "react";
-import { doMove } from "../../game/helpers/combat/doMove";
-import { moveOrder } from "@/game/helpers/combat/moveOrder";
+import { moveOrder, calculateMove, opponentMoveSelect } from "../../game/helpers/combat";
 
 export default function Room(props) {
   const { floor_1 } = require("../../game/pregenerated/floors/floor1");
@@ -36,7 +35,7 @@ export default function Room(props) {
     let moves = moveOrder(charMove, char, opponentMove, opponent);
 
     for (let move in moves) {
-      doMove(move, char, opponent);
+      calculateMove(move, char, opponent);
 
     }
     
