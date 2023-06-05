@@ -1,10 +1,9 @@
-const { RSC_MODULE_TYPES } = require('next/dist/shared/lib/constants.js')
 const { changeStat } = require('./changeStat.js')
 const { damageCalc } = require('./damageCalc.js')
 const { drainCalc } = require('./drainCalc.js')
 
 
-function doMove(move, user, target) {
+function calculateMove(move, user, target) {
   let userStat = ''
   let targetStat = ''
   //check move's damage type to decide which stats to include in damageCalc
@@ -77,4 +76,4 @@ function doMove(move, user, target) {
   return results
 }
 
-module.exports = { doMove }
+module.exports = { calculateMove }
