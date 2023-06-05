@@ -9,14 +9,14 @@ import MoveDetail from "../common/MoveDetail";
 export default function Play(props) {
   const {
     setMode,
-    mute,
-    setMute,
     settingOpen,
     settingClick,
     closeSettings,
     achOpen,
     achClick,
     achClose,
+    isMusicPlaying,
+    handleMusicToggle,
   } = props;
 
   const { isHovering, handleMouseOver, handleMouseOut } = useIsHovering();
@@ -32,14 +32,14 @@ export default function Play(props) {
   return (
     <div className="play-container">
       <Nav
-        mute={mute}
-        setMute={setMute}
         settingOpen={settingOpen}
         settingClick={settingClick}
         closeSettings={closeSettings}
         achOpen={achOpen}
         achClick={achClick}
         achClose={achClose}
+        isMusicPlaying={isMusicPlaying}
+        handleMusicToggle={handleMusicToggle}
       />
       <div className="play-wrapper">
         <div className="play-viewport">
