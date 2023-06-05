@@ -114,10 +114,8 @@ body {
   }
 }
 
-.settings-container {
+.settings-container, .achievement-container {
   position: absolute;
-  left: 300px;
-  top: 200px;
 
   display: flex;
   align-items: center;
@@ -125,12 +123,9 @@ body {
   text-align: center;
 
   background-color: $light-blue;
-  width: 400px;
-  height: 250px;
-  border-radius: 36px;
   border: 1px solid black;
 
-  .close-settings {
+  .close-window {
     position: absolute;
     display: flex;
     align-items: center;
@@ -142,6 +137,44 @@ body {
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+  }
+}
+
+.settings-container {
+  width: 400px;
+  height: 250px;
+  border-radius: 36px;
+  left: 300px;
+  top: 200px;
+}
+
+.achievement-container {
+  flex-direction: column;
+  width: 800px;
+  height: 500px;
+  border-radius: 36px;
+  left: 100px;
+  top: 100px;
+
+  .ach-list {
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding: 40px;
+    gap: 20px;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 140px;
+      height: 140px;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 24px;
+    }
   }
 }
 
