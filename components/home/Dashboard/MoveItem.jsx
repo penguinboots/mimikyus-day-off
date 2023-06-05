@@ -7,5 +7,5 @@ export default function MoveItem(props) {
 
   const { moveName } = props;
 
-  return <div className="move-item">{moveName}</div>;
+  return <div className="move-item">{moveName.toUpperCase()}</div>;
 }
