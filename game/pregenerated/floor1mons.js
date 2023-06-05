@@ -8,10 +8,9 @@ const magikarp = {
     "special-defense": 20,
     "speed": 80
   },
-  "moves": [
-    {
+  "moves": {
+    "tackle":{
       "name": "tackle",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": null,
@@ -28,9 +27,7 @@ const magikarp = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage",
-          },
+          "category": "damage",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -47,11 +44,45 @@ const magikarp = {
         "stat_changes": [],
         "target": "selected-pokemon",
         "type": "normal",
-      }
     },
-    {
+    "splash":{
+        "name": "splash",
+          "accuracy": null, 
+          "damage_class": "status",
+          "effect_chance": null,
+          "effect_entries": [
+            {
+              "effect": "Does nothing.\n\nThis move cannot be used while gravity is in effect.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Does nothing."
+            }
+          ],
+          "id": 150,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "unique",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 0
+          },
+          "power": null,
+          "pp": 40,
+          "priority": 0,
+          "stat_changes": [],
+          "target": "user",
+          "type": "normal",
+    },
+    "splash":{
       "name": "splash",
-      "data": {
         "accuracy": null, 
         "damage_class": "status",
         "effect_chance": null,
@@ -68,9 +99,7 @@ const magikarp = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "unique",
-          },
+          "category": "unique",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -87,14 +116,45 @@ const magikarp = {
         "stat_changes": [],
         "target": "user",
         "type": "normal",
-      }
     },
-  ],
-  "types": [
-    {
-      "name": "water"
-    }
-  ],
+    "splash":{
+    "name": "splash",
+      "accuracy": null, 
+      "damage_class": "status",
+      "effect_chance": null,
+      "effect_entries": [
+        {
+          "effect": "Does nothing.\n\nThis move cannot be used while gravity is in effect.",
+          "language": {
+            "name": "en",
+          },
+          "short_effect": "Does nothing."
+        }
+      ],
+      "id": 150,
+      "meta": {
+        "ailment": "none",
+        "ailment_chance": 0,
+        "category": "unique",
+        "crit_rate": 0,
+        "drain": 0,
+        "flinch_chance": 0,
+        "healing": 0,
+        "max_hits": null,
+        "max_turns": null,
+        "min_hits": null,
+        "min_turns": null,
+        "stat_chance": 0
+      },
+      "power": null,
+      "pp": 40,
+      "priority": 0,
+      "stat_changes": [],
+      "target": "user",
+      "type": "normal",
+    },
+  },
+  "types": ["water"],
   "height": 9,
   "weight": 100
 }
@@ -109,10 +169,9 @@ const snorlax1 = {
     "special-defense": 110,
     "speed": 30,
   },
-  "moves": [
-    {
+  "moves": {
+    "bite":{
       "name": "bite",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 30,
@@ -129,9 +188,7 @@ const snorlax1 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage",
-          },
+          "category": "damage",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 30,
@@ -148,155 +205,132 @@ const snorlax1 = {
         "stat_changes": [],
         "target": "selected-pokemon",
         "type": "dark",
-      }
-    },
-    {
-      "name": "rock-tomb",
-      "data": {
-        "accuracy": 95,
-        "damage_class": "physical",
-        "effect_chance": 100,
-        "effect_entries": [
-          {
-            "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
-          }
-        ],
-        "id": 317,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "damage+lower",
-          },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 100
-        },
-        "power": 60,
-        "pp": 15,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": -1,
-            "stat": {
-              "name": "speed",
+      },
+    "rock-tomb":{
+        "name": "rock-tomb",
+          "accuracy": 95,
+          "damage_class": "physical",
+          "effect_chance": 100,
+          "effect_entries": [
+            {
+              "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
             }
-          }
-        ],
-        "target": "selected-pokemon",
-        "type": "rock",
-      }
-    },
-    {
-      "name": "defense-curl",
-      "data": {
-        "accuracy": null,
-        "damage_class": "status",
-        "effect_chance": null,
-        "effect_entries": [
-          {
-            "effect": "Raises user's Defense by one stage.\n\nAfter this move is used, the power of ice ball and rollout are doubled until the user leaves the field.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Raises user's Defense by one stage."
-          }
-        ],
-        "id": 111,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
+          ],
+          "id": 317,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "damage+lower",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 100
           },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 0
-        },
-        "power": null,
-        "pp": 40,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": 1,
-            "stat": {
-              "name": "defense",
+          "power": 60,
+          "pp": 15,
+          "priority": 0,
+          "stat_changes": [
+            {
+              "change": -1,
+              "stat": "speed",
             }
-          }
-        ],
-        "target": "user",
-        "type": "normal",
-      }
-    },
-    {
-      "name": "charm",
-      "data": {
-        "accuracy": 100,
-        "damage_class": "status",
-        "effect_chance": null,
-        "effect_entries": [
-          {
-            "effect": "Lowers the target's Attack by two stages.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Lowers the target's Attack by two stages."
-          }
-        ],
-        "id": 204,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
+          ],
+          "target": "selected-pokemon",
+          "type": "rock",
+      },
+    "defense-curl":{
+        "name": "defense-curl",
+          "accuracy": null,
+          "damage_class": "status",
+          "effect_chance": null,
+          "effect_entries": [
+            {
+              "effect": "Raises user's Defense by one stage.\n\nAfter this move is used, the power of ice ball and rollout are doubled until the user leaves the field.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Raises user's Defense by one stage."
+            }
+          ],
+          "id": 111,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "net-good-stats",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 0
           },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 0
-        },
-        "power": null,
-        "pp": 20,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": -2,
-            "stat": {
-              "name": "attack",
+          "power": null,
+          "pp": 40,
+          "priority": 0,
+          "stat_changes": [
+            {
+              "change": 1,
+              "stat": "defense",
             }
-          }
-        ],
-        "target": "selected-pokemon",
-        "type": "fairy",
-      }
-    },
-  ],
-  "types": [
-    {
-      "name": "normal"
-    }
-  ],
+          ],
+          "target": "user",
+          "type": "normal",
+      },
+    "baby-doll-eyes":{
+        "name": "baby-doll-eyes",
+          "accuracy": 100,
+          "damage_class": "status",
+          "effect_chance": null,
+          "effect_entries": [
+            {
+              "effect": "Lowers the target's Attack by one stage.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Lowers the target's Attack by one stage."
+            }
+          ],
+          "id": 608,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "net-good-stats",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 0
+          },
+          "power": null,
+          "pp": 30,
+          "priority": 1,
+          "stat_changes": [
+            {
+              "change": -1,
+              "stat": "attack",
+            }
+          ],
+          "target": "selected-pokemon",
+          "type": "fairy",
+      },
+  },
+  "types": ["normal"],
   "height": 21,
   "weight": 4600
 }
