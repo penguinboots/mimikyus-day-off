@@ -2714,9 +2714,7 @@
    "poison-jab":{
     "name": "poison-jab",
       "accuracy": 100,
-      "damage_class": {
-        "name": "physical",
-      },
+      "damage_class": "physical",
       "effect_chance": 30,
       "effect_changes": [],
       "effect_entries": [
@@ -2747,9 +2745,49 @@
       "pp": 20,
       "priority": 0,
       "stat_changes": [],
-      "target": {
-        "name": "selected-pokemon",
-      },
+      "target": "selected-pokemon",
       "type": "poison",
+    },
+    "iron-defense": {
+      "name": "iron-defense",
+      "accuracy": null,
+      "damage_class": "status",
+      "effect_chance": null,
+      "effect_changes": [],
+      "effect_entries": [
+        {
+          "effect": "Raises the user's Defense by two stages.",
+          "language": {
+            "name": "en",
+          },
+          "short_effect": "Raises the user's Defense by two stages."
+        }
+      ],
+      "id": 334,
+      "meta": {
+        "ailment": "none",
+        "ailment_chance": 0,
+        "category": "net-good-stats",
+        "crit_rate": 0,
+        "drain": 0,
+        "flinch_chance": 0,
+        "healing": 0,
+        "max_hits": null,
+        "max_turns": null,
+        "min_hits": null,
+        "min_turns": null,
+        "stat_chance": 0
+      },
+      "power": null,
+      "pp": 15,
+      "priority": 0,
+      "stat_changes": [
+        {
+          "change": 2,
+          "stat": "defense",
+        }
+      ],
+      "target": "user",
+      "type": "steel",
     }
 }
