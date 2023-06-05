@@ -1,31 +1,12 @@
+import useIsHovering from "@/utils/hooks/isHovering";
 import PropTypes from "prop-types";
-import { useState } from "react";
 
-import MoveDetail from "./MoveDetail";
-import MoveItem from "./MoveItem";
+import MoveDetail from "../../common/MoveDetail";
+import MoveItem from "../../common/MoveItem";
 
 export default function MoveCard() {
 
-  const [isHovering, setIsHovering] = useState({
-    move1: false,
-    move2: false,
-    move3: false,
-    move4: false,
-  });
-
-  const handleMouseOver = (id) => {
-    setIsHovering((prev) => ({
-      ...prev,
-      [id]: true,
-    }));
-  };
-
-  const handleMouseOut = (id) => {
-    setIsHovering((prev) => ({
-      ...prev,
-      [id]: false,
-    }));
-  };
+  const { isHovering, setIsHovering, handleMouseOver, handleMouseOut } = useIsHovering();
 
   return (
     <div className="move-info-card">
