@@ -14,9 +14,23 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
   const [mode, setMode] = useState("LANDING");
   const [mute, setMute] = useState(false);
+  const [settingOpen, setSettingOpen] = useState(false);
+  const [achOpen, setAchOpen] = useState(false);
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>{error.message}</div>;
+  const settingClick = () => {
+    setSettingOpen((prev) => !prev);
+  }
+  const closeSettings = () => {
+    setSettingOpen(false);
+  }
+
+  const achClick = () => {
+    setAchOpen((prev) => !prev);
+  }
+
+  const achClose = () => {
+    setAchOpen(false);
+  }
 
   useEffect(() => {
     if (user) {
@@ -32,10 +46,30 @@ export default function Home() {
         {mode === "LOGIN" &&
           <Login />}
         {mode === "DASH" &&
-          <Dashboard setMode={setMode} mute={mute} setMute={setMute}/>
+          <Dashboard
+            setMode={setMode}
+            mute={mute} setMute={setMute}
+            settingOpen={settingOpen}
+            setSettingOpen={setSettingOpen}
+            settingClick={settingClick}
+            closeSettings={closeSettings}
+            achOpen={achOpen}
+            setAchOpen={setAchOpen}
+            achClick={achClick}
+            achClose={achClose} />
         }
         {mode === "PLAY" &&
-          <Play setMode={setMode} mute={mute} setMute={setMute}/>
+          <Play
+            setMode={setMode}
+            mute={mute} setMute={setMute}
+            settingOpen={settingOpen}
+            setSettingOpen={setSettingOpen}
+            settingClick={settingClick}
+            closeSettings={closeSettings}
+            achOpen={achOpen}
+            setAchOpen={setAchOpen}
+            achClick={achClick}
+            achClose={achClose} />
         }
       </div>
     </div>
