@@ -108,6 +108,36 @@ body {
   }
 }
 
+.settings-container {
+  position: absolute;
+  left: 300px;
+  top: 200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: $light-blue;
+  width: 400px;
+  height: 250px;
+  border-radius: 36px;
+  border: 1px solid black;
+
+  .close-settings {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -15px;
+    right: -15px;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
 /** DASHBOARD **/
 .dashboard {
   height: 100%;
