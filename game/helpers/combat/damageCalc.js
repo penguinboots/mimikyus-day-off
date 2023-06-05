@@ -6,7 +6,7 @@ function damageCalc(move, userStat, targetStat, user_types, target_types) {
   let totalMultiplier = 1
   //apply same-type attack bonus
   user_types.forEach(type => {
-    if (type.name === move.data.type) {
+    if (type === move.data.type) {
       totalMultiplier *= 1.5
     }
   });
@@ -17,7 +17,7 @@ function damageCalc(move, userStat, targetStat, user_types, target_types) {
   } 
   //consider type effectiveness, use value from json
   target_types.forEach(type => {
-    totalMultiplier *= typeEffectiveness[type.name][move.data.type]
+    totalMultiplier *= typeEffectiveness[type][move.data.type]
   })
   const finalDamage = baseDamage * totalMultiplier
   return finalDamage

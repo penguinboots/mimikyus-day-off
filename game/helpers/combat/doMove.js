@@ -7,10 +7,10 @@ function doMove(move, user, target) {
   let userStat = ''
   let targetStat = ''
   //check move's damage type to decide which stats to include in damageCalc
-  if (move.data.damage_class === "physical") {
+  if (move.damage_class === "physical") {
     userStat = 'attack'
     targetStat = 'defense'
-  } else if (move.data.damage_class === "special") {
+  } else if (move.damage_class === "special") {
     userStat = ['special-attack']
     targetStat = ['special-defense']
   }
@@ -33,24 +33,26 @@ function doMove(move, user, target) {
     userMoveStat *= 2/(user.statChanges[userStat] + 2) 
   }
   //check move category and perform appropriate actions
-  if (move.data.category.name === "damage") {
+  if (move.category === "damage") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-  } else if (move.data.category.name === "damage+lower") {
+  } else if (move.category === "damage+lower") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    changeStat(target.statChanges[move.data.stat_changes.stat.name], move.data.stat_changes.change)
-  } else if (move.data.category.name === "damage+raise") {
+    changeStat(target.statChanges[move.stat_changes.stat], move.stat_changes.change)
+  } else if (move.category === "damage+raise") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    changeStat(user.statChanges[move.data.stat_changes.stat.name], move.data.stat_changes.change)
-  } else if (move.data.category.name === "damage+heal") {
+    changeStat(user.statChanges[move.stat_changes.stat], move.stat_changes.change)
+  } else if (move.category === "damage+heal") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    const heal = drainCalc(damage, move.data.meta.drain)
-  } else if (move.data.category.name === "net-good-stats") {
+    const heal = drainCalc(damage, move.meta.drain)
+  } else if (move.category === "net-good-stats") {
     let changeStatOf = {}
-    if (move.data.target === 'user') {
+    if (move.target === 'user') {
      changeStatOf = user
-    } else if (move.data.target === 'selected-pokemon'){
+    } else if (move.target === 'selected-pokemon'){
      changeStatOf = target
     }
-    changeStat(changeStatOf.statChanges[move.data.stat_changes.stat.name], move.data.stat_changes.change)
+    changeStat(changeStatOf.statChanges[move.stat_changes.stat], move.stat_changes.change)
+  } else if (move.category === "unique") {
+    //I think this is just splash
   }
 }
