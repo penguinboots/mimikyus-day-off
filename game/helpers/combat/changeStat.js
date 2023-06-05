@@ -1,5 +1,4 @@
 function changeStat(target, stat, stages) {
-  //CHANGE THIS TO OUTPUT INSTEAD
   let statChanges = {
     "hp": 0,
     "attack": 0,
