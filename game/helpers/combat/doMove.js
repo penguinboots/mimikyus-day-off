@@ -34,15 +34,15 @@ function doMove(move, user, target) {
   }
   //check move category and perform appropriate actions
   if (move.data.category.name === "damage") {
-    const damage = damageCalc(move.data.power, userMoveStat, targetMoveStat)
+    const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
   } else if (move.data.category.name === "damage+lower") {
-    const damage = damageCalc(move.data.power, userMoveStat, targetMoveStat)
+    const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     changeStat(target.statChanges[move.data.stat_changes.stat.name], move.data.stat_changes.change)
   } else if (move.data.category.name === "damage+raise") {
-    const damage = damageCalc(move.data.power, userMoveStat, targetMoveStat)
+    const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     changeStat(user.statChanges[move.data.stat_changes.stat.name], move.data.stat_changes.change)
   } else if (move.data.category.name === "damage+heal") {
-    const damage = damageCalc(move.data.power, userMoveStat, targetMoveStat)
+    const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     const heal = drainCalc(damage, move.data.meta.drain)
   } else if (move.data.category.name === "net-good-stats") {
     let changeStatOf = {}
@@ -52,7 +52,5 @@ function doMove(move, user, target) {
      changeStatOf = target
     }
     changeStat(changeStatOf.statChanges[move.data.stat_changes.stat.name], move.data.stat_changes.change)
-  } else {
-    
   }
 }
