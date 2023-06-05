@@ -5,29 +5,46 @@ $dark-blue: #b4b4ff;
 
 $button: $light-blue;
 
-
-.app-wrapper {
-  position: fixed;
-  left: 10%;
-  top: 10vh;
-  height: 80vh;
-  background-color: lightgrey;
-  width: 80%;
-  border-radius: 2rem;
-
-  // overflow: hidden;
-}
+/** GENERAL **/
 
 body {
-  max-height: 100vh;
   background-color: $dark-blue;
+}
+
+.app-wrapper {
+  height: 80vh;
+  width: 80%;
+  min-height: 800px;
+  min-width: 1100px;
+  margin: 5vh auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $dark-blue;
+
+  overflow: hidden;
+}
+
+.view-wrapper {
+  position: absolute;
+  margin: auto;
+
+  background-color: white;
+
+  height: 700px;
+  width: 1100px;
+  border-radius: 36px;
 }
 
 /** LANDING **/
 
-.landing-container, .login-container {
-  min-width: 100%;
-  min-height: 100%;
+.landing-container,
+.login-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
   background-color: white;
 
   display: flex;
@@ -50,61 +67,163 @@ body {
   }
 }
 
-
 /** NAVBAR **/
-.nav-bar {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  .nav-left {
-    .logo {
-      position: relative;
-      transform: translateY(-50%);
-
-      height: 5rem;
-      width: 25rem;
-      border-radius: 2.5rem;
-
-      background-color: $button;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-  .nav-right {
+.nav-container {
+  position: absolute;
+  width: 1000px;
+  height: 72px;
+  top: -36px;
+  left: 50px;
+  .nav-bar {
     display: flex;
-    justify-content: space-around;
-    .icon-button {
-      position: relative;
-      transform: translateY(-50%);
+    justify-content: space-between;
+    .nav-left {
+      .logo {
+        height: 72px;
+        width: 360px;
+        border-radius: 36px;
 
-      background-color: $button;
-      height: 5rem;
-      width: 5rem;
-      border-radius: 50%;
+        background-color: $button;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .nav-right {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      justify-content: space-around;
+      .icon-button {
+        height: 72px;
+        width: 72px;
+        border-radius: 36px;
+
+        background-color: $button;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }
 
-/** CHARINFO **/
+/** DASHBOARD **/
+.dashboard {
+  height: 100%;
+  .dash-body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/** CHARINFO > POKEINFO & MOVEINFO **/
 
 .char-info {
-  margin: 2rem;
-  width: 50%;
+  width: 600px;
+  height: 480px;
+  background-color: white;
+
   display: flex;
-  gap: 1rem;
-  padding: 0 2rem;
+  justify-content: space-between;
 }
 
-.poke-info-card, .move-info-card {
+.poke-info-card,
+.move-info-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: $light-blue;
+  width: 290px;
+  border-radius: 36px;
+
+  padding: 20px;
+  gap: 20px;
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+.poke-info-card {
+  gap: 15px;
+  .poke-portrait {
+    width: 90%;
+    height: 200px;
+    background: white;
+  }
+  .type-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    .type-label {
+      width: 80px;
+      border-radius: 5px;
+      color: white;
+      text-align: center;
+    }
+  }
+  .poke-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 90%;
+    h3 {
+      font-size: 20px;
+    }
+  }
+}
+
+.move-info-card {
+  gap: 10px;
+  .move-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 12px;
+
+    width: 70%;
+    height: 48px;
+  }
+  .move-item:first-of-type {
+    margin-top: 20px;
+  }
+  button {
+    width: 70%;
+    height: 48px;
+    background-color: #b4b4ff;
+    border-radius: 12px;
+    margin-top: 40px;
+  }
+}
+
+.enter-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   background-color: white;
-  height: 30rem;
-  width: 20rem;
-  border-radius: 3rem;
+  width: 320px;
+  height: 480px;
+  .dungeon-pic {
+    background-color: $dark-blue;
+    width: 90%;
+    height: 200px;
+  }
+  button {
+    width: 80%;
+    height: 80px;
+    background-color: #b4b4ff;
+    border-radius: 36px;
+    margin-top: 40px;
+  }
 }

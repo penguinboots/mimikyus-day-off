@@ -24,13 +24,15 @@ export default function Home() {
 
   return (
     <div className="app-wrapper">
-      {mode === "LANDING" &&
-        <Landing setMode={setMode} user={user} />}
-      {mode === "LOGIN" &&
-        <Login />}
-      {mode === "DASH" &&
-        <Dashboard />
-      }
+      <div className="view-wrapper">
+        {mode === "LANDING" &&
+          <Landing setMode={setMode} user={user} />}
+        {mode === "LOGIN" &&
+          <Login />}
+        {mode === "DASH" &&
+          <Dashboard />
+        }
+      </div>
     </div>
   )
 }
