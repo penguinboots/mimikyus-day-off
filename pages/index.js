@@ -13,6 +13,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const [mode, setMode] = useState("LANDING");
+  const [mute, setMute] = useState(false);
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
@@ -31,10 +32,10 @@ export default function Home() {
         {mode === "LOGIN" &&
           <Login />}
         {mode === "DASH" &&
-          <Dashboard setMode={setMode}/>
+          <Dashboard setMode={setMode} mute={mute} setMute={setMute}/>
         }
         {mode === "PLAY" &&
-          <Play setMode={setMode}/>
+          <Play setMode={setMode} mute={mute} setMute={setMute}/>
         }
       </div>
     </div>

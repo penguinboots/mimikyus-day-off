@@ -7,7 +7,7 @@ import useIsHovering from "@/utils/hooks/isHovering";
 import MoveDetail from "../common/MoveDetail";
 
 export default function Play(props) {
-  const { setMode } = props;
+  const { setMode, mute, setMute } = props;
   const { isHovering, setIsHovering, handleMouseOver, handleMouseOut } =
     useIsHovering();
 
@@ -16,7 +16,7 @@ export default function Play(props) {
   };
   return (
     <div className="play-container">
-      <Nav />
+      <Nav mute={mute} setMute={setMute} />
       <div className="play-wrapper">
         <div className="play-viewport">
           <button className="dash-return" onClick={handleClick}>

@@ -2,9 +2,10 @@ import { useState } from "react";
 import Settings from "../home/Dashboard/Settings";
 import IconButton from "./IconButton";
 
-export default function Nav() {
+export default function Nav(props) {
+  const { mute, setMute } = props;
+
   const [ settingOpen, setSettingOpen ] = useState(false);
-  const [ mute, setMute ] = useState(false);
 
   const settingClick = () => {
     setSettingOpen((prev) => !prev);
