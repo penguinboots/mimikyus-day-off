@@ -5,27 +5,27 @@ import EnterGame from "./EnterGame";
 export default function Dashboard(props) {
   const {
     setMode,
-    mute,
-    setMute,
     settingOpen,
     settingClick,
     closeSettings,
     achOpen,
     achClick,
     achClose,
+    isMusicPlaying,
+    handleMusicToggle
   } = props;
 
   return (
     <div className="dashboard">
       <Nav
-        mute={mute}
-        setMute={setMute}
         settingOpen={settingOpen}
         settingClick={settingClick}
         closeSettings={closeSettings}
         achOpen={achOpen}
         achClick={achClick}
         achClose={achClose}
+        isMusicPlaying={isMusicPlaying}
+        handleMusicToggle={handleMusicToggle}
       />
       <div className="dash-body">
         <CharSection />
