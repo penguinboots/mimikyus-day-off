@@ -6,6 +6,8 @@ import MoveItem from "../common/MoveItem";
 import useIsHovering from "@/utils/hooks/isHovering";
 import MoveDetail from "../common/MoveDetail";
 
+import Image from 'next/image';
+
 export default function Play(props) {
   const {
     setMode,
@@ -19,12 +21,16 @@ export default function Play(props) {
     achClose,
   } = props;
 
-  const { isHovering, setIsHovering, handleMouseOver, handleMouseOut } =
-    useIsHovering();
+  const { isHovering, handleMouseOver, handleMouseOut } = useIsHovering();
 
   const handleClick = () => {
     setMode("DASH");
   };
+
+  // Modify to change active sprite
+  const PLAYER = `url("/mimikyu-standin.png")`;
+  const OPPONENT = `url("/snorlax-standin.png")`;
+
   return (
     <div className="play-container">
       <Nav
@@ -43,6 +49,25 @@ export default function Play(props) {
             <FontAwesomeIcon icon={faArrowLeft} />
             <FontAwesomeIcon icon={faHouse} />
           </button>
+
+          <div className="battle-floor">
+            {/* Do not touch!
+                Pokemon sprites are loaded as background image.
+                Change PLAYER & OPPONENT to modify active sprite. */}
+            <div
+              className="pokemon self"
+              style={{
+                backgroundImage: PLAYER,
+              }}
+            ></div>
+            <div
+              className="pokemon opponent"
+              style={{
+                backgroundImage: OPPONENT,
+              }}
+            ></div>
+          </div>
+
           <div className="move-select">
             <MoveItem
               id="move1"
