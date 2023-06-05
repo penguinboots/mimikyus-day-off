@@ -18,23 +18,23 @@ function calculateMove(move, user, target) {
   let targetMoveStat = target.stats[targetStat]
   let damage = 0;
   let heal = 0;
-  let statchanges = {}
+  let statChanges = {}
   //check user for stat changes and apply them to the stat
-  if (user.statChanges[userStat] > 0) {
-    console.log("Multiplier: ", (user.statChanges[userStat] + 2) / 2)
-    userMoveStat *= (user.statChanges[userStat] + 2) / 2
-  } else if (user.statChanges[userStat] < 0) {
-    console.log("Multiplier: ", 2 / (user.statChanges[userStat] + 2))
-    userMoveStat *= 2 / (user.statChanges[userStat] + 2)
-  }
-  //check user for stat changes and apply them to the stat
-  if (user.statChanges[userStat] > 0) {
-    console.log("Multiplier: ", (user.statChanges[userStat] + 2) / 2)
-    userMoveStat *= (user.statChanges[userStat] + 2) / 2
-  } else if (user.statChanges[userStat] < 0) {
-    console.log("Multiplier: ", 2 / (user.statChanges[userStat] + 2))
-    userMoveStat *= 2 / (user.statChanges[userStat] + 2)
-  }
+  // if (user.statChanges[userStat] > 0) {
+  //   console.log("Multiplier: ", (user.statChanges[userStat] + 2) / 2)
+  //   userMoveStat *= (user.statChanges[userStat] + 2) / 2
+  // } else if (user.statChanges[userStat] < 0) {
+  //   console.log("Multiplier: ", 2 / (user.statChanges[userStat] + 2))
+  //   userMoveStat *= 2 / (user.statChanges[userStat] + 2)
+  // }
+  // //check user for stat changes and apply them to the stat
+  // if (user.statChanges[userStat] > 0) {
+  //   console.log("Multiplier: ", (user.statChanges[userStat] + 2) / 2)
+  //   userMoveStat *= (user.statChanges[userStat] + 2) / 2
+  // } else if (user.statChanges[userStat] < 0) {
+  //   console.log("Multiplier: ", 2 / (user.statChanges[userStat] + 2))
+  //   userMoveStat *= 2 / (user.statChanges[userStat] + 2)
+  // }
   //check move category and perform appropriate actions
   if (move.meta.category === "damage") {
     damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
@@ -63,7 +63,7 @@ function calculateMove(move, user, target) {
   const results = {
     damage: null, 
     heal: null, 
-    statchanges: null
+    statChanges: null
   }
   if (damage !== 0) {
     results.damage = damage * 0.5;
