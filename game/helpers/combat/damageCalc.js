@@ -1,3 +1,5 @@
-function damageCalc(move, user) {
+function damageCalc(power, userStat, targetStat) {
   
 }
+
+module.exports = { damageCalc }
