@@ -1,6 +1,6 @@
-function moveOrder(move1, user1, move2, user2) {
-  let move1First = [move1, move2]
-  let move2First = [move2, move1]
+function moveOrder(move1, player, moreOpp, opponent) {
+  let move1First = [{"move": move1, "user": user1, "target":user2}, {"move": move2, "user": user2, "target": user1}]
+  let move2First = [{"move": move2, "user": user2, "target": user1}, {"move": move1, "user": user1, "target":user2}]
   //compare move priority and return the moves ordered by greater priority if there is a difference
   if (move1.priority > move2.priority) {
     return move1First
