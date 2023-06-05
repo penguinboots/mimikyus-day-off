@@ -1,28 +1,26 @@
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.scss';
 //import { PrismaClient } from '@prisma/client';
 import { useState, useEffect, useRef } from 'react';
+// Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
+// Components
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
 import Play from '@/components/play/Play'
-import DashboardMusic from '../game/assets/audios/DashboardMusic.mp3';
+// Assets
+import DashboardMusic from '../public/audio/DashboardMusic.mp3';
+// Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   // Authentication
   const { user, error, isLoading } = useUser();
   // View Mode
   const [mode, setMode] = useState("LANDING");
-
   // Music
   const audioRef = useRef(null);
   const originalVolumeRef = useRef(1.0);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, originalVolumeRef);
-
   // Music Toggle
   useEffect(() => {
     if (isMusicPlaying) {

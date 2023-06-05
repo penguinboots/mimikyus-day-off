@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function useIsMenuOpen() {
+  // Pass name of popup to windowToggle and windowClose
   const [isMenuOpen, setMenuOpen] = useState({
     achievements: false,
     settings: false,
