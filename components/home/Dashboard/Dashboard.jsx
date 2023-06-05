@@ -3,9 +3,9 @@ import Nav from "../../common/Nav";
 
 export default function Dashboard() {
   return (
-    <div>
+    <>
       <Nav />
       <CharSection />
-    </div>
+    </>
   )
 }
