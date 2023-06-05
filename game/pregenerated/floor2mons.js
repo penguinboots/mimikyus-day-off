@@ -32,7 +32,7 @@ const snorlax2= {
     "defense": 75,
     "special-attack": 65,
     "special-defense": 95,
-    "speed": 40,
+    "speed": 96,
   },
   "moves": [
     {
