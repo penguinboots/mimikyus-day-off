@@ -1,5 +1,8 @@
 export default function EnterGame() {
   return (
-    <div></div>
+    <div className="enter-game-container">
+      <div className="dungeon-pic">PLACEHOLDER PICTURE</div>
+      <button>ENTER GAME</button>
+    </div>
   )
 }
