@@ -1,6 +1,6 @@
 export default function IconButton(props) {
-  const { buttonName } = props;
+  const { buttonName, handleClick } = props;
   return (
-    <div className="icon-button">{buttonName}</div>
+    <div className="icon-button" onClick={handleClick}>{buttonName}</div>
   )
 }

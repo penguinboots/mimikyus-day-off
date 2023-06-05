@@ -108,6 +108,36 @@ body {
   }
 }
 
+.settings-container {
+  position: absolute;
+  left: 300px;
+  top: 200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: $light-blue;
+  width: 400px;
+  height: 250px;
+  border-radius: 36px;
+  border: 1px solid black;
+
+  .close-settings {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -15px;
+    right: -15px;
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
 /** DASHBOARD **/
 .dashboard {
   height: 100%;
@@ -149,6 +179,7 @@ body {
   }
 }
 
+/** POKEINFO **/
 .poke-info-card {
   gap: 15px;
   .poke-portrait {
@@ -179,6 +210,7 @@ body {
   }
 }
 
+/** MOVEINFO **/
 .move-info-card {
   gap: 10px;
   .move-item {
@@ -192,9 +224,25 @@ body {
 
     width: 70%;
     height: 48px;
+    min-height: 48px;
   }
   .move-item:first-of-type {
     margin-top: 20px;
+  }
+  .move-detail {
+    position: absolute;
+    left: 220px;
+    top: 200px;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   button {
     width: 70%;
@@ -205,6 +253,7 @@ body {
   }
 }
 
+/** ENTER GAME **/
 .enter-game-container {
   display: flex;
   flex-direction: column;

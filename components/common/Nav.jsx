@@ -1,6 +1,18 @@
+import { useState } from "react";
+import Settings from "../home/Dashboard/Settings";
 import IconButton from "./IconButton";
 
 export default function Nav() {
+  const [ settingOpen, setSettingOpen ] = useState(false);
+
+  const settingClick = () => {
+    setSettingOpen((prev) => !prev);
+  }
+
+  const closeSettings = () => {
+    setSettingOpen(false);
+  }
+
   return (
     <div className="nav-container">
       <nav className="nav-bar">
@@ -9,11 +21,9 @@ export default function Nav() {
         </div>
         <div className="nav-right">
           <IconButton buttonName="Stickers" />
-          <IconButton buttonName="Settings" />
+          <IconButton buttonName="Settings" handleClick={settingClick}/>
+            { settingOpen && <Settings handleClick={closeSettings} />}
           <IconButton buttonName="Mute" />
-          <a href="/api/auth/logout">
-            <IconButton buttonName="Logout" />
-          </a>
         </div>
       </nav>
     </div>
