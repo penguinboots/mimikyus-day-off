@@ -1,16 +1,30 @@
+import PropTypes from "prop-types";
+import { useState } from "react";
+
 import MoveDetail from "./MoveDetail";
 import MoveItem from "./MoveItem";
 
-export default function MoveCard() {
+export default function MoveCard(props) {
+  const [isHovering, setIsHovering] = useState(false);
+  
+  const handleMouseOver = () => {
+    setIsHovering(true);
+    console.log("over");
+  }
+  const handleMouseOut = () => {
+    setIsHovering(false);
+    console.log("out");
+  }
+
   return (
     <div className="move-info-card">
       <h2>MOVES</h2>
-      <MoveItem moveName="Move 1" />
-      {/* <MoveDetail
+      <MoveItem onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} moveName="Move 1" />
+      {isHovering && <MoveDetail
         moveName="Move 1"
         power={80}
         description="Move 1 description"
-      /> */}
+      />}
       <MoveItem moveName="Move 2" />
       {/* <MoveDetail
         moveName="Move 2"
