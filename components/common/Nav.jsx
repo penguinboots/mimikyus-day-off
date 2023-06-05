@@ -2,7 +2,9 @@ import { useState } from "react";
 import Settings from "../home/Dashboard/Settings";
 import IconButton from "./IconButton";
 
-export default function Nav() {
+export default function Nav(props) {
+  const { mute, setMute } = props;
+
   const [ settingOpen, setSettingOpen ] = useState(false);
 
   const settingClick = () => {
@@ -13,6 +15,10 @@ export default function Nav() {
     setSettingOpen(false);
   }
 
+  const handleMute = () => {
+    setMute((prev) => !prev);
+  }
+
   return (
     <div className="nav-container">
       <nav className="nav-bar">
@@ -20,10 +26,10 @@ export default function Nav() {
           <div className="logo">PLACEHOLDER LOGO</div>
         </div>
         <div className="nav-right">
-          <IconButton buttonName="Stickers" />
-          <IconButton buttonName="Settings" handleClick={settingClick}/>
-            { settingOpen && <Settings handleClick={closeSettings} />}
-          <IconButton buttonName="Mute" />
+          <IconButton buttonName="ACHIEVEMENTS"/>
+          <IconButton buttonName="SETTINGS" handleClick={settingClick} />
+          {settingOpen && <Settings handleClick={closeSettings} />}
+          <IconButton buttonName={ mute ? "MUTE_ON" : "MUTE_OFF"} handleClick={handleMute} />
         </div>
       </nav>
     </div>

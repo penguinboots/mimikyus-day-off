@@ -1,4 +1,4 @@
-import { Inter, Play } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.scss';
 //import { PrismaClient } from '@prisma/client';
 import { useState, useEffect } from 'react';
@@ -6,12 +6,14 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
+import Play from '@/components/play/Play'
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const [mode, setMode] = useState("LANDING");
+  const [mute, setMute] = useState(false);
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
@@ -30,7 +32,10 @@ export default function Home() {
         {mode === "LOGIN" &&
           <Login />}
         {mode === "DASH" &&
-          <Dashboard />
+          <Dashboard setMode={setMode} mute={mute} setMute={setMute}/>
+        }
+        {mode === "PLAY" &&
+          <Play setMode={setMode} mute={mute} setMute={setMute}/>
         }
       </div>
     </div>
