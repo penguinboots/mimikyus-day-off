@@ -2,13 +2,25 @@
 
 $light-blue: #d1d1ff;
 $dark-blue: #b4b4ff;
+$dark-gray: #403c3e;
+$light-green: #93b581;
+$very-light-green: #b5d19d;
+$med-green: #4b703f;
+$off-white: #f5f3dc;
 
-$button: $light-blue;
+$background-body: $dark-gray;
+$button: $med-green;
+$border: $med-green;
+
+$dash-bg: $light-green;
+$dash-card-bg: $very-light-green;
+$text-gen: $off-white;
+$label-bg: $off-white;
 
 /** GENERAL **/
 
 body {
-  background-color: $dark-blue;
+  background-color: $background-body;
 }
 
 .app-wrapper {
@@ -22,7 +34,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  background-color: $dark-blue;
+  background-color: $background-body;
 
   overflow: hidden;
 }
@@ -30,8 +42,6 @@ body {
 .view-wrapper {
   position: absolute;
   margin: auto;
-
-  background-color: white;
 
   height: 700px;
   width: 1100px;
@@ -45,14 +55,14 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 36px;
-  background-color: white;
+  background-color: $light-green;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   button {
-    background: $dark-blue;
+    background: $dash-card-bg;
     padding: 1rem 3rem;
     border-radius: 3rem;
 
@@ -63,7 +73,7 @@ body {
 
 .login-container {
   button {
-    background: $light-blue;
+    background: $dash-card-bg;
   }
 }
 
@@ -106,7 +116,7 @@ body {
         justify-content: center;
 
         font-size: 28px;
-        color: $dark-blue;
+        color: $text-gen;
 
         cursor: pointer;
       }
@@ -122,8 +132,8 @@ body {
   justify-content: center;
   text-align: center;
 
-  background-color: $light-blue;
-  border: 1px solid black;
+  background-color: $dash-card-bg;
+  border: 3px solid $border;
 
   .close-window {
     position: absolute;
@@ -132,7 +142,7 @@ body {
     justify-content: center;
     top: -15px;
     right: -15px;
-    background-color: red;
+    background-color: $button;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -171,8 +181,8 @@ body {
 
       width: 140px;
       height: 140px;
-      background-color: white;
-      border: 1px solid black;
+      background-color: $label-bg;
+      border: 1px solid $border;
       border-radius: 24px;
     }
   }
@@ -181,6 +191,8 @@ body {
 /** DASHBOARD **/
 .dashboard {
   height: 100%;
+  background-color: $dash-bg;
+  border-radius: 36px;
   .dash-body {
     height: 100%;
     display: flex;
@@ -195,7 +207,6 @@ body {
 .char-info {
   width: 600px;
   height: 480px;
-  background-color: white;
 
   display: flex;
   justify-content: space-between;
@@ -207,7 +218,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  background-color: $light-blue;
+  background-color: $dash-card-bg;
   width: 290px;
   border-radius: 36px;
 
@@ -225,7 +236,7 @@ body {
   .poke-portrait {
     width: 90%;
     height: 200px;
-    background: white;
+    background: $label-bg;
   }
   .type-container {
     display: flex;
@@ -258,8 +269,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: white;
-    border: 1px solid black;
+    background-color: $label-bg;
+    border: 1px solid $border;
     border-radius: 12px;
 
     width: 70%;
@@ -275,9 +286,9 @@ body {
     top: 200px;
     width: 200px;
     height: 200px;
-    background-color: white;
+    background-color: $label-bg;
     border-radius: 12px;
-    border: 1px solid black;
+    border: 1px solid $border;
 
     display: flex;
     flex-direction: column;
@@ -287,7 +298,8 @@ body {
   button {
     width: 70%;
     height: 48px;
-    background-color: #b4b4ff;
+    background-color: $button;
+    color: $text-gen;
     border-radius: 12px;
     margin-top: 40px;
   }
@@ -300,36 +312,37 @@ body {
   align-items: center;
   justify-content: center;
 
-  background-color: white;
   width: 320px;
   height: 480px;
   .dungeon-pic {
-    background-color: $dark-blue;
+    background-color: $label-bg;
     width: 90%;
     height: 200px;
   }
   button {
     width: 80%;
     height: 80px;
-    background-color: #b4b4ff;
+    background-color: $button;
+
     border-radius: 36px;
     margin-top: 40px;
   }
 }
 
 /** PLAY **/
-.play-wrapper {
-  background-color: darkgray;
+.play-container {
   height: 700px;
   width: 1100px;
   border-radius: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('../assets/grass_bg.png');
+  background-size: contain;
 }
 .play-viewport {
   .dash-return {
-    background-color: white;
+    background-color: $label-bg;
     width: 120px;
     height: 50px;
     border-radius: 25px;
@@ -348,7 +361,6 @@ body {
   .move-select {
     display: flex;
     justify-content: space-between;
-    background-color: white;
     width: 500px;
     gap: 10px;
 
@@ -361,7 +373,7 @@ body {
       align-items: center;
       justify-content: center;
 
-      background-color: white;
+      background-color: $label-bg;
       border: 1px solid black;
       border-radius: 12px;
 
@@ -375,9 +387,9 @@ body {
       left: 100px;
       width: 300px;
       height: 100px;
-      background-color: white;
+      background-color: $label-bg;
       border-radius: 12px;
-      border: 1px solid black;
+      border: 1px solid $border;
 
       display: flex;
       flex-direction: column;
