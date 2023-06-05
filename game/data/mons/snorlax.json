@@ -17,333 +17,115 @@
   "id": 143,
   "is_default": true,
   "moves": [
-    {
-      "name": "mega-punch"
-    },
-    {
-      "name": "pay-day"
-    },
-    {
-      "name": "fire-punch"
-    },
-    {
-      "name": "ice-punch"
-    },
-    {
-      "name": "thunder-punch"
-    },
-    {
-      "name": "whirlwind"
-    },
-    {
-      "name": "mega-kick"
-    },
-    {
-      "name": "headbutt"
-    },
-    {
-      "name": "tackle"
-    },
-    {
-      "name": "body-slam"
-    },
-    {
-      "name": "take-down"
-    },
-    {
-      "name": "double-edge"
-    },
-    {
-      "name": "bite"
-    },
-    {
-      "name": "flamethrower"
-    },
-    {
-      "name": "water-gun"
-    },
-    {
-      "name": "hydro-pump"
-    },
-    {
-      "name": "surf"
-    },
-    {
-      "name": "ice-beam"
-    },
-    {
-      "name": "blizzard"
-    },
-    {
-      "name": "bubble-beam"
-    },
-    {
-      "name": "hyper-beam"
-    },
-    {
-      "name": "submission"
-    },
-    {
-      "name": "counter"
-    },
-    {
-      "name": "seismic-toss"
-    },
-    {
-      "name": "strength"
-    },
-    {
-      "name": "solar-beam"
-    },
-    {
-      "name": "thunderbolt"
-    },
-    {
-      "name": "thunder"
-    },
-    {
-      "name": "earthquake"
-    },
-    {
-      "name": "toxic"
-    },
-    {
-      "name": "psychic"
-    },
-    {
-      "name": "rage"
-    },
-    {
-      "name": "mimic"
-    },
-    {
-      "name": "screech"
-    },
-    {
-      "name": "double-team"
-    },
-    {
-      "name": "harden"
-    },
-    {
-      "name": "defense-curl"
-    },
-    {
-      "name": "reflect"
-    },
-    {
-      "name": "bide"
-    },
-    {
-      "name": "self-destruct"
-    },
-    {
-      "name": "lick"
-    },
-    {
-      "name": "fire-blast"
-    },
-    {
-      "name": "skull-bash"
-    },
-    {
-      "name": "amnesia"
-    },
-    {
-      "name": "psywave"
-    },
-    {
-      "name": "rest"
-    },
-    {
-      "name": "rock-slide"
-    },
-    {
-      "name": "substitute"
-    },
-    {
-      "name": "snore"
-    },
-    {
-      "name": "curse"
-    },
-    {
-      "name": "flail"
-    },
-    {
-      "name": "protect"
-    },
-    {
-      "name": "belly-drum"
-    },
-    {
-      "name": "mud-slap"
-    },
-    {
-      "name": "zap-cannon"
-    },
-    {
-      "name": "icy-wind"
-    },
-    {
-      "name": "outrage"
-    },
-    {
-      "name": "sandstorm"
-    },
-    {
-      "name": "endure"
-    },
-    {
-      "name": "charm"
-    },
-    {
-      "name": "rollout"
-    },
-    {
-      "name": "swagger"
-    },
-    {
-      "name": "attract"
-    },
-    {
-      "name": "crunch"
-    },
-    {
-      "name": "psych-up"
-    },
-    {
-      "name": "shadow-ball"
-    },
-    {
-      "name": "rock-smash"
-    },
-    {
-      "name": "whirlpool"
-    },
-    {
-      "name": "facade"
-    },
-    {
-      "name": "focus-punch"
-    },
-    {
-      "name": "superpower"
-    },
-    {
-      "name": "recycle"
-    },
-    {
-      "name": "brick-break"
-    },
-    {
-      "name": "yawn"
-    },
-    {
-      "name": "secret-power"
-    },
-    {
-      "name": "hyper-voice"
-    },
-    {
-      "name": "rock-tomb"
-    },
-    {
-      "name": "block"
-    },
-    {
-      "name": "covet"
-    },
-    {
-      "name": "shock-wave"
-    },
-    {
-      "name": "water-pulse"
-    },
-    {
-      "name": "hammer-arm"
-    },
-    {
-      "name": "natural-gift"
-    },
-    {
-      "name": "fling"
-    },
-    {
-      "name": "gastro-acid"
-    },
-    {
-      "name": "seed-bomb"
-    },
-    {
-      "name": "focus-blast"
-    },
-    {
-      "name": "giga-impact"
-    },
-    {
-      "name": "zen-headbutt"
-    },
-    {
-      "name": "rock-climb"
-    },
-    {
-      "name": "gunk-shot"
-    },
-    {
-      "name": "iron-head"
-    },
-    {
-      "name": "captivate"
-    },
-    {
-      "name": "smack-down"
-    },
-    {
-      "name": "heavy-slam"
-    },
-    {
-      "name": "after-you"
-    },
-    {
-      "name": "bulldoze"
-    },
-    {
-      "name": "work-up"
-    },
-    {
-      "name": "wild-charge"
-    },
-    {
-      "name": "heat-crash"
-    },
-    {
-      "name": "belch"
-    },
-    {
-      "name": "confide"
-    },
-    {
-      "name": "power-up-punch"
-    },
-    {
-      "name": "darkest-lariat"
-    },
-    {
-      "name": "high-horsepower"
-    },
-    {
-      "name": "stomping-tantrum"
-    },
-    {
-      "name": "body-press"
-    },
-    {
-      "name": "steel-roller"
-    },
-    {
-      "name": "terrain-pulse"
-    }
+    "mega-punch",
+    "pay-day",
+    "fire-punch",
+    "ice-punch",
+    "thunder-punch",
+    "whirlwind",
+    "mega-kick",
+    "headbutt",
+    "tackle",
+    "body-slam",
+    "take-down",
+    "double-edge",
+    "bite",
+    "flamethrower",
+    "water-gun",
+    "hydro-pump",
+    "surf",
+    "ice-beam",
+    "blizzard",
+    "bubble-beam",
+    "hyper-beam",
+    "submission",
+    "counter",
+    "seismic-toss",
+    "strength",
+    "solar-beam",
+    "thunderbolt",
+    "thunder",
+    "earthquake",
+    "toxic",
+    "psychic",
+    "rage",
+    "mimic",
+    "screech",
+    "double-team",
+    "harden",
+    "defense-curl",
+    "reflect",
+    "bide",
+    "self-destruct",
+    "lick",
+    "fire-blast",
+    "skull-bash",
+    "amnesia",
+    "psywave",
+    "rest",
+    "rock-slide",
+    "substitute",
+    "snore",
+    "curse",
+    "flail",
+    "protect",
+    "belly-drum",
+    "mud-slap",
+    "zap-cannon",
+    "icy-wind",
+    "outrage",
+    "sandstorm",
+    "endure",
+    "charm",
+    "rollout",
+    "swagger",
+    "attract",
+    "crunch",
+    "psych-up",
+    "shadow-ball",
+    "rock-smash",
+    "whirlpool",
+    "facade",
+    "focus-punch",
+    "superpower",
+    "recycle",
+    "brick-break",
+    "yawn",
+    "secret-power",
+    "hyper-voice",
+    "rock-tomb",
+    "block",
+    "covet",
+    "shock-wave",
+    "water-pulse",
+    "hammer-arm",
+    "natural-gift",
+    "fling",
+    "gastro-acid",
+    "seed-bomb",
+    "focus-blast",
+    "giga-impact",
+    "zen-headbutt",
+    "rock-climb",
+    "gunk-shot",
+    "iron-head",
+    "captivate",
+    "smack-down",
+    "heavy-slam",
+    "after-you",
+    "bulldoze",
+    "work-up",
+    "wild-charge",
+    "heat-crash",
+    "belch",
+    "confide",
+    "power-up-punch",
+    "darkest-lariat",
+    "high-horsepower",
+    "stomping-tantrum",
+    "body-press",
+    "steel-roller",
+    "terrain-pulse"
   ],
   "name": "snorlax",
   "order": 235,
