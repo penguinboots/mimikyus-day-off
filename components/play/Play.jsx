@@ -6,8 +6,6 @@ import MoveItem from "../common/MoveItem";
 import useIsHovering from "@/utils/hooks/isHovering";
 import MoveDetail from "../common/MoveDetail";
 
-import Image from 'next/image';
-
 export default function Play(props) {
   const {
     setMode,
