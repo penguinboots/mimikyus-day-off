@@ -20,10 +20,10 @@ export default function Nav() {
           <div className="logo">PLACEHOLDER LOGO</div>
         </div>
         <div className="nav-right">
-          <IconButton buttonName="Stickers" />
-          <IconButton buttonName="Settings" handleClick={settingClick}/>
-            { settingOpen && <Settings handleClick={closeSettings} />}
-          <IconButton buttonName="Mute" />
+          <IconButton buttonName="ACHIEVEMENTS"/>
+          <IconButton buttonName="SETTINGS" handleClick={settingClick} />
+          {settingOpen && <Settings handleClick={closeSettings} />}
+          <IconButton buttonName="MUTE_ON" />
         </div>
       </nav>
     </div>
