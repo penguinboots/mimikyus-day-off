@@ -4,6 +4,7 @@ import IconButton from "./IconButton";
 
 export default function Nav() {
   const [ settingOpen, setSettingOpen ] = useState(false);
+  const [ mute, setMute ] = useState(false);
 
   const settingClick = () => {
     setSettingOpen((prev) => !prev);
@@ -11,6 +12,10 @@ export default function Nav() {
 
   const closeSettings = () => {
     setSettingOpen(false);
+  }
+
+  const handleMute = () => {
+    setMute((prev) => !prev);
   }
 
   return (
@@ -23,7 +28,7 @@ export default function Nav() {
           <IconButton buttonName="ACHIEVEMENTS"/>
           <IconButton buttonName="SETTINGS" handleClick={settingClick} />
           {settingOpen && <Settings handleClick={closeSettings} />}
-          <IconButton buttonName="MUTE_ON" />
+          <IconButton buttonName={ mute ? "MUTE_ON" : "MUTE_OFF"} handleClick={handleMute} />
         </div>
       </nav>
     </div>
