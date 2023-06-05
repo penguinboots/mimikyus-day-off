@@ -1,5 +1,5 @@
-[
-  {
+{
+  "fire-punch":{
     "name": "fire-punch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -35,7 +35,7 @@
       "target": "selected-pokemon",
       "type": "fire",
     },
-  {
+   "ice-punch":{
     "name": "ice-punch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -71,7 +71,7 @@
       "target": "selected-pokemon",
       "type": "ice",
     },
-  {
+   "thunder-punch":{
     "name": "thunder-punch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -107,7 +107,7 @@
       "target": "selected-pokemon",
       "type": "electric",
     },
-  {
+   "scratch":{
     "name": "scratch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -143,7 +143,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "swords-dance":{
     "name": "swords-dance",
       "accuracy": null,
       "damage_class": "status",
@@ -184,7 +184,7 @@
       "target": "user",
       "type": "normal",
     },
-  {
+   "headbutt":{
     "name": "headbutt",
       "accuracy": 100,
       "damage_class": "physical",
@@ -220,7 +220,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "tackle":{
     "name": "tackle",
       "accuracy": 100,
       "damage_class": "physical",
@@ -256,7 +256,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "body-slam":{
     "name": "body-slam",
       "accuracy": 100, 
       "damage_class": "physical",
@@ -292,7 +292,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "take-down":{
     "name": "take-down",
       "accuracy": 85,
       "damage_class": "physical",
@@ -328,7 +328,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "double-edge":{
     "name": "double-edge",
       "accuracy": 100,
       "damage_class": "physical",
@@ -364,7 +364,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "bite":{
     "name": "bite",
       "accuracy": 100,
       "damage_class": "physical",
@@ -400,7 +400,7 @@
       "target": "selected-pokemon",
       "type": "dark",
     },
-  {
+   "flamethrower":{
     "name": "flamethrower",
       "accuracy": 100,
       "damage_class": "special",
@@ -436,7 +436,7 @@
       "target": "selected-pokemon",
       "type": "fire",
     },
-  {
+   "hydro-pump":{
     "name": "hydro-pump",
       "accuracy": 80,
       "damage_class": "special",
@@ -472,7 +472,7 @@
       "target": "selected-pokemon",
       "type": "water",
     },
-  {
+   "ice-beam":{
     "name": "ice-beam",
       "accuracy": 100, 
       "damage_class": "special",
@@ -508,7 +508,7 @@
       "target": "selected-pokemon",
       "type": "ice",
     },
-  {
+   "blizzard":{
     "name": "blizzard",
       "accuracy": 70,
       "damage_class": "special",
@@ -544,7 +544,7 @@
       "target": "all-opponents",
       "type": "ice",
     },
-  {
+   "bubble-beam":{
     "name": "bubble-beam",
       "accuracy": 100,
       "damage_class": "special",
@@ -585,7 +585,7 @@
       "target": "selected-pokemon",
       "type": "water",
     },
-  {
+   "hyper-beam":{
     "name": "hyper-beam",
       "accuracy": 90, 
       "damage_class": "special",
@@ -621,7 +621,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "solar-beam":{
     "name": "solar-beam",
       "accuracy": 100,
       "damage_class": "special",
@@ -657,7 +657,7 @@
       "target": "selected-pokemon",
       "type": "grass",
     },
-  {
+   "thunderbolt":{
     "name": "thunderbolt",
       "accuracy": 100,
       "damage_class": "special",
@@ -693,7 +693,7 @@
       "target": "selected-pokemon",
       "type": "electric",
     },
-  {
+   "thunder-wave":{
     "name": "thunder-wave",
       "accuracy": 90,
       "damage_class": "status",
@@ -729,7 +729,7 @@
       "target": "selected-pokemon",
       "type": "electric",
     },
-  {
+   "thunder":{
     "name": "thunder",
       "accuracy": 70,
       "damage_class": "special",
@@ -765,7 +765,7 @@
       "target": "selected-pokemon",
       "type": "electric",
     },
-  {
+   "earthquake":{
     "name": "earthquake",
       "accuracy": 100,
       "damage_class": "physical",
@@ -801,7 +801,7 @@
       "target": "all-other-pokemon",
       "type": "ground",
     },
-  {
+   "toxic":{
     "name": "toxic",
       "accuracy": 90, 
       "damage_class": "status",
@@ -837,7 +837,7 @@
       "target": "selected-pokemon",
       "type": "poison",
     },
-  {
+   "quick-attack":{
     "name": "quick-attack",
       "accuracy": 100,
       "damage_class": "physical",
@@ -873,7 +873,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "mimic":{
     "name": "mimic",
       "accuracy": null, 
       "damage_class": "status",
@@ -909,7 +909,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "defense-curl":{
     "name": "defense-curl",
       "accuracy": null,
       "damage_class": "status",
@@ -950,7 +950,7 @@
       "target": "user",
       "type": "normal",
     },
-  {
+   "lick":{
     "name": "lick",
       "accuracy": 100, 
       "damage_class": "physical",
@@ -986,7 +986,7 @@
       "target": "selected-pokemon",
       "type": "ghost",
     },
-  {
+   "fire-blast":{
     "name": "fire-blast",
       "accuracy": 85,
       "damage_class": "special",
@@ -1022,7 +1022,7 @@
       "target": "selected-pokemon",
       "type": "fire",
     },
-  {
+   "skull-bash":{
     "name": "skull-bash",
       "accuracy": 100, 
       "damage_class": "physical",
@@ -1058,7 +1058,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "leech-life":{
     "name": "leech-life",
       "accuracy": 100, 
       "damage_class": "physical",
@@ -1094,7 +1094,7 @@
       "target": "selected-pokemon",
       "type": "bug",
     },
-  {
+   "splash":{
     "name": "splash",
       "accuracy": null, 
       "damage_class": "status",
@@ -1130,7 +1130,7 @@
       "target": "user",
       "type": "normal",
     },
-  {
+   "rock-slide":{
     "name": "rock-slide",
       "accuracy": 90,
       "damage_class": "physical",
@@ -1166,7 +1166,7 @@
       "target": "all-opponents",
       "type": "rock",
     },
-  {
+   "slash":{
     "name": "slash",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1202,7 +1202,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "struggle":{
     "name": "struggle",
       "accuracy": null, 
       "damage_class": "physical",
@@ -1238,7 +1238,7 @@
       "target": "random-opponent",
       "type": "normal",
     },
-  {
+   "flail":{
     "name": "flail",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1274,7 +1274,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "protect":{
     "name": "protect",
       "accuracy": null,
       "damage_class": "status",
@@ -1310,7 +1310,7 @@
       "target": "user",
       "type": "normal",
     },
-  {
+   "belly-drum":{
     "name": "belly-drum",
       "accuracy": null,
       "damage_class": "status",
@@ -1346,7 +1346,7 @@
       "target": "user",
       "type": "normal",
     },
-  {
+   "giga-drain":{
     "name": "giga-drain",
       "accuracy": 100,
       "damage_class": "special",
@@ -1382,7 +1382,7 @@
       "target": "selected-pokemon",
       "type": "grass",
     },
-  {
+   "charm":{
     "name": "charm",
       "accuracy": 100,
       "damage_class": "status",
@@ -1423,7 +1423,7 @@
       "target": "selected-pokemon",
       "type": "fairy",
     },
-  {
+   "crunch":{
     "name": "crunch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1464,7 +1464,7 @@
       "target": "selected-pokemon",
       "type": "dark",
     },
-  {
+   "shadow-ball":{
     "name": "shadow-ball",
       "accuracy": 100, 
       "damage_class": "special",
@@ -1505,7 +1505,7 @@
       "target": "selected-pokemon",
       "type": "ghost",
     },
-  {
+   "rock-smash":{
     "name": "rock-smash",
       "accuracy": 100, 
       "damage_class": "physical",
@@ -1546,7 +1546,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "focus-punch":{
     "name": "focus-punch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1582,7 +1582,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "superpower":{
     "name": "superpower",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1627,7 +1627,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "brick-break":{
     "name": "brick-break",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1663,7 +1663,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "hyper-voice":{
     "name": "hyper-voice",
       "accuracy": 100, 
       "damage_class": "special",
@@ -1699,7 +1699,7 @@
       "target": "all-opponents",
       "type": "normal",
     },
-  {
+   "astonish":{
     "name": "astonish",
       "accuracy": 100, 
       "damage_class": "physical",
@@ -1735,7 +1735,7 @@
       "target": "selected-pokemon",
       "type": "ghost",
     },
-  {
+   "rock-tomb":{
     "name": "rock-tomb",
       "accuracy": 95,
       "damage_class": "physical",
@@ -1776,7 +1776,7 @@
       "target": "selected-pokemon",
       "type": "rock",
     },
-  {
+   "bulk-up":{
     "name": "bulk-up",
       "accuracy": null, 
       "damage_class": "status",
@@ -1821,7 +1821,7 @@
       "target": "user",
       "type": "fighting",
     },
-  {
+   "copycat":{
     "name": "copycat",
       "accuracy": null,
       "damage_class": "status",
@@ -1857,7 +1857,7 @@
       "target": "user",
       "type": "normal",
     },
-  {
+   "dark-pulse":{
     "name": "dark-pulse",
       "accuracy": 100,
       "damage_class": "special",
@@ -1893,7 +1893,7 @@
       "target": "selected-pokemon",
       "type": "dark",
     },
-  {
+   "x-scissor":{
     "name": "x-scissor",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1929,7 +1929,7 @@
       "target": "selected-pokemon",
       "type": "bug",
     },
-  {
+   "drain-punch":{
     "name": "drain-punch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -1965,7 +1965,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "focus-blast":{
     "name": "focus-blast",
       "accuracy": 70,
       "damage_class": "special",
@@ -2006,7 +2006,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "giga-impact":{
     "name": "giga-impact",
       "accuracy": 90,
       "damage_class": "physical",
@@ -2042,7 +2042,7 @@
       "target": "selected-pokemon",
       "type": "normal",
     },
-  {
+   "shadow-claw":{
     "name": "shadow-claw",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2078,7 +2078,7 @@
       "target": "selected-pokemon",
       "type": "ghost",
     },
-  {
+   "shadow-sneak":{
     "name": "shadow-sneak",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2114,7 +2114,7 @@
       "target": "selected-pokemon",
       "type": "ghost",
     },
-  {
+   "zen-headbutt":{
     "name": "zen-headbutt",
       "accuracy": 90,
       "damage_class": "physical",
@@ -2150,7 +2150,7 @@
       "target": "selected-pokemon",
       "type": "psychic",
     },
-  {
+   "gunk-shot":{
     "name": "gunk-shot",
       "accuracy": 80,
       "damage_class": "physical",
@@ -2186,7 +2186,7 @@
       "target": "selected-pokemon",
       "type": "poison",
     },
-  {
+   "iron-head":{
     "name": "iron-head",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2222,7 +2222,7 @@
       "target": "selected-pokemon",
       "type": "steel",
     },
-  {
+   "wood-hammer":{
     "name": "wood-hammer",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2258,7 +2258,7 @@
       "target": "selected-pokemon",
       "type": "grass",
     },
-  {
+   "hone-claws":{
     "name": "hone-claws",
       "accuracy": null,
       "damage_class": "status",
@@ -2303,7 +2303,7 @@
       "target": "user",
       "type": "dark",
     },
-  {
+   "heavy-slam":{
     "name": "heavy-slam",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2339,7 +2339,7 @@
       "target": "selected-pokemon",
       "type": "steel",
     },
-  {
+   "bulldoze":{
     "name": "bulldoze",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2380,7 +2380,7 @@
       "target": "all-other-pokemon",
       "type": "ground",
     },
-  {
+   "wild-charge":{
     "name": "wild-charge",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2416,7 +2416,7 @@
       "target": "selected-pokemon",
       "type": "electric",
     },
-  {
+   "heat-crash":{
     "name": "heat-crash",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2452,7 +2452,7 @@
       "target": "selected-pokemon",
       "type": "fire",
     },
-  {
+   "belch":{
     "name": "belch",
       "accuracy": 90,
       "damage_class": "special",
@@ -2488,7 +2488,7 @@
       "target": "selected-pokemon",
       "type": "poison",
     },
-  {
+   "draining-kiss":{
     "name": "draining-kiss",
       "accuracy": 100,
       "damage_class": "special",
@@ -2524,7 +2524,7 @@
       "target": "selected-pokemon",
       "type": "fairy",
     },
-  {
+   "play-rough":{
     "name": "play-rough",
       "accuracy": 90,
       "damage_class": "physical",
@@ -2565,7 +2565,7 @@
       "target": "selected-pokemon",
       "type": "fairy",
     },
-  {
+   "dazzling-gleam":{
     "name": "dazzling-gleam",
       "accuracy": 100,
       "damage_class": "special",
@@ -2601,7 +2601,7 @@
       "target": "all-opponents",
       "type": "fairy",
     },
-  {
+   "baby-doll-eyes":{
     "name": "baby-doll-eyes",
       "accuracy": 100,
       "damage_class": "status",
@@ -2642,7 +2642,7 @@
       "target": "selected-pokemon",
       "type": "fairy",
     },
-  {
+   "power-up-punch":{
     "name": "power-up-punch",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2683,7 +2683,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "body-press":{
     "name": "body-press",
       "accuracy": 100,
       "damage_class": "physical",
@@ -2711,7 +2711,7 @@
       "target": "selected-pokemon",
       "type": "fighting",
     },
-  {
+   "poison-jab":{
     "name": "poison-jab",
       "accuracy": 100,
       "damage_class": {
@@ -2752,4 +2752,4 @@
       },
       "type": "poison",
     }
-]
+}
