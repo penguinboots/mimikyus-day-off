@@ -1,21 +1,11 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Blog` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Post` table. If the table is not empty, all the data it contains will be lost.
-  - Added the required column `password` to the `User` table without a default value. This is not possible if the table is not empty.
-  - Made the column `name` on table `User` required. This step will fail if there are existing NULL values in that column.
-
-*/
--- DropTable
-PRAGMA foreign_keys=off;
-DROP TABLE "Blog";
-PRAGMA foreign_keys=on;
-
--- DropTable
-PRAGMA foreign_keys=off;
-DROP TABLE "Post";
-PRAGMA foreign_keys=on;
+-- CreateTable
+CREATE TABLE "User" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "email" TEXT NOT NULL,
+    "auth0Sub" TEXT NOT NULL,
+    "password" TEXT,
+    "name" TEXT NOT NULL
+);
 
 -- CreateTable
 CREATE TABLE "Achievement" (
@@ -31,6 +21,7 @@ CREATE TABLE "Achieved" (
     "date_get" DATETIME NOT NULL,
     "userId" INTEGER NOT NULL,
     "achievementId" INTEGER NOT NULL,
+    "collected" BOOLEAN NOT NULL,
     CONSTRAINT "Achieved_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Achieved_achievementId_fkey" FOREIGN KEY ("achievementId") REFERENCES "Achievement" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -41,9 +32,9 @@ CREATE TABLE "Character" (
     "userId" INTEGER NOT NULL,
     "species" TEXT NOT NULL,
     "move_1" TEXT NOT NULL,
-    "move_2" TEXT NOT NULL,
-    "move_3" TEXT NOT NULL,
-    "move_4" TEXT NOT NULL,
+    "move_2" TEXT,
+    "move_3" TEXT,
+    "move_4" TEXT,
     "level" INTEGER NOT NULL,
     "hp_stat" INTEGER NOT NULL,
     "attack_stat" INTEGER NOT NULL,
@@ -54,17 +45,8 @@ CREATE TABLE "Character" (
     CONSTRAINT "Character_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
--- RedefineTables
-PRAGMA foreign_keys=OFF;
-CREATE TABLE "new_User" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "name" TEXT NOT NULL
-);
-INSERT INTO "new_User" ("email", "id", "name") SELECT "email", "id", "name" FROM "User";
-DROP TABLE "User";
-ALTER TABLE "new_User" RENAME TO "User";
+-- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-PRAGMA foreign_key_check;
-PRAGMA foreign_keys=ON;
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_auth0Sub_key" ON "User"("auth0Sub");
