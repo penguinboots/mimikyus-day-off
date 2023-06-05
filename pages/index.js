@@ -7,7 +7,7 @@ import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
 import Play from '@/components/play/Play'
-import DashboardMusic from '../game/assets/audios/DashboardMusic.mp3';
+import DashboardMusic from '../public/audios/DashboardMusic.mp3';
 
 const inter = Inter({ subsets: ['latin'] });
 
