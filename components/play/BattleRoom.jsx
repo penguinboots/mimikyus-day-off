@@ -158,10 +158,10 @@ export default function Room() {
             backgroundImage: gameState.player.sprites.idle,
           }}
         >
-          me: {gameState.player.name}
-          <br />
           {gameState.player.current_hp}/{gameState.player.stats.hp}
           <HealthBar
+            player={true}
+            poke={gameState.player.name}
             value={gameState.player.current_hp}
             maxValue={gameState.player.stats.hp}
           />
@@ -172,10 +172,10 @@ export default function Room() {
             backgroundImage: gameState.opponent.sprites.idle,
           }}
         >
-          opponent: {gameState.opponent.name}
-          <br />
           {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}
           <HealthBar
+            player={false}
+            poke={gameState.opponent.name}
             value={gameState.opponent.current_hp}
             maxValue={gameState.opponent.stats.hp}
           />

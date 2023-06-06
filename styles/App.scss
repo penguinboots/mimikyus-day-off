@@ -1,21 +1,36 @@
 /** VARIABLES **/
 
-$light-blue: #d1d1ff;
-$dark-blue: #b4b4ff;
 $dark-gray: #403c3e;
-$light-green: #93b581;
-$very-light-green: #b5d19d;
-$med-green: #4b703f;
 $off-white: #f5f3dc;
 
-$background-body: $dark-gray;
-$button: $med-green;
-$border: $med-green;
+$pdex-red: #e24631;
+$pdex-red-highlight: #e8776c;
+$pdex-red-shadow: #913228;
+$pdex-blue: #4dbefc;
+$pdex-blue-highlight: #afe4f7;
+$pdex-blue-shadow: #316698;
+$pdex-green: #41bc52;
+$pdex-green-shadow: #2b9c3a;
+$pdex-green-highlight: #9bdfa4;
+$pdex-med-gray: #737373;
+$pdex-light-gray: #cdcdcd;
+$pdex-light-gray-shadow: #a1a1a1;
+$pdex-black: #323232;
+$pdex-black-highlight: #4b4b4b;
+$pdex-yellow: #fbb012;
 
-$dash-bg: $light-green;
-$dash-card-bg: $very-light-green;
-$text-gen: $off-white;
-$label-bg: $off-white;
+$background-body: $dark-gray;
+$button: #57c1f9;
+$button-text: #e2fcff;
+$border: #2d2d2d;
+$dash-bg: $pdex-red;
+$dash-border: $pdex-red-shadow;
+$dash-card-bg: $pdex-light-gray;
+$text-gen: #f8fdff;
+$label-bg: #f8fdff;
+
+$hp-bg: #e4e4e4;
+$hp-border: #525252;
 
 /** GENERAL **/
 
@@ -54,28 +69,32 @@ body {
   position: absolute;
   z-index: 99;
 
+  background-color: $pdex-light-gray;
+  border-radius: 36px;
+  border: 5px solid $pdex-light-gray-shadow;
+  outline: 5px solid $pdex-black-highlight;
+
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  background-color: $dash-card-bg;
-  border: 3px solid $border;
-
-  border-radius: 36px;
 
   .close-window {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: -15px;
-    right: -15px;
-    background-color: $button;
+    top: -7px;
+    right: -7px;
     width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    height: 40px;
+    border-radius: 0 16px;
     cursor: pointer;
+    background-color: $button;
+    border: 3px solid $pdex-blue-shadow;
+    outline: 3px solid $pdex-black-highlight;
+    font-size: 28px;
+    color: $off-white;
   }
 }
 
@@ -86,7 +105,6 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 36px;
-  background-color: $light-green;
 
   display: flex;
   align-items: center;
@@ -120,15 +138,18 @@ body {
     justify-content: space-between;
     .nav-left {
       .logo {
-        height: 72px;
-        width: 360px;
-        border-radius: 36px;
-
-        background-color: $button;
-
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 72px;
+        width: 360px;
+        border-radius: 20px;
+        color: $button-text;
+        background-color: $button;
+        border: 5px solid $pdex-blue-shadow;
+        outline: 5px solid $border;
+        font-size: 26px;
+        font-weight: 700;
       }
     }
     .nav-right {
@@ -136,18 +157,19 @@ body {
       justify-content: space-around;
       gap: 15px;
       .icon-button {
-        height: 72px;
-        width: 72px;
-        border-radius: 36px;
-
-        background-color: $button;
-
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 72px;
+        width: 72px;
+        border-radius: 36px;
+        color: $button-text;
+        background-color: $button;
+        border: 5px solid $pdex-blue-shadow;
+        outline: 5px solid $border;
+
 
         font-size: 28px;
-        color: $text-gen;
 
         cursor: pointer;
       }
@@ -155,6 +177,7 @@ body {
   }
 }
 
+/** SETTINGS, ACHIEVEMENTS**/
 .settings-container {
   width: 400px;
   height: 250px;
@@ -196,6 +219,8 @@ body {
   height: 100%;
   background-color: $dash-bg;
   border-radius: 36px;
+  border: 8px solid $dash-border;
+  outline: 8px solid $border;
   .dash-body {
     height: 100%;
     display: flex;
@@ -222,6 +247,8 @@ body {
   align-items: center;
 
   background-color: $dash-card-bg;
+  outline: 5px solid $pdex-black-highlight;
+  border: 5px solid $pdex-light-gray-shadow;
   width: 290px;
   border-radius: 36px;
 
@@ -301,10 +328,14 @@ body {
   button {
     width: 70%;
     height: 48px;
-    background-color: $button;
-    color: $text-gen;
     border-radius: 12px;
     margin-top: 40px;
+    background-color: $pdex-green;
+    color: $pdex-green-highlight;
+    border: 4px solid $pdex-green-shadow;
+    outline: 4px solid $pdex-black-highlight;
+    font-size: 20px;
+    font-weight: 700;
   }
 }
 
@@ -317,7 +348,6 @@ body {
   justify-content: flex-start;
   width: 500px;
   height: 400px;
-  background-color: $light-green;
   .move-edit-menu {
     display: flex;
     gap: 200px;
@@ -354,10 +384,15 @@ body {
   button {
     width: 80%;
     height: 80px;
-    background-color: $button;
+    background-color: $pdex-green;
+    color: $pdex-green-highlight;
+    border: 4px solid $pdex-green-shadow;
+    outline: 4px solid $pdex-black-highlight;
 
-    border-radius: 36px;
+    border-radius: 24px;
     margin-top: 40px;
+    font-size: 30px;
+    font-weight: 700;
   }
 }
 
@@ -451,30 +486,51 @@ body {
 
 /** HEALTH BAR **/
 .health-container {
-  width: 400px;
-  border-radius: 5px;
-  background-color: white;
-  .health-label {
-    width: 50px;
-    font-size: 15px;
-    font-weight: bold;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-basis: 50px;
-    color: black;
-  }
-  .health-max {
-    height: 20px;
-    width: 400px;
-    border-radius: 5px;
-    background-color: lightgray;
-  }
-  .health-value {
-    height: 20px;
-    background-color: #1f4525;
+  position: relative;
+  top: -150px;
+  left: 50px;
+  width: 300px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
 
-    transition: 0.55s;
+  background-color: $hp-bg;
+  color: $hp-border;
+  background-image: url("/backgrounds/hp-bg.png");
+
+  border: 3px solid $hp-border;
+  outline: 2px solid white;
+  .name-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    padding: 0 20px;
+    font-weight: 500;
+  }
+  .health-bar {
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 5px 20px;
+    padding: 2px 5px;
+    background-color: $hp-border;
+    border-radius: 6px;
+    gap: 4px;
+    h4 {
+      color: #f9b900;
+      font-weight: bold;
+    }
+    .health-max {
+      height: 16px;
+      width: 90%;
+      border-radius: 2px;
+      overflow: hidden;
+      background-color: $hp-bg;
+    }
+    .health-value {
+      height: 20px;
+      transition: 0.55s;
+    }
   }
 }
