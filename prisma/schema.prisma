@@ -11,42 +11,45 @@ datasource db {
 }
 
 model User {
-  id                 Int                  @id @default(autoincrement())
-  email              String               @unique
-  password           String
-  name               String
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
-  Room               Room[]
-  DungeonProgression DungeonProgression[]
+  id           Int         @id @default(autoincrement())
+  email        String      @unique
+  password     String
+  name         String
+  achievements Achieved[]
+  Character    Character[]
 }
 
-model Room {
-  id                 Int                  @id @default(autoincrement())
-  name               String
-  description        String
-  dungeon            Dungeon              @relation(fields: [dungeonId], references: [id])
-  dungeonId          Int
-  User               User?                @relation(fields: [userId], references: [id])
-  userId             Int?
-  DungeonProgression DungeonProgression[]
+model Achievement {
+  id                      Int        @id @default(autoincrement())
+  achievement_name        String
+  achievement_image       String
+  achievement_description String
+  achieved                Achieved[]
 }
 
-model Dungeon {
-  id                 Int                  @id @default(autoincrement())
-  name               String
-  description        String
-  Room               Room[]
-  DungeonProgression DungeonProgression[]
+model Achieved {
+  id            Int         @id @default(autoincrement())
+  date_get      DateTime
+  user          User        @relation(fields: [userId], references: [id])
+  userId        Int
+  achievement   Achievement @relation(fields: [achievementId], references: [id])
+  achievementId Int
 }
 
-model DungeonProgression {
-  id        Int     @id @default(autoincrement())
-  user      User    @relation(fields: [userId], references: [id])
-  dungeon   Dungeon @relation(fields: [dungeonId], references: [id])
-  room      Room    @relation(fields: [roomId], references: [id])
-  userId    Int
-  dungeonId Int
-  roomId    Int
-  progress  Int     @default(0)
+model Character {
+  id           Int    @id @default(autoincrement())
+  user         User   @relation(fields: [userId], references: [id])
+  userId       Int
+  species      String
+  move_1       String
+  move_2       String
+  move_3       String
+  move_4       String
+  level        Int
+  hp_stat      Int
+  attack_stat  Int
+  defense_stat Int
+  spatk_stat   Int
+  spdef_stat   Int
+  speed_stat   Int
 }
