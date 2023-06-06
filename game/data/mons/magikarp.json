@@ -14,6 +14,7 @@
   "is_default": true,
   "moves": ["tackle", "hydro-pump", "splash", "flail", "bounce"],
   "name": "magikarp",
+  "proper_name": "Magikarp",
   "order": 210,
   "past_types": [],
   "species": "magikarp",

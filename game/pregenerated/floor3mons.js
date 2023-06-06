@@ -1,5 +1,7 @@
 const munchlax1 = {
   "name": "munchlax1",
+  "proper_name": "Munchlax",
+  "current_hp": 135,
   "stats":{
     "hp": 135,
     "attack": 85,
@@ -34,6 +36,8 @@ const munchlax1 = {
 
 const munchlax2 = {
   "name": "munchlax2",
+  "proper_name": "Munchlax",
+  "current_hp": 135,
   "stats":{
     "hp": 135,
     "attack": 85,
@@ -68,6 +72,8 @@ const munchlax2 = {
 
 const munchlax3 = {
   "name": "munchlax3",
+  "proper_name": "Munchlax",
+  "current_hp": 135,
   "stats":{
     "hp": 135,
     "attack": 85,
@@ -102,6 +108,7 @@ const munchlax3 = {
 
 const snorlax3 = {
   "name": "snorlax3",
+  "proper_name": "Snorlax",
   "current_hp": 200,
   "stats": {
     "hp": 200,
@@ -110,6 +117,14 @@ const snorlax3 = {
     "special-attack": 65,
     "special-defense": 80,
     "speed": 100,
+  },
+  "statChanges": {
+    "hp": 0,
+    "attack": 0,
+    "defense": 0,
+    "special-attack": 0,
+    "special-defense": 0,
+    "speed": 0,
   },
   "moves": [
     "gunk-shot",

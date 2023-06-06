@@ -1,5 +1,6 @@
 const magikarp = {
   "name": "magikarp",
+  "proper_name": "Magikarp",
   "current_hp": 20,
   "stats": {
     "hp": 20,
@@ -35,6 +36,7 @@ const magikarp = {
 
 const snorlax1 = {
   "name": "snorlax1",
+  "proper_name": "Snorlax",
   "current_hp": 160,
   "stats": {
     "hp": 160,

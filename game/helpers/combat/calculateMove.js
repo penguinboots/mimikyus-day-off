@@ -36,20 +36,20 @@ function calculateMove(move, user, target) {
     userMoveStat *= 2 / (user.statChanges[userStat] + 2)
   }
   //check move category and perform appropriate actions
-  if (move.meta.category === "damage") {
+  if (move.category === "damage") {
     damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
   }
-  else if (move.meta.category === "damage+lower") {
+  else if (move.category === "damage+lower") {
     damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     statChanges = calcStat(target, move)
-  } else if (move.meta.category === "damage+raise") {
+  } else if (move.category === "damage+raise") {
     damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     statChanges = calcStat(user, move)
-  } else if (move.meta.category === "damage+heal") {
+  } else if (move.category === "damage+heal") {
     damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    heal = drainCalc(damage, move.meta.drain)
+    heal = drainCalc(damage, move.drain)
   } 
-  else if (move.meta.category === "net-good-stats") {
+  else if (move.category === "net-good-stats") {
     let changeStatOf = {}
     if (move.target === 'user') {
       changeStatOf = user
@@ -57,7 +57,7 @@ function calculateMove(move, user, target) {
       changeStatOf = target
     }
     statChanges = calcStat(changeStatOf, move)
-  } else if (move.meta.category === "unique") {
+  } else if (move.category === "unique") {
     if (move.name === "splash") {
        damage = 0
     }
