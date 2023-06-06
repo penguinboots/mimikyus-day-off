@@ -54,7 +54,6 @@ export async function getStaticProps() {
         }
       })
       const achievementArray = Object.values(achievements)
-      console.log(achievementArray)
       for (let i = 0; i < achievementArray.length; i++) {
         let achievement = achievementArray[i]
         const db_achievement = await prisma.achievement.create({
