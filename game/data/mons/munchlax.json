@@ -17,296 +17,105 @@
   "id": 446,
   "is_default": true,
   "moves": [
-    {
-      "name": "mega-punch"
-    },
-    {
-      "name": "pay-day"
-    },
-    {
-      "name": "fire-punch"
-    },
-    {
-      "name": "ice-punch"
-    },
-    {
-      "name": "thunder-punch"
-    },
-    {
-      "name": "whirlwind"
-    },
-    {
-      "name": "mega-kick"
-    },
-    {
-      "name": "headbutt"
-    },
-    {
-      "name": "tackle"
-    },
-    {
-      "name": "body-slam"
-    },
-    {
-      "name": "double-edge"
-    },
-    {
-      "name": "bite"
-    },
-    {
-      "name": "flamethrower"
-    },
-    {
-      "name": "hydro-pump"
-    },
-    {
-      "name": "surf"
-    },
-    {
-      "name": "ice-beam"
-    },
-    {
-      "name": "blizzard"
-    },
-    {
-      "name": "counter"
-    },
-    {
-      "name": "strength"
-    },
-    {
-      "name": "solar-beam"
-    },
-    {
-      "name": "thunderbolt"
-    },
-    {
-      "name": "thunder"
-    },
-    {
-      "name": "earthquake"
-    },
-    {
-      "name": "fissure"
-    },
-    {
-      "name": "toxic"
-    },
-    {
-      "name": "psychic"
-    },
-    {
-      "name": "screech"
-    },
-    {
-      "name": "double-team"
-    },
-    {
-      "name": "defense-curl"
-    },
-    {
-      "name": "metronome"
-    },
-    {
-      "name": "self-destruct"
-    },
-    {
-      "name": "lick"
-    },
-    {
-      "name": "fire-blast"
-    },
-    {
-      "name": "amnesia"
-    },
-    {
-      "name": "rest"
-    },
-    {
-      "name": "rock-slide"
-    },
-    {
-      "name": "substitute"
-    },
-    {
-      "name": "snore"
-    },
-    {
-      "name": "curse"
-    },
-    {
-      "name": "flail"
-    },
-    {
-      "name": "protect"
-    },
-    {
-      "name": "belly-drum"
-    },
-    {
-      "name": "mud-slap"
-    },
-    {
-      "name": "icy-wind"
-    },
-    {
-      "name": "sandstorm"
-    },
-    {
-      "name": "endure"
-    },
-    {
-      "name": "charm"
-    },
-    {
-      "name": "rollout"
-    },
-    {
-      "name": "swagger"
-    },
-    {
-      "name": "attract"
-    },
-    {
-      "name": "sleep-talk"
-    },
-    {
-      "name": "return"
-    },
-    {
-      "name": "frustration"
-    },
-    {
-      "name": "encore"
-    },
-    {
-      "name": "pursuit"
-    },
-    {
-      "name": "hidden-power"
-    },
-    {
-      "name": "rain-dance"
-    },
-    {
-      "name": "sunny-day"
-    },
-    {
-      "name": "shadow-ball"
-    },
-    {
-      "name": "rock-smash"
-    },
-    {
-      "name": "whirlpool"
-    },
-    {
-      "name": "uproar"
-    },
-    {
-      "name": "stockpile"
-    },
-    {
-      "name": "swallow"
-    },
-    {
-      "name": "facade"
-    },
-    {
-      "name": "focus-punch"
-    },
-    {
-      "name": "superpower"
-    },
-    {
-      "name": "recycle"
-    },
-    {
-      "name": "brick-break"
-    },
-    {
-      "name": "snatch"
-    },
-    {
-      "name": "secret-power"
-    },
-    {
-      "name": "hyper-voice"
-    },
-    {
-      "name": "odor-sleuth"
-    },
-    {
-      "name": "rock-tomb"
-    },
-    {
-      "name": "covet"
-    },
-    {
-      "name": "shock-wave"
-    },
-    {
-      "name": "water-pulse"
-    },
-    {
-      "name": "natural-gift"
-    },
-    {
-      "name": "fling"
-    },
-    {
-      "name": "last-resort"
-    },
-    {
-      "name": "seed-bomb"
-    },
-    {
-      "name": "zen-headbutt"
-    },
-    {
-      "name": "rock-climb"
-    },
-    {
-      "name": "gunk-shot"
-    },
-    {
-      "name": "captivate"
-    },
-    {
-      "name": "after-you"
-    },
-    {
-      "name": "round"
-    },
-    {
-      "name": "chip-away"
-    },
-    {
-      "name": "incinerate"
-    },
-    {
-      "name": "retaliate"
-    },
-    {
-      "name": "bulldoze"
-    },
-    {
-      "name": "work-up"
-    },
-    {
-      "name": "belch"
-    },
-    {
-      "name": "confide"
-    },
-    {
-      "name": "power-up-punch"
-    },
-    {
-      "name": "stomping-tantrum"
-    }
+    "mega-punch",
+    "pay-day",
+    "fire-punch",
+    "ice-punch",
+    "thunder-punch",
+    "whirlwind",
+    "mega-kick",
+    "headbutt",
+    "tackle",
+    "body-slam",
+    "double-edge",
+    "bite",
+    "flamethrower",
+    "hydro-pump",
+    "surf",
+    "ice-beam",
+    "blizzard",
+    "counter",
+    "strength",
+    "solar-beam",
+    "thunderbolt",
+    "thunder",
+    "earthquake",
+    "fissure",
+    "toxic",
+    "psychic",
+    "screech",
+    "double-team",
+    "defense-curl",
+    "metronome",
+    "self-destruct",
+    "lick",
+    "fire-blast",
+    "amnesia",
+    "rest",
+    "rock-slide",
+    "substitute",
+    "snore",
+    "curse",
+    "flail",
+    "protect",
+    "belly-drum",
+    "mud-slap",
+    "icy-wind",
+    "sandstorm",
+    "endure",
+    "charm",
+    "rollout",
+    "swagger",
+    "attract",
+    "sleep-talk",
+    "return",
+    "frustration",
+    "encore",
+    "pursuit",
+    "hidden-power",
+    "rain-dance",
+    "sunny-day",
+    "shadow-ball",
+    "rock-smash",
+    "whirlpool",
+    "uproar",
+    "stockpile",
+    "swallow",
+    "facade",
+    "focus-punch",
+    "superpower",
+    "recycle",
+    "brick-break",
+    "snatch",
+    "secret-power",
+    "hyper-voice",
+    "odor-sleuth",
+    "rock-tomb",
+    "covet",
+    "shock-wave",
+    "water-pulse",
+    "natural-gift",
+    "fling",
+    "last-resort",
+    "seed-bomb",
+    "zen-headbutt",
+    "rock-climb",
+    "gunk-shot",
+    "captivate",
+    "after-you",
+    "round",
+    "chip-away",
+    "incinerate",
+    "retaliate",
+    "bulldoze",
+    "work-up",
+    "belch",
+    "confide",
+    "power-up-punch",
+    "stomping-tantrum"
   ],
   "name": "munchlax",
+  "proper_name": "Munchlax",
   "order": 234,
   "past_types": [],
   "species": "munchlax",

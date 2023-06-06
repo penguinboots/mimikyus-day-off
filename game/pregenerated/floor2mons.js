@@ -35,7 +35,7 @@ const goomy = {
 }
 
 const dugtrio = {
-  "name": "dugtrio",
+  "name": "dugtrio-alola",
   "proper_name": "Dugtrio",
   "current_hp": 35,
   "stats": {

@@ -81,7 +81,8 @@
     "pounce",
     "trailblaze"
   ],
-  "name": "mimikyu-disguised",
+  "name": "mimikyu",
+  "proper_name": "Mimikyu",
   "order": 951,
   "past_types": [],
   "species": "mimikyu",
