@@ -30,18 +30,10 @@ CREATE TABLE "Achieved" (
 CREATE TABLE "Character" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "userId" INTEGER NOT NULL,
-    "species" TEXT NOT NULL,
     "move_1" TEXT NOT NULL,
     "move_2" TEXT,
     "move_3" TEXT,
     "move_4" TEXT,
-    "level" INTEGER NOT NULL,
-    "hp_stat" INTEGER NOT NULL,
-    "attack_stat" INTEGER NOT NULL,
-    "defense_stat" INTEGER NOT NULL,
-    "spatk_stat" INTEGER NOT NULL,
-    "spdef_stat" INTEGER NOT NULL,
-    "speed_stat" INTEGER NOT NULL,
     CONSTRAINT "Character_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
