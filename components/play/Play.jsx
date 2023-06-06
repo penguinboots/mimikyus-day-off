@@ -24,7 +24,7 @@ export default function Play(props) {
   const handleClick = () => {
     setMode("DASH");
   };
-
+  
   // Modify to change active sprite
   const PLAYER = `url("/mimikyu-standin.png")`;
   const OPPONENT = `url("/snorlax-standin.png")`;

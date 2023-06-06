@@ -307,6 +307,29 @@ body {
   }
 }
 
+/** EDIT MOVES **/
+.move-edit-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 400px;
+  
+  background-color: $light-green;
+  .move-edit-menu {
+    display: flex;
+    gap: 15px;
+    .moves-selected, .moves-avail {
+      background-color: $off-white;
+    }
+    .move-item {
+      width: 120px;
+    }
+  }
+}
+
 /** ENTER GAME **/
 .enter-game-container {
   display: flex;
