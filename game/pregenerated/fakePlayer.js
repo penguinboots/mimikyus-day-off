@@ -1,5 +1,6 @@
 const mimikyu = {
-  "name": "Mimikyu",
+  "name": "mimikyu",
+  "proper_name": "Mimikyu",
   "current_hp": 55,
   "stats": {
     "hp": 55,
