@@ -1,4 +1,4 @@
-//import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
@@ -14,7 +14,92 @@ import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
 
-export default function Home() {
+export async function getStaticProps() {
+  const prisma = new PrismaClient();
+    // const db_user = await prisma.user.create({
+    //   // data for the new user entered here
+    //   data: {
+    //     email: "example@example.com",
+    //     auth0Sub: "auth0sub123",
+    //     password: "password123",
+    //     name: "John Doe",
+    //     // data for the new user's achievements
+    //     achievements: {
+    //       create: [
+    //         {
+    //           date_get: new Date(),
+    //           name: "First Achievement",
+    //           collected: false
+    //         }
+    //       ]
+    //     },
+    //     // data for new user's characters
+    //     Character: {
+    //       create: {
+    //         species: "Species",
+    //         move_1: "Move 1",
+    //         move_2: "Move 2",
+    //         move_3: "Move 3",
+    //         move_4: "Move 4",
+    //         level: 50,
+    //         hp_stat: 100,
+    //         attack_stat: 80,
+    //         defense_stat: 70,
+    //         spatk_stat: 90,
+    //         spdef_stat: 80,
+    //         speed_stat: 100
+    //       }
+    //     }
+    //   }
+    // });
+    const db_character = await prisma.character.create({
+      data:{
+        species: "Species",
+        move_1: "Move 1",
+        move_2: "Move 2",
+        move_3: "Move 3",
+        move_4: "Move 4",
+        level: 50,
+        hp_stat: 100,
+        attack_stat: 80,
+        defense_stat: 70,
+        spatk_stat: 90,
+        spdef_stat: 80,
+        speed_stat: 100,
+        userId: 1
+      }
+    }
+      
+    )
+    const db_user = await prisma.user.findUnique({
+      where: { auth0Sub: 'auth0sub123' },
+    });
+
+    return {
+      props: {
+        db_user,
+        db_character,
+      },
+    };
+  // } catch (error) {
+  //   console.error(error);
+    // Handle the error and return an appropriate response
+    // return {
+    //   props: {
+    //     error: 'An error occurred while retrieving user data.',
+    //   },
+    // };
+  // } finally {
+  //   await prisma.$disconnect();
+  // }
+
+}
+
+export default function Home({
+  db_user,
+  db_character,
+  pass_that_shit
+}) {
   // Authentication
   const { user, error, isLoading } = useUser();
   // View Mode
@@ -33,8 +118,8 @@ export default function Home() {
       setMode("DASH");
     }
   }, [user]);
-
-  console.log("USER INFO: ", user);
+  console.log("DB_USER INFO: ", db_user);
+  console.log("DB_Character:", db_character)
 
   return (
     <div className="app-wrapper">
@@ -66,17 +151,3 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps() {
-  const userId = 123;
-  const achievements = await getUserAchievements(userId);
-  const currentUser = await findCurrentUser("auth0sub123");
-  const userCharacters = await findUserCharacters(userId);
-
-  return {
-    props: {
-      achievements,
-      currentUser,
-      userCharacters,
-    },
-  };
-}
