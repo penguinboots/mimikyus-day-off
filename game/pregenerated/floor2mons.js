@@ -25,7 +25,12 @@ const goomy = {
   ],
   "types": ["dragon"],
   "height": 3,
-  "weight": 28
+  "weight": 28,
+  "sprites": {
+    "idle": `url("/sprites/goomy-idl.gif")`,
+    "attack": `url("/sprites/goomy-atk.gif")`,
+    "hit": `url("/sprites/goomy-hit.gif")`,
+  }
 }
 
 const dugtrio = {
@@ -55,7 +60,12 @@ const dugtrio = {
   ],
   "types": ["ground","steel"],
   "height": 7,
-  "weight": 666
+  "weight": 666,
+  "sprites": {
+    "idle": `url("/sprites/dugtrio-idl.gif")`,
+    "attack": `url("/sprites/dugtrio-atk.gif")`,
+    "hit": `url("/sprites/dugtrio-hit.gif")`,
+  }
 }
 
 const snorlax2= {
@@ -85,7 +95,12 @@ const snorlax2= {
   ],
   "types": ["normal"],
   "height": 21,
-  "weight": 4600
+  "weight": 4600,
+  "sprites": {
+    "idle": `url("/sprites/snorlax-idl.gif")`,
+    "attack": `url("/sprites/snorlax-atk.gif")`,
+    "hit": `url("/sprites/snorlax-hit.gif")`,
+  }
 }
 
 module.exports = { goomy, dugtrio, snorlax2 }

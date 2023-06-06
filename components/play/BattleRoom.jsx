@@ -7,6 +7,7 @@ import {
   opponentMoveSelect,
   moveFetcher,
 } from "../../game/helpers/combat";
+import HealthBar from "./HealthBar";
 
 export default function Room() {
   const {
@@ -112,10 +113,13 @@ export default function Room() {
       **** ready to repeat ****
     */
   }
-  const playerMoveArray = []
-  gameState.player.moves.forEach(moveString => {
-    playerMoveArray.push(moveFetcher(moveString))
+
+  // Generates array of move objects from array of move name strings
+  const playerMoveArray = [];
+  gameState.player.moves.forEach((moveString) => {
+    playerMoveArray.push(moveFetcher(moveString));
   });
+  // Generates MoveItems from array of move objects
   const playerMoves = Object.values(playerMoveArray).map((move) => {
     return (
       <button
@@ -151,22 +155,30 @@ export default function Room() {
         <div
           className="pokemon self"
           style={{
-            backgroundImage: PLAYER,
+            backgroundImage: gameState.player.sprites.idle,
           }}
         >
           me: {gameState.player.name}
           <br />
-          current HP: {gameState.player.current_hp}
+          {gameState.player.current_hp}/{gameState.player.stats.hp}
+          <HealthBar
+            value={gameState.player.current_hp}
+            maxValue={gameState.player.stats.hp}
+          />
         </div>
         <div
           className="pokemon opponent"
           style={{
-            backgroundImage: OPPONENT,
+            backgroundImage: gameState.opponent.sprites.idle,
           }}
         >
           opponent: {gameState.opponent.name}
           <br />
-          current HP: {gameState.opponent.current_hp}
+          {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}
+          <HealthBar
+            value={gameState.opponent.current_hp}
+            maxValue={gameState.opponent.stats.hp}
+          />
         </div>
       </div>
 
