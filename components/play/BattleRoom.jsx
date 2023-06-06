@@ -5,6 +5,7 @@ import {
   moveOrder,
   calculateMove,
   opponentMoveSelect,
+  moveFetcher,
 } from "../../game/helpers/combat";
 
 export default function Room() {
@@ -111,14 +112,17 @@ export default function Room() {
       **** ready to repeat ****
     */
   }
-
-  const playerMoves = Object.values(gameState.player.moves).map((move) => {
+  const playerMoveArray = []
+  gameState.player.moves.forEach(moveString => {
+    playerMoveArray.push(moveFetcher(moveString))
+  });
+  const playerMoves = Object.values(playerMoveArray).map((move) => {
     return (
       <button
         key={move.name}
         onClick={() =>
           executeTurn(
-            gameState.player.moves[move.name],
+            move,
             gameState.player,
             gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
             gameState.opponent
