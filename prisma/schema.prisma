@@ -34,17 +34,18 @@ model Achieved {
   userId        Int
   achievement   Achievement @relation(fields: [achievementId], references: [id])
   achievementId Int
+  collected     Boolean
 }
 
 model Character {
-  id           Int    @id @default(autoincrement())
-  user         User   @relation(fields: [userId], references: [id])
+  id           Int     @id @default(autoincrement())
+  user         User    @relation(fields: [userId], references: [id])
   userId       Int
   species      String
   move_1       String
-  move_2       String
-  move_3       String
-  move_4       String
+  move_2       String?
+  move_3       String?
+  move_4       String?
   level        Int
   hp_stat      Int
   attack_stat  Int
