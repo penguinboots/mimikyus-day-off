@@ -1,12 +1,23 @@
 import useIsHovering from "@/utils/hooks/isHovering";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 import MoveDetail from "../../common/MoveDetail";
 import MoveItem from "../../common/MoveItem";
+import MoveEdit from "./MoveEdit";
 
 export default function MoveCard() {
+  const [moveMenuOpen, setMoveMenuOpen] = useState(false);
 
-  const { isHovering, setIsHovering, handleMouseOver, handleMouseOut } = useIsHovering();
+  const handleMoveMenuTog = () => {
+    setMoveMenuOpen((prev) => !prev);
+  };
+
+  const closeMoveMenu = () => {
+    setMoveMenuOpen(false);
+  }
+
+  const { isHovering, handleMouseOver, handleMouseOut } = useIsHovering();
 
   return (
     <div className="move-info-card">
@@ -63,7 +74,14 @@ export default function MoveCard() {
           description="Move 4 description"
         />
       )}
-      <button>EDIT MOVES</button>
+      <button onClick={handleMoveMenuTog}>EDIT MOVES</button>
+      {moveMenuOpen && (
+        <MoveEdit
+          closeMoveMenu={closeMoveMenu}
+          handleMouseOver={handleMouseOver}
+          handleMouseOut={handleMouseOut}
+        />
+      )}
     </div>
   );
 }
