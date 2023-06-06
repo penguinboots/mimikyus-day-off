@@ -10,20 +10,11 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Achievement" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "achievement_name" TEXT NOT NULL,
-    "achievement_image" TEXT NOT NULL,
-    "achievement_description" TEXT NOT NULL
-);
-
--- CreateTable
-CREATE TABLE "Achieved" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "date_get" DATETIME NOT NULL,
     "userId" INTEGER NOT NULL,
-    "achievementId" INTEGER NOT NULL,
+    "name" TEXT NOT NULL,
     "collected" BOOLEAN NOT NULL,
-    CONSTRAINT "Achieved_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "Achieved_achievementId_fkey" FOREIGN KEY ("achievementId") REFERENCES "Achievement" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Achievement_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
