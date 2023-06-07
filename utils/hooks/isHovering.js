@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 export default function useIsHovering() {
+  // Hover menu behaviour for movesets
+  // Dashboard & Play menu
   const [isHovering, setIsHovering] = useState({
     move1: false,
     move2: false,
