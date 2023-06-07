@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export default function useIsMusicPlaying(audioRef, originalVolumeRef) {
   const [isMusicPlaying, setMusicPlaying] = useState(false);
