@@ -8,7 +8,8 @@ import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
 import Play from '@/components/play/Play'
 // Assets
-import DashboardMusic from '../public/audio/DashboardMusic.mp3';
+import dashboardMusic from '../public/audio/DashboardMusic.mp3';
+import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
 
@@ -18,22 +19,38 @@ export default function Home() {
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Music
-  const audioRef = useRef(null);
-  const originalVolumeRef = useRef(1.0);
-  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, originalVolumeRef);
+  const dashboardAudioRef = useRef(null);
+  const playAudioRef = useRef(null);
+  const dashboardVolumeRef = useRef(0.05);
+  const playVolumeRef = useRef(0.05);
+  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(
+    mode === 'DASH' ? dashboardAudioRef : playAudioRef
+  );
+  
   // Music Toggle
   useEffect(() => {
-    if (isMusicPlaying) {
-      audioRef.current.play();
+    if (isMusicPlaying && mode === 'DASH' && dashboardAudioRef.current) {
+        dashboardAudioRef.current.volume = dashboardVolumeRef.current;
+        dashboardAudioRef.current.play();
+    } else if (isMusicPlaying && mode === 'PLAY' && playAudioRef.current) {
+        playAudioRef.current.volume = playVolumeRef.current;
+        playAudioRef.current.play();
     } else {
-      audioRef.current.pause();
+        if (dashboardAudioRef.current) dashboardAudioRef.current.pause();
+        if (playAudioRef.current) playAudioRef.current.pause();
     }
-  }, [isMusicPlaying]);
+  }, [isMusicPlaying, mode]);
+
+  // Save volume levels when unmounting or switching modes
   useEffect(() => {
-    if (!audioRef.current.paused) {
-      originalVolumeRef.current = audioRef.current.volume;
-    }
-  }, [isMusicPlaying]);
+    return () => {
+      if (mode === 'DASH' && dashboardAudioRef.current) {
+        dashboardVolumeRef.current = dashboardAudioRef.current.volume;
+      } else if (mode === 'PLAY' && playAudioRef.current) {
+        playVolumeRef.current = playAudioRef.current.volume;
+      }
+    };
+  }, [mode]);
 
   // Skip landing if user is logged in
   useEffect(() => {
@@ -62,27 +79,31 @@ export default function Home() {
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
-        {mode === "LANDING" &&
-          <Landing setMode={setMode} user={user} />}
-        {mode === "LOGIN" &&
-          <Login />}
-        {mode === "DASH" &&
+        {mode === 'LANDING' && <Landing setMode={setMode} user={user} />}
+        {mode === 'LOGIN' && <Login />}
+        {mode === 'DASH' && (
           <Dashboard
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
           />
-        }
-        {mode === "PLAY" &&
+        )}
+        {mode === 'PLAY' && (
           <Play
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
-            handleMusicToggle={handleMusicToggle} />
-        }
+            handleMusicToggle={handleMusicToggle}
+          />
+        )}
       </div>
-      <audio ref={audioRef} src={DashboardMusic} loop />
+      {mode === 'DASH' && (
+        <audio ref={dashboardAudioRef} src={dashboardMusic} loop />
+      )}
+      {mode === 'PLAY' && (
+        <audio ref={playAudioRef} src={playMusic} loop />
+      )}
     </div>
-  )
+  );
 }
 
 // export async function getStaticProps() {
