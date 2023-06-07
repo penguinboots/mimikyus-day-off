@@ -4,7 +4,7 @@ export default function MoveEdit(props) {
   const { handleMouseOver, handleMouseOut } = props;
 
   return (
-    <div className="move-edit-window">
+    <div className="popup move-edit-window">
       <div className="close-window" onClick={props.closeMoveMenu}>
         X
       </div>

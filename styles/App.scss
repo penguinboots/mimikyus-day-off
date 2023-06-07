@@ -48,6 +48,37 @@ body {
   border-radius: 36px;
 }
 
+/** REUSABLE **/
+
+.popup {
+  position: absolute;
+  z-index: 99;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: $dash-card-bg;
+  border: 3px solid $border;
+
+  border-radius: 36px;
+
+  .close-window {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -15px;
+    right: -15px;
+    background-color: $button;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
 /** LANDING **/
 
 .landing-container,
@@ -124,38 +155,9 @@ body {
   }
 }
 
-.settings-container, .achievement-container {
-  position: absolute;
-
-  z-index: 99;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  background-color: $dash-card-bg;
-  border: 3px solid $border;
-
-  .close-window {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: -15px;
-    right: -15px;
-    background-color: $button;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-}
-
 .settings-container {
   width: 400px;
   height: 250px;
-  border-radius: 36px;
   left: 300px;
   top: 200px;
 }
@@ -164,7 +166,6 @@ body {
   flex-direction: column;
   width: 800px;
   height: 500px;
-  border-radius: 36px;
   left: 100px;
   top: 100px;
 
@@ -316,12 +317,13 @@ body {
   justify-content: center;
   width: 500px;
   height: 400px;
-  
+
   background-color: $light-green;
   .move-edit-menu {
     display: flex;
     gap: 15px;
-    .moves-selected, .moves-avail {
+    .moves-selected,
+    .moves-avail {
       background-color: $off-white;
     }
     .move-item {
@@ -362,7 +364,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../public/grass_bg.png');
+  background-image: url("../public/grass_bg.png");
   background-size: contain;
 }
 .play-viewport {

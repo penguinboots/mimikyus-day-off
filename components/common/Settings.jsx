@@ -1,6 +1,6 @@
 export default function Settings(props) {
   return (
-    <div className="settings-container">
+    <div className="popup settings-container">
       <div className="close-window" onClick={props.handleClick}>
         X
       </div>
