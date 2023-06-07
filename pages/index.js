@@ -8,6 +8,7 @@ import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
 import Play from '@/components/play/Play'
 import DashboardMusic from '../game/assets/audios/DashboardMusic.mp3';
+import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,10 +21,11 @@ export default function Home() {
   const [settingOpen, setSettingOpen] = useState(false);
   // Achievements
   const [achOpen, setAchOpen] = useState(false);
+
   // Music
-  const [isMusicPlaying, setMusicPlaying] = useState(false);
   const audioRef = useRef(null);
   const originalVolumeRef = useRef(1.0);
+  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, originalVolumeRef);
 
   // Settings Popup Window
   const settingClick = () => {
@@ -40,10 +42,6 @@ export default function Home() {
     setAchOpen(false);
   }
   // Music Toggle
-  const handleMusicToggle = () => {
-    setMusicPlaying(prev => !prev);
-    audioRef.current.volume = isMusicPlaying ? originalVolumeRef.current : 0.05;
-  };
   useEffect(() => {
     if (isMusicPlaying) {
       audioRef.current.play();
