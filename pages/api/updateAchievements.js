@@ -8,21 +8,31 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { userId } = req.body;
-  const achievementName = 'something shiny'; // Replace with the actual achievement name
+  const { userId, achievementName } = req.body;
 
   try {
-    const achievement = await prisma.achievement.updateMany({
+        const achievement = await prisma.achievement.findFirst({
       where: {
         userId: parseInt(userId),
         name: achievementName,
       },
-      data: {
-        collected: true,
-      },
     });
 
-    res.status(200).json({ success: true, achievement });
+    if (achievement) {
+      const updatedAchievement = await prisma.achievement.update({
+        where: {
+          id: achievement.id,
+        },
+        data: {
+          collected: true,
+        },
+      });
+
+
+      res.status(200).json({ success: true, achievement: updatedAchievement });
+    } else {
+      res.status(404).json({ error: 'Achievement not found' });
+    }
   } catch (error) {
     console.error('Failed to update achievement:', error);
     res.status(500).json({ error: 'Failed to update achievement' });
