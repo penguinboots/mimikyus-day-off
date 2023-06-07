@@ -1,6 +1,6 @@
 export default function AchievementsMenu(props) {
   return (
-    <div className="achievement-container">
+    <div className="popup achievement-container">
       <div className="close-window" onClick={props.handleClick}>
         X
       </div>
