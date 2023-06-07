@@ -69,56 +69,24 @@ export default function Play(props) {
           <div className="move-select">
             <MoveItem
               id="move1"
+              loc="game"
               moveName="Move 1"
-              handleMouseOver={handleMouseOver}
-              handleMouseOut={handleMouseOut}
             />
-            {isHovering.move1 && (
-              <MoveDetail
-                moveName="Move 1"
-                power={80}
-                description="Move 1 description"
-              />
-            )}
             <MoveItem
               id="move2"
+              loc="game"
               moveName="Move 2"
-              handleMouseOver={handleMouseOver}
-              handleMouseOut={handleMouseOut}
             />
-            {isHovering.move2 && (
-              <MoveDetail
-                moveName="Move 2"
-                power={100}
-                description="Move 2 description"
-              />
-            )}
             <MoveItem
               id="move3"
+              loc="game"
               moveName="Move 3"
-              handleMouseOver={handleMouseOver}
-              handleMouseOut={handleMouseOut}
             />
-            {isHovering.move3 && (
-              <MoveDetail
-                moveName="Move 3"
-                power={70}
-                description="Move 3 description"
-              />
-            )}
             <MoveItem
               id="move4"
+              loc="game"
               moveName="Move 4"
-              handleMouseOver={handleMouseOver}
-              handleMouseOut={handleMouseOut}
             />
-            {isHovering.move4 && (
-              <MoveDetail
-                moveName="Move 4"
-                power={120}
-                description="Move 4 description"
-              />
-            )}
           </div>
         </div>
       </div>
