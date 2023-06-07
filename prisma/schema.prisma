@@ -13,7 +13,8 @@ datasource db {
 model User {
   id           Int         @id @default(autoincrement())
   email        String      @unique
-  password     String
+  auth0Sub     String      @unique
+  password     String?
   name         String
   achievements Achieved[]
   Character    Character[]
