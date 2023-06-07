@@ -86,14 +86,12 @@ export async function getStaticProps() {
     where: { userId: db_user.id, name: achievementName },
     data: { collected: true}
   })}
-
   return {
     props: {
       db_user,
       db_character,
       db_achievements,
       db_moves,
-      db_achievementUpdate,
     },
   };
 }
@@ -103,7 +101,6 @@ export default function Home({
   db_character,
   db_achievements,
   db_moves,
-  db_achievementUpdate,
 }) {
   // Authentication
   const { user, error, isLoading } = useUser();
@@ -127,8 +124,6 @@ export default function Home({
   console.log("DB_CHARACTER: ", db_character)
   console.log("DB_ACHIEVEMENTS?", db_achievements)
   console.log("DB_MOVES?", db_moves)
-  const test = db_achievementUpdate("something shiny")
-  console.log(test)
 
   return (
     <div className="app-wrapper">
