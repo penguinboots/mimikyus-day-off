@@ -314,14 +314,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 500px;
   height: 400px;
-
   background-color: $light-green;
   .move-edit-menu {
     display: flex;
-    gap: 15px;
+    gap: 200px;
     .moves-selected,
     .moves-avail {
       background-color: $off-white;
@@ -329,6 +328,12 @@ body {
     .move-item {
       width: 120px;
     }
+  }
+  .move-detail {
+    position: absolute;
+    width: 170px;
+    top: 80px;
+    left: 160px;
   }
 }
 
