@@ -7,10 +7,9 @@ const munchlax1 = {
     "special-defense": 85,
     "speed": 5,
   },
-  "moves": [
-    {
+  "moves": {
+    "crunch":{
       "name": "crunch",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 20,
@@ -27,9 +26,7 @@ const munchlax1 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage+lower",
-          },
+          "category": "damage+lower",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -46,18 +43,14 @@ const munchlax1 = {
         "stat_changes": [
           {
             "change": -1,
-            "stat": {
-              "name": "defense",
-            }
+            "stat": "defense",
           }
         ],
         "target": "selected-pokemon",
         "type": "dark",
-      }
     },
-    {
+    "bulldoze":{
       "name": "bulldoze",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 100,
@@ -74,9 +67,7 @@ const munchlax1 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage+lower",
-          },
+          "category": "damage+lower",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -93,115 +84,96 @@ const munchlax1 = {
         "stat_changes": [
           {
             "change": -1,
-            "stat": {
-              "name": "speed",
-            }
+            "stat": "speed",
           }
         ],
         "target": "all-other-pokemon",
         "type": "ground",
-      }
     },
-    {
-      "name": "defense-curl",
-      "data": {
-        "accuracy": null,
-        "damage_class": "status",
-        "effect_chance": null,
-        "effect_entries": [
-          {
-            "effect": "Raises user's Defense by one stage.\n\nAfter this move is used, the power of ice ball and rollout are doubled until the user leaves the field.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Raises user's Defense by one stage."
-          }
-        ],
-        "id": 111,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
-          },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 0
-        },
-        "power": null,
-        "pp": 40,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": 1,
-            "stat": {
-              "name": "defense",
+    "defense-curl":{
+        "name": "defense-curl",
+          "accuracy": null,
+          "damage_class": "status",
+          "effect_chance": null,
+          "effect_entries": [
+            {
+              "effect": "Raises user's Defense by one stage.\n\nAfter this move is used, the power of ice ball and rollout are doubled until the user leaves the field.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Raises user's Defense by one stage."
             }
-          }
-        ],
-        "target": "user",
-        "type": "normal",
-      }
-    },
-    {
-      "name": "charm",
-      "data": {
-        "accuracy": 100,
-        "damage_class": "status",
-        "effect_chance": null,
-        "effect_entries": [
-          {
-            "effect": "Lowers the target's Attack by two stages.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Lowers the target's Attack by two stages."
-          }
-        ],
-        "id": 204,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
+          ],
+          "id": 111,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "net-good-stats",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 0
           },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 0
-        },
-        "power": null,
-        "pp": 20,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": -2,
-            "stat": {
-              "name": "attack",
+          "power": null,
+          "pp": 40,
+          "priority": 0,
+          "stat_changes": [
+            {
+              "change": 1,
+              "stat": "defense",
             }
-          }
-        ],
-        "target": "selected-pokemon",
-        "type": "fairy",
-      }
+          ],
+          "target": "user",
+          "type": "normal",
     },
-  ],
-  "types": [
-    {
-      "name": "dark"
-    }
-  ],
+    "charm":{
+          "name": "charm",
+            "accuracy": 100,
+            "damage_class": "status",
+            "effect_chance": null,
+            "effect_entries": [
+              {
+                "effect": "Lowers the target's Attack by two stages.",
+                "language": {
+                  "name": "en",
+                },
+                "short_effect": "Lowers the target's Attack by two stages."
+              }
+            ],
+            "id": 204,
+            "meta": {
+              "ailment": "none",
+              "ailment_chance": 0,
+              "category": "net-good-stats",
+              "crit_rate": 0,
+              "drain": 0,
+              "flinch_chance": 0,
+              "healing": 0,
+              "max_hits": null,
+              "max_turns": null,
+              "min_hits": null,
+              "min_turns": null,
+              "stat_chance": 0
+            },
+            "power": null,
+            "pp": 20,
+            "priority": 0,
+            "stat_changes": [
+              {
+                "change": -2,
+                "stat": "attack",
+              }
+            ],
+            "target": "selected-pokemon",
+            "type": "fairy",
+    },
+  },
+  "types": ["dark"],
   "height": 6,
   "weight": 1050
 }
@@ -215,10 +187,9 @@ const munchlax2 = {
     "special-defense": 85,
     "speed": 5,
   },
-  "moves": [
-    {
+  "moves": {
+    "poison-jab":{
       "name": "poison-jab",
-      "data": {
         "accuracy": 100,
         "damage_class": {
           "name": "physical",
@@ -236,13 +207,9 @@ const munchlax2 = {
         ],
         "id": 398,
         "meta": {
-          "ailment": {
-            "name": "poison",
-          },
+          "ailment": "poison",
           "ailment_chance": 30,
-          "category": {
-            "name": "damage+ailment",
-          },
+          "category": "damage+ailment",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -260,14 +227,10 @@ const munchlax2 = {
         "target": {
           "name": "selected-pokemon",
         },
-        "type": {
-          "name": "poison",
-        }
-      }
-    },
-    {
+        "type": "poison",
+      },
+    "bulldoze":{
       "name": "bulldoze",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 100,
@@ -284,9 +247,7 @@ const munchlax2 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage+lower",
-          },
+          "category": "damage+lower",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -303,18 +264,14 @@ const munchlax2 = {
         "stat_changes": [
           {
             "change": -1,
-            "stat": {
-              "name": "speed",
-            }
+            "stat": "speed",
           }
         ],
         "target": "all-other-pokemon",
         "type": "ground",
-      }
     },
-    {
+    "defense-curl":{
       "name": "defense-curl",
-      "data": {
         "accuracy": null,
         "damage_class": "status",
         "effect_chance": null,
@@ -331,9 +288,7 @@ const munchlax2 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
-          },
+          "category": "net-good-stats",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -350,68 +305,55 @@ const munchlax2 = {
         "stat_changes": [
           {
             "change": 1,
-            "stat": {
-              "name": "defense",
-            }
+            "stat": "defense",
           }
         ],
         "target": "user",
         "type": "normal",
-      }
     },
-    {
-      "name": "charm",
-      "data": {
-        "accuracy": 100,
-        "damage_class": "status",
-        "effect_chance": null,
-        "effect_entries": [
-          {
-            "effect": "Lowers the target's Attack by two stages.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Lowers the target's Attack by two stages."
-          }
-        ],
-        "id": 204,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
-          },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 0
-        },
-        "power": null,
-        "pp": 20,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": -2,
-            "stat": {
-              "name": "attack",
+    "charm":{
+        "name": "charm",
+          "accuracy": 100,
+          "damage_class": "status",
+          "effect_chance": null,
+          "effect_entries": [
+            {
+              "effect": "Lowers the target's Attack by two stages.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Lowers the target's Attack by two stages."
             }
-          }
-        ],
-        "target": "selected-pokemon",
-        "type": "fairy",
-      }
+          ],
+          "id": 204,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "net-good-stats",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 0
+          },
+          "power": null,
+          "pp": 20,
+          "priority": 0,
+          "stat_changes": [
+            {
+              "change": -2,
+              "stat": "attack",
+            }
+          ],
+          "target": "selected-pokemon",
+          "type": "fairy",
     },
-  ],
-  "types": [
-    {
-      "name": "poison"
-    }
-  ],
+},
+  "types": ["poison"],
   "height": 6,
   "weight": 1050
 }
@@ -425,10 +367,9 @@ const munchlax3 = {
     "special-defense": 85,
     "speed": 5,
   },
-  "moves": [
-    {
+  "moves": {
+    "iron-head":{
       "name": "iron-head",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 30,
@@ -445,9 +386,7 @@ const munchlax3 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage",
-          },
+          "category": "damage",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 30,
@@ -464,11 +403,9 @@ const munchlax3 = {
         "stat_changes": [],
         "target": "selected-pokemon",
         "type": "steel",
-      }
     },
-    {
+    "bulldoze":{
       "name": "bulldoze",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 100,
@@ -485,9 +422,7 @@ const munchlax3 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage+lower",
-          },
+          "category": "damage+lower",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -504,18 +439,14 @@ const munchlax3 = {
         "stat_changes": [
           {
             "change": -1,
-            "stat": {
-              "name": "speed",
-            }
+            "stat": "speed",
           }
         ],
         "target": "all-other-pokemon",
         "type": "ground",
-      }
     },
-    {
+    "defense-curl":{
       "name": "defense-curl",
-      "data": {
         "accuracy": null,
         "damage_class": "status",
         "effect_chance": null,
@@ -532,9 +463,7 @@ const munchlax3 = {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
-          },
+          "category": "net-good-stats",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -551,68 +480,55 @@ const munchlax3 = {
         "stat_changes": [
           {
             "change": 1,
-            "stat": {
-              "name": "defense",
-            }
+            "stat": "defense",
           }
         ],
         "target": "user",
         "type": "normal",
-      }
     },
-    {
-      "name": "charm",
-      "data": {
-        "accuracy": 100,
-        "damage_class": "status",
-        "effect_chance": null,
-        "effect_entries": [
-          {
-            "effect": "Lowers the target's Attack by two stages.",
-            "language": {
-              "name": "en",
-            },
-            "short_effect": "Lowers the target's Attack by two stages."
-          }
-        ],
-        "id": 204,
-        "meta": {
-          "ailment": "none",
-          "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
-          },
-          "crit_rate": 0,
-          "drain": 0,
-          "flinch_chance": 0,
-          "healing": 0,
-          "max_hits": null,
-          "max_turns": null,
-          "min_hits": null,
-          "min_turns": null,
-          "stat_chance": 0
-        },
-        "power": null,
-        "pp": 20,
-        "priority": 0,
-        "stat_changes": [
-          {
-            "change": -2,
-            "stat": {
-              "name": "attack",
+    "charm":{
+        "name": "charm",
+          "accuracy": 100,
+          "damage_class": "status",
+          "effect_chance": null,
+          "effect_entries": [
+            {
+              "effect": "Lowers the target's Attack by two stages.",
+              "language": {
+                "name": "en",
+              },
+              "short_effect": "Lowers the target's Attack by two stages."
             }
-          }
-        ],
-        "target": "selected-pokemon",
-        "type": "fairy",
-      }
+          ],
+          "id": 204,
+          "meta": {
+            "ailment": "none",
+            "ailment_chance": 0,
+            "category": "net-good-stats",
+            "crit_rate": 0,
+            "drain": 0,
+            "flinch_chance": 0,
+            "healing": 0,
+            "max_hits": null,
+            "max_turns": null,
+            "min_hits": null,
+            "min_turns": null,
+            "stat_chance": 0
+          },
+          "power": null,
+          "pp": 20,
+          "priority": 0,
+          "stat_changes": [
+            {
+              "change": -2,
+              "stat": "attack",
+            }
+          ],
+          "target": "selected-pokemon",
+          "type": "fairy",
     },
-  ],
-  "types": [
-    {
-      "name": "steel"
-    }
-  ],
+  },
+  "types": ["steel"],
   "height": 6,
   "weight": 1050
 }
@@ -625,12 +541,11 @@ const snorlax3= {
     "defense": 85,
     "special-attack": 65,
     "special-defense": 80,
-    "speed": 50,
+    "speed": 100,
   },
-  "moves": [
-    {
+  "moves": {
+    "gunk-shot":{
       "name": "gunk-shot",
-      "data": {
         "accuracy": 80,
         "damage_class": "physical",
         "effect_chance": 30,
@@ -647,9 +562,7 @@ const snorlax3= {
         "meta": {
           "ailment": "poison",
           "ailment_chance": 30,
-          "category": {
-            "name": "damage+ailment",
-          },
+          "category": "damage+ailment",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -666,11 +579,9 @@ const snorlax3= {
         "stat_changes": [],
         "target": "selected-pokemon",
         "type": "poison",
-      }
     },
-    {
+    "iron-head":{
       "name": "iron-head",
-      "data": {
         "accuracy": 100,
         "damage_class": "physical",
         "effect_chance": 30,
@@ -687,9 +598,7 @@ const snorlax3= {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage",
-          },
+          "category": "damage",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 30,
@@ -706,11 +615,9 @@ const snorlax3= {
         "stat_changes": [],
         "target": "selected-pokemon",
         "type": "steel",
-      }
     },
-    {
+    "shadow-ball":{
       "name": "shadow-ball",
-      "data": {
         "accuracy": 100, 
         "damage_class": "special",
         "effect_chance": 20,
@@ -727,9 +634,7 @@ const snorlax3= {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "damage+lower",
-          },
+          "category": "damage+lower",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -746,18 +651,14 @@ const snorlax3= {
         "stat_changes": [
           {
             "change": -1,
-            "stat": {
-              "name": "special-defense",
-            }
+            "stat": "special-defense",
           }
         ],
         "target": "selected-pokemon",
         "type": "ghost",
-      }
     },
-    {
+    "swords-dance":{
       "name": "swords-dance",
-      "data": {
         "accuracy": null,
         "damage_class": "status",
         "effect_chance": null,
@@ -774,9 +675,7 @@ const snorlax3= {
         "meta": {
           "ailment": "none",
           "ailment_chance": 0,
-          "category": {
-            "name": "net-good-stats",
-          },
+          "category": "net-good-stats",
           "crit_rate": 0,
           "drain": 0,
           "flinch_chance": 0,
@@ -793,21 +692,14 @@ const snorlax3= {
         "stat_changes": [
           {
             "change": 2,
-            "stat": {
-              "name": "attack",
-            }
+            "stat": "attack",
           }
         ],
         "target": "user",
         "type": "normal",
-      }
     },
-  ],
-  "types": [
-    {
-      "name": "normal"
-    }
-  ],
+  },
+  "types": ["normal"],
   "height": 21,
   "weight": 4600
 }

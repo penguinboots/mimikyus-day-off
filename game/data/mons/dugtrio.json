@@ -1,0 +1,316 @@
+{
+  "abilities": [
+    {
+      "ability": {
+        "name": "sand-veil"
+      },
+      "is_hidden": false,
+      "slot": 1
+    },
+    {
+      "ability": {
+        "name": "tangling-hair"
+      },
+      "is_hidden": false,
+      "slot": 2
+    },
+    {
+      "ability": {
+        "name": "sand-force"
+      },
+      "is_hidden": true,
+      "slot": 3
+    }
+  ],
+  "height": 7,
+  "id": 10106,
+  "is_default": false,
+  "moves": [
+    {
+        "name": "scratch"      
+    },
+    {
+        "name": "swords-dance"      
+    },
+    {
+        "name": "sand-attack"      
+    },
+    {
+        "name": "headbutt"      
+    },
+    {
+        "name": "body-slam"      
+    },
+    {
+        "name": "take-down"      
+    },
+    {
+        "name": "growl"      
+    },
+    {
+        "name": "hyper-beam"      
+    },
+    {
+        "name": "earthquake"      
+    },
+    {
+        "name": "fissure"      
+    },
+    {
+        "name": "dig"      
+    },
+    {
+        "name": "toxic"      
+    },
+    {
+        "name": "agility"      
+    },
+    {
+        "name": "screech"      
+    },
+    {
+        "name": "double-team"      
+    },
+    {
+        "name": "fury-swipes"      
+    },
+    {
+        "name": "rest"      
+    },
+    {
+        "name": "rock-slide"      
+    },
+    {
+        "name": "tri-attack"      
+    },
+    {
+        "name": "slash"      
+    },
+    {
+        "name": "substitute"      
+    },
+    {
+        "name": "thief"      
+    },
+    {
+        "name": "snore"      
+    },
+    {
+        "name": "reversal"      
+    },
+    {
+        "name": "protect"      
+    },
+    {
+        "name": "scary-face"      
+    },
+    {
+        "name": "sludge-bomb"      
+    },
+    {
+        "name": "mud-slap"      
+    },
+    {
+        "name": "sandstorm"      
+    },
+    {
+        "name": "endure"      
+    },
+    {
+        "name": "charm"      
+    },
+    {
+        "name": "swagger"      
+    },
+    {
+        "name": "attract"      
+    },
+    {
+        "name": "sleep-talk"      
+    },
+    {
+        "name": "return"      
+    },
+    {
+        "name": "frustration"      
+    },
+    {
+        "name": "magnitude"      
+    },
+    {
+        "name": "metal-claw"      
+    },
+    {
+        "name": "hidden-power"      
+    },
+    {
+        "name": "sunny-day"      
+    },
+    {
+        "name": "beat-up"      
+    },
+    {
+        "name": "uproar"      
+    },
+    {
+        "name": "facade"      
+    },
+    {
+        "name": "helping-hand"      
+    },
+    {
+        "name": "astonish"      
+    },
+    {
+        "name": "rock-tomb"      
+    },
+    {
+        "name": "sand-tomb"      
+    },
+    {
+        "name": "aerial-ace"      
+    },
+    {
+        "name": "iron-defense"      
+    },
+    {
+        "name": "mud-shot"      
+    },
+    {
+        "name": "rock-blast"      
+    },
+    {
+        "name": "assurance"      
+    },
+    {
+        "name": "sucker-punch"      
+    },
+    {
+        "name": "night-slash"      
+    },
+    {
+        "name": "earth-power"      
+    },
+    {
+        "name": "giga-impact"      
+    },
+    {
+        "name": "shadow-claw"      
+    },
+    {
+        "name": "mud-bomb"      
+    },
+    {
+        "name": "flash-cannon"      
+    },
+    {
+        "name": "iron-head"      
+    },
+    {
+        "name": "stone-edge"      
+    },
+    {
+        "name": "stealth-rock"      
+    },
+    {
+        "name": "sludge-wave"      
+    },
+    {
+        "name": "foul-play"      
+    },
+    {
+        "name": "round"      
+    },
+    {
+        "name": "echoed-voice"      
+    },
+    {
+        "name": "ally-switch"      
+    },
+    {
+        "name": "bulldoze"      
+    },
+    {
+        "name": "work-up"      
+    },
+    {
+        "name": "rototiller"      
+    },
+    {
+        "name": "confide"      
+    },
+    {
+        "name": "high-horsepower"      
+    },
+    {
+        "name": "stomping-tantrum"      
+    },
+    {
+        "name": "steel-beam"      
+    },
+    {
+        "name": "scorching-sands"      
+    },
+    {
+        "name": "tera-blast"      
+    }
+  ],
+  "name": "dugtrio-alola",
+  "order": 87,
+  "species": {
+    "name": "dugtrio"
+  },
+  "stats": [
+    {
+      "base_stat": 35,
+      "stat": {
+        "name": "hp"
+      }
+    },
+    {
+      "base_stat": 100,
+      "stat": {
+        "name": "attack"
+      }
+    },
+    {
+      "base_stat": 60,
+      "stat": {
+        "name": "defense"
+      }
+    },
+    {
+      "base_stat": 50,
+      "stat": {
+        "name": "special-attack"
+      }
+    },
+    {
+      "base_stat": 70,
+      "stat": {
+        "name": "special-defense"
+      }
+    },
+    {
+      "base_stat": 110,
+      "stat": {
+        "name": "speed"
+      }
+    }
+  ],
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "ground"
+      }
+    },
+    {
+      "slot": 2,
+      "type": {
+        "name": "steel"
+      }
+    }
+  ],
+  "weight": 666
+}
