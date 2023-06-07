@@ -1,30 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
-
 import Nav from "../common/Nav";
 import MoveItem from "../common/MoveItem";
-import useIsHovering from "@/utils/hooks/isHovering";
-import MoveDetail from "../common/MoveDetail";
 
 export default function Play(props) {
   const {
     setMode,
-    settingOpen,
-    settingClick,
-    closeSettings,
-    achOpen,
-    achClick,
-    achClose,
     isMusicPlaying,
     handleMusicToggle,
   } = props;
 
-  const { isHovering, handleMouseOver, handleMouseOut } = useIsHovering();
-
   const handleClick = () => {
     setMode("DASH");
   };
-  
+
   // Modify to change active sprite
   const PLAYER = `url("/mimikyu-standin.png")`;
   const OPPONENT = `url("/snorlax-standin.png")`;
@@ -32,12 +21,6 @@ export default function Play(props) {
   return (
     <div className="play-container">
       <Nav
-        settingOpen={settingOpen}
-        settingClick={settingClick}
-        closeSettings={closeSettings}
-        achOpen={achOpen}
-        achClick={achClick}
-        achClose={achClose}
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
       />
@@ -67,26 +50,10 @@ export default function Play(props) {
           </div>
 
           <div className="move-select">
-            <MoveItem
-              id="move1"
-              loc="game"
-              moveName="Move 1"
-            />
-            <MoveItem
-              id="move2"
-              loc="game"
-              moveName="Move 2"
-            />
-            <MoveItem
-              id="move3"
-              loc="game"
-              moveName="Move 3"
-            />
-            <MoveItem
-              id="move4"
-              loc="game"
-              moveName="Move 4"
-            />
+            <MoveItem id="move1" loc="game" moveName="Move 1" />
+            <MoveItem id="move2" loc="game" moveName="Move 2" />
+            <MoveItem id="move3" loc="game" moveName="Move 3" />
+            <MoveItem id="move4" loc="game" moveName="Move 4" />
           </div>
         </div>
       </div>
