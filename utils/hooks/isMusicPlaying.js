@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export default function isMusicPlaying(audioRef, originalVolumeRef) {
+export default function useIsMusicPlaying(audioRef, originalVolumeRef) {
   const [isMusicPlaying, setMusicPlaying] = useState(false);
 
   const handleMusicToggle = () => {

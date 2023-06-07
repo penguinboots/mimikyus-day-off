@@ -17,30 +17,12 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
   // View Mode
   const [mode, setMode] = useState("LANDING");
-  // Settings
-  const [settingOpen, setSettingOpen] = useState(false);
-  // Achievements
-  const [achOpen, setAchOpen] = useState(false);
 
   // Music
   const audioRef = useRef(null);
   const originalVolumeRef = useRef(1.0);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, originalVolumeRef);
 
-  // Settings Popup Window
-  const settingClick = () => {
-    setSettingOpen((prev) => !prev);
-  }
-  const closeSettings = () => {
-    setSettingOpen(false);
-  }
-  // Achievements Popup Window
-  const achClick = () => {
-    setAchOpen((prev) => !prev);
-  }
-  const achClose = () => {
-    setAchOpen(false);
-  }
   // Music Toggle
   useEffect(() => {
     if (isMusicPlaying) {
@@ -72,12 +54,6 @@ export default function Home() {
         {mode === "DASH" &&
           <Dashboard
             setMode={setMode}
-            settingOpen={settingOpen}
-            settingClick={settingClick}
-            closeSettings={closeSettings}
-            achOpen={achOpen}
-            achClick={achClick}
-            achClose={achClose}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
           />
@@ -85,13 +61,6 @@ export default function Home() {
         {mode === "PLAY" &&
           <Play
             setMode={setMode}
-            settingOpen={settingOpen}
-            settingClick={settingClick}
-            closeSettings={closeSettings}
-            achOpen={achOpen}
-            setAchOpen={setAchOpen}
-            achClick={achClick}
-            achClose={achClose}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle} />
         }
