@@ -1,4 +1,5 @@
 const goomy = {
+  "name": "goomy",
   "current_hp": 45,
   "stats": {  
     "hp": 45,
@@ -175,6 +176,7 @@ const goomy = {
 }
 
 const dugtrio = {
+  "name": "dugtrio",
   "current_hp": 35,
   "stats": {
     "hp": 35,
@@ -348,6 +350,7 @@ const dugtrio = {
 }
 
 const snorlax2= {
+  "name": "snorlax2",
   "current_hp": 180,
   "stats": {
     "hp": 180,
@@ -522,3 +525,5 @@ const snorlax2= {
   "height": 21,
   "weight": 4600
 }
+
+module.exports = { goomy, dugtrio, snorlax2 }

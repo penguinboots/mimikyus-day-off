@@ -1,4 +1,5 @@
 const munchlax1 = {
+  "name": "munchlax1",
   "stats":{
     "hp": 135,
     "attack": 85,
@@ -179,6 +180,7 @@ const munchlax1 = {
 }
 
 const munchlax2 = {
+  "name": "munchlax2",
   "stats":{
     "hp": 135,
     "attack": 85,
@@ -359,6 +361,7 @@ const munchlax2 = {
 }
 
 const munchlax3 = {
+  "name": "munchlax3",
   "stats":{
     "hp": 135,
     "attack": 85,
@@ -533,7 +536,8 @@ const munchlax3 = {
   "weight": 1050
 }
 
-const snorlax3= {
+const snorlax3 = {
+  "name": "snorlax3",
   "current_hp": 200,
   "stats": {
     "hp": 200,
@@ -703,3 +707,5 @@ const snorlax3= {
   "height": 21,
   "weight": 4600
 }
+
+module.exports = { munchlax1, munchlax2, munchlax3, snorlax3 }
