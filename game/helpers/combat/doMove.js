@@ -37,10 +37,10 @@ function doMove(move, user, target) {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
   } else if (move.category === "damage+lower") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    changeStat(target.statChanges[move.stat_changes.stat], move.stat_changes.change)
+    changeStat(target, target.statChanges[move.stat_changes.stat], move.stat_changes.change)
   } else if (move.category === "damage+raise") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    changeStat(user.statChanges[move.stat_changes.stat], move.stat_changes.change)
+    changeStat(user, user.statChanges[move.stat_changes.stat], move.stat_changes.change)
   } else if (move.category === "damage+heal") {
     const damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     const heal = drainCalc(damage, move.meta.drain)
@@ -51,7 +51,7 @@ function doMove(move, user, target) {
     } else if (move.target === 'selected-pokemon'){
      changeStatOf = target
     }
-    changeStat(changeStatOf.statChanges[move.stat_changes.stat], move.stat_changes.change)
+    changeStat(changestatOf, changeStatOf.statChanges[move.stat_changes.stat], move.stat_changes.change)
   } else if (move.category === "unique") {
     //I think this is just splash
   }
