@@ -1,10 +1,10 @@
 import MoveItem from "../common/MoveItem";
-import useGameState from "@/utils/hooks/gameState";
+import { useGameState } from "../../utils/context/GameStateContext";
 
 const { floor_1 } = require("../../game/pregenerated/floors/floor1");
 
 export default function Room(props) {
-  const { returnToDash } = props;
+  const { returnToDash, nextRoom  } = props;
 
   const {
     gameState,
@@ -19,7 +19,6 @@ export default function Room(props) {
     setPopup,
     sprites,
     setSprites,
-    nextRoom,
   } = useGameState();
 
   // Modify to change active sprite
@@ -63,8 +62,6 @@ export default function Room(props) {
     */
   }
 
-
-
   return (
     <div
       className="battle-room"
@@ -85,7 +82,7 @@ export default function Room(props) {
             backgroundImage: OPPONENT,
           }}
         >
-          { gameState.currentRoom.opponent ? gameState.currentRoom.opponent.name : "TREASURE ROOM" }
+          {gameState.currentRoom.opponent ? gameState.currentRoom.opponent.name : "no opponent"}
         </div>
       </div>
 
@@ -95,7 +92,7 @@ export default function Room(props) {
         <MoveItem id="move2" loc="game" moveName="Move 2" />
         <MoveItem id="move3" loc="game" moveName="Move 3" />
         <MoveItem id="move4" loc="game" moveName="Move 4" />
-        <button onClick={nextRoom}>NEXT ROOM</button>
+        <button onClick={nextRoom}>NEXT</button>
       </div>
     </div>
   );
