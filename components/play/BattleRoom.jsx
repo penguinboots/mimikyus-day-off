@@ -1,14 +1,17 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
-
-const { floor_1 } = require("../../game/pregenerated/floors/floor1");
+import { useEffect } from "react";
 
 export default function Room(props) {
-  const { returnToDash, nextRoom  } = props;
+  const { floor_1 } = require("../../game/pregenerated/floors/floor1");
+  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
+  const { returnToDash, nextRoom } = props;
 
   const {
     gameState,
     setGameState,
+    charState,
+    setCharState,
     roomType,
     setRoomType,
     turnMode,
@@ -21,13 +24,23 @@ export default function Room(props) {
     setSprites,
   } = useGameState();
 
+  function setUpRoom() {
+    setCharState(magikarp);
+  }
+  useEffect(() => {
+    setCharState(magikarp);
+  }, []);
+
+  console.log(charState);
+
   // Modify to change active sprite
   const PLAYER = sprites.player;
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
-
   // Gets called when player picks a move
   function executeTurn(char, charMove, opponent, opponentMove) {
+
+
     /*
       - setTurnMode("logic"), greys out or hides move UI
       **** first run ****
@@ -75,14 +88,20 @@ export default function Room(props) {
           style={{
             backgroundImage: PLAYER,
           }}
-        ></div>
+        >
+          me: {charState.name}
+          <br/>
+          current HP: {charState.current_hp}
+        </div>
         <div
           className="pokemon opponent"
           style={{
             backgroundImage: OPPONENT,
           }}
         >
-          {gameState.currentRoom.opponent ? gameState.currentRoom.opponent.name : "no opponent"}
+          opponent: {gameState.currentRoom.opponent.name}
+          <br />
+          current HP: {gameState.currentRoom.opponent.current_hp}
         </div>
       </div>
 
