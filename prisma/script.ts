@@ -46,13 +46,7 @@ async function main() {
           create: [
             {
               date_get: new Date(),
-              achievement: {
-                create: {
-                  achievement_name: "First Achievement",
-                  achievement_image: "achievement_image_url",
-                  achievement_description: "Achievement description"
-                }
-              },
+              name: "First Achievement",
               collected: false
             }
           ]
