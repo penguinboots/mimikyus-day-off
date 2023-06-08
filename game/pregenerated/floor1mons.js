@@ -156,7 +156,7 @@ const magikarp = {
   },
   "types": ["water"],
   "height": 9,
-  "weight": 100
+  "weight": 100,
 }
 
 const snorlax1 = {
@@ -334,3 +334,5 @@ const snorlax1 = {
   "height": 21,
   "weight": 4600
 }
+
+module.exports = { magikarp, snorlax1 };
