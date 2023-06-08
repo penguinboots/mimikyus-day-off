@@ -2,6 +2,10 @@
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
+// Prisma
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+const { main, findCurrentUser, findUserCharacters, getUserAchievements } = require("../prisma/script");
 // Components
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
@@ -60,16 +64,32 @@ export default function Home() {
   }, [user]);
 
   // Check which user is logged in from Auth0
-  const getLoggedInUser = () => {
-    if (user) {
-      const { email, name, picture, sub } = user;
-      console.log("Logged-in user:");
-      console.log("Email:", email);
-      console.log("Name:", name);
-      console.log("Picture:", picture);
-      console.log("User ID:", sub);
+  async function getLoggedInUser(user) {
+    try {
+      const currentUser = await findCurrentUser(user.sub);
+      let userId;
+  
+      if (!currentUser) {
+        // Create a new user if the user does not exist in the database
+        const newUser = await main();
+        userId = newUser.id;
+      } else {
+        userId = currentUser.id;
+      }
+  
+      const achievements = await getUserAchievements(userId);
+      const userCharacters = await findUserCharacters(userId);
+  
+      return {
+        user: currentUser || newUser,
+        achievements,
+        characters: userCharacters,
+      };
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
     }
-  };
+  }
 
   // Calling useEffect to check logged in user from auth0
   useEffect(() => {
