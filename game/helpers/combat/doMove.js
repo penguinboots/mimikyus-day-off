@@ -53,6 +53,16 @@ function doMove(move, user, target) {
     }
     changeStat(changestatOf, changeStatOf.statChanges[move.stat_changes.stat], move.stat_changes.change)
   } else if (move.category === "unique") {
-    //I think this is just splash
+    if (move.name === "splash") {
+      const damage = 0
+    }
   }
+  const results = {}
+  if (damage) {
+    results.damage = damage
+  }
+  if (heal) {
+    results.heal = heal
+  }
+  return results
 }
