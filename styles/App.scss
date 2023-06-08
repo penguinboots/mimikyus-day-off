@@ -380,11 +380,12 @@ body {
     gap: 10px;
     font-size: 28px;
   }
-  .battle-room {
+  .battle-room, .treasure-room {
     height: 700px;
     width: 1100px;
     border-radius: 36px;
-
+  }
+  .battle-room {
     .battle-floor {
       display: flex;
 
@@ -438,5 +439,11 @@ body {
         justify-content: center;
       }
     }
+  }
+  .treasure-room {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $off-white;
   }
 }
