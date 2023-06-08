@@ -34,15 +34,13 @@ export default function Play(props) {
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
       />
-      <div className="play-wrapper">
-        <div className="play-viewport">
-          <button className="dash-return" onClick={handleClick}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-            <FontAwesomeIcon icon={faHouse} />
-          </button>
-          {roomType === "battle" && <BattleRoom />}
-          {roomType === "treasure" && <TreasureRoom />}
-        </div>
+      <div className="play-viewport">
+        <button className="dash-return" onClick={handleClick}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+          <FontAwesomeIcon icon={faHouse} />
+        </button>
+        {roomType === "battle" && <BattleRoom />}
+        {roomType === "treasure" && <TreasureRoom />}
       </div>
       <GameLogic />
     </div>
