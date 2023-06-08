@@ -7,11 +7,7 @@ async function getUserAchievements(userId) {
   const user = await prisma.user.findUnique({
     where: { id: userId },
     include: {
-      achievements: {
-        include: {
-          achievement: true
-        }
-      }
+      achievements: true
     }
   });
 
@@ -20,15 +16,38 @@ async function getUserAchievements(userId) {
     throw new Error(`User with ID ${userId} not found.`);
   }
 
-  // map over this users achievements
-  const achievements = user.achievements.map((achieved) => ({
-    id: achieved.achievementId,
-    date_get: achieved.date_get,
-    collected: achieved.collected,
-    ...achieved.achievement
+  // map over this user's achievements
+  const achievements = user.achievements.map((achievement) => ({
+    id: achievement.id,
+    date_get: achievement.date_get,
+    collected: achievement.collected,
+    name: achievement.name
   }));
 
   return achievements;
+}
+
+// find the current user in the database
+async function findCurrentUser(sub) {
+  const user = await prisma.user.findUnique({
+    where: { auth0Sub: sub },
+  });
+
+  // throw error if user is not found
+  if (!user) {
+    throw new Error(`User with sub ${sub} not found.`);
+  }
+
+  return user;
+}
+
+// find the characters of the current user in the database
+async function findUserCharacters(userId) {
+  const characters = await prisma.character.findMany({
+    where: { userId },
+  });
+
+  return characters;
 }
 
 async function main() {
@@ -77,8 +96,14 @@ async function main() {
     const userId = user.id;
     const achievements = await getUserAchievements(userId);
 
-    // show us the achievements for that user
+    // show the achievements for that user
     console.log("User achievements:", achievements);
+
+    const currentUser = await findCurrentUser(user.auth0Sub);
+    console.log("Current user:", currentUser);
+
+    const userCharacters = await findUserCharacters(userId);
+    console.log("User characters:", userCharacters);
   } catch (error) {
     console.error("Error:", error);
   } finally {
@@ -98,5 +123,7 @@ main()
 
 module.exports = {
   main,
-  getUserAchievements
+  getUserAchievements,
+  findCurrentUser,
+  findUserCharacters
 };
