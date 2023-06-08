@@ -1,4 +1,3 @@
-const { RSC_MODULE_TYPES } = require("next/dist/shared/lib/constants");
 const { magikarp, snorlax1 } = require("../floor1mons");
 
 const floor_1 = {
@@ -9,9 +8,10 @@ const floor_1 = {
       sprite: "",
       reward: {},
     },
-    background: `url("../public/grass_bg.png")`,
+    background: `url("/grass_bg.png")`,
     music: "",
     intro: "",
+    next_room: "room_2",
   },
   room_2: {
     type: "treasure",
@@ -23,6 +23,7 @@ const floor_1 = {
     background: "",
     music: "",
     intro: "",
+    next_room: "room_3",
   },
   room_3: {
     type: "battle",
@@ -34,6 +35,7 @@ const floor_1 = {
     background: "",
     music: "",
     intro: "",
+    next_room: null,
   }
 }
 

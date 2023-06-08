@@ -1,7 +1,11 @@
+import { floor_1 } from "@/game/pregenerated/floors/floor1";
 import { useState } from "react";
 
 export default function useGameState() {
-  const [gameState, setGameState] = useState();
+  const [gameState, setGameState] = useState({
+    currentFloor: floor_1,
+    currentRoom: floor_1.room_1,
+  });
   
   const [roomType, setRoomType] = useState("battle"); // pull initial state from either local storage or user state/db
   const [turnMode, setTurnMode] = useState("player"); // when move is selected, state is set to "logic" -> back to "player" when logic is complete
