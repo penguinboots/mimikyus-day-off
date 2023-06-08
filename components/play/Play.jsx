@@ -9,7 +9,7 @@ import useGameState from "@/utils/hooks/gameState";
 export default function Play(props) {
   const { setMode, isMusicPlaying, handleMusicToggle } = props;
 
-  const handleClick = () => {
+  const returnToDash = () => {
     setMode("DASH");
   };
 
@@ -35,12 +35,16 @@ export default function Play(props) {
         handleMusicToggle={handleMusicToggle}
       />
       <div className="play-viewport">
-        <button className="dash-return" onClick={handleClick}>
+        <button className="dash-return" onClick={returnToDash}>
           <FontAwesomeIcon icon={faArrowLeft} />
           <FontAwesomeIcon icon={faHouse} />
         </button>
-        {roomType === "battle" && <BattleRoom />}
-        {roomType === "treasure" && <TreasureRoom />}
+        {roomType === "battle" &&
+          <BattleRoom returnToDash={returnToDash}
+        />}
+        {roomType === "treasure" && 
+          <TreasureRoom returnToDash={returnToDash}
+        />}
       </div>
       <GameLogic />
     </div>

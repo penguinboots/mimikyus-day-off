@@ -3,7 +3,9 @@ import useGameState from "@/utils/hooks/gameState";
 
 const { floor_1 } = require("../../game/pregenerated/floors/floor1");
 
-export default function Room() {
+export default function Room(props) {
+  const { returnToDash } = props;
+
   const {
     gameState,
     setGameState,
@@ -17,6 +19,7 @@ export default function Room() {
     setPopup,
     sprites,
     setSprites,
+    nextRoom,
   } = useGameState();
 
   // Modify to change active sprite
@@ -45,6 +48,8 @@ export default function Room() {
               - click OK on victory -> setGameState's current_room to the next room
                   - if next_room is null, set floor/room, return to dash
               - click OK on defeat -> setGameState's current_floor and current_room to floor_1 and room_1
+          *** write a nextRoom() function to manage previous options ***
+            - this should be a fairly large function that resets whatever needs to be reset and arranges states for the next room
       **** second run ****
         - call doMove for second move
         - animateMove()
@@ -58,6 +63,8 @@ export default function Room() {
     */
   }
 
+
+
   return (
     <div
       className="battle-room"
@@ -66,9 +73,6 @@ export default function Room() {
       }}
     >
       <div className="battle-floor">
-        {/* Do not touch!
-                Pokemon sprites are loaded as background image.
-                Change PLAYER & OPPONENT to modify active sprite. */}
         <div
           className="pokemon self"
           style={{
@@ -80,7 +84,9 @@ export default function Room() {
           style={{
             backgroundImage: OPPONENT,
           }}
-        ></div>
+        >
+          { gameState.currentRoom.opponent ? gameState.currentRoom.opponent.name : "TREASURE ROOM" }
+        </div>
       </div>
 
       <div className="move-select">
@@ -89,6 +95,7 @@ export default function Room() {
         <MoveItem id="move2" loc="game" moveName="Move 2" />
         <MoveItem id="move3" loc="game" moveName="Move 3" />
         <MoveItem id="move4" loc="game" moveName="Move 4" />
+        <button onClick={nextRoom}>NEXT ROOM</button>
       </div>
     </div>
   );
