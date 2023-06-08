@@ -1,22 +1,32 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 import Nav from "../common/Nav";
-import MoveItem from "../common/MoveItem";
+import GameLogic from "./GameLogic";
+import BattleRoom from "./BattleRoom";
+import TreasureRoom from "./TreasureRoom";
+import useGameState from "@/utils/hooks/gameState";
 
 export default function Play(props) {
-  const {
-    setMode,
-    isMusicPlaying,
-    handleMusicToggle,
-  } = props;
+  const { setMode, isMusicPlaying, handleMusicToggle } = props;
 
   const handleClick = () => {
     setMode("DASH");
   };
 
-  // Modify to change active sprite
-  const PLAYER = `url("/mimikyu-standin.png")`;
-  const OPPONENT = `url("/snorlax-standin.png")`;
+  const {
+    gameState,
+    setGameState,
+    roomType,
+    setRoomType,
+    turnMode,
+    setTurnMode,
+    battleWon,
+    setBattleWon,
+    popup,
+    setPopup,
+    sprites,
+    setSprites,
+  } = useGameState();
 
   return (
     <div className="play-container">
@@ -30,33 +40,11 @@ export default function Play(props) {
             <FontAwesomeIcon icon={faArrowLeft} />
             <FontAwesomeIcon icon={faHouse} />
           </button>
-
-          <div className="battle-floor">
-            {/* Do not touch!
-                Pokemon sprites are loaded as background image.
-                Change PLAYER & OPPONENT to modify active sprite. */}
-            <div
-              className="pokemon self"
-              style={{
-                backgroundImage: PLAYER,
-              }}
-            ></div>
-            <div
-              className="pokemon opponent"
-              style={{
-                backgroundImage: OPPONENT,
-              }}
-            ></div>
-          </div>
-
-          <div className="move-select">
-            <MoveItem id="move1" loc="game" moveName="Move 1" />
-            <MoveItem id="move2" loc="game" moveName="Move 2" />
-            <MoveItem id="move3" loc="game" moveName="Move 3" />
-            <MoveItem id="move4" loc="game" moveName="Move 4" />
-          </div>
+          {roomType === "battle" && <BattleRoom />}
+          {roomType === "treasure" && <TreasureRoom />}
         </div>
       </div>
+      <GameLogic />
     </div>
   );
 }
