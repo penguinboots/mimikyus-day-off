@@ -1,57 +1,15 @@
 import Achievement from "./Achievement";
+const achievementList = require("../../game/data/achievements.json")
 
 export default function AchievementsMenu(props) {
-  const achievementsData = [
-    {
-      name: "crimes against magikarp",
-      earned: true,
-    },
-    {
-      name: "something shiny",
-      earned: true,
-    },
-    {
-      name: "crimes against snorlax",
-      earned: true,
-    },
-    {
-      name: "crimes against goomy",
-      earned: true,
-    },
-    {
-      name: "crimes against dugtrio",
-      earned: true,
-    },
-    {
-      name: "repeat offender",
-      earned: true,
-    },
-    {
-      name: "crimes against munchlax",
-      earned: true,
-    },
-    {
-      name: "and your little dog too",
-      earned: true,
-    },
-    {
-      name: "third time's the charm?",
-      earned: true,
-    },
-    {
-      name: "treasure hunter",
-      earned: true,
-    },
-    {
-      name: "enemy vanquished",
-      earned: true,
-    },
-    {
-      name: "the true meaning of day off",
-      earned: true,
-    },
-  ];
-
+  const achievementsData = [];
+  for (const key in achievementList) {
+    if (achievementList.hasOwnProperty(key)) {
+      const value = achievementList[key];
+      achievementsData.push(value);
+    }
+  }
+  
   const achievements = achievementsData.map((ach) => {
     return (
       <Achievement key={ach.name} achievement={ach}/>
