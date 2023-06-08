@@ -26,7 +26,6 @@ export default function useGameState() {
   // helper for nextRoom()
   // behaviour not yet set up for clearing final floor
   function nextFloor(nextFl) {
-    console.log("next floor:", nextFl)
     setGameState((prev) => ({
       ...prev,
       currentFloor: dungeon[nextFl],
