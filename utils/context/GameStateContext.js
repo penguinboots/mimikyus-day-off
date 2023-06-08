@@ -17,6 +17,8 @@ export function GameStateProvider({ children }) {
     roomType: dungeon.floor_1.room_1.type,
   });
 
+  const [charState, setCharState] = useState();
+
   const [turnMode, setTurnMode] = useState('player');
   const [battleWon, setBattleWon] = useState(false);
   const [popup, setPopup] = useState({
@@ -55,6 +57,8 @@ export function GameStateProvider({ children }) {
   const value = {
     gameState,
     setGameState,
+    charState,
+    setCharState,
     turnMode,
     setTurnMode,
     battleWon,
@@ -71,7 +75,7 @@ export function GameStateProvider({ children }) {
       {children}
     </GameStateContext.Provider>
   );
-  
+
 }
 
 export default GameStateContext;
