@@ -4,7 +4,8 @@ import Nav from "../common/Nav";
 import GameLogic from "./GameLogic";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
-import useGameState from "@/utils/hooks/gameState";
+import { useGameState } from "../../utils/context/GameStateContext";
+import { useEffect } from "react";
 
 export default function Play(props) {
   const { setMode, isMusicPlaying, handleMusicToggle } = props;
@@ -13,20 +14,7 @@ export default function Play(props) {
     setMode("DASH");
   };
 
-  const {
-    gameState,
-    setGameState,
-    roomType,
-    setRoomType,
-    turnMode,
-    setTurnMode,
-    battleWon,
-    setBattleWon,
-    popup,
-    setPopup,
-    sprites,
-    setSprites,
-  } = useGameState();
+  const { gameState, nextRoom } = useGameState();
 
   return (
     <div className="play-container">
@@ -39,12 +27,20 @@ export default function Play(props) {
           <FontAwesomeIcon icon={faArrowLeft} />
           <FontAwesomeIcon icon={faHouse} />
         </button>
-        {roomType === "battle" &&
-          <BattleRoom returnToDash={returnToDash}
-        />}
-        {roomType === "treasure" && 
-          <TreasureRoom returnToDash={returnToDash}
-        />}
+        {gameState.roomType === "battle" && (
+          <BattleRoom
+            returnToDash={returnToDash}
+            nextRoom={nextRoom}
+            gameState={gameState}
+          />
+        )}
+        {gameState.roomType === "treasure" && (
+          <TreasureRoom
+            returnToDash={returnToDash}
+            nextRoom={nextRoom}
+            gameState={gameState}
+          />
+        )}
       </div>
       <GameLogic />
     </div>

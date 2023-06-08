@@ -1,4 +1,5 @@
-import useGameState from "@/utils/hooks/gameState"
+import { useGameState } from "../../utils/context/GameStateContext";
+
 import { useState } from "react";
 
 export default function GameLogic() {
@@ -27,8 +28,6 @@ export default function GameLogic() {
               - handleContinue -> handles button behaviour
               - roomType (state) & battleWon (state) -> determines what kind of popup (intro, victory/defeat, treasure)
   */
-
-
 
   return <div>GameLogic</div>;
 }

@@ -1,27 +1,13 @@
 import MoveItem from "../common/MoveItem";
-import useGameState from "@/utils/hooks/gameState";
+import { useGameState } from "../../utils/context/GameStateContext";
 
-export default function Room() {
-  const {
-    gameState,
-    setGameState,
-    roomType,
-    setRoomType,
-    turnMode,
-    setTurnMode,
-    battleWon,
-    setBattleWon,
-    popup,
-    setPopup,
-    sprites,
-    setSprites,
-  } = useGameState();
-
+export default function Room(props) {
   return (
-    <div className="room treasure-room">
+    <div className="treasure-room">
       <div className="treasure-floor">
         <div>THIS IS A TREASURE CHEST</div>
       </div>
+      <button onClick={props.nextRoom}>NEXT ROOM</button>
     </div>
   );
 }
