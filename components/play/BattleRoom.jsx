@@ -7,16 +7,13 @@ import {
   opponentMoveSelect,
 } from "../../game/helpers/combat";
 
-export default function Room(props) {
-  const { floor_1 } = require("../../game/pregenerated/floors/floor1");
-  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
-  const { returnToDash, nextRoom } = props;
-
+export default function Room() {
   const {
     gameState,
     setGameState,
     roomType,
     setRoomType,
+    nextRoom,
     turnMode,
     setTurnMode,
     battleWon,
@@ -39,10 +36,10 @@ export default function Room(props) {
   // Checks for opponent HP <= 0
   useEffect(() => {
     if (gameState.opponent.current_hp <= 0) {
-      setBattleWon(true);
       console.log("battle won");
+      // nextRoom();
     }
-  }, [gameState.opponent, setBattleWon]);
+  }, [gameState.opponent, setBattleWon, nextRoom]);
 
   // Checks for player HP <= 0
   useEffect(() => {
@@ -50,8 +47,8 @@ export default function Room(props) {
       console.log("battle lost");
     }
   }, [gameState.player]);
-  
-  // Execute the move, applying hp/stat changes
+
+  // Executes the move, applying hp/stat changes
   let doMove = (moveEffects, target, self) => {
     if (moveEffects.damage) {
       dealDamage(target, moveEffects.damage);
@@ -64,9 +61,8 @@ export default function Room(props) {
     }
   };
 
-  // Gets called when player picks a move
+  // Executes player move selection
   function executeTurn(charMove, char, opponentMove, opponent) {
-    // Creates array of two moves, in order of action
     let turns = moveOrder(charMove, char, opponentMove, opponent);
 
     for (let turn of turns) {
@@ -82,7 +78,6 @@ export default function Room(props) {
         doMove(moveEffects, "player", "opponent");
       }
     }
-
     /*
       - setTurnMode("logic"), greys out or hides move UI
       **** first run ****
@@ -117,6 +112,24 @@ export default function Room(props) {
     */
   }
 
+  const playerMoves = Object.values(gameState.player.moves).map((move) => {
+    return (
+      <button
+        key={move.name}
+        onClick={() =>
+          executeTurn(
+            gameState.player.moves[move.name],
+            gameState.player,
+            gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
+            gameState.opponent
+          )
+        }
+      >
+        <MoveItem id={move.name} loc="game" moveName={move.name} />
+      </button>
+    );
+  });
+
   return (
     <div
       className="battle-room"
@@ -148,27 +161,7 @@ export default function Room(props) {
       </div>
 
       <div className="move-select">
-        <button
-          onClick={() =>
-            executeTurn(
-              gameState.player.moves.bite,
-              gameState.player,
-              gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
-              gameState.opponent
-            )
-          }
-        >
-          <MoveItem id="move1" loc="game" moveName="Move 1" />
-        </button>
-        <button>
-          <MoveItem id="move2" loc="game" moveName="Move 2" />
-        </button>
-        <button>
-          <MoveItem id="move3" loc="game" moveName="Move 3" />
-        </button>
-        <button>
-          <MoveItem id="move4" loc="game" moveName="Move 4" />
-        </button>
+        {playerMoves}
         <button onClick={nextRoom}>NEXT</button>
       </div>
     </div>
