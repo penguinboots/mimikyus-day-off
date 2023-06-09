@@ -1,19 +1,20 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
 import { useEffect } from "react";
-import { moveOrder, calculateMove, opponentMoveSelect } from "../../game/helpers/combat";
+import {
+  moveOrder,
+  calculateMove,
+  opponentMoveSelect,
+} from "../../game/helpers/combat";
 
 export default function Room(props) {
   const { floor_1 } = require("../../game/pregenerated/floors/floor1");
   const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
-  // const doMove = require("../../game/helpers/combat/doMove");
   const { returnToDash, nextRoom } = props;
 
   const {
     gameState,
     setGameState,
-    playerStat,
-    setPlayerStat,
     roomType,
     setRoomType,
     turnMode,
@@ -24,21 +25,45 @@ export default function Room(props) {
     setPopup,
     sprites,
     setSprites,
+    dealDamage,
+    dealHeal,
+    battleHistory,
+    setBattleHistory,
   } = useGameState();
 
   // Modify to change active sprite
   const PLAYER = sprites.player;
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
+
+  // Execute the move, applying hp/stat changes
+  let doMove = (moveEffects, target, self) => {
+    if (moveEffects.damage) {
+      dealDamage(target, moveEffects.damage);
+    }
+    if (moveEffects.heal) {
+      dealHeal(self, moveEffects.heal);
+    }
+    if (moveEffects.statChanges) {
+      // apply stat changes
+    }
+  };
+
   // Gets called when player picks a move
   function executeTurn(charMove, char, opponentMove, opponent) {
+    // Creates array of two moves, in order of action
     let turns = moveOrder(charMove, char, opponentMove, opponent);
-    
-    for (let turn of turns) {
-      calculateMove(turn.move, turn.user, turn.target);
-    }
-    
 
+    for (let turn of turns) {
+      let moveEffects = calculateMove(turn.move, turn.user, turn.target);
+      console.log(turn.user.name + " uses " + turn.move.name);
+      if (turn.user === gameState.player) {
+        doMove(moveEffects, "opponent", "player");
+      }
+      if (turn.user === gameState.opponent) {
+        doMove(moveEffects, "player", "opponent");
+      }
+    }
 
     /*
       - setTurnMode("logic"), greys out or hides move UI
@@ -88,9 +113,9 @@ export default function Room(props) {
             backgroundImage: PLAYER,
           }}
         >
-          me: {playerStat.name}
+          me: {gameState.player.name}
           <br />
-          current HP: {playerStat.current_hp}
+          current HP: {gameState.player.current_hp}
         </div>
         <div
           className="pokemon opponent"
@@ -98,9 +123,9 @@ export default function Room(props) {
             backgroundImage: OPPONENT,
           }}
         >
-          opponent: {gameState.currentRoom.opponent.name}
+          opponent: {gameState.opponent.name}
           <br />
-          current HP: {gameState.currentRoom.opponent.current_hp}
+          current HP: {gameState.opponent.current_hp}
         </div>
       </div>
 
@@ -108,10 +133,10 @@ export default function Room(props) {
         <button
           onClick={() =>
             executeTurn(
-              magikarp.moves.tackle,
-              playerStat,
-              magikarp.moves.tackle,
-              gameState.currentRoom.opponent,
+              gameState.player.moves.bite,
+              gameState.player,
+              gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
+              gameState.opponent
             )
           }
         >
