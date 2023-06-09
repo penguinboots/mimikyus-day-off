@@ -11,8 +11,8 @@ export function useGameState() {
 
 // Create a provider component
 export function GameStateProvider({ children }) {
-  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
-  const player = snorlax1;
+  const { mimikyu } = require("../../game/pregenerated/fakePlayer");
+  const player = mimikyu;
 
   const [gameState, setGameState] = useState({
     currentFloor: dungeon.floor_1,
