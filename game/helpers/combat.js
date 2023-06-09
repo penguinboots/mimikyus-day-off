@@ -2,7 +2,7 @@ const {moveOrder} = require('../helpers/combat/moveOrder')
 const {calculateMove} = require('../helpers/combat/calculateMove')
 const {damageCalc} = require('../helpers/combat/damageCalc')
 const {drainCalc} = require('../helpers/combat/drainCalc')
-const {changeStat} = require('../helpers/combat/changeStat')
+const {calcStat} = require('../helpers/combat/calcStat')
 const {opponentMoveSelect} = require('../helpers/combat/opponentMoveSelect')
 const {moveFetcher} = require('../helpers/combat/moveFetcher')
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
   calculateMove,
   damageCalc,
   drainCalc,
-  changeStat,
+  calcStat,
   opponentMoveSelect,
   moveFetcher,
 }
