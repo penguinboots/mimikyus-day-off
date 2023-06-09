@@ -160,11 +160,10 @@ export default function Room() {
         >
           me: {gameState.player.name}
           <br />
+          {gameState.player.current_hp}/{gameState.player.stats.hp}
           <HealthBar
-            value={gameState.opponent.current_hp}
-            maxValue={gameState.opponent.max_hp}
-            label="HP"
-            current_hp={gameState.opponent.current_hp}
+            value={gameState.player.current_hp}
+            maxValue={gameState.player.stats.hp}
           />
         </div>
         <div
@@ -175,11 +174,10 @@ export default function Room() {
         >
           opponent: {gameState.opponent.name}
           <br />
+          {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}
           <HealthBar
             value={gameState.opponent.current_hp}
-            maxValue={gameState.opponent.max_hp}
-            label="HP"
-            current_hp={gameState.opponent.current_hp}
+            maxValue={gameState.opponent.stats.hp}
           />
         </div>
       </div>

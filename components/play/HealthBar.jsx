@@ -1,17 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const HealthBar = ({ value, maxValue, label }) => (
-  <div className="health-main">
-    <div className="health-label">{label}</div>
+export default function HealthBar (props) {
+  const { value, maxValue } = props;
+
+  let adjustedValue = value < 0 ? 0 : value;
+
+  let healthMaxPx = 400;
+
+  let barWidth = String(adjustedValue / maxValue * healthMaxPx);
+
+  return (<div className="health-container">
+
+    <div className="health-label">HP</div>
     <div className="health-max">
       <div
         className="health-value"
         style={{
-          width: `${(value / maxValue) * 100}%`,
+          width: `${barWidth}px`,
         }}
       ></div>
     </div>
-  </div>
-);
 
-export default HealthBar;
+  </div>);
+};
