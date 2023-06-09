@@ -35,7 +35,7 @@ export default function Room(props) {
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     
     for (let turn of turns) {
-      doMove(turn.move, turn.user, turn.target);
+      calculateMove(turn.move, turn.user, turn.target);
     }
     
 
