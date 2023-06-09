@@ -1,288 +1,101 @@
 {
-  "abilities": [
-    {
-      "ability": {
-        "name": "disguise"
-      },
+  "abilities": {
+    "disguise": {
       "is_hidden": false,
       "slot": 1
     }
-  ],
+  },
   "height": 2,
   "id": 778,
   "is_default": true,
   "moves": [
-    {
-      "name": "scratch"
-    },
-    {
-      "name": "swords-dance"
-    },
-    {
-      "name": "take-down"
-    },
-    {
-      "name": "hyper-beam"
-    },
-    {
-      "name": "thunderbolt"
-    },
-    {
-      "name": "thunder-wave"
-    },
-    {
-      "name": "thunder"
-    },
-    {
-      "name": "toxic"
-    },
-    {
-      "name": "psychic"
-    },
-    {
-      "name": "night-shade"
-    },
-    {
-      "name": "mimic"
-    },
-    {
-      "name": "screech"
-    },
-    {
-      "name": "confuse-ray"
-    },
-    {
-      "name": "light-screen"
-    },
-    {
-      "name": "dream-eater"
-    },
-    {
-      "name": "leech-life"
-    },
-    {
-      "name": "splash"
-    },
-    {
-      "name": "rest"
-    },
-    {
-      "name": "slash"
-    },
-    {
-      "name": "substitute"
-    },
-    {
-      "name": "nightmare"
-    },
-    {
-      "name": "snore"
-    },
-    {
-      "name": "curse"
-    },
-    {
-      "name": "spite"
-    },
-    {
-      "name": "protect"
-    },
-    {
-      "name": "feint-attack"
-    },
-    {
-      "name": "destiny-bond"
-    },
-    {
-      "name": "giga-drain"
-    },
-    {
-      "name": "endure"
-    },
-    {
-      "name": "charm"
-    },
-    {
-      "name": "swagger"
-    },
-    {
-      "name": "safeguard"
-    },
-    {
-      "name": "psych-up"
-    },
-    {
-      "name": "shadow-ball"
-    },
-    {
-      "name": "beat-up"
-    },
-    {
-      "name": "will-o-wisp"
-    },
-    {
-      "name": "facade"
-    },
-    {
-      "name": "taunt"
-    },
-    {
-      "name": "grudge"
-    },
-    {
-      "name": "astonish"
-    },
-    {
-      "name": "bulk-up"
-    },
-    {
-      "name": "covet"
-    },
-    {
-      "name": "payback"
-    },
-    {
-      "name": "embargo"
-    },
-    {
-      "name": "fling"
-    },
-    {
-      "name": "copycat"
-    },
-    {
-      "name": "dark-pulse"
-    },
-    {
-      "name": "x-scissor"
-    },
-    {
-      "name": "drain-punch"
-    },
-    {
-      "name": "giga-impact"
-    },
-    {
-      "name": "shadow-claw"
-    },
-    {
-      "name": "shadow-sneak"
-    },
-    {
-      "name": "trick-room"
-    },
-    {
-      "name": "charge-beam"
-    },
-    {
-      "name": "wood-hammer"
-    },
-    {
-      "name": "hone-claws"
-    },
-    {
-      "name": "telekinesis"
-    },
-    {
-      "name": "magic-room"
-    },
-    {
-      "name": "after-you"
-    },
-    {
-      "name": "hex"
-    },
-    {
-      "name": "work-up"
-    },
-    {
-      "name": "phantom-force"
-    },
-    {
-      "name": "draining-kiss"
-    },
-    {
-      "name": "play-rough"
-    },
-    {
-      "name": "confide"
-    },
-    {
-      "name": "dazzling-gleam"
-    },
-    {
-      "name": "baby-doll-eyes"
-    },
-    {
-      "name": "burning-jealousy"
-    },
-    {
-      "name": "tera-blast"
-    },
-    {
-      "name": "pounce"
-    },
-    {
-      "name": "trailblaze"
-    }
+    "scratch",
+    "swords-dance",
+    "take-down",
+    "hyper-beam",
+    "thunderbolt",
+    "thunder-wave",
+    "thunder",
+    "toxic",
+    "psychic",
+    "night-shade",
+    "mimic",
+    "screech",
+    "confuse-ray",
+    "light-screen",
+    "dream-eater",
+    "leech-life",
+    "splash",
+    "rest",
+    "slash",
+    "substitute",
+    "nightmare",
+    "snore",
+    "curse",
+    "spite",
+    "protect",
+    "feint-attack",
+    "destiny-bond",
+    "giga-drain",
+    "endure",
+    "charm",
+    "swagger",
+    "safeguard",
+    "psych-up",
+    "shadow-ball",
+    "beat-up",
+    "will-o-wisp",
+    "facade",
+    "taunt",
+    "grudge",
+    "astonish",
+    "bulk-up",
+    "covet",
+    "payback",
+    "embargo",
+    "fling",
+    "copycat",
+    "dark-pulse",
+    "x-scissor",
+    "drain-punch",
+    "giga-impact",
+    "shadow-claw",
+    "shadow-sneak",
+    "trick-room",
+    "charge-beam",
+    "wood-hammer",
+    "hone-claws",
+    "telekinesis",
+    "after-you",
+    "hex",
+    "work-up",
+    "phantom-force",
+    "draining-kiss",
+    "magic-room",
+    "play-rough",
+    "confide",
+    "dazzling-gleam",
+    "baby-doll-eyes",
+    "burning-jealousy",
+    "tera-blast",
+    "pounce",
+    "trailblaze"
   ],
   "name": "mimikyu-disguised",
   "order": 951,
   "past_types": [],
-  "species": {
-    "name": "mimikyu"
+  "species": "mimikyu",
+  "stats": {
+    "hp": 55,
+    "attack": 90,
+    "defense": 80,
+    "special-attack": 50,
+    "special-defense": 105,
+    "speed": 96
   },
-  "stats": [
-    {
-      "base_stat": 55,
-      "stat": {
-        "name": "hp"
-      }
-    },
-    {
-      "base_stat": 90,
-      "stat": {
-        "name": "attack"
-      }
-    },
-    {
-      "base_stat": 80,
-      "stat": {
-        "name": "defense"
-      }
-    },
-    {
-      "base_stat": 50,
-      "stat": {
-        "name": "special-attack"
-      }
-    },
-    {
-      "base_stat": 105,
-      "stat": {
-        "name": "special-defense"
-      }
-    },
-    {
-      "base_stat": 96,
-      "stat": {
-        "name": "speed"
-      }
-    }
-  ],
   "types": [
-    {
-      "slot": 1,
-      "type": {
-        "name": "ghost"
-      }
-    },
-    {
-      "slot": 2,
-      "type": {
-        "name": "fairy"
-      }
-    }
+    "ghost",
+    "fairy"
   ],
   "weight": 7
 }

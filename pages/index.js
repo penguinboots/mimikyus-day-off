@@ -22,36 +22,10 @@ export default function Home() {
   // Music
   const dashboardAudioRef = useRef(null);
   const playAudioRef = useRef(null);
-  const dashboardVolumeRef = useRef(0.05);
-  const playVolumeRef = useRef(0.05);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(
-    mode === 'DASH' ? dashboardAudioRef : playAudioRef
+    mode === 'DASH' ? dashboardAudioRef : playAudioRef,
+    mode
   );
-  
-  // Music Toggle
-  useEffect(() => {
-    if (isMusicPlaying && mode === 'DASH' && dashboardAudioRef.current) {
-        dashboardAudioRef.current.volume = dashboardVolumeRef.current;
-        dashboardAudioRef.current.play();
-    } else if (isMusicPlaying && mode === 'PLAY' && playAudioRef.current) {
-        playAudioRef.current.volume = playVolumeRef.current;
-        playAudioRef.current.play();
-    } else {
-        if (dashboardAudioRef.current) dashboardAudioRef.current.pause();
-        if (playAudioRef.current) playAudioRef.current.pause();
-    }
-  }, [isMusicPlaying, mode]);
-
-  // Save volume levels when unmounting or switching modes
-  useEffect(() => {
-    return () => {
-      if (mode === 'DASH' && dashboardAudioRef.current) {
-        dashboardVolumeRef.current = dashboardAudioRef.current.volume;
-      } else if (mode === 'PLAY' && playAudioRef.current) {
-        playVolumeRef.current = playAudioRef.current.volume;
-      }
-    };
-  }, [mode]);
 
   // Skip landing if user is logged in
   useEffect(() => {

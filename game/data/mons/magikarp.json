@@ -1,91 +1,38 @@
 {
-  "abilities": [
-    {
-      "ability": {
-        "name": "swift-swim"
-      },
+  "abilities": {
+    "swift-swim": {
       "is_hidden": false,
       "slot": 1
     },
-    {
-      "ability": {
-        "name": "rattled"
-      },
+    "rattled": {
       "is_hidden": true,
       "slot": 3
     }
-  ],
+  },
   "height": 9,
   "id": 129,
   "is_default": true,
   "moves": [
-    {
-      "name": "tackle"
-    },
-    {
-        "name": "hydro-pump"
-    },
-    {
-        "name": "splash"
-    },
-    {
-        "name": "flail"
-    },
-    {
-        "name": "bounce"
-    }
+    "tackle",
+    "hydro-pump",
+    "splash",
+    "flail",
+    "bounce"
   ],
   "name": "magikarp",
   "order": 210,
   "past_types": [],
-  "species": {
-    "name": "magikarp"
+  "species": "magikarp",
+  "stats": {
+    "hp": 20,
+    "attack": 10,
+    "defense": 55,
+    "special-attack": 15,
+    "special-defense": 20,
+    "speed": 80,   
   },
-  "stats": [
-    {
-      "base_stat": 20,
-      "stat": {
-        "name": "hp"
-      }
-    },
-    {
-      "base_stat": 10,
-      "stat": {
-        "name": "attack"
-      }
-    },
-    {
-      "base_stat": 55,
-      "stat": {
-        "name": "defense"
-      }
-    },
-    {
-      "base_stat": 15,
-      "stat": {
-        "name": "special-attack"
-      }
-    },
-    {
-      "base_stat": 20,
-      "stat": {
-        "name": "special-defense"
-      }
-    },
-    {
-      "base_stat": 80,
-      "stat": {
-        "name": "speed"
-      }
-    }
-  ],
   "types": [
-    {
-      "slot": 1,
-      "type": {
-        "name": "water"
-      }
-    }
+    "water"
   ],
   "weight": 100
 }

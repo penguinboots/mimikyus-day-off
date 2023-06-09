@@ -1,16 +1,20 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
+import { useEffect } from "react";
+import {
+  moveOrder,
+  calculateMove,
+  opponentMoveSelect,
+  moveFetcher,
+} from "../../game/helpers/combat";
 
-const { floor_1 } = require("../../game/pregenerated/floors/floor1");
-
-export default function Room(props) {
-  const { returnToDash, nextRoom  } = props;
-
+export default function Room() {
   const {
     gameState,
     setGameState,
     roomType,
     setRoomType,
+    nextRoom,
     turnMode,
     setTurnMode,
     battleWon,
@@ -19,6 +23,10 @@ export default function Room(props) {
     setPopup,
     sprites,
     setSprites,
+    dealDamage,
+    dealHeal,
+    battleHistory,
+    setBattleHistory,
   } = useGameState();
 
   // Modify to change active sprite
@@ -26,8 +34,51 @@ export default function Room(props) {
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
 
-  // Gets called when player picks a move
-  function executeTurn(char, charMove, opponent, opponentMove) {
+  // Checks for opponent HP <= 0
+  useEffect(() => {
+    if (gameState.opponent.current_hp <= 0) {
+      console.log("battle won");
+      // nextRoom();
+    }
+  }, [gameState.opponent, setBattleWon, nextRoom]);
+
+  // Checks for player HP <= 0
+  useEffect(() => {
+    if (gameState.player.current_hp <= 0) {
+      console.log("battle lost");
+    }
+  }, [gameState.player]);
+
+  // Executes the move, applying hp/stat changes
+  let doMove = (moveEffects, target, self) => {
+    if (moveEffects.damage) {
+      dealDamage(target, moveEffects.damage);
+    }
+    if (moveEffects.heal) {
+      dealHeal(self, moveEffects.heal);
+    }
+    if (moveEffects.statChanges) {
+      // apply stat changes
+    }
+  };
+
+  // Executes player move selection
+  function executeTurn(charMove, char, opponentMove, opponent) {
+    let turns = moveOrder(charMove, char, opponentMove, opponent);
+
+    for (let turn of turns) {
+      let moveEffects = calculateMove(turn.move, turn.user, turn.target);
+      setBattleHistory((prev) => [
+        ...prev,
+        `${turn.user.name} used ${turn.move.name}!\n`,
+      ]);
+      if (turn.user === gameState.player) {
+        doMove(moveEffects, "opponent", "player");
+      }
+      if (turn.user === gameState.opponent) {
+        doMove(moveEffects, "player", "opponent");
+      }
+    }
     /*
       - setTurnMode("logic"), greys out or hides move UI
       **** first run ****
@@ -61,6 +112,33 @@ export default function Room(props) {
       **** ready to repeat ****
     */
   }
+  const playerMoveArray = []
+  gameState.player.moves.forEach(moveString => {
+    playerMoveArray.push(moveFetcher(moveString))
+  });
+  const playerMoves = Object.values(playerMoveArray).map((move) => {
+    return (
+      <button
+        key={move.name}
+        onClick={() =>
+          executeTurn(
+            move,
+            gameState.player,
+            gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
+            gameState.opponent
+          )
+        }
+      >
+        <MoveItem
+          id={move.name}
+          loc="game"
+          moveName={move.name}
+          movePower={move.power}
+          moveDesc={move.effect_entries[0].short_effect}
+        />
+      </button>
+    );
+  });
 
   return (
     <div
@@ -75,23 +153,25 @@ export default function Room(props) {
           style={{
             backgroundImage: PLAYER,
           }}
-        ></div>
+        >
+          me: {gameState.player.name}
+          <br />
+          current HP: {gameState.player.current_hp}
+        </div>
         <div
           className="pokemon opponent"
           style={{
             backgroundImage: OPPONENT,
           }}
         >
-          {gameState.currentRoom.opponent ? gameState.currentRoom.opponent.name : "no opponent"}
+          opponent: {gameState.opponent.name}
+          <br />
+          current HP: {gameState.opponent.current_hp}
         </div>
       </div>
 
       <div className="move-select">
-        <MoveItem id="move1" loc="game" moveName="Move 1" />
-        {/* onClick={() => executeTurn(character, character.move1, opponent, opponentMove )} */}
-        <MoveItem id="move2" loc="game" moveName="Move 2" />
-        <MoveItem id="move3" loc="game" moveName="Move 3" />
-        <MoveItem id="move4" loc="game" moveName="Move 4" />
+        {playerMoves}
         <button onClick={nextRoom}>NEXT</button>
       </div>
     </div>

@@ -5,7 +5,6 @@ import GameLogic from "./GameLogic";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
-import { useEffect } from "react";
 
 export default function Play(props) {
   const { setMode, isMusicPlaying, handleMusicToggle } = props;
