@@ -1,7 +1,7 @@
 import React from "react";
 import TypeLabel from "./TypeLabel";
 
-export default function PokeInfo() {
+export default function PokeCard() {
   return (
     <div className="poke-info-card">
       <h2>CURRENT FRIEND</h2>

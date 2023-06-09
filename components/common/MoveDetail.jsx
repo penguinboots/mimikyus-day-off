@@ -1,12 +1,4 @@
-import PropTypes from 'prop-types';
-
 export default function MoveDetail(props) {
-  MoveDetail.propTypes = {
-    moveName: PropTypes.string,
-    power: PropTypes.number,
-    description: PropTypes.string,
-  };
-
   const { moveName, power, description } = props;
 
   return (
