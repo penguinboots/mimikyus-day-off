@@ -12,13 +12,7 @@
   "height": 9,
   "id": 129,
   "is_default": true,
-  "moves": [
-    "tackle",
-    "hydro-pump",
-    "splash",
-    "flail",
-    "bounce"
-  ],
+  "moves": ["tackle", "hydro-pump", "splash", "flail", "bounce"],
   "name": "magikarp",
   "order": 210,
   "past_types": [],
@@ -29,10 +23,8 @@
     "defense": 55,
     "special-attack": 15,
     "special-defense": 20,
-    "speed": 80,   
+    "speed": 80
   },
-  "types": [
-    "water"
-  ],
+  "types": ["water"],
   "weight": 100
 }
