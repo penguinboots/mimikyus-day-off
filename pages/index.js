@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { getUserAchievements, findCurrentUser, findUserCharacters } from "../prisma/script";
 // Components
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
@@ -33,22 +34,7 @@ export default function Home() {
     }
   }, [user]);
 
-  // Check which user is logged in from Auth0
-  const getLoggedInUser = () => {
-    if (user) {
-      const { email, name, picture, sub } = user;
-      console.log("Logged-in user:");
-      console.log("Email:", email);
-      console.log("Name:", name);
-      console.log("Picture:", picture);
-      console.log("User ID:", sub);
-    }
-  };
-
-  // Calling useEffect to check logged in user from auth0
-  useEffect(() => {
-    getLoggedInUser();
-  }, [user]);
+  console.log("USER INFO: ", user);
 
   return (
     <div className="app-wrapper">
@@ -80,10 +66,17 @@ export default function Home() {
   );
 }
 
-// export async function getStaticProps() {
-//   const prisma = new PrismaClient();
+export async function getStaticProps() {
+  const userId = 123;
+  const achievements = await getUserAchievements(userId);
+  const currentUser = await findCurrentUser("auth0sub123");
+  const userCharacters = await findUserCharacters(userId);
 
-//   return {
-//     props : {}
-//   };
-// }
+  return {
+    props: {
+      achievements,
+      currentUser,
+      userCharacters,
+    },
+  };
+}

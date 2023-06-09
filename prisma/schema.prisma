@@ -16,25 +16,16 @@ model User {
   auth0Sub     String      @unique
   password     String?
   name         String
-  achievements Achieved[]
+  achievements Achievement[]
   Character    Character[]
 }
 
 model Achievement {
-  id                      Int        @id @default(autoincrement())
-  achievement_name        String
-  achievement_image       String
-  achievement_description String
-  achieved                Achieved[]
-}
-
-model Achieved {
   id            Int         @id @default(autoincrement())
   date_get      DateTime
   user          User        @relation(fields: [userId], references: [id])
   userId        Int
-  achievement   Achievement @relation(fields: [achievementId], references: [id])
-  achievementId Int
+  name          String
   collected     Boolean
 }
 

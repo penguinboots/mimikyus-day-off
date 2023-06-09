@@ -7,6 +7,7 @@ import {
   opponentMoveSelect,
   moveFetcher,
 } from "../../game/helpers/combat";
+import HealthBar from "./HealthBar";
 
 export default function Room() {
   const {
@@ -159,7 +160,11 @@ export default function Room() {
         >
           me: {gameState.player.name}
           <br />
-          current HP: {gameState.player.current_hp}
+          {gameState.player.current_hp}/{gameState.player.stats.hp}
+          <HealthBar
+            value={gameState.player.current_hp}
+            maxValue={gameState.player.stats.hp}
+          />
         </div>
         <div
           className="pokemon opponent"
@@ -169,7 +174,11 @@ export default function Room() {
         >
           opponent: {gameState.opponent.name}
           <br />
-          current HP: {gameState.opponent.current_hp}
+          {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}
+          <HealthBar
+            value={gameState.opponent.current_hp}
+            maxValue={gameState.opponent.stats.hp}
+          />
         </div>
       </div>
 

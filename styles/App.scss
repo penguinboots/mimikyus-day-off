@@ -380,7 +380,8 @@ body {
     gap: 10px;
     font-size: 28px;
   }
-  .battle-room, .treasure-room {
+  .battle-room,
+  .treasure-room {
     height: 700px;
     width: 1100px;
     border-radius: 36px;
@@ -445,5 +446,35 @@ body {
     align-items: center;
     justify-content: center;
     background-color: $off-white;
+  }
+}
+
+/** HEALTH BAR **/
+.health-container {
+  width: 400px;
+  border-radius: 5px;
+  background-color: white;
+  .health-label {
+    width: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 50px;
+    color: black;
+  }
+  .health-max {
+    height: 20px;
+    width: 400px;
+    border-radius: 5px;
+    background-color: lightgray;
+  }
+  .health-value {
+    height: 20px;
+    background-color: #1f4525;
+
+    transition: 0.55s;
   }
 }
