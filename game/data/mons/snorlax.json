@@ -138,8 +138,6 @@
     "special-defense": 110,
     "speed": 30
   },
-  "types": [
-    "normal"
-  ],
+  "types": ["normal"],
   "weight": 4600
 }
