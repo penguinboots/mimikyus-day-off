@@ -1,7 +1,6 @@
 /** VARIABLES **/
 
-$light-blue: #d1d1ff;
-$dark-blue: #b4b4ff;
+$light-gray: #e3e3e3;
 $dark-gray: #403c3e;
 $light-green: #93b581;
 $very-light-green: #b5d19d;
@@ -16,6 +15,9 @@ $dash-bg: $light-green;
 $dash-card-bg: $very-light-green;
 $text-gen: $off-white;
 $label-bg: $off-white;
+
+$hp-bg: #e4e4e4;
+$hp-border: #525252;
 
 /** GENERAL **/
 
@@ -451,24 +453,47 @@ body {
 
 /** HEALTH BAR **/
 .health-container {
+  position: relative;
+  top: -150px;
+  left: 50px;
   width: 300px;
+  height: 60px;
   border-radius: 10px;
   overflow: hidden;
-  background-color: $off-white;
+
+  background-color: $hp-bg;
+  color: $hp-border;
+  background-image: url("/backgrounds/hp-bg.png");
+
+  border: 3px solid $hp-border;
+  outline: 2px solid white;
   .name-label {
-    font-size: 15px;
-    padding: 0 20px;
-  }
-  .health-bar {
     display: flex;
     justify-content: space-between;
+    font-size: 15px;
     padding: 0 20px;
+    font-weight: 500;
+  }
+  .health-bar {
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px 5px 20px;
+    padding: 2px 5px;
+    background-color: $hp-border;
+    border-radius: 6px;
+    gap: 4px;
+    h4 {
+      color: #f9b900;
+      font-weight: bold;
+    }
     .health-max {
-      height: 20px;
+      height: 16px;
       width: 90%;
-      border-radius: 5px;
+      border-radius: 2px;
       overflow: hidden;
-      background-color: lightgray;
+      background-color: $hp-bg;
     }
     .health-value {
       height: 20px;
