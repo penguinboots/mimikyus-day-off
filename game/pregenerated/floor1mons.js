@@ -26,6 +26,11 @@ const magikarp = {
   "types": ["water"],
   "height": 9,
   "weight": 100,
+  "sprites": {
+    "idle": `url("/sprites/magikarp-idl.gif")`,
+    "attack": `url("/sprites/magikarp-atkhit.gif")`,
+    "hit": `url("/sprites/magikarp-atkhit.gif")`,
+  }
 }
 
 const snorlax1 = {
@@ -55,7 +60,12 @@ const snorlax1 = {
   ],
   "types": ["normal"],
   "height": 21,
-  "weight": 4600
+  "weight": 4600,
+  "sprites": {
+    "idle": `url("/sprites/snorlax-idl.gif")`,
+    "attack": `url("/sprites/snorlax-atk.gif")`,
+    "hit": `url("/sprites/snorlax-hit.gif")`,
+  }
 }
 
 module.exports = { magikarp, snorlax1 };
