@@ -4,14 +4,14 @@ import AchievementsMenu from "./AchievementsMenu";
 import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
 
 export default function Nav(props) {
-  const { isMusicPlaying, handleMusicToggle } = props;
+  const { isMusicPlaying, handleMusicToggle, windowTitle } = props;
   const { isMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
 
   return (
     <div className="nav-container">
       <nav className="nav-bar">
         <div className="nav-left">
-          <div className="logo">POKÉDEX</div>
+          <div className="logo">{windowTitle}</div>
         </div>
         <div className="nav-right">
           <IconButton
