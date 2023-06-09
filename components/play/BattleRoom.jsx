@@ -33,11 +33,10 @@ export default function Room(props) {
   const BACKGROUND = gameState.currentRoom.background;
   // Gets called when player picks a move
   function executeTurn(charMove, char, opponentMove, opponent) {
-    let moves = moveOrder(charMove, char, opponentMove, opponent);
-
-    for (let move in moves) {
-      doMove(move, char, opponent);
-
+    let turns = moveOrder(charMove, char, opponentMove, opponent);
+    
+    for (let turn of turns) {
+      doMove(turn.move, turn.user, turn.target);
     }
     
 
