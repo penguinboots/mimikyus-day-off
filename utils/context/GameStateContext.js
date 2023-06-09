@@ -72,6 +72,7 @@ export function GameStateProvider({ children }) {
       },
     }));
   }
+  
   const dealHeal = (target, amt) => {
     setGameState((prev) => ({
       ...prev,
