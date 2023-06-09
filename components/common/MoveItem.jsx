@@ -2,7 +2,7 @@ import useIsHovering from "@/utils/hooks/isHovering";
 import MoveDetail from "./MoveDetail";
 
 export default function MoveItem(props) {
-  const { loc, id, moveName } = props;
+  const { loc, id, moveName, movePower, moveDesc } = props;
   const { handleMouseOver, handleMouseOut, isHovering } = useIsHovering();
 
   return (
@@ -17,8 +17,8 @@ export default function MoveItem(props) {
       {isHovering[loc][id] && (
         <MoveDetail
           moveName={moveName}
-          power={120}
-          description="Move X description"
+          power={movePower}
+          description={moveDesc}
         />
       )}
     </>
