@@ -11,15 +11,18 @@ export function useGameState() {
 
 // Create a provider component
 export function GameStateProvider({ children }) {
+  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
+  const player = snorlax1;
+
   const [gameState, setGameState] = useState({
     currentFloor: dungeon.floor_1,
     currentRoom: dungeon.floor_1.room_1,
     roomType: dungeon.floor_1.room_1.type,
+    opponent: dungeon.floor_1.room_1.opponent,
+    player: player,
   });
 
-  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
-
-  const [playerStat, setPlayerStat] = useState(magikarp);
+  const [battleHistory, setBattleHistory] = useState([]);
 
   const [turnMode, setTurnMode] = useState('player');
   const [battleWon, setBattleWon] = useState(false);
@@ -35,10 +38,13 @@ export function GameStateProvider({ children }) {
   });
 
   function nextFloor(nextFl) {
+    const nextFloor = dungeon[nextFl];
     setGameState((prev) => ({
       ...prev,
-      currentFloor: dungeon[nextFl],
-      currentRoom: dungeon[nextFl]['room_1'],
+      currentFloor: nextFloor,
+      currentRoom: nextFloor.room_1,
+      opponent: nextFloor.room_1.opponent,
+      player: player,
     }));
   }
 
@@ -49,18 +55,37 @@ export function GameStateProvider({ children }) {
         ...prev,
         currentRoom: nextRoom,
         roomType: nextRoom.type,
+        opponent: nextRoom.opponent,
+        player: player,
       }));
     } else {
       nextFloor(gameState.currentFloor.next_floor);
     }
   }
 
+  const dealDamage = (target, amt) => {
+    setGameState((prev) => ({
+      ...prev,
+      [target]: {
+        ...prev[target],
+        current_hp: Math.floor(prev[target]["current_hp"] - amt),
+      },
+    }));
+  }
+  const dealHeal = (target, amt) => {
+    setGameState((prev) => ({
+      ...prev,
+      [target]: {
+        ...prev[target],
+        current_hp: Math.floor(prev[target]["current_hp"] + amt),
+      },
+    }));
+  }
+
   // Provide the state and functions through the context
   const value = {
     gameState,
     setGameState,
-    playerStat,
-    setPlayerStat,
     turnMode,
     setTurnMode,
     battleWon,
@@ -70,6 +95,10 @@ export function GameStateProvider({ children }) {
     sprites,
     setSprites,
     nextRoom,
+    dealDamage,
+    dealHeal,
+    battleHistory,
+    setBattleHistory,
   };
 
   return (
