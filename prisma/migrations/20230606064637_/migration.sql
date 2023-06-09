@@ -10,7 +10,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Achievement" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "date_get" DATETIME NOT NULL,
+    "date_get" DATETIME,
     "userId" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "collected" BOOLEAN NOT NULL,

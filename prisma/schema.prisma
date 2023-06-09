@@ -22,7 +22,7 @@ model User {
 
 model Achievement {
   id            Int         @id @default(autoincrement())
-  date_get      DateTime
+  date_get      DateTime?
   user          User        @relation(fields: [userId], references: [id])
   userId        Int
   name          String

@@ -1,50 +1,50 @@
 {
   "crimes against magikarp": {
     "name": "crimes against magikarp",
-    "earned": true
+    "collected": false
   },
   "something shiny": {
     "name": "something shiny",
-    "earned": true
+    "collected": false
   },
   "crimes against snorlax": {
     "name": "crimes against snorlax",
-    "earned": true
+    "collected": false
   },
   "crimes against goomy": {
     "name": "crimes against goomy",
-    "earned": true
+    "collected": false
   },
   "crimes against dugtrio": {
     "name": "crimes against dugtrio",
-    "earned": true
+    "collected": false
   },
   "repeat offender": {
     "name": "repeat offender",
-    "earned": true
+    "collected": false
   },
   "crimes against munchlax": {
     "name": "crimes against munchlax",
-    "earned": true
+    "collected": false
   },
   "and your little dog too": {
     "name": "and your little dog too",
-    "earned": true
+    "collected": false
   },
   "third time's the charm?": {
     "name": "third time's the charm?",
-    "earned": true
+    "collected": false
   },
   "treasure hunter": {
     "name": "treasure hunter",
-    "earned": true
+    "collected": false
   },
   "enemy vanquished": {
     "name": "enemy vanquished",
-    "earned": true
+    "collected": false
   },
   "the true meaning of day off": {
     "name": "the true meaning of day off",
-    "earned": true
+    "collected": false
   }
 }
