@@ -17,7 +17,9 @@ export function GameStateProvider({ children }) {
     roomType: dungeon.floor_1.room_1.type,
   });
 
-  const [charState, setCharState] = useState();
+  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
+
+  const [playerStat, setPlayerStat] = useState(magikarp);
 
   const [turnMode, setTurnMode] = useState('player');
   const [battleWon, setBattleWon] = useState(false);
@@ -57,8 +59,8 @@ export function GameStateProvider({ children }) {
   const value = {
     gameState,
     setGameState,
-    charState,
-    setCharState,
+    playerStat,
+    setPlayerStat,
     turnMode,
     setTurnMode,
     battleWon,

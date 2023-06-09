@@ -1,17 +1,20 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
 import { useEffect } from "react";
+import { doMove } from "../../game/helpers/combat/doMove";
+import { moveOrder } from "@/game/helpers/combat/moveOrder";
 
 export default function Room(props) {
   const { floor_1 } = require("../../game/pregenerated/floors/floor1");
   const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
+  // const doMove = require("../../game/helpers/combat/doMove");
   const { returnToDash, nextRoom } = props;
 
   const {
     gameState,
     setGameState,
-    charState,
-    setCharState,
+    playerStat,
+    setPlayerStat,
     roomType,
     setRoomType,
     turnMode,
@@ -24,21 +27,19 @@ export default function Room(props) {
     setSprites,
   } = useGameState();
 
-  function setUpRoom() {
-    setCharState(magikarp);
-  }
-  useEffect(() => {
-    setCharState(magikarp);
-  }, []);
-
-  console.log(charState);
-
   // Modify to change active sprite
   const PLAYER = sprites.player;
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
   // Gets called when player picks a move
-  function executeTurn(char, charMove, opponent, opponentMove) {
+  function executeTurn(charMove, char, opponentMove, opponent) {
+    let moves = moveOrder(charMove, char, opponentMove, opponent);
+
+    for (let move in moves) {
+      doMove(move, char, opponent);
+
+    }
+    
 
 
     /*
@@ -89,9 +90,9 @@ export default function Room(props) {
             backgroundImage: PLAYER,
           }}
         >
-          me: {charState.name}
-          <br/>
-          current HP: {charState.current_hp}
+          me: {playerStat.name}
+          <br />
+          current HP: {playerStat.current_hp}
         </div>
         <div
           className="pokemon opponent"
@@ -106,11 +107,27 @@ export default function Room(props) {
       </div>
 
       <div className="move-select">
-        <MoveItem id="move1" loc="game" moveName="Move 1" />
-        {/* onClick={() => executeTurn(character, character.move1, opponent, opponentMove )} */}
-        <MoveItem id="move2" loc="game" moveName="Move 2" />
-        <MoveItem id="move3" loc="game" moveName="Move 3" />
-        <MoveItem id="move4" loc="game" moveName="Move 4" />
+        <button
+          onClick={() =>
+            executeTurn(
+              magikarp.moves.tackle,
+              playerStat,
+              magikarp.moves.tackle,
+              gameState.currentRoom.opponent,
+            )
+          }
+        >
+          <MoveItem id="move1" loc="game" moveName="Move 1" />
+        </button>
+        <button>
+          <MoveItem id="move2" loc="game" moveName="Move 2" />
+        </button>
+        <button>
+          <MoveItem id="move3" loc="game" moveName="Move 3" />
+        </button>
+        <button>
+          <MoveItem id="move4" loc="game" moveName="Move 4" />
+        </button>
         <button onClick={nextRoom}>NEXT</button>
       </div>
     </div>
