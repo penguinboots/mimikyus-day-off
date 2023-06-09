@@ -162,6 +162,7 @@ export default function Room() {
           <br />
           {gameState.player.current_hp}/{gameState.player.stats.hp}
           <HealthBar
+            poke={gameState.player.name}
             value={gameState.player.current_hp}
             maxValue={gameState.player.stats.hp}
           />
@@ -176,6 +177,7 @@ export default function Room() {
           <br />
           {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}
           <HealthBar
+            poke={gameState.opponent.name}
             value={gameState.opponent.current_hp}
             maxValue={gameState.opponent.stats.hp}
           />
