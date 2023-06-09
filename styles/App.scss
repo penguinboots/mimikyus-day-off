@@ -447,3 +447,39 @@ body {
     background-color: $off-white;
   }
 }
+
+.health-main {
+  display: flex;
+  border-radius: 5px;
+  gap: 5px;
+  padding: 5px;
+  align-items: center;
+  background-color: white;
+}
+
+.health-label {
+  font-size: 15px;
+  font-weight: bold;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 50px;
+  color: black;
+}
+
+.health-max {
+  height: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex: 1;
+  background-color: lightgray;
+}
+
+.health-value {
+  height: 100%;
+  background-color: #1f4525;
+
+  transition: 0.35s;
+}
