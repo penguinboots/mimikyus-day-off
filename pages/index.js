@@ -2,10 +2,6 @@
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
-// Prisma
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-const { main, findCurrentUser, findUserCharacters, getUserAchievements } = require("../prisma/script");
 // Components
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
@@ -63,38 +59,41 @@ export default function Home() {
     }
   }, [user]);
 
-  // Check which user is logged in from Auth0
-  async function getLoggedInUser(user) {
-    try {
-      const currentUser = await findCurrentUser(user.sub);
-      let userId;
-  
-      if (!currentUser) {
-        // Create a new user if the user does not exist in the database
-        const newUser = await main();
-        userId = newUser.id;
-      } else {
-        userId = currentUser.id;
-      }
-  
-      const achievements = await getUserAchievements(userId);
-      const userCharacters = await findUserCharacters(userId);
-  
-      return {
-        user: currentUser || newUser,
-        achievements,
-        characters: userCharacters,
-      };
-    } catch (error) {
-      console.error("Error:", error);
-      throw error;
-    }
-  }
-
-  // Calling useEffect to check logged in user from auth0
+  // API request to getLoggedInUser
   useEffect(() => {
-    getLoggedInUser();
+    if (user) {
+      // Fetch logged-in user data
+      const fetchData = async () => {
+        try {
+          const response = await fetch("/api/getLoggedInUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ user }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch logged-in user data");
+          }
+
+          const data = await response.json();
+
+          // Set the mode and do something with the data
+          setMode("DASH");
+          console.log("Logged-in user:", data.user);
+          console.log("User achievements:", data.achievements);
+          console.log("User characters:", data.characters);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchData();
+    }
   }, [user]);
+
+  console.log("USER INFO: ", user);
 
   return (
     <div className="app-wrapper">
