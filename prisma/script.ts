@@ -5,24 +5,11 @@ const prisma = new PrismaClient()
 // pull user and their achievements
 async function getUserAchievements(userId) {
   const user = await prisma.user.findUnique({
-    where: { id: userId },
+    where: { id: parseInt(userId) },
     include: {
       achievements: true
     }
   });
-
-  // throw error if user is not found
-  if (!user) {
-    throw new Error(`User with ID ${userId} not found.`);
-  }
-
-  // map over this user's achievements
-  const achievements = user.achievements.map((achievement) => ({
-    id: achievement.id,
-    date_get: achievement.date_get,
-    collected: achievement.collected,
-    name: achievement.name
-  }));
 
   return achievements;
 }
@@ -50,10 +37,15 @@ async function findUserCharacters(userId) {
   return characters;
 }
 
+let user = null;
+let achievements = null;
+let userCharacters = null;
+let currentUser = null;
+
 async function main() {
   try {
     // create a user with an achievement
-    const user = await prisma.user.create({
+    user = await prisma.user.create({
       // data for the new user entered here
       data: {
         email: "example@example.com",
@@ -94,15 +86,15 @@ async function main() {
     console.log("Created user:", user);
 
     const userId = user.id;
-    const achievements = await getUserAchievements(userId);
+    achievements = await getUserAchievements(userId);
 
     // show the achievements for that user
     console.log("User achievements:", achievements);
 
-    const currentUser = await findCurrentUser(user.auth0Sub);
+    currentUser = await findCurrentUser(user.auth0Sub);
     console.log("Current user:", currentUser);
 
-    const userCharacters = await findUserCharacters(userId);
+    userCharacters = await findUserCharacters(userId);
     console.log("User characters:", userCharacters);
   } catch (error) {
     console.error("Error:", error);
@@ -122,7 +114,10 @@ main()
   })
 
 module.exports = {
-  main,
+  user,
+  achievements,
+  userCharacters,
+  currentUser,
   getUserAchievements,
   findCurrentUser,
   findUserCharacters
