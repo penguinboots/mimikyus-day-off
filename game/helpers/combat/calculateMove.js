@@ -66,7 +66,7 @@ function calculateMove(move, user, target) {
     statChanges: null
   }
   if (damage !== 0) {
-    results.damage = damage * 0.5;
+    results.damage = damage * 0.02;
   }
   if (heal !== 0) {
     results.heal = heal}
