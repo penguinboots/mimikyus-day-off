@@ -38,28 +38,30 @@ function calculateMove(move, user, target) {
   //check move category and perform appropriate actions
   if (move.meta.category === "damage") {
     damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-  } else if (move.meta.category === "damage+lower") {
-    damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = changeStat(target, target.statChanges[move.stat_changes.stat], move.stat_changes.change)
-  } else if (move.meta.category === "damage+raise") {
-    damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = changeStat(user, user.statChanges[move.stat_changes.stat], move.stat_changes.change)
-  } else if (move.meta.category === "damage+heal") {
-    damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    heal = drainCalc(damage, move.meta.drain)
-  } else if (move.meta.category === "net-good-stats") {
-    let changeStatOf = {}
-    if (move.target === 'user') {
-      changeStatOf = user
-    } else if (move.target === 'selected-pokemon') {
-      changeStatOf = target
-    }
-    statChanges = changeStat(changestatOf, changeStatOf.statChanges[move.stat_changes.stat], move.stat_changes.change)
-  } else if (move.meta.category === "unique") {
-    if (move.name === "splash") {
-       damage = 0
-    }
   }
+  // else if (move.meta.category === "damage+lower") {
+  //   damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+  //   statChanges = changeStat(target, target.statChanges[move.stat_changes.stat], move.stat_changes.change)
+  // } else if (move.meta.category === "damage+raise") {
+  //   damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+  //   statChanges = changeStat(user, user.statChanges[move.stat_changes.stat], move.stat_changes.change)
+  // } else if (move.meta.category === "damage+heal") {
+  //   damage = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+  //   heal = drainCalc(damage, move.meta.drain)
+  // } 
+  // else if (move.meta.category === "net-good-stats") {
+  //   let changeStatOf = {}
+  //   if (move.target === 'user') {
+  //     changeStatOf = user
+  //   } else if (move.target === 'selected-pokemon') {
+  //     changeStatOf = target
+  //   }
+  //   statChanges = changeStat(changeStatOf, changeStatOf.statChanges[move.stat_changes.stat], move.stat_changes.change)
+  // } else if (move.meta.category === "unique") {
+  //   if (move.name === "splash") {
+  //      damage = 0
+  //   }
+  // }
   const results = {
     damage: null, 
     heal: null, 
