@@ -11,7 +11,7 @@ export default function Nav(props) {
     <div className="nav-container">
       <nav className="nav-bar">
         <div className="nav-left">
-          <div className="logo">PLACEHOLDER LOGO</div>
+          <div className="logo">POKÉDEX</div>
         </div>
         <div className="nav-right">
           <IconButton
