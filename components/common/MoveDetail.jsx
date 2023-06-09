@@ -4,7 +4,7 @@ export default function MoveDetail(props) {
   return (
     <div className="move-detail">
       <h3>{moveName}</h3>
-      <p>Power: {power}</p>
+      { power ? <p>Power: {power}</p> : "" }
       <p>{description}</p>
     </div>
   );
