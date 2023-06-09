@@ -29,7 +29,7 @@ async function getUserAchievements(userId) {
 
 // find the current user in the database
 async function findCurrentUser(sub) {
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.findFirst({
     where: { auth0Sub: sub },
   });
 
