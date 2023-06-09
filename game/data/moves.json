@@ -8,7 +8,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to burn the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to burn the target."
         }
@@ -33,7 +33,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fire",
+      "type": "fire"
     },
    "ice-punch":{
     "name": "ice-punch",
@@ -44,7 +44,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to freeze the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to freeze the target."
         }
@@ -69,7 +69,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "ice",
+      "type": "ice"
     },
    "thunder-punch":{
     "name": "thunder-punch",
@@ -80,7 +80,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to paralyze the target."
         }
@@ -105,7 +105,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "electric",
+      "type": "electric"
     },
    "scratch":{
     "name": "scratch",
@@ -116,7 +116,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -141,7 +141,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "swords-dance":{
     "name": "swords-dance",
@@ -152,7 +152,7 @@
         {
           "effect": "Raises the user's Attack by two stages.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises the user's Attack by two stages."
         }
@@ -178,11 +178,11 @@
       "stat_changes": [
         {
           "change": 2,
-          "stat": "attack",
+          "stat": "attack"
         }
       ],
       "target": "user",
-      "type": "normal",
+      "type": "normal"
     },
    "headbutt":{
     "name": "headbutt",
@@ -193,7 +193,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -218,7 +218,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "tackle":{
     "name": "tackle",
@@ -229,7 +229,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -254,7 +254,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "body-slam":{
     "name": "body-slam",
@@ -265,7 +265,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to paralyze the target."
         }
@@ -290,7 +290,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "take-down":{
     "name": "take-down",
@@ -301,7 +301,7 @@
         {
           "effect": "Inflicts regular damage.  User takes 1/4 the damage it inflicts in recoil.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User receives 1/4 the damage it inflicts in recoil."
         }
@@ -326,7 +326,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "double-edge":{
     "name": "double-edge",
@@ -337,7 +337,7 @@
         {
           "effect": "Inflicts regular damage.  User takes 1/3 the damage it inflicts in recoil.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User receives 1/3 the damage inflicted in recoil."
         }
@@ -362,7 +362,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "bite":{
     "name": "bite",
@@ -373,7 +373,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -398,7 +398,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "dark",
+      "type": "dark"
     },
    "flamethrower":{
     "name": "flamethrower",
@@ -409,7 +409,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to burn the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to burn the target."
         }
@@ -434,7 +434,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fire",
+      "type": "fire"
     },
    "hydro-pump":{
     "name": "hydro-pump",
@@ -445,7 +445,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -470,7 +470,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "water",
+      "type": "water"
     },
    "ice-beam":{
     "name": "ice-beam",
@@ -481,7 +481,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to freeze the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to freeze the target."
         }
@@ -506,7 +506,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "ice",
+      "type": "ice"
     },
    "blizzard":{
     "name": "blizzard",
@@ -517,7 +517,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to freeze the target.\n\nDuring hail, this move has 100% accuracy.  It also has a (100 - accuracy)% chance to break through the protection of protect and detect.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to freeze the target."
         }
@@ -542,7 +542,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "all-opponents",
-      "type": "ice",
+      "type": "ice"
     },
    "bubble-beam":{
     "name": "bubble-beam",
@@ -553,7 +553,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
         }
@@ -579,11 +579,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "speed",
+          "stat": "speed"
         }
       ],
       "target": "selected-pokemon",
-      "type": "water",
+      "type": "water"
     },
    "hyper-beam":{
     "name": "hyper-beam",
@@ -594,7 +594,7 @@
         {
           "effect": "Inflicts regular damage.  User loses its next turn to \"recharge\", and cannot attack or switch out during that turn.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User foregoes its next turn to recharge."
         }
@@ -619,7 +619,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "solar-beam":{
     "name": "solar-beam",
@@ -630,7 +630,7 @@
         {
           "effect": "Inflicts regular damage.  User charges for one turn before attacking.\n\nDuring sunny day, the charge turn is skipped.\n\nDuring hail, rain dance, or sandstorm, power is halved.\n\nThis move cannot be selected by sleep talk.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Requires a turn to charge before attacking."
         }
@@ -655,7 +655,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "grass",
+      "type": "grass"
     },
    "thunderbolt":{
     "name": "thunderbolt",
@@ -666,7 +666,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to paralyze the target."
         }
@@ -691,7 +691,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "electric",
+      "type": "electric"
     },
    "thunder-wave":{
     "name": "thunder-wave",
@@ -702,7 +702,7 @@
         {
           "effect": "Paralyzes the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Paralyzes the target."
         }
@@ -727,7 +727,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "electric",
+      "type": "electric"
     },
    "thunder":{
     "name": "thunder",
@@ -738,7 +738,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.\n\nDuring rain dance, this move has 100% accuracy.  It also has a (100 - accuracy)% chance to break through the protection of protect and detect.\n\nDuring sunny day, this move has 50% accuracy.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to paralyze the target."
         }
@@ -763,7 +763,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "electric",
+      "type": "electric"
     },
    "earthquake":{
     "name": "earthquake",
@@ -774,7 +774,7 @@
         {
           "effect": "Inflicts regular damage.\n\nIf the target is in the first turn of dig, this move will hit with double power.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage and can hit Dig users."
         }
@@ -799,7 +799,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "all-other-pokemon",
-      "type": "ground",
+      "type": "ground"
     },
    "toxic":{
     "name": "toxic",
@@ -809,8 +809,8 @@
       "effect_entries": [
         {
           "effect": "Badly poisons the target.  Never misses when used by a poison-type Pokémon.",
-          "language": {
-            "name": "en",
+          "languag": {
+            "name": "en"
           },
           "short_effect": "Badly poisons the target, inflicting more damage every turn."
         }
@@ -835,7 +835,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "poison",
+      "type": "poison"
     },
    "quick-attack":{
     "name": "quick-attack",
@@ -846,7 +846,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -871,7 +871,7 @@
       "priority": 1,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "mimic":{
     "name": "mimic",
@@ -882,7 +882,7 @@
         {
           "effect": "This move is replaced by the target's last successfully used move, and its PP changes to 5.  If the target hasn't used a move since entering the field, if it tried to use a move this turn and failed, or if the user already knows the targeted move, this move will fail.  This effect vanishes when the user leaves the field.\n\nIf chatter, metronome, mimic, sketch, or struggle is selected, this move will fail.\n\nThis move cannot be copied by mirror move, nor selected by assist or metronome, nor forced by encore.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Copies the target's last used move."
         }
@@ -907,7 +907,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "defense-curl":{
     "name": "defense-curl",
@@ -918,7 +918,7 @@
         {
           "effect": "Raises user's Defense by one stage.\n\nAfter this move is used, the power of ice ball and rollout are doubled until the user leaves the field.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises user's Defense by one stage."
         }
@@ -944,11 +944,11 @@
       "stat_changes": [
         {
           "change": 1,
-          "stat": "defense",
+          "stat": "defense"
         }
       ],
       "target": "user",
-      "type": "normal",
+      "type": "normal"
     },
    "lick":{
     "name": "lick",
@@ -959,7 +959,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to paralyze the target."
         }
@@ -984,7 +984,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "ghost",
+      "type": "ghost"
     },
    "fire-blast":{
     "name": "fire-blast",
@@ -995,7 +995,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to burn the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to burn the target."
         }
@@ -1020,7 +1020,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fire",
+      "type": "fire"
     },
    "skull-bash":{
     "name": "skull-bash",
@@ -1031,7 +1031,7 @@
         {
           "effect": "Inflicts regular damage.  Raises the user's Defense by one stage.  User then charges for one turn before attacking.\n\nThis move cannot be selected by sleep talk.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises the user's Defense by one stage.  User charges for one turn before attacking."
         }
@@ -1056,7 +1056,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "leech-life":{
     "name": "leech-life",
@@ -1067,7 +1067,7 @@
         {
           "effect": "Inflicts regular damage.  Drains half the damage inflicted to heal the user.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Drains half the damage inflicted to heal the user."
         }
@@ -1092,7 +1092,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "bug",
+      "type": "bug"
     },
    "splash":{
     "name": "splash",
@@ -1103,7 +1103,7 @@
         {
           "effect": "Does nothing.\n\nThis move cannot be used while gravity is in effect.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Does nothing."
         }
@@ -1128,7 +1128,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "user",
-      "type": "normal",
+      "type": "normal"
     },
    "rock-slide":{
     "name": "rock-slide",
@@ -1139,7 +1139,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -1164,7 +1164,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "all-opponents",
-      "type": "rock",
+      "type": "rock"
     },
    "slash":{
     "name": "slash",
@@ -1175,7 +1175,7 @@
         {
           "effect": "Inflicts regular damage.  User's critical hit rate is one level higher when using this move.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has an increased chance for a critical hit."
         }
@@ -1200,7 +1200,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "struggle":{
     "name": "struggle",
@@ -1209,9 +1209,9 @@
       "effect_chance": null,
       "effect_entries": [
         {
-          "effect": "Inflicts typeless regular damage.  User takes 1/4 its max HP in recoil.  Ignores accuracy and evasion modifiers.\n\nThis move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no PP remaining or being under the effect of both encore and torment at the same time.\n\nThis move's recoil is not treated as recoil for the purposes of anything that affects recoil, such as the ability rock head.  It also is not prevented by magic guard.\n\nThis move cannot be copied by mimic, mirror move, or sketch, nor selected by assist or metronome, nor forced by encore.",
+          "effect": "Inflicts typeless regular damag.  User takes 1/4 its max HP in recoil.  Ignores accuracy and evasion modifiers.\n\nThis move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no PP remaining or being under the effect of both encore and torment at the same time.\n\nThis move's recoil is not treated as recoil for the purposes of anything that affects recoil, such as the ability rock head.  It also is not prevented by magic guard.\n\nThis move cannot be copied by mimic, mirror move, or sketch, nor selected by assist or metronome, nor forced by encore.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User takes 1/4 its max HP in recoil."
         }
@@ -1236,7 +1236,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "random-opponent",
-      "type": "normal",
+      "type": "normal"
     },
    "flail":{
     "name": "flail",
@@ -1247,7 +1247,7 @@
         {
           "effect": "Inflicts regular damage.  Power varies inversely with the user's proportional remaining HP.\n\n64 * current HP / max HP | Power\n-----------------------: | ----:\n 0– 1                    |  200\n 2– 5                    |  150\n 6–12                    |  100\n13–21                    |   80\n22–42                    |   40\n43–64                    |   20\n",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts more damage when the user has less HP remaining, with a maximum of 200 power."
         }
@@ -1272,7 +1272,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "protect":{
     "name": "protect",
@@ -1283,7 +1283,7 @@
         {
           "effect": "No moves will hit the user for the remainder of this turn.  If the user is last to act this turn, this move will fail.\n\nIf the user successfully used detect, endure, protect, quick guard, or wide guard on the last turn, this move has a 50% chance to fail.\n\nlock on, mind reader, and no guard provide a (100 – accuracy)% chance for moves to break through this move.  This does not apply to one-hit KO moves (fissure, guillotine, horn drill, and sheer cold); those are always blocked by this move.\n\nthunder during rain dance and blizzard during hail have a 30% chance to break through this move.\n\nThe following effects are not prevented by this move:\n\n* acupressure from an ally\n* curse's curse effect\n* Delayed damage from doom desire and future sight; however, these moves will be prevented if they are used this turn\n* feint, which will also end this move's protection after it hits\n* imprison\n* perish song\n* shadow force\n* Moves that merely copy the user, such as transform or psych up\n\nThis move cannot be selected by assist or metronome.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Prevents any moves from hitting the user this turn."
         }
@@ -1308,7 +1308,7 @@
       "priority": 4,
       "stat_changes": [],
       "target": "user",
-      "type": "normal",
+      "type": "normal"
     },
    "belly-drum":{
     "name": "belly-drum",
@@ -1319,7 +1319,7 @@
         {
           "effect": "User pays half its max HP to raise its Attack to +6 stages.  If the user cannot pay the HP cost, this move will fail.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User pays half its max HP to max out its Attack."
         }
@@ -1344,7 +1344,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "user",
-      "type": "normal",
+      "type": "normal"
     },
    "giga-drain":{
     "name": "giga-drain",
@@ -1355,7 +1355,7 @@
         {
           "effect": "Inflicts regular damage.  Drains half the damage inflicted to heal the user.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Drains half the damage inflicted to heal the user."
         }
@@ -1380,7 +1380,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "grass",
+      "type": "grass"
     },
    "charm":{
     "name": "charm",
@@ -1391,7 +1391,7 @@
         {
           "effect": "Lowers the target's Attack by two stages.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Lowers the target's Attack by two stages."
         }
@@ -1417,11 +1417,11 @@
       "stat_changes": [
         {
           "change": -2,
-          "stat": "attack",
+          "stat": "attack"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fairy",
+      "type": "fairy"
     },
    "crunch":{
     "name": "crunch",
@@ -1432,7 +1432,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Defense by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Defense by one stage."
         }
@@ -1458,11 +1458,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "defense",
+          "stat": "defense"
         }
       ],
       "target": "selected-pokemon",
-      "type": "dark",
+      "type": "dark"
     },
    "shadow-ball":{
     "name": "shadow-ball",
@@ -1473,7 +1473,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Special Defense by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Special Defense by one stage."
         }
@@ -1499,11 +1499,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "special-defense",
+          "stat": "special-defense"
         }
       ],
       "target": "selected-pokemon",
-      "type": "ghost",
+      "type": "ghost"
     },
    "rock-smash":{
     "name": "rock-smash",
@@ -1514,7 +1514,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Defense by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Defense by one stage."
         }
@@ -1540,11 +1540,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "defense",
+          "stat": "defense"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "focus-punch":{
     "name": "focus-punch",
@@ -1555,7 +1555,7 @@
         {
           "effect": "Inflicts regular damage.  If the user takes damage this turn before hitting, this move will fail.\n\nThis move cannot be copied by mirror move, nor selected by assist, metronome, or sleep talk.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "If the user takes damage before attacking, the attack is canceled."
         }
@@ -1580,7 +1580,7 @@
       "priority": -3,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "superpower":{
     "name": "superpower",
@@ -1591,7 +1591,7 @@
         {
           "effect": "Inflicts regular damage, then lowers the user's Attack and Defense by one stage each.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Lowers the user's Attack and Defense by one stage after inflicting damage."
         }
@@ -1617,15 +1617,15 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "attack",
+          "stat": "attack"
         },
         {
           "change": -1,
-          "stat": "defense",
+          "stat": "defense"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "brick-break":{
     "name": "brick-break",
@@ -1636,7 +1636,7 @@
         {
           "effect": "Destroys any light screen or reflect on the target's side of the field, then inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Destroys Reflect and Light Screen."
         }
@@ -1661,7 +1661,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "hyper-voice":{
     "name": "hyper-voice",
@@ -1672,7 +1672,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -1697,7 +1697,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "all-opponents",
-      "type": "normal",
+      "type": "normal"
     },
    "astonish":{
     "name": "astonish",
@@ -1708,7 +1708,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -1733,7 +1733,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "ghost",
+      "type": "ghost"
     },
    "rock-tomb":{
     "name": "rock-tomb",
@@ -1744,7 +1744,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
         }
@@ -1770,11 +1770,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "speed",
+          "stat": "speed"
         }
       ],
       "target": "selected-pokemon",
-      "type": "rock",
+      "type": "rock"
     },
    "bulk-up":{
     "name": "bulk-up",
@@ -1785,7 +1785,7 @@
         {
           "effect": "Raises the user's Attack and Defense by one stage each.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises the user's Attack and Defense by one stage."
         }
@@ -1811,15 +1811,15 @@
       "stat_changes": [
         {
           "change": 1,
-          "stat": "attack",
+          "stat": "attack"
         },
         {
           "change": 1,
-          "stat": "defense",
+          "stat": "defense"
         }
       ],
       "target": "user",
-      "type": "fighting",
+      "type": "fighting"
     },
    "copycat":{
     "name": "copycat",
@@ -1830,7 +1830,7 @@
         {
           "effect": "Uses the last move that was used successfully by any Pokémon, including the user.\n\nThis move cannot copy itself, nor roar nor whirlwind.\n\nThis move cannot be copied by mirror move, nor selected by assist, metronome, or sleep talk.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Uses the target's last used move."
         }
@@ -1855,7 +1855,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "user",
-      "type": "normal",
+      "type": "normal"
     },
    "dark-pulse":{
     "name": "dark-pulse",
@@ -1866,7 +1866,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -1891,7 +1891,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "dark",
+      "type": "dark"
     },
    "x-scissor":{
     "name": "x-scissor",
@@ -1902,7 +1902,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -1927,7 +1927,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "bug",
+      "type": "bug"
     },
    "drain-punch":{
     "name": "drain-punch",
@@ -1938,7 +1938,7 @@
         {
           "effect": "Inflicts regular damage.  Drains half the damage inflicted to heal the user.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Drains half the damage inflicted to heal the user."
         }
@@ -1963,7 +1963,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "focus-blast":{
     "name": "focus-blast",
@@ -1974,7 +1974,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Special Defense by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Special Defense by one stage."
         }
@@ -2000,11 +2000,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "special-defense",
+          "stat": "special-defense"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "giga-impact":{
     "name": "giga-impact",
@@ -2015,7 +2015,7 @@
         {
           "effect": "Inflicts regular damage.  User loses its next turn to \"recharge\", and cannot attack or switch out during that turn.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User foregoes its next turn to recharge."
         }
@@ -2040,7 +2040,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "normal",
+      "type": "normal"
     },
    "shadow-claw":{
     "name": "shadow-claw",
@@ -2051,7 +2051,7 @@
         {
           "effect": "Inflicts regular damage.  User's critical hit rate is one level higher when using this move.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has an increased chance for a critical hit."
         }
@@ -2076,7 +2076,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "ghost",
+      "type": "ghost"
     },
    "shadow-sneak":{
     "name": "shadow-sneak",
@@ -2087,7 +2087,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -2112,7 +2112,7 @@
       "priority": 1,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "ghost",
+      "type": "ghost"
     },
    "zen-headbutt":{
     "name": "zen-headbutt",
@@ -2123,7 +2123,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -2148,7 +2148,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "psychic",
+      "type": "psychic"
     },
    "gunk-shot":{
     "name": "gunk-shot",
@@ -2159,7 +2159,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to poison the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to poison the target."
         }
@@ -2184,7 +2184,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "poison",
+      "type": "poison"
     },
    "iron-head":{
     "name": "iron-head",
@@ -2195,7 +2195,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to make the target flinch."
         }
@@ -2220,7 +2220,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "steel",
+      "type": "steel"
     },
    "wood-hammer":{
     "name": "wood-hammer",
@@ -2231,7 +2231,7 @@
         {
           "effect": "Inflicts regular damage.  User takes 1/3 the damage it inflicts in recoil.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User receives 1/3 the damage inflicted in recoil."
         }
@@ -2256,7 +2256,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "grass",
+      "type": "grass"
     },
    "hone-claws":{
     "name": "hone-claws",
@@ -2267,7 +2267,7 @@
         {
           "effect": "Raises the user's Attack and accuracy by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises the user's Attack and accuracy by one stage."
         }
@@ -2293,15 +2293,15 @@
       "stat_changes": [
         {
           "change": 1,
-          "stat": "attack",
+          "stat": "attack"
         },
         {
           "change": 1,
-          "stat": "accuracy",
+          "stat": "accuracy"
         }
       ],
       "target": "user",
-      "type": "dark",
+      "type": "dark"
     },
    "heavy-slam":{
     "name": "heavy-slam",
@@ -2312,7 +2312,7 @@
         {
           "effect": "Inflicts regular damage.  The greater the user's weight compared to the target's, the higher power this move has, to a maximum of 120.\n\nUser's weight                    | Power\n-------------------------------- | ----:\nUp to 2× the target's weight     |    40\nUp to 3× the target's weight     |    60\nUp to 4× the target's weight     |    80\nUp to 5× the target's weight     |   100\nMore than 5× the target's weight |   120\n",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Power is higher when the user weighs more than the target, up to a maximum of 120."
         }
@@ -2337,7 +2337,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "steel",
+      "type": "steel"
     },
    "bulldoze":{
     "name": "bulldoze",
@@ -2348,7 +2348,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
         }
@@ -2374,11 +2374,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "speed",
+          "stat": "speed"
         }
       ],
       "target": "all-other-pokemon",
-      "type": "ground",
+      "type": "ground"
     },
    "wild-charge":{
     "name": "wild-charge",
@@ -2389,7 +2389,7 @@
         {
           "effect": "Inflicts regular damage.  User takes 1/4 the damage it inflicts in recoil.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "User receives 1/4 the damage it inflicts in recoil."
         }
@@ -2414,7 +2414,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "electric",
+      "type": "electric"
     },
    "heat-crash":{
     "name": "heat-crash",
@@ -2425,7 +2425,7 @@
         {
           "effect": "Inflicts regular damage.  The greater the user's weight compared to the target's, the higher power this move has, to a maximum of 120.\n\nUser's weight                    | Power\n-------------------------------- | ----:\nUp to 2× the target's weight     |    40\nUp to 3× the target's weight     |    60\nUp to 4× the target's weight     |    80\nUp to 5× the target's weight     |   100\nMore than 5× the target's weight |   120\n",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Power is higher when the user weighs more than the target, up to a maximum of 120."
         }
@@ -2450,7 +2450,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fire",
+      "type": "fire"
     },
    "belch":{
     "name": "belch",
@@ -2461,7 +2461,7 @@
         {
           "effect": "Inflicts regular damage.  Can only be used if the user has eaten a berry since the beginning of the battle.\n\nAfter the user eats a berry, it may use this move any number of times until the end of the battle, even if it switches out.  Eating a held berry, eating a berry via bug bite or pluck, or being the target of a Flung berry will enable this move.  Feeding a Pokémon a berry from the bag or using natural gift will not.\n\nIf the trainer chooses this move when it cannot be used, the choice is rejected outright and the trainer must choose another move.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Can only be used after the user has eaten a berry."
         }
@@ -2486,7 +2486,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "poison",
+      "type": "poison"
     },
    "draining-kiss":{
     "name": "draining-kiss",
@@ -2497,7 +2497,7 @@
         {
           "effect": "Deals regular damage.  Drains 75% of the damage inflicted to heal the user.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Drains 75% of the damage inflicted to heal the user."
         }
@@ -2522,7 +2522,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fairy",
+      "type": "fairy"
     },
    "play-rough":{
     "name": "play-rough",
@@ -2533,7 +2533,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Attack by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to lower the target's Attack by one stage."
         }
@@ -2559,11 +2559,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "attack",
+          "stat": "attack"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fairy",
+      "type": "fairy"
     },
    "dazzling-gleam":{
     "name": "dazzling-gleam",
@@ -2574,7 +2574,7 @@
         {
           "effect": "Inflicts regular damage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Inflicts regular damage with no additional effect."
         }
@@ -2599,7 +2599,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "all-opponents",
-      "type": "fairy",
+      "type": "fairy"
     },
    "baby-doll-eyes":{
     "name": "baby-doll-eyes",
@@ -2610,7 +2610,7 @@
         {
           "effect": "Lowers the target's Attack by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Lowers the target's Attack by one stage."
         }
@@ -2636,11 +2636,11 @@
       "stat_changes": [
         {
           "change": -1,
-          "stat": "attack",
+          "stat": "attack"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fairy",
+      "type": "fairy"
     },
    "power-up-punch":{
     "name": "power-up-punch",
@@ -2651,7 +2651,7 @@
         {
           "effect": "Inflicts regular damage.  Raises the user's Attack by one stage.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises the user's Attack by one stage after inflicting damage."
         }
@@ -2677,11 +2677,11 @@
       "stat_changes": [
         {
           "change": 1,
-          "stat": "attack",
+          "stat": "attack"
         }
       ],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "body-press":{
     "name": "body-press",
@@ -2709,7 +2709,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "fighting",
+      "type": "fighting"
     },
    "poison-jab":{
     "name": "poison-jab",
@@ -2721,7 +2721,7 @@
         {
           "effect": "Inflicts regular damage.  Has a $effect_chance% chance to poison the target.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Has a $effect_chance% chance to poison the target."
         }
@@ -2746,7 +2746,7 @@
       "priority": 0,
       "stat_changes": [],
       "target": "selected-pokemon",
-      "type": "poison",
+      "type": "poison"
     },
     "iron-defense": {
       "name": "iron-defense",
@@ -2758,7 +2758,7 @@
         {
           "effect": "Raises the user's Defense by two stages.",
           "language": {
-            "name": "en",
+            "name": "en"
           },
           "short_effect": "Raises the user's Defense by two stages."
         }
@@ -2784,10 +2784,10 @@
       "stat_changes": [
         {
           "change": 2,
-          "stat": "defense",
+          "stat": "defense"
         }
       ],
       "target": "user",
-      "type": "steel",
+      "type": "steel"
     }
 }
