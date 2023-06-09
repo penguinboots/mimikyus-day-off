@@ -1,4 +1,4 @@
-//import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
@@ -14,7 +14,48 @@ import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
 
-export default function Home() {
+export async function getStaticProps() {
+  const prisma = new PrismaClient();
+  let db_user = null
+  let db_character = null
+  db_user = await prisma.user.findUnique({
+    where: { auth0Sub: 'auth0sub123' },
+  });
+  if (db_user) {
+  db_character = await prisma.character.findFirst({
+    where: { userId: db_user.id }
+  })} else {
+  db_user = await prisma.user.create({
+      // data for the new user entered here
+      data: {
+        email: "example@example.com",
+        auth0Sub: "auth0sub123",
+        password: "password123",
+        name: "John Doe",
+      }
+    });
+    db_character = await prisma.character.create({
+      data:{
+        move_1: "Move 1",
+        move_2: "Move 2",
+        move_3: "Move 3",
+        move_4: "Move 4",
+        userId: db_user.id
+      }
+    })
+  }
+  return {
+    props: {
+      db_user,
+      db_character,
+    },
+  };
+}
+
+export default function Home({
+  db_user,
+  db_character,
+}) {
   // Authentication
   const { user, error, isLoading } = useUser();
   // View Mode
@@ -33,8 +74,8 @@ export default function Home() {
       setMode("DASH");
     }
   }, [user]);
-
-  console.log("USER INFO: ", user);
+  console.log("DB_USER INFO: ", db_user);
+  console.log("DB_Character:", db_character)
 
   return (
     <div className="app-wrapper">
@@ -66,17 +107,3 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps() {
-  const userId = 123;
-  const achievements = await getUserAchievements(userId);
-  const currentUser = await findCurrentUser("auth0sub123");
-  const userCharacters = await findUserCharacters(userId);
-
-  return {
-    props: {
-      achievements,
-      currentUser,
-      userCharacters,
-    },
-  };
-}
