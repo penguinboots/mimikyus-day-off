@@ -36,6 +36,21 @@ export default function Room(props) {
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
 
+  // Checks for opponent HP <= 0
+  useEffect(() => {
+    if (gameState.opponent.current_hp <= 0) {
+      setBattleWon(true);
+      console.log("battle won");
+    }
+  }, [gameState.opponent, setBattleWon]);
+
+  // Checks for player HP <= 0
+  useEffect(() => {
+    if (gameState.player.current_hp <= 0) {
+      console.log("battle lost");
+    }
+  }, [gameState.player]);
+  
   // Execute the move, applying hp/stat changes
   let doMove = (moveEffects, target, self) => {
     if (moveEffects.damage) {
@@ -56,7 +71,10 @@ export default function Room(props) {
 
     for (let turn of turns) {
       let moveEffects = calculateMove(turn.move, turn.user, turn.target);
-      console.log(turn.user.name + " uses " + turn.move.name);
+      setBattleHistory((prev) => [
+        ...prev,
+        `${turn.user.name} used ${turn.move.name}!\n`,
+      ]);
       if (turn.user === gameState.player) {
         doMove(moveEffects, "opponent", "player");
       }
