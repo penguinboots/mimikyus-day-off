@@ -119,12 +119,12 @@ export default function Room() {
   const playerMoves = Object.values(playerMoveArray).map((move) => {
     return (
       <button
-        key={move.name}
+        key={move}
         onClick={() =>
           executeTurn(
             move,
             gameState.player,
-            gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
+            opponentMoveSelect(gameState.opponent),
             gameState.opponent
           )
         }

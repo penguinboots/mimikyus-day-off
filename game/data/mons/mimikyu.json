@@ -93,9 +93,6 @@
     "special-defense": 105,
     "speed": 96
   },
-  "types": [
-    "ghost",
-    "fairy"
-  ],
+  "types": ["ghost", "fairy"],
   "weight": 7
 }
