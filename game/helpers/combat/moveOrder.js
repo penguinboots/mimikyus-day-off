@@ -1,6 +1,6 @@
 function moveOrder(move1, user1, move2, user2) {
-  move1First = [move1, move2]
-  move2First = [move2, move1]
+  let move1First = [move1, move2]
+  let move2First = [move2, move1]
   //compare move priority and return the moves ordered by greater priority if there is a difference
   if (move1.priority > move2.priority) {
     return move1First
