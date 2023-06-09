@@ -1,21 +1,19 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
 import { useEffect } from "react";
-import { moveOrder, calculateMove, opponentMoveSelect } from "../../game/helpers/combat";
+import {
+  moveOrder,
+  calculateMove,
+  opponentMoveSelect,
+} from "../../game/helpers/combat";
 
-export default function Room(props) {
-  const { floor_1 } = require("../../game/pregenerated/floors/floor1");
-  const { magikarp, snorlax1 } = require("../../game/pregenerated/floor1mons");
-  // const doMove = require("../../game/helpers/combat/doMove");
-  const { returnToDash, nextRoom } = props;
-
+export default function Room() {
   const {
     gameState,
     setGameState,
-    playerStat,
-    setPlayerStat,
     roomType,
     setRoomType,
+    nextRoom,
     turnMode,
     setTurnMode,
     battleWon,
@@ -24,22 +22,62 @@ export default function Room(props) {
     setPopup,
     sprites,
     setSprites,
+    dealDamage,
+    dealHeal,
+    battleHistory,
+    setBattleHistory,
   } = useGameState();
 
   // Modify to change active sprite
   const PLAYER = sprites.player;
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
-  // Gets called when player picks a move
+
+  // Checks for opponent HP <= 0
+  useEffect(() => {
+    if (gameState.opponent.current_hp <= 0) {
+      console.log("battle won");
+      // nextRoom();
+    }
+  }, [gameState.opponent, setBattleWon, nextRoom]);
+
+  // Checks for player HP <= 0
+  useEffect(() => {
+    if (gameState.player.current_hp <= 0) {
+      console.log("battle lost");
+    }
+  }, [gameState.player]);
+
+  // Executes the move, applying hp/stat changes
+  let doMove = (moveEffects, target, self) => {
+    if (moveEffects.damage) {
+      dealDamage(target, moveEffects.damage);
+    }
+    if (moveEffects.heal) {
+      dealHeal(self, moveEffects.heal);
+    }
+    if (moveEffects.statChanges) {
+      // apply stat changes
+    }
+  };
+
+  // Executes player move selection
   function executeTurn(charMove, char, opponentMove, opponent) {
     let turns = moveOrder(charMove, char, opponentMove, opponent);
-    
+
     for (let turn of turns) {
-      calculateMove(turn.move, turn.user, turn.target);
+      let moveEffects = calculateMove(turn.move, turn.user, turn.target);
+      setBattleHistory((prev) => [
+        ...prev,
+        `${turn.user.name} used ${turn.move.name}!\n`,
+      ]);
+      if (turn.user === gameState.player) {
+        doMove(moveEffects, "opponent", "player");
+      }
+      if (turn.user === gameState.opponent) {
+        doMove(moveEffects, "player", "opponent");
+      }
     }
-    
-
-
     /*
       - setTurnMode("logic"), greys out or hides move UI
       **** first run ****
@@ -74,6 +112,24 @@ export default function Room(props) {
     */
   }
 
+  const playerMoves = Object.values(gameState.player.moves).map((move) => {
+    return (
+      <button
+        key={move.name}
+        onClick={() =>
+          executeTurn(
+            gameState.player.moves[move.name],
+            gameState.player,
+            gameState.opponent.moves[opponentMoveSelect(gameState.opponent)],
+            gameState.opponent
+          )
+        }
+      >
+        <MoveItem id={move.name} loc="game" moveName={move.name} />
+      </button>
+    );
+  });
+
   return (
     <div
       className="battle-room"
@@ -88,9 +144,9 @@ export default function Room(props) {
             backgroundImage: PLAYER,
           }}
         >
-          me: {playerStat.name}
+          me: {gameState.player.name}
           <br />
-          current HP: {playerStat.current_hp}
+          current HP: {gameState.player.current_hp}
         </div>
         <div
           className="pokemon opponent"
@@ -98,34 +154,14 @@ export default function Room(props) {
             backgroundImage: OPPONENT,
           }}
         >
-          opponent: {gameState.currentRoom.opponent.name}
+          opponent: {gameState.opponent.name}
           <br />
-          current HP: {gameState.currentRoom.opponent.current_hp}
+          current HP: {gameState.opponent.current_hp}
         </div>
       </div>
 
       <div className="move-select">
-        <button
-          onClick={() =>
-            executeTurn(
-              magikarp.moves.tackle,
-              playerStat,
-              magikarp.moves.tackle,
-              gameState.currentRoom.opponent,
-            )
-          }
-        >
-          <MoveItem id="move1" loc="game" moveName="Move 1" />
-        </button>
-        <button>
-          <MoveItem id="move2" loc="game" moveName="Move 2" />
-        </button>
-        <button>
-          <MoveItem id="move3" loc="game" moveName="Move 3" />
-        </button>
-        <button>
-          <MoveItem id="move4" loc="game" moveName="Move 4" />
-        </button>
+        {playerMoves}
         <button onClick={nextRoom}>NEXT</button>
       </div>
     </div>

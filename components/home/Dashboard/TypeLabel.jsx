@@ -1,10 +1,5 @@
-import PropTypes from "prop-types";
-
 export default function TypeLabel(props) {
-  TypeLabel.PropTypes = {
-    type: PropTypes.string,
-  }
-  
+
   const { type } = props;
 
   const getTypeColor = (type) => {
