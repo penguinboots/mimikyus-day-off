@@ -451,30 +451,28 @@ body {
 
 /** HEALTH BAR **/
 .health-container {
-  width: 400px;
-  border-radius: 5px;
-  background-color: white;
-  .health-label {
-    width: 50px;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: $off-white;
+  .name-label {
     font-size: 15px;
-    font-weight: bold;
-    height: 20px;
+    padding: 0 20px;
+  }
+  .health-bar {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-basis: 50px;
-    color: black;
-  }
-  .health-max {
-    height: 20px;
-    width: 400px;
-    border-radius: 5px;
-    background-color: lightgray;
-  }
-  .health-value {
-    height: 20px;
-    background-color: #1f4525;
-
-    transition: 0.55s;
+    justify-content: space-between;
+    padding: 0 20px;
+    .health-max {
+      height: 20px;
+      width: 90%;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: lightgray;
+    }
+    .health-value {
+      height: 20px;
+      transition: 0.55s;
+    }
   }
 }
