@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { getUserAchievements, findCurrentUser, findUserCharacters } from "../prisma/script";
 // Components
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
@@ -59,40 +60,6 @@ export default function Home() {
     }
   }, [user]);
 
-  // API request to getLoggedInUser
-  useEffect(() => {
-    if (user) {
-      // Fetch logged-in user data
-      const fetchData = async () => {
-        try {
-          const response = await fetch("/api/getLoggedInUser", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ user }),
-          });
-
-          if (!response.ok) {
-            throw new Error("Failed to fetch logged-in user data");
-          }
-
-          const data = await response.json();
-
-          // Set the mode and do something with the data
-          setMode("DASH");
-          console.log("Logged-in user:", data.user);
-          console.log("User achievements:", data.achievements);
-          console.log("User characters:", data.characters);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-      fetchData();
-    }
-  }, [user]);
-
   console.log("USER INFO: ", user);
 
   return (
@@ -125,10 +92,17 @@ export default function Home() {
   );
 }
 
-// export async function getStaticProps() {
-//   const prisma = new PrismaClient();
+export async function getStaticProps() {
+  const userId = 123;
+  const achievements = await getUserAchievements(userId);
+  const currentUser = await findCurrentUser("auth0sub123");
+  const userCharacters = await findUserCharacters(userId);
 
-//   return {
-//     props : {}
-//   };
-// }
+  return {
+    props: {
+      achievements,
+      currentUser,
+      userCharacters,
+    },
+  };
+}
