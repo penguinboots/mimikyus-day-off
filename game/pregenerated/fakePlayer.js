@@ -23,7 +23,14 @@ const mimikyu = {
     "play-rough",
     "charm",
   ],
-  "types": ["ghost","fairy"],
+  "types": ["ghost", "fairy"],
   "height": 2,
   "weight": 7,
+  "sprites": {
+    "idle": `url("/sprites/mimikyu-idl.gif")`,
+    "attack": `url("/sprites/mimikyu-atkhit.gif")`,
+    "hit": `url("/sprites/mimikyu-atkhit.gif")`,
+  }
 }
+
+module.exports = { mimikyu };

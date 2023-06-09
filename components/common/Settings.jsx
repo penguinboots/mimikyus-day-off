@@ -1,8 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 export default function Settings(props) {
   return (
     <div className="popup settings-container">
       <div className="close-window" onClick={props.handleClick}>
-        X
+        <FontAwesomeIcon icon={faXmark} />
       </div>
       <ul>
         <li>SETTING 1</li>
