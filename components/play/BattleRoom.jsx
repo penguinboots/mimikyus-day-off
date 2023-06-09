@@ -113,10 +113,13 @@ export default function Room() {
       **** ready to repeat ****
     */
   }
-  const playerMoveArray = []
-  gameState.player.moves.forEach(moveString => {
-    playerMoveArray.push(moveFetcher(moveString))
+
+  // Generates array of move objects from array of move name strings
+  const playerMoveArray = [];
+  gameState.player.moves.forEach((moveString) => {
+    playerMoveArray.push(moveFetcher(moveString));
   });
+  // Generates MoveItems from array of move objects
   const playerMoves = Object.values(playerMoveArray).map((move) => {
     return (
       <button
@@ -152,7 +155,7 @@ export default function Room() {
         <div
           className="pokemon self"
           style={{
-            backgroundImage: PLAYER,
+            backgroundImage: gameState.player.sprites.idle,
           }}
         >
           me: {gameState.player.name}
@@ -167,7 +170,7 @@ export default function Room() {
         <div
           className="pokemon opponent"
           style={{
-            backgroundImage: OPPONENT,
+            backgroundImage: gameState.opponent.sprites.idle,
           }}
         >
           opponent: {gameState.opponent.name}

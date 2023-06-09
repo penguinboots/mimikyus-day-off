@@ -24,7 +24,12 @@ const munchlax1 = {
   ],
   "types": ["dark"],
   "height": 6,
-  "weight": 1050
+  "weight": 1050,
+  "sprites": {
+    "idle": `url("/sprites/munchlax-idl.gif")`,
+    "attack": `url("/sprites/munchlax-atk.gif")`,
+    "hit": `url("/sprites/munchlax-hit.gif")`,
+  }
 }
 
 const munchlax2 = {
@@ -53,7 +58,12 @@ const munchlax2 = {
   ],
   "types": ["poison"],
   "height": 6,
-  "weight": 1050
+  "weight": 1050,
+  "sprites": {
+    "idle": `url("/sprites/munchlax-idl.gif")`,
+    "attack": `url("/sprites/munchlax-atk.gif")`,
+    "hit": `url("/sprites/munchlax-hit.gif")`,
+  }
 }
 
 const munchlax3 = {
@@ -82,7 +92,12 @@ const munchlax3 = {
   ],
   "types": ["steel"],
   "height": 6,
-  "weight": 1050
+  "weight": 1050,
+  "sprites": {
+    "idle": `url("/sprites/munchlax-idl.gif")`,
+    "attack": `url("/sprites/munchlax-atk.gif")`,
+    "hit": `url("/sprites/munchlax-hit.gif")`,
+  }
 }
 
 const snorlax3 = {
@@ -104,7 +119,12 @@ const snorlax3 = {
   ],
   "types": ["normal"],
   "height": 21,
-  "weight": 4600
+  "weight": 4600,
+  "sprites": {
+    "idle": `url("/sprites/snorlax-idl.gif")`,
+    "attack": `url("/sprites/snorlax-atk.gif")`,
+    "hit": `url("/sprites/snorlax-hit.gif")`,
+  }
 }
 
 module.exports = { munchlax1, munchlax2, munchlax3, snorlax3 }
