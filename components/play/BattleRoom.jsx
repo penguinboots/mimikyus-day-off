@@ -29,6 +29,14 @@ export default function Room() {
     dealHeal,
     battleHistory,
     setBattleHistory,
+    gifReloadKeyPlayer,
+    setGifReloadKeyPlayer,
+    gifReloadKeyOpponent,
+    setGifReloadKeyOpponent,
+    showPlayer,
+    setShowPlayer,
+    showOpponent,
+    setShowOpponent,
   } = useGameState();
 
   const PLAYER = gameState.player.sprites[sprites.player].url; // idle, attack, hit
@@ -36,23 +44,17 @@ export default function Room() {
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
 
-  const [gifReloadKeyPlayer, setGifReloadKeyPlayer] = useState(0);
-  const [gifReloadKeyOpponent, setGifReloadKeyOpponent] = useState(0);
-  const [showPlayer, setShowPlayer] = useState(false);
-  const [showOpponent, setShowOpponent] = useState(false);
-
+  // Resets gif animations to beginning after changes
   useEffect(() => {
     setGifReloadKeyPlayer((prevKey) => prevKey + 1);
     setShowPlayer(false);
     setTimeout(() => setShowPlayer(true), 0);
   }, [PLAYER]);
-
   useEffect(() => {
     setGifReloadKeyOpponent((prevKey) => prevKey + 1);
     setShowOpponent(false);
     setTimeout(() => setShowOpponent(true), 0);
   }, [OPPONENT]);
-  
 
   // Checks for opponent HP <= 0
   useEffect(() => {
@@ -68,6 +70,7 @@ export default function Room() {
     }
   }, [gameState.player]);
 
+  // Play animations for attack
   async function playAttack(attacker, defender) {
     let attackDelay = gameState[attacker].sprites.attack.length;
     let hitDelay = gameState[defender].sprites.hit.length;
@@ -90,6 +93,7 @@ export default function Room() {
     });
   }
 
+  // Play animations for non-attack move (needs new anims)
   async function playStatus(self) {
     let statusDelay = gameState[self].sprites.attack.length;
     playAnim(self, "attack");
@@ -121,17 +125,15 @@ export default function Room() {
     }
   }
 
-  // Executes player move selection
+  // Executes player move selection, calling previously defined helpers
   async function executeTurn(charMove, char, opponentMove, opponent) {
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     for (let turn of turns) {
       let moveEffects = calculateMove(turn.move, turn.user, turn.target);
-
       setBattleHistory((prev) => [
         ...prev,
         `${turn.user.name} used ${turn.move.name}!\n`,
       ]);
-
       if (turn.user === gameState.player) {
         await doMove(turn.move, moveEffects, "opponent", "player");
       }

@@ -32,10 +32,17 @@ export function GameStateProvider({ children }) {
     defeat: false,
     treasure: false,
   });
+
+
   const [sprites, setSprites] = useState({
     player: "idle",
     opponent: "idle",
   });
+  
+  const [gifReloadKeyPlayer, setGifReloadKeyPlayer] = useState(0);
+  const [gifReloadKeyOpponent, setGifReloadKeyOpponent] = useState(0);
+  const [showPlayer, setShowPlayer] = useState(false);
+  const [showOpponent, setShowOpponent] = useState(false);
 
   function nextFloor(nextFl) {
     const nextFloor = dungeon[nextFl];
@@ -108,8 +115,15 @@ export function GameStateProvider({ children }) {
     dealHeal,
     battleHistory,
     setBattleHistory,
+    gifReloadKeyPlayer,
+    setGifReloadKeyPlayer,
+    gifReloadKeyOpponent,
+    setGifReloadKeyOpponent,
+    showPlayer,
+    setShowPlayer,
+    showOpponent,
+    setShowOpponent,
   };
-
   return (
     <GameStateContext.Provider value={value}>
       {children}
