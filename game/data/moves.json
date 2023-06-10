@@ -1,33 +1,29 @@
 {
   "fire-punch": {
     "name": "fire-punch",
+    "proper_name": "Fire Punch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to burn the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to burn the target."
+        "effect": "Inflicts regular damage.  Has a chance to burn the target.",
+        "short_effect": "Has a chance to burn the target."
       }
     ],
     "id": 7,
-    "meta": {
-      "ailment": "burn",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "burn",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 15,
     "priority": 0,
@@ -37,33 +33,29 @@
   },
   "ice-punch": {
     "name": "ice-punch",
+    "proper_name": "Ice Punch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to freeze the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to freeze the target."
+        "effect": "Inflicts regular damage.  Has a chance to freeze the target.",
+        "short_effect": "Has a chance to freeze the target."
       }
     ],
     "id": 8,
-    "meta": {
-      "ailment": "freeze",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "freeze",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 15,
     "priority": 0,
@@ -73,33 +65,29 @@
   },
   "thunder-punch": {
     "name": "thunder-punch",
+    "proper_name": "Thunder Punch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to paralyze the target."
+        "effect": "Inflicts regular damage.  Has a chance to paralyze the target.",
+        "short_effect": "Has a chance to paralyze the target."
       }
     ],
     "id": 9,
-    "meta": {
-      "ailment": "paralysis",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "paralysis",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 15,
     "priority": 0,
@@ -109,33 +97,29 @@
   },
   "scratch": {
     "name": "scratch",
+    "proper_name": "Scratch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 10,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 40,
     "pp": 35,
     "priority": 0,
@@ -145,33 +129,29 @@
   },
   "swords-dance": {
     "name": "swords-dance",
+    "proper_name": "Swords Dance",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Raises the user's Attack by two stages.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises the user's Attack by two stages."
       }
     ],
     "id": 14,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 20,
     "priority": 0,
@@ -186,33 +166,29 @@
   },
   "headbutt": {
     "name": "headbutt",
+    "proper_name": "Headbutt",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 29,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 30,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 30,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 70,
     "pp": 15,
     "priority": 0,
@@ -222,33 +198,29 @@
   },
   "tackle": {
     "name": "tackle",
+    "proper_name": "Tackle",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 33,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 40,
     "pp": 35,
     "priority": 0,
@@ -258,33 +230,29 @@
   },
   "body-slam": {
     "name": "body-slam",
+    "proper_name": "Body Slam",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to paralyze the target."
+        "effect": "Inflicts regular damage.  Has a chance to paralyze the target.",
+        "short_effect": "Has a chance to paralyze the target."
       }
     ],
     "id": 34,
-    "meta": {
-      "ailment": "paralysis",
-      "ailment_chance": 30,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "paralysis",
+    "ailment_chance": 30,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 85,
     "pp": 15,
     "priority": 0,
@@ -300,27 +268,22 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User takes 1/4 the damage it inflicts in recoil.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User receives 1/4 the damage it inflicts in recoil."
       }
     ],
     "id": 36,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": -25,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": -25,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 90,
     "pp": 20,
     "priority": 0,
@@ -330,33 +293,29 @@
   },
   "double-edge": {
     "name": "double-edge",
+    "proper_name": "Double Edge",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User takes 1/3 the damage it inflicts in recoil.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User receives 1/3 the damage inflicted in recoil."
       }
     ],
     "id": 38,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": -33,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": -33,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 120,
     "pp": 15,
     "priority": 0,
@@ -366,33 +325,29 @@
   },
   "bite": {
     "name": "bite",
+    "proper_name": "Bite",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 44,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 30,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 30,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 60,
     "pp": 25,
     "priority": 0,
@@ -402,33 +357,29 @@
   },
   "flamethrower": {
     "name": "flamethrower",
+    "proper_name": "Flamethrower",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to burn the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to burn the target."
+        "effect": "Inflicts regular damage.  Has a chance to burn the target.",
+        "short_effect": "Has a chance to burn the target."
       }
     ],
     "id": 53,
-    "meta": {
-      "ailment": "burn",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "burn",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 90,
     "pp": 15,
     "priority": 0,
@@ -438,33 +389,29 @@
   },
   "hydro-pump": {
     "name": "hydro-pump",
+    "proper_name": "Hydro Pump",
     "accuracy": 80,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 56,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 110,
     "pp": 5,
     "priority": 0,
@@ -474,33 +421,29 @@
   },
   "ice-beam": {
     "name": "ice-beam",
+    "proper_name": "Ice Beam",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to freeze the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to freeze the target."
+        "effect": "Inflicts regular damage.  Has a chance to freeze the target.",
+        "short_effect": "Has a chance to freeze the target."
       }
     ],
     "id": 58,
-    "meta": {
-      "ailment": "freeze",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "freeze",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 90,
     "pp": 10,
     "priority": 0,
@@ -510,33 +453,29 @@
   },
   "blizzard": {
     "name": "blizzard",
+    "proper_name": "Blizzard",
     "accuracy": 70,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to freeze the target.\n\nDuring hail, this move has 100% accuracy.  It also has a (100 - accuracy)% chance to break through the protection of protect and detect.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to freeze the target."
+        "effect": "Inflicts regular damage.  Has a chance to freeze the target.\n\nDuring hail, this move has 100% accuracy.  It also has a (100 - accuracy)% chance to break through the protection of protect and detect.",
+        "short_effect": "Has a chance to freeze the target."
       }
     ],
     "id": 59,
-    "meta": {
-      "ailment": "freeze",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "freeze",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 110,
     "pp": 5,
     "priority": 0,
@@ -546,33 +485,29 @@
   },
   "bubble-beam": {
     "name": "bubble-beam",
+    "proper_name": "Bubble Beam",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Speed by one stage.",
+        "short_effect": "Has a chance to lower the target's Speed by one stage."
       }
     ],
     "id": 61,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 10
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 10,
     "power": 65,
     "pp": 20,
     "priority": 0,
@@ -587,33 +522,29 @@
   },
   "hyper-beam": {
     "name": "hyper-beam",
+    "proper_name": "Hyper Beam",
     "accuracy": 90,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User loses its next turn to \"recharge\", and cannot attack or switch out during that turn.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User foregoes its next turn to recharge."
       }
     ],
     "id": 63,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 150,
     "pp": 5,
     "priority": 0,
@@ -623,33 +554,29 @@
   },
   "solar-beam": {
     "name": "solar-beam",
+    "proper_name": "Solar Beam",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User charges for one turn before attacking.\n\nDuring sunny day, the charge turn is skipped.\n\nDuring hail, rain dance, or sandstorm, power is halved.\n\nThis move cannot be selected by sleep talk.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Requires a turn to charge before attacking."
       }
     ],
     "id": 76,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 120,
     "pp": 10,
     "priority": 0,
@@ -659,33 +586,29 @@
   },
   "thunderbolt": {
     "name": "thunderbolt",
+    "proper_name": "Thunderbolt",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to paralyze the target."
+        "effect": "Inflicts regular damage.  Has a chance to paralyze the target.",
+        "short_effect": "Has a chance to paralyze the target."
       }
     ],
     "id": 85,
-    "meta": {
-      "ailment": "paralysis",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "paralysis",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 90,
     "pp": 15,
     "priority": 0,
@@ -695,33 +618,29 @@
   },
   "thunder-wave": {
     "name": "thunder-wave",
+    "proper_name": "Thunder Wave",
     "accuracy": 90,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Paralyzes the target.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Paralyzes the target."
       }
     ],
     "id": 86,
-    "meta": {
-      "ailment": "paralysis",
-      "ailment_chance": 0,
-      "category": "ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "paralysis",
+    "ailment_chance": 0,
+    "category": "ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 20,
     "priority": 0,
@@ -731,33 +650,29 @@
   },
   "thunder": {
     "name": "thunder",
+    "proper_name": "Thunder",
     "accuracy": 70,
     "damage_class": "special",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.\n\nDuring rain dance, this move has 100% accuracy.  It also has a (100 - accuracy)% chance to break through the protection of protect and detect.\n\nDuring sunny day, this move has 50% accuracy.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to paralyze the target."
+        "effect": "Inflicts regular damage.  Has a chance to paralyze the target.\n\nDuring rain dance, this move has 100% accuracy.  It also has a (100 - accuracy)% chance to break through the protection of protect and detect.\n\nDuring sunny day, this move has 50% accuracy.",
+        "short_effect": "Has a chance to paralyze the target."
       }
     ],
     "id": 87,
-    "meta": {
-      "ailment": "paralysis",
-      "ailment_chance": 30,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "paralysis",
+    "ailment_chance": 30,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 110,
     "pp": 10,
     "priority": 0,
@@ -767,33 +682,29 @@
   },
   "earthquake": {
     "name": "earthquake",
+    "proper_name": "Earthquake",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.\n\nIf the target is in the first turn of dig, this move will hit with double power.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage and can hit Dig users."
       }
     ],
     "id": 89,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 100,
     "pp": 10,
     "priority": 0,
@@ -803,33 +714,29 @@
   },
   "toxic": {
     "name": "toxic",
+    "proper_name": "Toxic",
     "accuracy": 90,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Badly poisons the target.  Never misses when used by a poison-type Pokémon.",
-        "languag": {
-          "name": "en"
-        },
         "short_effect": "Badly poisons the target, inflicting more damage every turn."
       }
     ],
     "id": 92,
-    "meta": {
-      "ailment": "poison",
-      "ailment_chance": 0,
-      "category": "ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": 15,
-      "min_hits": null,
-      "min_turns": 15,
-      "stat_chance": 0
-    },
+    "ailment": "poison",
+    "ailment_chance": 0,
+    "category": "ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": 15,
+    "min_hits": null,
+    "min_turns": 15,
+    "stat_chance": 0,
     "power": null,
     "pp": 10,
     "priority": 0,
@@ -839,33 +746,29 @@
   },
   "quick-attack": {
     "name": "quick-attack",
+    "proper_name": "Quick Attack",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 98,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 40,
     "pp": 30,
     "priority": 1,
@@ -875,33 +778,29 @@
   },
   "mimic": {
     "name": "mimic",
+    "proper_name": "Mimic",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "This move is replaced by the target's last successfully used move, and its PP changes to 5.  If the target hasn't used a move since entering the field, if it tried to use a move this turn and failed, or if the user already knows the targeted move, this move will fail.  This effect vanishes when the user leaves the field.\n\nIf chatter, metronome, mimic, sketch, or struggle is selected, this move will fail.\n\nThis move cannot be copied by mirror move, nor selected by assist or metronome, nor forced by encore.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Copies the target's last used move."
       }
     ],
     "id": 102,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "unique",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "unique",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 10,
     "priority": 0,
@@ -911,33 +810,29 @@
   },
   "defense-curl": {
     "name": "defense-curl",
+    "proper_name": "Defense Curl",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Raises user's Defense by one stage.\n\nAfter this move is used, the power of ice ball and rollout are doubled until the user leaves the field.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises user's Defense by one stage."
       }
     ],
     "id": 111,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 40,
     "priority": 0,
@@ -952,33 +847,29 @@
   },
   "lick": {
     "name": "lick",
+    "proper_name": "Lick",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to paralyze the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to paralyze the target."
+        "effect": "Inflicts regular damage.  Has a chance to paralyze the target.",
+        "short_effect": "Has a chance to paralyze the target."
       }
     ],
     "id": 122,
-    "meta": {
-      "ailment": "paralysis",
-      "ailment_chance": 30,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "paralysis",
+    "ailment_chance": 30,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 30,
     "pp": 30,
     "priority": 0,
@@ -988,33 +879,29 @@
   },
   "fire-blast": {
     "name": "fire-blast",
+    "proper_name": "Fire Blast",
     "accuracy": 85,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to burn the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to burn the target."
+        "effect": "Inflicts regular damage.  Has a chance to burn the target.",
+        "short_effect": "Has a chance to burn the target."
       }
     ],
     "id": 126,
-    "meta": {
-      "ailment": "burn",
-      "ailment_chance": 10,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "burn",
+    "ailment_chance": 10,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 110,
     "pp": 5,
     "priority": 0,
@@ -1024,33 +911,29 @@
   },
   "skull-bash": {
     "name": "skull-bash",
+    "proper_name": "Skull Bash",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 100,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Raises the user's Defense by one stage.  User then charges for one turn before attacking.\n\nThis move cannot be selected by sleep talk.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises the user's Defense by one stage.  User charges for one turn before attacking."
       }
     ],
     "id": 130,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 100,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 100,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 130,
     "pp": 10,
     "priority": 0,
@@ -1060,33 +943,29 @@
   },
   "leech-life": {
     "name": "leech-life",
+    "proper_name": "Leech Life",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Drains half the damage inflicted to heal the user.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Drains half the damage inflicted to heal the user."
       }
     ],
     "id": 141,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+heal",
-      "crit_rate": 0,
-      "drain": 50,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+heal",
+    "crit_rate": 0,
+    "drain": 50,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 10,
     "priority": 0,
@@ -1096,33 +975,29 @@
   },
   "splash": {
     "name": "splash",
+    "proper_name": "Splash",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Does nothing.\n\nThis move cannot be used while gravity is in effect.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Does nothing."
       }
     ],
     "id": 150,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "unique",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "unique",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 40,
     "priority": 0,
@@ -1132,33 +1007,29 @@
   },
   "rock-slide": {
     "name": "rock-slide",
+    "proper_name": "Rock Slide",
     "accuracy": 90,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 157,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 30,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 30,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 10,
     "priority": 0,
@@ -1168,33 +1039,29 @@
   },
   "slash": {
     "name": "slash",
+    "proper_name": "Slash",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User's critical hit rate is one level higher when using this move.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Has an increased chance for a critical hit."
       }
     ],
     "id": 163,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 1,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 1,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 70,
     "pp": 20,
     "priority": 0,
@@ -1204,33 +1071,29 @@
   },
   "struggle": {
     "name": "struggle",
+    "proper_name": "Struggle",
     "accuracy": null,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts typeless regular damag.  User takes 1/4 its max HP in recoil.  Ignores accuracy and evasion modifiers.\n\nThis move is used automatically when a Pokémon cannot use any other move legally, e.g., due to having no PP remaining or being under the effect of both encore and torment at the same time.\n\nThis move's recoil is not treated as recoil for the purposes of anything that affects recoil, such as the ability rock head.  It also is not prevented by magic guard.\n\nThis move cannot be copied by mimic, mirror move, or sketch, nor selected by assist or metronome, nor forced by encore.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User takes 1/4 its max HP in recoil."
       }
     ],
     "id": 165,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": -25,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": -25,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 50,
     "pp": 1,
     "priority": 0,
@@ -1240,33 +1103,29 @@
   },
   "flail": {
     "name": "flail",
+    "proper_name": "Flail",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Power varies inversely with the user's proportional remaining HP.\n\n64 * current HP / max HP | Power\n-----------------------: | ----:\n 0– 1                    |  200\n 2– 5                    |  150\n 6–12                    |  100\n13–21                    |   80\n22–42                    |   40\n43–64                    |   20\n",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts more damage when the user has less HP remaining, with a maximum of 200 power."
       }
     ],
     "id": 175,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 15,
     "priority": 0,
@@ -1276,33 +1135,29 @@
   },
   "protect": {
     "name": "protect",
+    "proper_name": "Protect",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "No moves will hit the user for the remainder of this turn.  If the user is last to act this turn, this move will fail.\n\nIf the user successfully used detect, endure, protect, quick guard, or wide guard on the last turn, this move has a 50% chance to fail.\n\nlock on, mind reader, and no guard provide a (100 – accuracy)% chance for moves to break through this move.  This does not apply to one-hit KO moves (fissure, guillotine, horn drill, and sheer cold); those are always blocked by this move.\n\nthunder during rain dance and blizzard during hail have a 30% chance to break through this move.\n\nThe following effects are not prevented by this move:\n\n* acupressure from an ally\n* curse's curse effect\n* Delayed damage from doom desire and future sight; however, these moves will be prevented if they are used this turn\n* feint, which will also end this move's protection after it hits\n* imprison\n* perish song\n* shadow force\n* Moves that merely copy the user, such as transform or psych up\n\nThis move cannot be selected by assist or metronome.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Prevents any moves from hitting the user this turn."
       }
     ],
     "id": 182,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "unique",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "unique",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 10,
     "priority": 4,
@@ -1312,33 +1167,29 @@
   },
   "belly-drum": {
     "name": "belly-drum",
+    "proper_name": "Belly Drum",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "User pays half its max HP to raise its Attack to +6 stages.  If the user cannot pay the HP cost, this move will fail.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User pays half its max HP to max out its Attack."
       }
     ],
     "id": 187,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "unique",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "unique",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 10,
     "priority": 0,
@@ -1348,33 +1199,29 @@
   },
   "giga-drain": {
     "name": "giga-drain",
+    "proper_name": "Giga Drain",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Drains half the damage inflicted to heal the user.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Drains half the damage inflicted to heal the user."
       }
     ],
     "id": 202,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+heal",
-      "crit_rate": 0,
-      "drain": 50,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+heal",
+    "crit_rate": 0,
+    "drain": 50,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 10,
     "priority": 0,
@@ -1384,33 +1231,29 @@
   },
   "charm": {
     "name": "charm",
+    "proper_name": "Charm",
     "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Lowers the target's Attack by two stages.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Lowers the target's Attack by two stages."
       }
     ],
     "id": 204,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 20,
     "priority": 0,
@@ -1425,33 +1268,29 @@
   },
   "crunch": {
     "name": "crunch",
+    "proper_name": "Crunch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 20,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Defense by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Defense by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Defense by one stage.",
+        "short_effect": "Has a chance to lower the target's Defense by one stage."
       }
     ],
     "id": 242,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 20
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 20,
     "power": 80,
     "pp": 15,
     "priority": 0,
@@ -1466,33 +1305,29 @@
   },
   "shadow-ball": {
     "name": "shadow-ball",
+    "proper_name": "Shadow Ball",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": 20,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Special Defense by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Special Defense by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Special Defense by one stage.",
+        "short_effect": "Has a chance to lower the target's Special Defense by one stage."
       }
     ],
     "id": 247,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 20
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 20,
     "power": 80,
     "pp": 15,
     "priority": 0,
@@ -1507,33 +1342,29 @@
   },
   "rock-smash": {
     "name": "rock-smash",
+    "proper_name": "Rock Smash",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 50,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Defense by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Defense by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Defense by one stage.",
+        "short_effect": "Has a chance to lower the target's Defense by one stage."
       }
     ],
     "id": 249,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 50
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 50,
     "power": 40,
     "pp": 15,
     "priority": 0,
@@ -1548,33 +1379,29 @@
   },
   "focus-punch": {
     "name": "focus-punch",
+    "proper_name": "Focus Punch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  If the user takes damage this turn before hitting, this move will fail.\n\nThis move cannot be copied by mirror move, nor selected by assist, metronome, or sleep talk.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "If the user takes damage before attacking, the attack is canceled."
       }
     ],
     "id": 264,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 150,
     "pp": 20,
     "priority": -3,
@@ -1584,33 +1411,29 @@
   },
   "superpower": {
     "name": "superpower",
+    "proper_name": "Superpower",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 100,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage, then lowers the user's Attack and Defense by one stage each.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Lowers the user's Attack and Defense by one stage after inflicting damage."
       }
     ],
     "id": 276,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+raise",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 100
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+raise",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 100,
     "power": 120,
     "pp": 5,
     "priority": 0,
@@ -1635,27 +1458,22 @@
     "effect_entries": [
       {
         "effect": "Destroys any light screen or reflect on the target's side of the field, then inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Destroys Reflect and Light Screen."
       }
     ],
     "id": 280,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 15,
     "priority": 0,
@@ -1665,33 +1483,29 @@
   },
   "hyper-voice": {
     "name": "hyper-voice",
+    "proper_name": "Hyper Voice",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 304,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 90,
     "pp": 10,
     "priority": 0,
@@ -1701,33 +1515,29 @@
   },
   "astonish": {
     "name": "astonish",
+    "proper_name": "Astonish",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 310,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 30,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 30,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 30,
     "pp": 15,
     "priority": 0,
@@ -1737,33 +1547,29 @@
   },
   "rock-tomb": {
     "name": "rock-tomb",
+    "proper_name": "Rock Tomb",
     "accuracy": 95,
     "damage_class": "physical",
     "effect_chance": 100,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Speed by one stage.",
+        "short_effect": "Has a chance to lower the target's Speed by one stage."
       }
     ],
     "id": 317,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 100
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 100,
     "power": 60,
     "pp": 15,
     "priority": 0,
@@ -1778,33 +1584,29 @@
   },
   "bulk-up": {
     "name": "bulk-up",
+    "proper_name": "Bulk Up",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Raises the user's Attack and Defense by one stage each.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises the user's Attack and Defense by one stage."
       }
     ],
     "id": 339,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 20,
     "priority": 0,
@@ -1823,33 +1625,29 @@
   },
   "copycat": {
     "name": "copycat",
+    "proper_name": "Copycat",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Uses the last move that was used successfully by any Pokémon, including the user.\n\nThis move cannot copy itself, nor roar nor whirlwind.\n\nThis move cannot be copied by mirror move, nor selected by assist, metronome, or sleep talk.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Uses the target's last used move."
       }
     ],
     "id": 383,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "unique",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "unique",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 20,
     "priority": 0,
@@ -1859,33 +1657,29 @@
   },
   "dark-pulse": {
     "name": "dark-pulse",
+    "proper_name": "Dark Pulse",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": 20,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 399,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 20,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 20,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 15,
     "priority": 0,
@@ -1895,33 +1689,29 @@
   },
   "x-scissor": {
     "name": "x-scissor",
+    "proper_name": "X Scissor",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 404,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 15,
     "priority": 0,
@@ -1931,33 +1721,29 @@
   },
   "drain-punch": {
     "name": "drain-punch",
+    "proper_name": "Drain Punch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Drains half the damage inflicted to heal the user.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Drains half the damage inflicted to heal the user."
       }
     ],
     "id": 409,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+heal",
-      "crit_rate": 0,
-      "drain": 50,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+heal",
+    "crit_rate": 0,
+    "drain": 50,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 75,
     "pp": 10,
     "priority": 0,
@@ -1967,33 +1753,29 @@
   },
   "focus-blast": {
     "name": "focus-blast",
+    "proper_name": "Focus Blast",
     "accuracy": 70,
     "damage_class": "special",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Special Defense by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Special Defense by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Special Defense by one stage.",
+        "short_effect": "Has a chance to lower the target's Special Defense by one stage."
       }
     ],
     "id": 411,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 10
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 10,
     "power": 120,
     "pp": 5,
     "priority": 0,
@@ -2008,33 +1790,29 @@
   },
   "giga-impact": {
     "name": "giga-impact",
+    "proper_name": "Giga Impact",
     "accuracy": 90,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User loses its next turn to \"recharge\", and cannot attack or switch out during that turn.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User foregoes its next turn to recharge."
       }
     ],
     "id": 416,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 150,
     "pp": 5,
     "priority": 0,
@@ -2044,33 +1822,29 @@
   },
   "shadow-claw": {
     "name": "shadow-claw",
+    "proper_name": "Shadow Claw",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User's critical hit rate is one level higher when using this move.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Has an increased chance for a critical hit."
       }
     ],
     "id": 421,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 1,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 1,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 70,
     "pp": 15,
     "priority": 0,
@@ -2080,33 +1854,29 @@
   },
   "shadow-sneak": {
     "name": "shadow-sneak",
+    "proper_name": "Shadow Sneak",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 425,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 40,
     "pp": 30,
     "priority": 1,
@@ -2116,33 +1886,29 @@
   },
   "zen-headbutt": {
     "name": "zen-headbutt",
+    "proper_name": "Zen Headbutt",
     "accuracy": 90,
     "damage_class": "physical",
     "effect_chance": 20,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 428,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 20,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 20,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 15,
     "priority": 0,
@@ -2152,33 +1918,29 @@
   },
   "gunk-shot": {
     "name": "gunk-shot",
+    "proper_name": "Gunk Shot",
     "accuracy": 80,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to poison the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to poison the target."
+        "effect": "Inflicts regular damage.  Has a chance to poison the target.",
+        "short_effect": "Has a chance to poison the target."
       }
     ],
     "id": 441,
-    "meta": {
-      "ailment": "poison",
-      "ailment_chance": 30,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "poison",
+    "ailment_chance": 30,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 120,
     "pp": 5,
     "priority": 0,
@@ -2188,33 +1950,29 @@
   },
   "iron-head": {
     "name": "iron-head",
+    "proper_name": "Iron Head",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to make the target flinch.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to make the target flinch."
+        "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
+        "short_effect": "Has a chance to make the target flinch."
       }
     ],
     "id": 442,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 30,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 30,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 15,
     "priority": 0,
@@ -2224,33 +1982,29 @@
   },
   "wood-hammer": {
     "name": "wood-hammer",
+    "proper_name": "Wood Hammer",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User takes 1/3 the damage it inflicts in recoil.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User receives 1/3 the damage inflicted in recoil."
       }
     ],
     "id": 452,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": -33,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": -33,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 120,
     "pp": 15,
     "priority": 0,
@@ -2260,33 +2014,29 @@
   },
   "hone-claws": {
     "name": "hone-claws",
+    "proper_name": "Hone Claws",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Raises the user's Attack and accuracy by one stage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises the user's Attack and accuracy by one stage."
       }
     ],
     "id": 468,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 15,
     "priority": 0,
@@ -2305,33 +2055,29 @@
   },
   "heavy-slam": {
     "name": "heavy-slam",
+    "proper_name": "Heavy Slam",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  The greater the user's weight compared to the target's, the higher power this move has, to a maximum of 120.\n\nUser's weight                    | Power\n-------------------------------- | ----:\nUp to 2× the target's weight     |    40\nUp to 3× the target's weight     |    60\nUp to 4× the target's weight     |    80\nUp to 5× the target's weight     |   100\nMore than 5× the target's weight |   120\n",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Power is higher when the user weighs more than the target, up to a maximum of 120."
       }
     ],
     "id": 484,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 10,
     "priority": 0,
@@ -2341,33 +2087,29 @@
   },
   "bulldoze": {
     "name": "bulldoze",
+    "proper_name": "Bulldoze",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 100,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Speed by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Speed by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Speed by one stage.",
+        "short_effect": "Has a chance to lower the target's Speed by one stage."
       }
     ],
     "id": 523,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 100
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 100,
     "power": 60,
     "pp": 20,
     "priority": 0,
@@ -2382,33 +2124,29 @@
   },
   "wild-charge": {
     "name": "wild-charge",
+    "proper_name": "Wild Charge",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  User takes 1/4 the damage it inflicts in recoil.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "User receives 1/4 the damage it inflicts in recoil."
       }
     ],
     "id": 528,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": -25,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": -25,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 90,
     "pp": 15,
     "priority": 0,
@@ -2418,33 +2156,29 @@
   },
   "heat-crash": {
     "name": "heat-crash",
+    "proper_name": "Heat Crash",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  The greater the user's weight compared to the target's, the higher power this move has, to a maximum of 120.\n\nUser's weight                    | Power\n-------------------------------- | ----:\nUp to 2× the target's weight     |    40\nUp to 3× the target's weight     |    60\nUp to 4× the target's weight     |    80\nUp to 5× the target's weight     |   100\nMore than 5× the target's weight |   120\n",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Power is higher when the user weighs more than the target, up to a maximum of 120."
       }
     ],
     "id": 535,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 10,
     "priority": 0,
@@ -2454,33 +2188,29 @@
   },
   "belch": {
     "name": "belch",
+    "proper_name": "Belch",
     "accuracy": 90,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Can only be used if the user has eaten a berry since the beginning of the battle.\n\nAfter the user eats a berry, it may use this move any number of times until the end of the battle, even if it switches out.  Eating a held berry, eating a berry via bug bite or pluck, or being the target of a Flung berry will enable this move.  Feeding a Pokémon a berry from the bag or using natural gift will not.\n\nIf the trainer chooses this move when it cannot be used, the choice is rejected outright and the trainer must choose another move.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Can only be used after the user has eaten a berry."
       }
     ],
     "id": 562,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 120,
     "pp": 10,
     "priority": 0,
@@ -2490,33 +2220,29 @@
   },
   "draining-kiss": {
     "name": "draining-kiss",
+    "proper_name": "Draining Kiss",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Deals regular damage.  Drains 75% of the damage inflicted to heal the user.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Drains 75% of the damage inflicted to heal the user."
       }
     ],
     "id": 577,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+heal",
-      "crit_rate": 0,
-      "drain": 75,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+heal",
+    "crit_rate": 0,
+    "drain": 75,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 50,
     "pp": 10,
     "priority": 0,
@@ -2526,33 +2252,29 @@
   },
   "play-rough": {
     "name": "play-rough",
+    "proper_name": "Play Rough",
     "accuracy": 90,
     "damage_class": "physical",
     "effect_chance": 10,
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to lower the target's Attack by one stage.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to lower the target's Attack by one stage."
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Attack by one stage.",
+        "short_effect": "Has a chance to lower the target's Attack by one stage."
       }
     ],
     "id": 583,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+lower",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 10
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 10,
     "power": 90,
     "pp": 10,
     "priority": 0,
@@ -2567,33 +2289,29 @@
   },
   "dazzling-gleam": {
     "name": "dazzling-gleam",
+    "proper_name": "Dazzling Gleam",
     "accuracy": 100,
     "damage_class": "special",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Inflicts regular damage with no additional effect."
       }
     ],
     "id": 605,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 10,
     "priority": 0,
@@ -2603,33 +2321,29 @@
   },
   "baby-doll-eyes": {
     "name": "baby-doll-eyes",
+    "proper_name": "Baby Doll Eyes",
     "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
       {
         "effect": "Lowers the target's Attack by one stage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Lowers the target's Attack by one stage."
       }
     ],
     "id": 608,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 30,
     "priority": 1,
@@ -2644,33 +2358,29 @@
   },
   "power-up-punch": {
     "name": "power-up-punch",
+    "proper_name": "Power-Up Punch",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 100,
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Raises the user's Attack by one stage.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises the user's Attack by one stage after inflicting damage."
       }
     ],
     "id": 612,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage+raise",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 100
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+raise",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 100,
     "power": 40,
     "pp": 20,
     "priority": 0,
@@ -2685,25 +2395,24 @@
   },
   "body-press": {
     "name": "body-press",
+    "proper_name": "Body Press",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [],
     "id": 776,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "damage",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 10,
     "priority": 0,
@@ -2713,34 +2422,30 @@
   },
   "poison-jab": {
     "name": "poison-jab",
+    "proper_name": "Poison Jab",
     "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": 30,
     "effect_changes": [],
     "effect_entries": [
       {
-        "effect": "Inflicts regular damage.  Has a $effect_chance% chance to poison the target.",
-        "language": {
-          "name": "en"
-        },
-        "short_effect": "Has a $effect_chance% chance to poison the target."
+        "effect": "Inflicts regular damage.  Has a chance to poison the target.",
+        "short_effect": "Has a chance to poison the target."
       }
     ],
     "id": 398,
-    "meta": {
-      "ailment": "poison",
-      "ailment_chance": 30,
-      "category": "damage+ailment",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "poison",
+    "ailment_chance": 30,
+    "category": "damage+ailment",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": 80,
     "pp": 20,
     "priority": 0,
@@ -2750,6 +2455,7 @@
   },
   "iron-defense": {
     "name": "iron-defense",
+    "proper_name": "Iron Defense",
     "accuracy": null,
     "damage_class": "status",
     "effect_chance": null,
@@ -2757,27 +2463,22 @@
     "effect_entries": [
       {
         "effect": "Raises the user's Defense by two stages.",
-        "language": {
-          "name": "en"
-        },
         "short_effect": "Raises the user's Defense by two stages."
       }
     ],
     "id": 334,
-    "meta": {
-      "ailment": "none",
-      "ailment_chance": 0,
-      "category": "net-good-stats",
-      "crit_rate": 0,
-      "drain": 0,
-      "flinch_chance": 0,
-      "healing": 0,
-      "max_hits": null,
-      "max_turns": null,
-      "min_hits": null,
-      "min_turns": null,
-      "stat_chance": 0
-    },
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
     "power": null,
     "pp": 15,
     "priority": 0,

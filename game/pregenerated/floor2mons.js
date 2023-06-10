@@ -1,5 +1,6 @@
 const goomy = {
   "name": "goomy",
+  "proper_name": "Goomy",
   "current_hp": 45,
   "stats": {  
     "hp": 45,
@@ -34,7 +35,8 @@ const goomy = {
 }
 
 const dugtrio = {
-  "name": "dugtrio",
+  "name": "dugtrio-alola",
+  "proper_name": "Dugtrio",
   "current_hp": 35,
   "stats": {
     "hp": 35,
@@ -70,6 +72,7 @@ const dugtrio = {
 
 const snorlax2= {
   "name": "snorlax2",
+  "proper_name": "Snorlax",
   "current_hp": 180,
   "stats": {
     "hp": 180,
@@ -79,7 +82,7 @@ const snorlax2= {
     "special-defense": 95,
     "speed": 96,
   },
-  statChanges: {
+  "statChanges": {
     "hp": 0,
     "attack": 0,
     "defense": 0,
