@@ -26,9 +26,18 @@ const mimikyu = {
   "height": 2,
   "weight": 7,
   "sprites": {
-    "idle": `url("/sprites/mimikyu-idl.gif")`,
-    "attack": `url("/sprites/mimikyu-atkhit.gif")`,
-    "hit": `url("/sprites/mimikyu-atkhit.gif")`,
+    "idle": {
+      url: `/sprites/mimikyu-idl.gif`,
+      length: 715,
+    },
+    "attack": {
+      url: `/sprites/mimikyu-atk.gif`,
+      length: 1015,
+    },
+    "hit": {
+      url: `/sprites/mimikyu-hit.gif`,
+      length: 795,
+    },
   }
 }
 
