@@ -2,6 +2,7 @@
 /** VARIABLES **/
 
 $dark-gray: #403c3e;
+$gray-shad: #332f31;
 $off-white: #f5f3dc;
 
 $pdex-red: #e24631;
@@ -65,6 +66,7 @@ body {
   height: 700px;
   width: 1100px;
   border-radius: 36px;
+  box-shadow: 20px 20px $gray-shad;
 }
 
 /** REUSABLE **/
@@ -459,13 +461,13 @@ body {
   .battle-room {
     .battle-floor {
       display: flex;
-      gap: 200px;
+      gap: 0px;
       position: absolute;
       left: 50px;
       bottom: 70px;
       .pokemon {
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
         background-size: contain;
       }
     }
@@ -506,8 +508,8 @@ body {
 /** HEALTH BAR **/
 .health-container {
   position: relative;
-  top: -150px;
-  left: 50px;
+  top: -30px;
+  left: 100px;
   width: 300px;
   height: 60px;
   border-radius: 10px;
