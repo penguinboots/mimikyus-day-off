@@ -8,6 +8,8 @@ import {
   moveFetcher,
 } from "../../game/helpers/combat";
 import HealthBar from "./HealthBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Room() {
   const {
@@ -94,14 +96,20 @@ export default function Room() {
   }
 
   // Play animations for non-attack move (needs new anims)
-  async function playStatus(self) {
-    let statusDelay = gameState[self].sprites.attack.length;
-    playAnim(self, "attack");
+  async function playStatUp(self) {
+    let key = `${self}Buff`;
+    setSprites((prev) => ({
+      ...prev,
+      [key]: true,
+    }));
     await new Promise((resolve) => {
       setTimeout(() => {
-        playAnim(self, "idle");
+        setSprites((prev) => ({
+          ...prev,
+          [key]: false,
+        }));
         resolve();
-      }, statusDelay);
+      }, 1500);
     });
   }
 
@@ -119,9 +127,9 @@ export default function Room() {
         // apply stat changes
       }
     } else if (move.category.includes("stats")) {
-      // await playStatus(self);
+      await playStatUp(self);
     } else if (move.category === "unique") {
-      await playStatus(self);
+      await playStatUp(self);
     }
   }
 
@@ -189,6 +197,9 @@ export default function Room() {
             value={gameState.player.current_hp}
             maxValue={gameState.player.stats.hp}
           />
+          <div className="effects">
+            {sprites.playerBuff && <FontAwesomeIcon icon={faArrowUp} />}
+          </div>
         </div>
         <div
           className={`pokemon opponent ${showOpponent ? "show" : ""}`}
@@ -203,6 +214,9 @@ export default function Room() {
             value={gameState.opponent.current_hp}
             maxValue={gameState.opponent.stats.hp}
           />
+          <div className="effects">
+            {sprites.opponentBuff && <FontAwesomeIcon icon={faArrowUp} />}
+          </div>
         </div>
       </div>
 

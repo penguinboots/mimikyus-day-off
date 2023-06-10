@@ -33,12 +33,13 @@ export function GameStateProvider({ children }) {
     treasure: false,
   });
 
-
   const [sprites, setSprites] = useState({
     player: "idle",
     opponent: "idle",
+    playerBuff: null,
+    opponentBuff: null,
   });
-  
+
   const [gifReloadKeyPlayer, setGifReloadKeyPlayer] = useState(0);
   const [gifReloadKeyOpponent, setGifReloadKeyOpponent] = useState(0);
   const [showPlayer, setShowPlayer] = useState(false);
