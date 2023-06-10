@@ -18,10 +18,8 @@ const mimikyu = {
     "speed": 0,
   },
   "moves": [
-    "scratch",
-    "shadow-sneak",
-    "play-rough",
-    "charm",
+    "astonish",
+    "quick-attack",
   ],
   "types": ["ghost", "fairy"],
   "height": 2,
