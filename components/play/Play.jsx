@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 import Nav from "../common/Nav";
-import GameLogic from "./GameLogic";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
@@ -43,7 +42,6 @@ export default function Play(props) {
           />
         )}
       </div>
-      <GameLogic />
     </div>
   );
 }
