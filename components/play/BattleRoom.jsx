@@ -135,10 +135,8 @@ export default function Room() {
       >
         <MoveItem
           id={move.name}
+          move={move}
           loc="game"
-          moveName={move.name}
-          movePower={move.power}
-          moveDesc={move.effect_entries[0].short_effect}
         />
       </button>
     );

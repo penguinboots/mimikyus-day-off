@@ -20,6 +20,8 @@ $pdex-black: #323232;
 $pdex-black-highlight: #4b4b4b;
 $pdex-yellow: #fbb012;
 
+$pdex-shadow-border: rgba(58, 58, 58, 0.3);
+
 $background-body: $dark-gray;
 $button: #57c1f9;
 $button-text: #e2fcff;
@@ -92,13 +94,42 @@ body {
     border-radius: 0 16px;
     cursor: pointer;
     background-color: $button;
-    border: 3px solid $pdex-blue-shadow;
+    border: 3px solid $pdex-shadow-border;
     outline: 3px solid $pdex-black-highlight;
     font-size: 28px;
     color: $off-white;
   }
 }
 
+.move-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $label-bg;
+  border: 3px solid $border;
+  border-radius: 12px;
+
+  width: 70%;
+  height: 48px;
+  min-height: 48px;
+
+  border: 4px solid $pdex-shadow-border;
+  outline: 4px solid $pdex-black-highlight;
+
+  font-weight: 700;
+  color: $hp-bg;
+   text-shadow: -2px 0 $pdex-black-highlight, 0 2px $pdex-black-highlight, 2px 0 $pdex-black-highlight, 0 -2px $pdex-black-highlight;
+}
+.move-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid $pdex-shadow-border;
+  outline: 4px solid $pdex-black-highlight;
+  background-color: $off-white;
+}
 /** LANDING **/
 
 .landing-container,
@@ -147,10 +178,10 @@ body {
         border-radius: 20px;
         color: $button-text;
         background-color: $button;
-        border: 5px solid $pdex-blue-shadow;
+        border: 5px solid $pdex-shadow-border;
         outline: 5px solid $border;
         font-size: 48px;
-        font-family: 'VT323', sans-serif;
+        font-family: "VT323", sans-serif;
       }
     }
     .nav-right {
@@ -166,7 +197,7 @@ body {
         border-radius: 36px;
         color: $button-text;
         background-color: $button;
-        border: 5px solid $pdex-blue-shadow;
+        border: 5px solid $pdex-shadow-border;
         outline: 5px solid $border;
         font-size: 28px;
 
@@ -247,7 +278,7 @@ body {
 
   background-color: $dash-card-bg;
   outline: 5px solid $pdex-black-highlight;
-  border: 5px solid $pdex-light-gray-shadow;
+  border: 5px solid $pdex-shadow-border;
   width: 290px;
   border-radius: 36px;
 
@@ -293,19 +324,6 @@ body {
 /** MOVEINFO **/
 .move-info-card {
   gap: 10px;
-  .move-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: $label-bg;
-    border: 1px solid $border;
-    border-radius: 12px;
-
-    width: 70%;
-    height: 48px;
-    min-height: 48px;
-  }
   .move-item:first-of-type {
     margin-top: 20px;
   }
@@ -315,14 +333,7 @@ body {
     top: 200px;
     width: 200px;
     height: 200px;
-    background-color: $label-bg;
     border-radius: 12px;
-    border: 1px solid $border;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
   button {
     width: 70%;
@@ -331,7 +342,7 @@ body {
     margin-top: 40px;
     background-color: $pdex-green;
     color: $pdex-green-highlight;
-    border: 4px solid $pdex-green-shadow;
+    border: 4px solid $pdex-shadow-border;
     outline: 4px solid $pdex-black-highlight;
     font-size: 20px;
     font-weight: 700;
@@ -385,7 +396,7 @@ body {
     height: 80px;
     background-color: $pdex-green;
     color: $pdex-green-highlight;
-    border: 4px solid $pdex-green-shadow;
+    border: 4px solid $pdex-shadow-border;
     outline: 4px solid $pdex-black-highlight;
 
     border-radius: 24px;
@@ -413,6 +424,8 @@ body {
     justify-content: center;
     gap: 10px;
     font-size: 28px;
+    border: 4px solid $pdex-shadow-border;
+    outline: 4px solid $pdex-black-highlight;
   }
   .battle-room,
   .treasure-room {
@@ -446,17 +459,11 @@ body {
       bottom: 70px;
 
       .move-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
         background-color: $label-bg;
-        border: 1px solid black;
         border-radius: 12px;
 
+        height: 56px;
         width: 120px;
-        height: 48px;
-        min-height: 48px;
       }
       .move-detail {
         position: absolute;
@@ -464,14 +471,7 @@ body {
         left: 100px;
         width: 300px;
         height: 100px;
-        background-color: $label-bg;
         border-radius: 12px;
-        border: 1px solid $border;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
       }
     }
   }

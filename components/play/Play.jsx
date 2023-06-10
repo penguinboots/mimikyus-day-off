@@ -20,6 +20,7 @@ export default function Play(props) {
       <Nav
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
+        windowTitle="ROUTE 1"
       />
       <div className="play-viewport">
         <button className="dash-return" onClick={returnToDash}>

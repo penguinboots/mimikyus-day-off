@@ -1,9 +1,12 @@
+import { getTypeColor } from "@/utils/helpers/getTypeColor";
 import useIsHovering from "@/utils/hooks/isHovering";
 import MoveDetail from "./MoveDetail";
 
 export default function MoveItem(props) {
-  const { loc, id, moveName, movePower, moveDesc } = props;
+  const { loc, id, move } = props;
   const { handleMouseOver, handleMouseOut, isHovering } = useIsHovering();
+  const typeColor = getTypeColor(move.type);
+
 
   return (
     <>
@@ -11,14 +14,17 @@ export default function MoveItem(props) {
         className="move-item"
         onMouseOver={() => handleMouseOver(id, loc)}
         onMouseOut={() => handleMouseOut(id, loc)}
+        style={{
+          backgroundColor: typeColor,
+        }}
       >
-        {moveName.toUpperCase()}
+        {move.name.toUpperCase()}
       </div>
       {isHovering[loc][id] && (
         <MoveDetail
-          moveName={moveName}
-          power={movePower}
-          description={moveDesc}
+          moveName={move.name}
+          power={move.power}
+          description={move.effect_entries[0].short_effect}
         />
       )}
     </>
