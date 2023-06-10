@@ -10,7 +10,7 @@ function calcStat(target, move) {
     "target": target
   }
   statChanges[move.stat_changes[0].stat] += move.stat_changes[0].change
-  console.log(statChanges)
+  // console.log(statChanges)
   return statChanges
 }
 
