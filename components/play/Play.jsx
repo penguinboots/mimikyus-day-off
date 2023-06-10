@@ -1,13 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faHouse } from "@fortawesome/free-solid-svg-icons";
 import Nav from "../common/Nav";
-import GameLogic from "./GameLogic";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
 
 export default function Play(props) {
-  const { setMode, isMusicPlaying, handleMusicToggle } = props;
+  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
 
   const returnToDash = () => {
     setMode("DASH");
@@ -18,8 +17,10 @@ export default function Play(props) {
   return (
     <div className="play-container">
       <Nav
+        mode={mode}
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
+        windowTitle="ROUTE 1"
       />
       <div className="play-viewport">
         <button className="dash-return" onClick={returnToDash}>
@@ -41,7 +42,6 @@ export default function Play(props) {
           />
         )}
       </div>
-      <GameLogic />
     </div>
   );
 }

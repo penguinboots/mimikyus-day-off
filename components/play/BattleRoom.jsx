@@ -34,6 +34,7 @@ export default function Room() {
   const PLAYER = sprites.player;
   const OPPONENT = sprites.opponent;
   const BACKGROUND = gameState.currentRoom.background;
+  const BACKGROUND_COL = gameState.currentRoom.color;
 
   // Checks for opponent HP <= 0
   useEffect(() => {
@@ -135,10 +136,8 @@ export default function Room() {
       >
         <MoveItem
           id={move.name}
+          move={move}
           loc="game"
-          moveName={move.name}
-          movePower={move.power}
-          moveDesc={move.effect_entries[0].short_effect}
         />
       </button>
     );
@@ -149,6 +148,7 @@ export default function Room() {
       className="battle-room"
       style={{
         backgroundImage: BACKGROUND,
+        backgroundColor: BACKGROUND_COL,
       }}
     >
       <div className="battle-floor">
