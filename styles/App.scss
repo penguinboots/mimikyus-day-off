@@ -21,7 +21,7 @@ $pdex-black-highlight: #4b4b4b;
 $pdex-yellow: #fbb012;
 
 $pdex-shadow-border: rgba(58, 58, 58, 0.3);
-$pdex-shadow-text: rgba(255, 255, 255, 0.75);
+$pdex-shadow-text: rgba(255, 255, 255, 0.85);
 
 $background-body: $dark-gray;
 $button: #57c1f9;
@@ -106,9 +106,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-color: $label-bg;
-  border: 3px solid $border;
   border-radius: 12px;
 
   width: 70%;
@@ -120,8 +117,7 @@ body {
 
   font-weight: 700;
   color: $pdex-shadow-text;
-  text-shadow: -2px 0 $pdex-black-highlight, 0 2px $pdex-black-highlight,
-    2px 0 $pdex-black-highlight, 0 -2px $pdex-black-highlight;
+  color: $pdex-shadow-text;
 }
 .move-detail {
   display: flex;
@@ -448,7 +444,7 @@ body {
     border-radius: 25px;
     border: 4px solid $pdex-shadow-border;
     outline: 4px solid $pdex-black-highlight;
-    background-color: $label-bg;
+    background-color: $hp-bg;
     color: $pdex-black-highlight;
     font-size: 28px;
   }
@@ -484,7 +480,6 @@ body {
       bottom: 70px;
 
       .move-item {
-        background-color: $label-bg;
         border-radius: 12px;
 
         height: 56px;
