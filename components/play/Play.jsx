@@ -7,7 +7,7 @@ import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
 
 export default function Play(props) {
-  const { setMode, isMusicPlaying, handleMusicToggle } = props;
+  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
 
   const returnToDash = () => {
     setMode("DASH");
@@ -18,6 +18,7 @@ export default function Play(props) {
   return (
     <div className="play-container">
       <Nav
+        mode={mode}
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
         windowTitle="ROUTE 1"

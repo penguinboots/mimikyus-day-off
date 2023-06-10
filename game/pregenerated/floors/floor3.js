@@ -2,7 +2,7 @@ const { munchlax1, munchlax2, munchlax3, snorlax3 } = require("../floor3mons");
 
 const floor_3 = {
   room_1: {
-    name: "f3_room_1",
+    name: "Route 35",
     type: "battle",
     opponent: munchlax1,
     treasure: {
@@ -15,7 +15,7 @@ const floor_3 = {
     next_room: "room_2",
   },
   room_2: {
-    name: "f3_room_2",
+    name: "Ruins of Alph",
     type: "battle",
     opponent: munchlax2,
     treasure: {
@@ -28,7 +28,7 @@ const floor_3 = {
     next_room: "room_3",
   },
   room_3: {
-    name: "f3_room_3",
+    name: "Route 32",
     type: "battle",
     opponent: munchlax3,
     treasure: {
@@ -41,7 +41,7 @@ const floor_3 = {
     next_room: "room_4",
   },
   room_4: {
-    name: "f3_room_4",
+    name: "Ecruteak City",
     type: "treasure",
     opponent: null,
     treasure: {
@@ -54,7 +54,7 @@ const floor_3 = {
     next_room: "room_5",
   },
   room_5: {
-    name: "f3_room_5",
+    name: "Bell Tower",
     type: "battle",
     opponent: snorlax3,
     treasure: {

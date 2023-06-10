@@ -4,6 +4,7 @@ import EnterGame from "./EnterGame";
 
 export default function Dashboard(props) {
   const {
+    mode,
     setMode,
     isMusicPlaying,
     handleMusicToggle
@@ -12,6 +13,7 @@ export default function Dashboard(props) {
   return (
     <div className="dashboard">
       <Nav
+        mode={mode}
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
         windowTitle="POKÉDEX"

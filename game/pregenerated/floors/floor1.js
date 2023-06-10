@@ -2,7 +2,7 @@ const { magikarp, snorlax1 } = require("../floor1mons");
 
 const floor_1 = {
   room_1: {
-    name: "f1_room_1",
+    name: "New Bark Town",
     type: "battle",
     opponent: magikarp,
     treasure: {
@@ -15,7 +15,7 @@ const floor_1 = {
     next_room: "room_2",
   },
   room_2: {
-    name: "f1_room_2",
+    name: "Cherrygrove City",
     type: "treasure",
     opponent: null,
     treasure: {
@@ -28,7 +28,7 @@ const floor_1 = {
     next_room: "room_3",
   },
   room_3: {
-    name: "f1_room_3",
+    name: "Route 30",
     type: "battle",
     opponent: snorlax1,
     treasure: {

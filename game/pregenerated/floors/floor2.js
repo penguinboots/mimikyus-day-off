@@ -2,7 +2,7 @@ const { goomy, dugtrio, snorlax2 } = require("../floor2mons");
 
 const floor_2 = {
   room_1: {
-    name: "f2_room_1",
+    name: "Route 31",
     type: "battle",
     opponent: goomy,
     treasure: {
@@ -15,7 +15,7 @@ const floor_2 = {
     next_room: "room_2",
   },
   room_2: {
-    name: "f2_room_2",
+    name: "Dark Cave",
     type: "battle",
     opponent: dugtrio,
     treasure: {
@@ -28,7 +28,7 @@ const floor_2 = {
     next_room: "room_3",
   },
   room_3: {
-    name: "f2_room_3",
+    name: "Violet City",
     type: "treasure",
     opponent: null,
     treasure: {
@@ -41,7 +41,7 @@ const floor_2 = {
     next_room: "room_4",
   },
   room_4: {
-    name: "f2_room_4",
+    name: "Route 36",
     type: "battle",
     opponent: snorlax2,
     treasure: {

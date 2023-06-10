@@ -105,6 +105,7 @@ export default function Home({
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
+            mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
@@ -112,6 +113,7 @@ export default function Home({
         )}
         {mode === 'PLAY' && (
           <Play
+            mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
