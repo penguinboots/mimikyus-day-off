@@ -28,9 +28,18 @@ const goomy = {
   "height": 3,
   "weight": 28,
   "sprites": {
-    "idle": `url("/sprites/goomy-idl.gif")`,
-    "attack": `url("/sprites/goomy-atk.gif")`,
-    "hit": `url("/sprites/goomy-hit.gif")`,
+    "idle": {
+      url: `/sprites/goomy-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/goomy-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/goomy-hit.gif`,
+      length: 720,
+    },
   }
 }
 
@@ -64,9 +73,18 @@ const dugtrio = {
   "height": 7,
   "weight": 666,
   "sprites": {
-    "idle": `url("/sprites/dugtrio-idl.gif")`,
-    "attack": `url("/sprites/dugtrio-atk.gif")`,
-    "hit": `url("/sprites/dugtrio-hit.gif")`,
+    "idle": {
+      url: `/sprites/dugtrio-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/dugtrio-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/dugtrio-hit.gif`,
+      length: 720,
+    },
   }
 }
 
@@ -100,9 +118,18 @@ const snorlax2= {
   "height": 21,
   "weight": 4600,
   "sprites": {
-    "idle": `url("/sprites/snorlax-idl.gif")`,
-    "attack": `url("/sprites/snorlax-atk.gif")`,
-    "hit": `url("/sprites/snorlax-hit.gif")`,
+    "idle": {
+      url: `/sprites/snorlax-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/snorlax-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/snorlax-hit.gif`,
+      length: 720,
+    },
   }
 }
 

@@ -75,7 +75,7 @@ function calculateMove(move, user, target) {
   if (statChanges.target) {
     results.statChanges = statChanges
   }
-  console.log(results)
+  // console.log(results)
   return results
 }
 

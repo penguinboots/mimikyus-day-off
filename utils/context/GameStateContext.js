@@ -32,10 +32,18 @@ export function GameStateProvider({ children }) {
     defeat: false,
     treasure: false,
   });
+
   const [sprites, setSprites] = useState({
-    player: `url("/mimikyu-standin.png")`,
-    opponent: `url("/snorlax-standin.png")`,
+    player: "idle",
+    opponent: "idle",
+    playerBuff: null,
+    opponentBuff: null,
   });
+
+  const [gifReloadKeyPlayer, setGifReloadKeyPlayer] = useState(0);
+  const [gifReloadKeyOpponent, setGifReloadKeyOpponent] = useState(0);
+  const [showPlayer, setShowPlayer] = useState(false);
+  const [showOpponent, setShowOpponent] = useState(false);
 
   function nextFloor(nextFl) {
     const nextFloor = dungeon[nextFl];
@@ -83,6 +91,13 @@ export function GameStateProvider({ children }) {
     }));
   }
 
+  const playAnim = (char, anim) => {
+    setSprites((prev) => ({
+      ...prev,
+      [char]: anim,
+    }));
+  }
+
   // Provide the state and functions through the context
   const value = {
     gameState,
@@ -95,13 +110,21 @@ export function GameStateProvider({ children }) {
     setPopup,
     sprites,
     setSprites,
+    playAnim,
     nextRoom,
     dealDamage,
     dealHeal,
     battleHistory,
     setBattleHistory,
+    gifReloadKeyPlayer,
+    setGifReloadKeyPlayer,
+    gifReloadKeyOpponent,
+    setGifReloadKeyOpponent,
+    showPlayer,
+    setShowPlayer,
+    showOpponent,
+    setShowOpponent,
   };
-
   return (
     <GameStateContext.Provider value={value}>
       {children}

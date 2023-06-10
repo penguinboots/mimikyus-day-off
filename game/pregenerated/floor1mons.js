@@ -28,9 +28,18 @@ const magikarp = {
   "height": 9,
   "weight": 100,
   "sprites": {
-    "idle": `url("/sprites/magikarp-idl.gif")`,
-    "attack": `url("/sprites/magikarp-atkhit.gif")`,
-    "hit": `url("/sprites/magikarp-atkhit.gif")`,
+    "idle": {
+      url: `/sprites/magikarp-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/magikarp-atkhit.gif`,
+      length: 1000,
+    },
+    "hit": {
+      url: `/sprites/magikarp-atkhit.gif`,
+      length: 1000,
+    },
   }
 }
 
@@ -64,9 +73,18 @@ const snorlax1 = {
   "height": 21,
   "weight": 4600,
   "sprites": {
-    "idle": `url("/sprites/snorlax-idl.gif")`,
-    "attack": `url("/sprites/snorlax-atk.gif")`,
-    "hit": `url("/sprites/snorlax-hit.gif")`,
+    "idle": {
+      url: `/sprites/snorlax-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/snorlax-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/snorlax-hit.gif`,
+      length: 720,
+    },
   }
 }
 
