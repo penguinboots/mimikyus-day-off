@@ -28,9 +28,18 @@ const munchlax1 = {
   "height": 6,
   "weight": 1050,
   "sprites": {
-    "idle": `url("/sprites/munchlax-idl.gif")`,
-    "attack": `url("/sprites/munchlax-atk.gif")`,
-    "hit": `url("/sprites/munchlax-hit.gif")`,
+    "idle": {
+      url: `/sprites/munchlax-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/munchlax-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/munchlax-hit.gif`,
+      length: 720,
+    },
   }
 }
 
@@ -64,9 +73,18 @@ const munchlax2 = {
   "height": 6,
   "weight": 1050,
   "sprites": {
-    "idle": `url("/sprites/munchlax-idl.gif")`,
-    "attack": `url("/sprites/munchlax-atk.gif")`,
-    "hit": `url("/sprites/munchlax-hit.gif")`,
+    "idle": {
+      url: `/sprites/munchlax-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/munchlax-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/munchlax-hit.gif`,
+      length: 720,
+    },
   }
 }
 
@@ -100,9 +118,18 @@ const munchlax3 = {
   "height": 6,
   "weight": 1050,
   "sprites": {
-    "idle": `url("/sprites/munchlax-idl.gif")`,
-    "attack": `url("/sprites/munchlax-atk.gif")`,
-    "hit": `url("/sprites/munchlax-hit.gif")`,
+    "idle": {
+      url: `/sprites/munchlax-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/munchlax-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/munchlax-hit.gif`,
+      length: 720,
+    },
   }
 }
 
@@ -136,9 +163,18 @@ const snorlax3 = {
   "height": 21,
   "weight": 4600,
   "sprites": {
-    "idle": `url("/sprites/snorlax-idl.gif")`,
-    "attack": `url("/sprites/snorlax-atk.gif")`,
-    "hit": `url("/sprites/snorlax-hit.gif")`,
+    "idle": {
+      url: `/sprites/snorlax-idl.gif`,
+      length: 1000,
+    },
+    "attack": {
+      url: `/sprites/snorlax-atk.gif`,
+      length: 1050,
+    },
+    "hit": {
+      url: `/sprites/snorlax-hit.gif`,
+      length: 720,
+    },
   }
 }
 
