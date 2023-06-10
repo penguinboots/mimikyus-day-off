@@ -1,6 +1,6 @@
 import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   moveOrder,
   calculateMove,
@@ -24,22 +24,39 @@ export default function Room() {
     setPopup,
     sprites,
     setSprites,
+    playAnim,
     dealDamage,
     dealHeal,
     battleHistory,
     setBattleHistory,
   } = useGameState();
 
-  // Modify to change active sprite
-  const PLAYER = sprites.player;
-  const OPPONENT = sprites.opponent;
+  const PLAYER = gameState.player.sprites[sprites.player].url; // idle, attack, hit
+  const OPPONENT = gameState.opponent.sprites[sprites.opponent].url;
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
+
+  const [gifReloadKeyPlayer, setGifReloadKeyPlayer] = useState(0);
+  const [gifReloadKeyOpponent, setGifReloadKeyOpponent] = useState(0);
+  const [showPlayer, setShowPlayer] = useState(false);
+  const [showOpponent, setShowOpponent] = useState(false);
+
+  useEffect(() => {
+    setGifReloadKeyPlayer((prevKey) => prevKey + 1);
+    setShowPlayer(false);
+    setTimeout(() => setShowPlayer(true), 0);
+  }, [PLAYER]);
+
+  useEffect(() => {
+    setGifReloadKeyOpponent((prevKey) => prevKey + 1);
+    setShowOpponent(false);
+    setTimeout(() => setShowOpponent(true), 0);
+  }, [OPPONENT]);
+  
 
   // Checks for opponent HP <= 0
   useEffect(() => {
     if (gameState.opponent.current_hp <= 0) {
-      console.log("battle won");
       // nextRoom();
     }
   }, [gameState.opponent, setBattleWon, nextRoom]);
@@ -51,68 +68,77 @@ export default function Room() {
     }
   }, [gameState.player]);
 
+  async function playAttack(attacker, defender) {
+    let attackDelay = gameState[attacker].sprites.attack.length;
+    let hitDelay = gameState[defender].sprites.hit.length;
+    playAnim(attacker, "attack");
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        playAnim(attacker, "idle");
+        resolve();
+      }, attackDelay);
+    });
+    await new Promise((resolve) => {
+      playAnim(defender, "hit");
+      resolve();
+    });
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        playAnim(defender, "idle");
+        resolve();
+      }, hitDelay);
+    });
+  }
+
+  async function playStatus(self) {
+    let statusDelay = gameState[self].sprites.attack.length;
+    playAnim(self, "attack");
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        playAnim(self, "idle");
+        resolve();
+      }, statusDelay);
+    });
+  }
+
   // Executes the move, applying hp/stat changes
-  let doMove = (moveEffects, target, self) => {
-    if (moveEffects.damage) {
-      dealDamage(target, moveEffects.damage);
+  async function doMove(move, moveEffects, target, self) {
+    if (move.category.includes("damage")) {
+      await playAttack(self, target);
+      if (moveEffects.damage) {
+        dealDamage(target, moveEffects.damage);
+      }
+      if (moveEffects.heal) {
+        dealHeal(self, moveEffects.heal);
+      }
+      if (moveEffects.statChanges) {
+        // apply stat changes
+      }
+    } else if (move.category.includes("stats")) {
+      // await playStatus(self);
+    } else if (move.category === "unique") {
+      await playStatus(self);
     }
-    if (moveEffects.heal) {
-      dealHeal(self, moveEffects.heal);
-    }
-    if (moveEffects.statChanges) {
-      // apply stat changes
-    }
-  };
+  }
 
   // Executes player move selection
-  function executeTurn(charMove, char, opponentMove, opponent) {
+  async function executeTurn(charMove, char, opponentMove, opponent) {
     let turns = moveOrder(charMove, char, opponentMove, opponent);
-
     for (let turn of turns) {
       let moveEffects = calculateMove(turn.move, turn.user, turn.target);
+
       setBattleHistory((prev) => [
         ...prev,
         `${turn.user.name} used ${turn.move.name}!\n`,
       ]);
+
       if (turn.user === gameState.player) {
-        doMove(moveEffects, "opponent", "player");
+        await doMove(turn.move, moveEffects, "opponent", "player");
       }
       if (turn.user === gameState.opponent) {
-        doMove(moveEffects, "player", "opponent");
+        await doMove(turn.move, moveEffects, "player", "opponent");
       }
     }
-    /*
-      - setTurnMode("logic"), greys out or hides move UI
-      **** first run ****
-        - call doMove for first move
-            - pass back some data to run anims?
-        - animateMove()
-            - sets attacking pokemon sprike to ATK, settimeout set back to IDLE
-            - (after small delay) sets defending pokemon sprite to HIT, settimeout set back to IDLE
-                - play impact particles, if implementing
-        - animateHP(old, new) for target hit (or pass change value, math within)
-            - animate HP bar -> most likely CSS width change based on some % math
-            - run again for target attacking if it's healing
-        - printMove()
-            - use data from doMove to append a message to the battleHistory array
-        - isBattleOver() - check if either char or opponent has HP = 0
-            - if so, show victory or defeat screen
-              - click OK on victory -> setGameState's current_room to the next room
-                  - if next_room is null, set floor/room, return to dash
-              - click OK on defeat -> setGameState's current_floor and current_room to floor_1 and room_1
-          *** write a nextRoom() function to manage previous options ***
-            - this should be a fairly large function that resets whatever needs to be reset and arranges states for the next room
-      **** second run ****
-        - call doMove for second move
-        - animateMove()
-        - animateHP()
-        - printMove()
-        - isBattleOver()
-
-      - setTurnMode("player")
-
-      **** ready to repeat ****
-    */
   }
 
   // Generates array of move objects from array of move name strings
@@ -121,10 +147,10 @@ export default function Room() {
     playerMoveArray.push(moveFetcher(moveString));
   });
   // Generates MoveItems from array of move objects
-  const playerMoves = Object.values(playerMoveArray).map((move) => {
+  const playerMoves = playerMoveArray.map((move) => {
     return (
       <button
-        key={move}
+        key={move.name}
         onClick={() =>
           executeTurn(
             move,
@@ -134,11 +160,7 @@ export default function Room() {
           )
         }
       >
-        <MoveItem
-          id={move.name}
-          move={move}
-          loc="game"
-        />
+        <MoveItem id={move.name} move={move} loc="game" />
       </button>
     );
   });
@@ -153,9 +175,9 @@ export default function Room() {
     >
       <div className="battle-floor">
         <div
-          className="pokemon self"
+          className={`pokemon self ${showPlayer ? "show" : ""}`}
           style={{
-            backgroundImage: gameState.player.sprites.idle,
+            backgroundImage: `url(${PLAYER}?${gifReloadKeyPlayer})`,
           }}
         >
           {gameState.player.current_hp}/{gameState.player.stats.hp}
@@ -167,9 +189,9 @@ export default function Room() {
           />
         </div>
         <div
-          className="pokemon opponent"
+          className={`pokemon opponent ${showOpponent ? "show" : ""}`}
           style={{
-            backgroundImage: gameState.opponent.sprites.idle,
+            backgroundImage: `url(${OPPONENT}?${gifReloadKeyOpponent})`,
           }}
         >
           {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}

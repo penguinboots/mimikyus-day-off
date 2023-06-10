@@ -33,8 +33,8 @@ export function GameStateProvider({ children }) {
     treasure: false,
   });
   const [sprites, setSprites] = useState({
-    player: `url("/mimikyu-standin.png")`,
-    opponent: `url("/snorlax-standin.png")`,
+    player: "idle",
+    opponent: "idle",
   });
 
   function nextFloor(nextFl) {
@@ -83,6 +83,13 @@ export function GameStateProvider({ children }) {
     }));
   }
 
+  const playAnim = (char, anim) => {
+    setSprites((prev) => ({
+      ...prev,
+      [char]: anim,
+    }));
+  }
+
   // Provide the state and functions through the context
   const value = {
     gameState,
@@ -95,6 +102,7 @@ export function GameStateProvider({ children }) {
     setPopup,
     sprites,
     setSprites,
+    playAnim,
     nextRoom,
     dealDamage,
     dealHeal,
