@@ -29,9 +29,7 @@ export default function Play(props) {
         </button>
         {gameState.roomType === "battle" && (
           <BattleRoom
-            returnToDash={returnToDash}
-            nextRoom={nextRoom}
-            gameState={gameState}
+            setMode={setMode}
           />
         )}
         {gameState.roomType === "treasure" && (

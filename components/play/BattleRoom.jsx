@@ -1,18 +1,20 @@
-import MoveItem from "../common/MoveItem";
 import { useGameState } from "../../utils/context/GameStateContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   moveOrder,
   calculateMove,
   opponentMoveSelect,
   moveFetcher,
 } from "../../game/helpers/combat";
+import { padMoves } from "@/utils/helpers/padMoves";
 import HealthBar from "./HealthBar";
+import MoveItem from "../common/MoveItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { padMoves } from "@/utils/helpers/padMoves";
+import ResultPopup from "./ResultPopup";
 
-export default function Room() {
+export default function Room(props) {
+  const { setMode } = props;
   const {
     gameState,
     setGameState,
@@ -40,6 +42,7 @@ export default function Room() {
     setShowPlayer,
     showOpponent,
     setShowOpponent,
+    loseGame,
   } = useGameState();
 
   const PLAYER = gameState.player.sprites[sprites.player].url; // idle, attack, hit
@@ -59,19 +62,20 @@ export default function Room() {
     setTimeout(() => setShowOpponent(true), 0);
   }, [OPPONENT]);
 
-  // Checks for opponent HP <= 0
+  // Checks for end-of-battle conditions, triggers endBattle sequence after delay
   useEffect(() => {
     if (gameState.opponent.current_hp <= 0) {
-      // nextRoom();
+      setBattleWon(true);
+      setTimeout(() => {
+        endBattle(true);
+      }, 1500);
+    } else if (gameState.player.current_hp <= 0) {
+      setBattleWon(false);
+      setTimeout(() => {
+        endBattle(false);
+      }, 1500);
     }
-  }, [gameState.opponent, setBattleWon, nextRoom]);
-
-  // Checks for player HP <= 0
-  useEffect(() => {
-    if (gameState.player.current_hp <= 0) {
-      console.log("battle lost");
-    }
-  }, [gameState.player]);
+  }, [gameState]);
 
   // Play animations for attack
   async function playAttack(attacker, defender) {
@@ -134,8 +138,33 @@ export default function Room() {
     }
   }
 
+  // Check if battle is over ** bug: currently receiving old current_hp state
+  function checkBattleOver(opponentHP, playerHP) {
+    console.log(opponentHP);
+    if (opponentHP <= 0 || playerHP <= 0) {
+      return true;
+    }
+    return false;
+  }
+
+  // Triggers popup based on battle outcome
+  function endBattle(win) {
+    if (win) {
+      setPopup((prev) => ({
+        ...prev,
+        victory: true,
+      }));
+    } else if (!win) {
+      setPopup((prev) => ({
+        ...prev,
+        defeat: true,
+      }));
+    }
+  }
+
   // Executes player move selection, calling previously defined helpers
   async function executeTurn(charMove, char, opponentMove, opponent) {
+    let isBattleOver = false;
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     for (let turn of turns) {
       let moveEffects = calculateMove(turn.move, turn.user, turn.target);
@@ -143,11 +172,17 @@ export default function Room() {
         ...prev,
         `${turn.user.name} used ${turn.move.name}!\n`,
       ]);
-      if (turn.user === gameState.player) {
-        await doMove(turn.move, moveEffects, "opponent", "player");
-      }
-      if (turn.user === gameState.opponent) {
-        await doMove(turn.move, moveEffects, "player", "opponent");
+      if (!isBattleOver) {
+        if (turn.user === gameState.player) {
+          await doMove(turn.move, moveEffects, "opponent", "player");
+        }
+        if (turn.user === gameState.opponent) {
+          await doMove(turn.move, moveEffects, "player", "opponent");
+        }
+        isBattleOver = checkBattleOver(
+          gameState.opponent.current_hp,
+          gameState.player.current_hp
+        );
       }
     }
   }
@@ -158,23 +193,26 @@ export default function Room() {
     playerMoveArray.push(moveFetcher(moveString));
   });
   // Generates MoveItems from array of move objects
-  let playerMoves = padMoves(playerMoveArray.map((move) => {
-    return (
-      <button
-        key={move.name}
-        onClick={() =>
-          executeTurn(
-            move,
-            gameState.player,
-            opponentMoveSelect(gameState.opponent),
-            gameState.opponent
-          )
-        }
-      >
-        <MoveItem id={move.name} move={move} loc="game" />
-      </button>
-    );
-  }), "button");
+  let playerMoves = padMoves(
+    playerMoveArray.map((move) => {
+      return (
+        <button
+          key={move.name}
+          onClick={() =>
+            executeTurn(
+              move,
+              gameState.player,
+              opponentMoveSelect(gameState.opponent),
+              gameState.opponent
+            )
+          }
+        >
+          <MoveItem id={move.name} move={move} loc="game" />
+        </button>
+      );
+    }),
+    "button"
+  );
 
   return (
     <div
@@ -184,6 +222,12 @@ export default function Room() {
         backgroundColor: BACKGROUND_COL,
       }}
     >
+      {popup.victory && (
+        <ResultPopup result="win" onHome={() => setMode("DASH")} nextRoom={nextRoom} />
+      )}
+      {popup.defeat && (
+        <ResultPopup result="loss" setMode={setMode} loseGame={loseGame}/>
+      )}
       <div className="battle-floor">
         <div
           className={`pokemon self ${showPlayer ? "show" : ""}`}

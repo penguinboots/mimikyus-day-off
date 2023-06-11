@@ -54,8 +54,10 @@ export function GameStateProvider({ children }) {
       opponent: nextFloor.room_1.opponent,
       player: player,
     }));
+    setBattleWon(false);
   }
 
+  // Sets current room/floor to next in list, resets player HP/stats, 
   function nextRoom() {
     if (gameState.currentRoom.next_room) {
       const nextRoom = gameState.currentFloor[gameState.currentRoom.next_room];
@@ -69,6 +71,30 @@ export function GameStateProvider({ children }) {
     } else {
       nextFloor(gameState.currentFloor.next_floor);
     }
+    setBattleWon(false);
+    setPopup({
+      intro: false,
+      victory: false,
+      defeat: false,
+      treasure: false,
+    });
+  }
+
+  function loseGame() {
+    setGameState({
+      currentFloor: dungeon.floor_1,
+      currentRoom: dungeon.floor_1.room_1,
+      roomType: dungeon.floor_1.room_1.type,
+      opponent: dungeon.floor_1.room_1.opponent,
+      player: player,
+    });
+    setBattleWon(false);
+    setPopup({
+      intro: false,
+      victory: false,
+      defeat: false,
+      treasure: false,
+    });
   }
 
   const dealDamage = (target, amt) => {
@@ -80,7 +106,7 @@ export function GameStateProvider({ children }) {
       },
     }));
   }
-  
+
   const dealHeal = (target, amt) => {
     setGameState((prev) => ({
       ...prev,
@@ -124,6 +150,7 @@ export function GameStateProvider({ children }) {
     setShowPlayer,
     showOpponent,
     setShowOpponent,
+    loseGame,
   };
   return (
     <GameStateContext.Provider value={value}>
