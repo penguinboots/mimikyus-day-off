@@ -3,6 +3,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import MoveItem from "@/components/common/MoveItem";
 import { useGameState } from "@/utils/context/GameStateContext";
 import { moveFetcher } from "@/game/helpers/combat";
+import { padMoves } from "@/utils/helpers/padMoves";
 
 export default function MoveEdit(props) {
   const { gameState } = useGameState();
@@ -12,10 +13,13 @@ export default function MoveEdit(props) {
   gameState.player.moves.forEach((moveString) => {
     playerMoveArray.push(moveFetcher(moveString));
   });
+  
   // Generates MoveItems from array of move objects
-  const playerMoves = Object.values(playerMoveArray).map((move) => {
+  const playerMoves = padMoves(Object.values(playerMoveArray).map((move) => {
     return <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />;
-  });
+  }), "none");
+
+
   return (
     <div className="popup move-edit-window">
       <div className="close-window" onClick={props.handleClose}>
