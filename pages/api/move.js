@@ -3,13 +3,26 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  // GET request for move
+  // GET request for moves
   if (req.method === "GET") {
-    // write this
+    const { userId } = req.query;
+
+    // find moves
+    try {
+      const moves = await prisma.move.findMany({
+        where: {
+          userId: parseInt(userId),
+        },
+      });
+      res.status(200).json({ moves });
+    } catch (error) {
+      console.error('Failed to retrieve moves:', error);
+      res.status(500).json({ error: 'Failed to retrieve moves' });
+    }
   }
 
-  // POST request for move
-  if (req.method == 'POST') {
+  // POST request for moves
+  if (req.method === 'POST') {
     const { userId, moveName } = req.body;
     try {
       const move = await prisma.move.findFirst({
@@ -18,6 +31,7 @@ export default async function handler(req, res) {
           name: moveName,
         },
       });
+      // update moves
       if (move) {
         const updatedmove = await prisma.move.update({
           where: {
