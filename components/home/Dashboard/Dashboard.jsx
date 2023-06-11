@@ -1,6 +1,7 @@
 import CharSection from "./CharSection";
 import Nav from "../../common/Nav";
 import EnterGame from "./EnterGame";
+import { useEffect, useState } from "react";
 
 export default function Dashboard(props) {
   const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
