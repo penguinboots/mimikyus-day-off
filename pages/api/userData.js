@@ -3,6 +3,15 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
+  // GET method for achievements
+  if (req.method === "GET") {
+    // write this
+  }
+
+  // POST method for achievements
+  if (req.method !== 'POST') {
+    // write this
+  }
   const { auth0Sub } = req.query;
 
   try {

@@ -1,9 +1,8 @@
-import { refreshUserData } from "./refreshUserData";
 export const learnMove = async (user, moveName) => {
   //Post request to update the Move
   const userId = user.id
   try {
-    const response = await fetch('/api/updateMoves', {
+    const response = await fetch('/api/move', {
       method: 'POST',
       body: JSON.stringify({ userId, moveName }),
       headers: {

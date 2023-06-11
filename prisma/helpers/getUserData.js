@@ -1,7 +1,7 @@
-export const refreshUserData = async (user) => {
+export const getUserData = async (user) => {
   try {
       //Get request to refresh User Data
-      const getUserDataResponse = await fetch(`/api/getUserData?auth0Sub=${user.auth0Sub}`, {
+      const getUserDataResponse = await fetch(`/api/userData?auth0Sub=${user.auth0Sub}`, {
         method: 'GET',
       });
   
