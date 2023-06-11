@@ -1,5 +1,6 @@
 import { moveFetcher } from "@/game/helpers/combat";
 import { useGameState } from "@/utils/context/GameStateContext";
+import { padMoves } from "@/utils/helpers/padMoves";
 import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
 import MoveItem from "../../common/MoveItem";
 import MoveEdit from "./MoveEdit";
@@ -15,16 +16,18 @@ export default function MoveCard() {
     playerMoveArray.push(moveFetcher(moveString));
   });
   // Generates MoveItems from array of move objects
-  const playerMoves = Object.values(playerMoveArray).map((move) => {
-    return <MoveItem key={move.name} id={move.name} move={move} loc="moveCard" />;
-  });
+  const playerMoves = padMoves(
+    Object.values(playerMoveArray).map((move) => {
+      return (
+        <MoveItem key={move.name} id={move.name} move={move} loc="moveCard" />
+      );
+    }), "none");
 
   return (
     <div className="move-info-card">
       <h2>MOVES</h2>
       {playerMoves}
       <button onClick={() => windowToggle("editMoves")}>EDIT MOVES</button>
-      {console.log(isMenuOpen.editMoves)}
       {isMenuOpen.editMoves && (
         <MoveEdit handleClose={() => windowToggle("editMoves")} />
       )}

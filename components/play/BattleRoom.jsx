@@ -10,6 +10,7 @@ import {
 import HealthBar from "./HealthBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { padMoves } from "@/utils/helpers/padMoves";
 
 export default function Room() {
   const {
@@ -157,7 +158,7 @@ export default function Room() {
     playerMoveArray.push(moveFetcher(moveString));
   });
   // Generates MoveItems from array of move objects
-  const playerMoves = playerMoveArray.map((move) => {
+  let playerMoves = padMoves(playerMoveArray.map((move) => {
     return (
       <button
         key={move.name}
@@ -173,7 +174,7 @@ export default function Room() {
         <MoveItem id={move.name} move={move} loc="game" />
       </button>
     );
-  });
+  }), "button");
 
   return (
     <div
