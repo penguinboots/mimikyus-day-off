@@ -4,12 +4,16 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
-
+import { refreshUserData } from "@/game/helpers/api/refreshUserData";
 export default function Play(props) {
-  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
-
+  let { mode, setMode, isMusicPlaying, handleMusicToggle, db_user, db_character, db_moves, db_achievements } = props;
   const returnToDash = () => {
-    setMode("DASH");
+    // refreshUserData(db_user).then((userData) => {
+    //   db_user = userData.db_user;
+    //   db_character = userData.db_character;
+    //   db_achievements = userData.db_achievements;
+    //   db_moves = userData.db_moves;})
+      setMode("DASH");
   };
 
   const { gameState, nextRoom } = useGameState();
@@ -37,6 +41,7 @@ export default function Play(props) {
             returnToDash={returnToDash}
             nextRoom={nextRoom}
             gameState={gameState}
+            db_user={db_user}
           />
         )}
       </div>
