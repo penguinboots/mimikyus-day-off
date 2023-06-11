@@ -7,18 +7,22 @@ import { padMoves } from "@/utils/helpers/padMoves";
 
 export default function MoveEdit(props) {
   const { gameState } = useGameState();
-  const { db_moves } = props
   const playerCurrentMoveArray = [];
   const playerKnownMoveArray = [];
   // Generates array of move objects from array of move name strings
   gameState.player.moves.forEach((moveString) => {
     playerCurrentMoveArray.push(moveFetcher(moveString));
   });
-  db_moves.forEach(db_move => {
-    if (db_move.collected === true){
-      playerKnownMoveArray.push(moveFetcher(db_move.name));
-    }
-  });
+
+  // fetch a new moves variable using a helper for code commented below to re-enable
+  // do not use static props from index
+
+  // db_moves.forEach(db_move => {
+  //   if (db_move.collected === true){
+  //     playerKnownMoveArray.push(moveFetcher(db_move.name));
+  //   }
+  // });
+
   // Generates MoveItems from array of move objects
   const playerCurrentMoves = padMoves(Object.values(playerCurrentMoveArray).map((move) => {
     return <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />;
