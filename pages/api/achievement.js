@@ -3,14 +3,28 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  // GET method for achievements
+  // GET request for achievements
   if (req.method === "GET") {
-    // write this
+    const { userId } = req.query;
+  
+    // find achievements
+    try {
+      const achievements = await prisma.achievement.findMany({
+        where: {
+          userId: parseInt(userId),
+        },
+      });
+      res.status(200).json({ achievements });
+    } catch (error) {
+      console.error('Failed to retrieve achievements:', error);
+      res.status(500).json({ error: 'Failed to retrieve achievements' });
+    }
   }
 
-  // POST method for achievements
+  // POST request for achievements
   if (req.method === 'POST') {
     const { userId, achievementName } = req.body;
+    // find achievement
     try {
       const achievement = await prisma.achievement.findFirst({
         where: {
@@ -18,6 +32,7 @@ export default async function handler(req, res) {
           name: achievementName,
         },
       });
+      // update achievement
       if (achievement) {
         const updatedAchievement = await prisma.achievement.update({
           where: {
