@@ -120,10 +120,10 @@ export default function Home({
       setMode("DASH");
     }
   }, [user]);
-  console.log("DB_USER: ", db_user);
-  console.log("DB_CHARACTER: ", db_character)
-  console.log("DB_ACHIEVEMENTS?", db_achievements)
-  console.log("DB_MOVES?", db_moves)
+  // console.log("DB_USER: ", db_user);
+  // console.log("DB_CHARACTER: ", db_character)
+  // console.log("DB_ACHIEVEMENTS?", db_achievements)
+  // console.log("DB_MOVES?", db_moves)
 
   return (
     <div className="app-wrapper">
