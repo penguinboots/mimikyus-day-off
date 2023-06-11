@@ -7,15 +7,23 @@ import { padMoves } from "@/utils/helpers/padMoves";
 
 export default function MoveEdit(props) {
   const { gameState } = useGameState();
-
-  const playerMoveArray = [];
+  const { db_moves } = props
+  const playerCurrentMoveArray = [];
+  const playerKnownMoveArray = [];
   // Generates array of move objects from array of move name strings
   gameState.player.moves.forEach((moveString) => {
-    playerMoveArray.push(moveFetcher(moveString));
+    playerCurrentMoveArray.push(moveFetcher(moveString));
   });
-  
+  db_moves.forEach(db_move => {
+    if (db_move.collected === true){
+      playerKnownMoveArray.push(moveFetcher(db_move.name));
+    }
+  });
   // Generates MoveItems from array of move objects
-  const playerMoves = padMoves(Object.values(playerMoveArray).map((move) => {
+  const playerCurrentMoves = padMoves(Object.values(playerCurrentMoveArray).map((move) => {
+    return <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />;
+  }), "none");
+  const playerKnownMoves = padMoves(Object.values(playerKnownMoveArray).map((move) => {
     return <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />;
   }), "none");
 
@@ -29,11 +37,11 @@ export default function MoveEdit(props) {
       <div className="move-edit-menu">
         <div className="moves-selected">
           <h3>Moves Selected</h3>
-          {playerMoves}
+          {playerCurrentMoves}
         </div>
         <div className="moves-avail">
           <h3>Moves Available</h3>
-          {playerMoves} {/* Replace with available player moves */}
+          {playerKnownMoves} {/* Replace with available player moves */}
         </div>
       </div>
     </div>
