@@ -5,7 +5,8 @@ import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
 import MoveItem from "../../common/MoveItem";
 import MoveEdit from "./MoveEdit";
 
-export default function MoveCard() {
+export default function MoveCard(props) {
+  const { db_moves } = props
   const { isMenuOpen, windowToggle } = useIsMenuOpen();
 
   const { gameState } = useGameState();
@@ -29,7 +30,7 @@ export default function MoveCard() {
       {playerMoves}
       <button onClick={() => windowToggle("editMoves")}>EDIT MOVES</button>
       {isMenuOpen.editMoves && (
-        <MoveEdit handleClose={() => windowToggle("editMoves")} />
+        <MoveEdit handleClose={() => windowToggle("editMoves")} db_moves={db_moves}/>
       )}
     </div>
   );

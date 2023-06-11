@@ -31,7 +31,7 @@ export default function Nav(props) {
             handleClick={handleMusicToggle}
           />
           {isMenuOpen.achievements && (
-            <AchievementsMenu handleClick={() => windowClose("achievements")} />
+            <AchievementsMenu handleClick={() => windowClose("achievements")} db_achievements={db_achievements} />
           )}
           {isMenuOpen.settings && (
             <Settings handleClick={() => windowClose("settings")} />
