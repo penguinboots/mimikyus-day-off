@@ -1,14 +1,28 @@
 import CharSection from "./CharSection";
 import Nav from "../../common/Nav";
 import EnterGame from "./EnterGame";
+import { useEffect, useState } from "react";
 
 export default function Dashboard(props) {
-  const {
-    mode,
-    setMode,
-    isMusicPlaying,
-    handleMusicToggle
-  } = props;
+  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`/api/user?auth0Sub=auth0sub123`);
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  console.log(userData);
 
   return (
     <div className="dashboard">
