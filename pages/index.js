@@ -82,12 +82,16 @@ export async function getStaticProps() {
       db_moves.push(db_move);
     }
   }
+  async function db_achievementUpdate(achievementName) { await prisma.achievement.update({ 
+    where: { userId: db_user.id, name: achievementName },
+    data: { collected: true}
+  })}
   return {
     props: {
       db_user,
       db_character,
       db_achievements,
-      db_moves
+      db_moves,
     },
   };
 }
@@ -96,7 +100,7 @@ export default function Home({
   db_user,
   db_character,
   db_achievements,
-  db_moves
+  db_moves,
 }) {
   // Authentication
   const { user, error, isLoading } = useUser();
@@ -120,6 +124,7 @@ export default function Home({
   console.log("DB_CHARACTER: ", db_character)
   console.log("DB_ACHIEVEMENTS?", db_achievements)
   console.log("DB_MOVES?", db_moves)
+
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
