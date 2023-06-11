@@ -17,7 +17,7 @@ export function padMoves(playerMoves, type) {
   } else {
     while (playerMoves.length < 4) {
       playerMoves = playerMoves.concat(
-        <MoveItem />
+        <MoveItem key={playerMoves.length}/>
       );
     }
   }

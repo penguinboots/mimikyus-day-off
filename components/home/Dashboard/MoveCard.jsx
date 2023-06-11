@@ -18,9 +18,9 @@ export default function MoveCard(props) {
   });
   // Generates MoveItems from array of move objects
   const playerMoves = padMoves(
-    Object.values(playerMoveArray).map((move) => {
+    Object.values(playerMoveArray).map((move, index) => {
       return (
-        <MoveItem key={move.name} id={move.name} move={move} loc="moveCard" />
+        <MoveItem key={index} id={move.name} move={move} loc="moveCard" />
       );
     }), "none");
 
