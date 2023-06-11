@@ -124,13 +124,10 @@ export default function Home({
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
+            user={user}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
-            db_user={db_user}
-            db_character={db_character}
-            db_moves={db_moves}
-            db_achievements={db_achievements}
           />
         )}
         {mode === 'PLAY' && (
