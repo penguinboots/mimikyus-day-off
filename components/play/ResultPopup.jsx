@@ -1,9 +1,14 @@
 export default function ResultPopup(props) {
-  const { result, onHome, nextRoom, setMode, loseGame } = props;
+  const { result, nextRoom, setMode, loseGame } = props;
 
   function handleLoss() {
     setMode("DASH");
     loseGame();
+  }
+
+  function handleWin() {
+    setMode("DASH");
+    nextRoom();
   }
 
   if (result === "win") {
@@ -11,7 +16,7 @@ export default function ResultPopup(props) {
       <div className="popup result-window">
         <div>BATTLE WON</div>
         <div className="window-controls">
-          <button onClick={onHome}>BACK TO HOME</button>
+          <button onClick={handleWin}>BACK TO HOME</button>
           <button onClick={nextRoom}>CONTINUE ON</button>
         </div>
       </div>

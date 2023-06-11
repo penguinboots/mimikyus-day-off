@@ -223,10 +223,10 @@ export default function Room(props) {
       }}
     >
       {popup.victory && (
-        <ResultPopup result="win" onHome={() => setMode("DASH")} nextRoom={nextRoom} />
+        <ResultPopup result="win" setMode={setMode} nextRoom={nextRoom} />
       )}
       {popup.defeat && (
-        <ResultPopup result="loss" setMode={setMode} loseGame={loseGame}/>
+        <ResultPopup result="loss" setMode={setMode} loseGame={loseGame} />
       )}
       <div className="battle-floor">
         <div
