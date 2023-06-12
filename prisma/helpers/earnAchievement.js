@@ -1,8 +1,7 @@
-const earnAchievement = async () => {
+export const earnAchievement = async (user, achievementName) => {
+  //Post request to update the Achievement
+  const userId = user.id
   try {
-    const userId = 1; // Set the desired user ID
-    const achievementName = 'something shiny'; // Set the desired achievement name
-
     const response = await fetch('/api/achievement', {
       method: 'POST',
       body: JSON.stringify({ userId, achievementName }),
