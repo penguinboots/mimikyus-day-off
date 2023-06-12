@@ -13,6 +13,10 @@ import { useGameState } from '@/utils/context/GameStateContext';
 import AudioPlayer from '@/components/common/AudioPlayer';
 import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
+// Drawer
+import { Drawer, Button } from 'antd';
+import { ShoppingOutlined } from '@ant-design/icons';
+import { items } from '@/game/data/items';
 
 export default function Home(props) {
   // Authentication
@@ -24,6 +28,13 @@ export default function Home(props) {
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
+  // Drawer State
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [itemList, setItemList] = useState(items);
+
+  const handleDrawerToggle = () => {
+    setIsDrawerVisible(!isDrawerVisible);
+  };
 
   useEffect(() => {
     const initializeUser = async () => {
@@ -66,13 +77,41 @@ export default function Home(props) {
           />
         )}
         {mode === 'PLAY' && (
-          <Play
-            audioRef={audioRef}
-            mode={mode}
-            setMode={setMode}
-            isMusicPlaying={isMusicPlaying}
-            handleMusicToggle={handleMusicToggle}
-          />
+          <>
+            <Button
+              className="item-button"
+              type="primary"
+              shape="circle"
+              icon={<ShoppingOutlined style={{ fontSize: '2.3rem' }} />}
+              onClick={handleDrawerToggle}
+              style={{ boxShadow: 'none', border: 'none', backgroundColor: 'transparent' }}
+            />
+            <Drawer
+              title="ITEMS"
+              placement="left"
+              visible={isDrawerVisible}
+              onClose={handleDrawerToggle}
+              width={320}
+              bodyStyle={{ padding: 0 }}
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(4px)', borderRight: 'none' }}
+            >
+            <div className="item-list">
+              {itemList.map((item) => (
+                <div key={item.name} className="item">
+                  <span className="item-name">{item.name}</span>
+                  <span className="item-quantity">{item.quantity}</span>
+                </div>
+              ))}
+            </div>
+            </Drawer>
+            <Play
+              audioRef={audioRef}
+              mode={mode}
+              setMode={setMode}
+              isMusicPlaying={isMusicPlaying}
+              handleMusicToggle={handleMusicToggle}
+            />
+          </>
         )}
       </div>
       <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />
