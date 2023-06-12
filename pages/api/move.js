@@ -5,13 +5,15 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   // GET request for moves
   if (req.method === "GET") {
-    const { userId } = req.query;
-
+    const { auth0Sub }  = req.query;
+    const db_user = await prisma.user.findUnique({
+      where: { auth0Sub: auth0Sub },
+    });
     // find moves
     try {
       const moves = await prisma.move.findMany({
         where: {
-          userId: parseInt(userId),
+          userId: parseInt(db_user.id),
         },
       });
       res.status(200).json({ moves });
