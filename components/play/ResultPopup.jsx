@@ -1,13 +1,18 @@
+import { useGameState } from "@/utils/context/GameStateContext";
+
 export default function ResultPopup(props) {
   const { result, nextRoom, setMode, loseGame } = props;
+  const { setSelectedMusic } = useGameState();
 
   function handleLoss() {
     setMode("DASH");
+    setSelectedMusic("00_pokemon_center.mp3");
     loseGame();
   }
 
   function handleWin() {
     setMode("DASH");
+    setSelectedMusic("00_pokemon_center.mp3");
     nextRoom();
   }
 
