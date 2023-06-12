@@ -1,32 +1,49 @@
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import MoveItem from "@/components/common/MoveItem";
 import { useGameState } from "@/utils/context/GameStateContext";
 import { moveFetcher } from "@/game/helpers/combat";
 import { padMoves } from "@/utils/helpers/padMoves";
+import { getMoves } from "@/prisma/helpers/getMoves";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function MoveEdit(props) {
   const { gameState } = useGameState();
+  const { user, error, isLoading } = useUser();
   const playerCurrentMoveArray = [];
-  const playerKnownMoveArray = [];
+  // Introduce state for playerKnownMoveArray
+  const [playerKnownMoveArray, setPlayerKnownMoveArray] = useState([]);
+
   // Generates array of move objects from array of move name strings
   gameState.player.moves.forEach((moveString) => {
     playerCurrentMoveArray.push(moveFetcher(moveString));
   });
 
-  // fetch a new moves variable using a helper for code commented below to re-enable
-  // do not use static props from index
+  // Fetch a new moves variable using a helper
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db_data = await getMoves(user);
+        const db_moves = db_data.moves;
 
-  // db_moves.forEach(db_move => {
-  //   if (db_move.collected === true){
-  //     playerKnownMoveArray.push(moveFetcher(db_move.name));
-  //   }
-  // });
+        const knownMoves = db_moves.filter(db_move => db_move.collected === true);
+        const knownMoveArray = knownMoves.map(move => moveFetcher(move.name));
+
+        setPlayerKnownMoveArray(knownMoveArray);
+      } catch (error) {
+        console.error('Error fetching moves:', error);
+      }
+    };
+
+    fetchData();
+  }, [user]);
 
   // Generates MoveItems from array of move objects
   const playerCurrentMoves = padMoves(Object.values(playerCurrentMoveArray).map((move) => {
     return <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />;
   }), "none");
+  
   const playerKnownMoves = padMoves(Object.values(playerKnownMoveArray).map((move) => {
     return <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />;
   }), "none");
@@ -45,9 +62,10 @@ export default function MoveEdit(props) {
         </div>
         <div className="moves-avail">
           <h3>Moves Available</h3>
-          {playerKnownMoves} {/* Replace with available player moves */}
+          {playerKnownMoves}
         </div>
       </div>
     </div>
   );
 }
+
