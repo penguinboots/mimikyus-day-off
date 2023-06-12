@@ -140,7 +140,6 @@ export default function Room(props) {
 
   // Check if battle is over ** bug: currently receiving old current_hp state
   function checkBattleOver(opponentHP, playerHP) {
-    console.log(opponentHP);
     if (opponentHP <= 0 || playerHP <= 0) {
       return true;
     }
