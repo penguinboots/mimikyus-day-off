@@ -82,7 +82,7 @@ export default function Home({
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
-  const { gameState } = useGameState();
+  const { gameState, setSelectedMusic } = useGameState();
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
@@ -94,6 +94,12 @@ export default function Home({
     }
   }, [user]);
 
+  // Change music if room changes in Play
+  useEffect(() => {
+    if (mode === "PLAY") {
+      setSelectedMusic(gameState.currentRoom.music);
+    }
+  }, [gameState.currentRoom, setSelectedMusic, mode]);
 
   return (
     <div className="app-wrapper">
@@ -102,11 +108,11 @@ export default function Home({
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
-            audioRef={audioRef}
             mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
+            setSelectedMusic={setSelectedMusic}
           />
         )}
         {mode === 'PLAY' && (
@@ -119,6 +125,7 @@ export default function Home({
           />
         )}
       </div>
+      <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />
     </div>
   );
 }

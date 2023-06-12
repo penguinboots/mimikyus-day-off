@@ -4,21 +4,15 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
-import AudioPlayer from "../common/AudioPlayer";
-import { useEffect } from "react";
 
 export default function Play(props) {
-  const { mode, setMode, isMusicPlaying, handleMusicToggle, audioRef } = props;
+  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
   const { gameState, nextRoom, setSelectedMusic } = useGameState();
 
   const returnToDash = () => {
     setMode("DASH");
+    setSelectedMusic("00_pokemon_center.mp3");
   };
-
-  useEffect(() => {
-    setSelectedMusic(gameState.currentRoom.music);
-  }, [gameState.currentRoom, setSelectedMusic]);
-  // music plays after mode change -> play, but not nextroom?
 
   return (
     <div className="play-container">
@@ -42,7 +36,6 @@ export default function Play(props) {
           />
         )}
       </div>
-      <AudioPlayer audioRef={audioRef} />
     </div>
   );
 }
