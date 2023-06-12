@@ -1,5 +1,4 @@
 function calcStat(target, move) {
-  console.log(move.stat_changes)
   let statChanges = {
     "hp": 0,
     "attack": 0,
@@ -10,7 +9,6 @@ function calcStat(target, move) {
     "target": target
   }
   statChanges[move.stat_changes[0].stat] += move.stat_changes[0].change
-  // console.log(statChanges)
   return statChanges
 }
 
