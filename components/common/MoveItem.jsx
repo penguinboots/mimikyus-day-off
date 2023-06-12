@@ -18,11 +18,11 @@ export default function MoveItem(props) {
             backgroundColor: typeColor,
           }}
         >
-          {move.name.toUpperCase()}
+          {move.proper_name.toUpperCase()}
         </div>
         {isHovering[loc][id] && (
           <MoveDetail
-            moveName={move.name}
+            moveName={move.proper_name}
             power={move.power}
             description={move.effect_entries[0].short_effect}
           />
