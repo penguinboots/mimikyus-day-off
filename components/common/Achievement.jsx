@@ -1,4 +1,4 @@
 export default function Achievement(props) {
   const { achievement } = props;
-  return <li>{ achievement.earned ? achievement.name : "not earned yet"}</li>;
+  return <li>{ achievement.collected === true ? achievement.name : "not earned yet"}</li>;
 }
