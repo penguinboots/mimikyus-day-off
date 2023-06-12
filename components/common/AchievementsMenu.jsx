@@ -26,7 +26,6 @@ export default function AchievementsMenu(props) {
   }, [user]);
 
   // Generates earchAchievements from array of achievements
- console.log(playerEarnedAchievements)
   const achievementsData = [];
   for (const key in playerEarnedAchievements) {
     if (playerEarnedAchievements.hasOwnProperty(key)) {

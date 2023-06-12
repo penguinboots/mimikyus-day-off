@@ -9,12 +9,10 @@ export default function useIsMenuOpen() {
   });
 
   const windowToggle = (windowName) => {
-    console.log(windowName);
     setMenuOpen((prev) => ({
       ...prev,
       [windowName]: !prev[windowName],
     }));
-    console.log(isMenuOpen);
   };
   const windowClose = (windowName) => {
     setMenuOpen((prev) => ({
