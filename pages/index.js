@@ -25,7 +25,6 @@ export default function Home(props) {
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
 
-  console.log("Auth0 user:", user)
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
