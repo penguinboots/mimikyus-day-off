@@ -7,7 +7,8 @@ export default function Dashboard(props) {
     mode,
     setMode,
     isMusicPlaying,
-    handleMusicToggle
+    handleMusicToggle,
+    audioRef
   } = props;
 
   return (
@@ -22,6 +23,7 @@ export default function Dashboard(props) {
         <CharSection />
         <EnterGame setMode={setMode} />
       </div>
+      <audio ref={audioRef} src={"audio/00_pokemon_center.mp3"} loop />
     </div>
   );
 }

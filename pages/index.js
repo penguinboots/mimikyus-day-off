@@ -12,6 +12,7 @@ import Play from '@/components/play/Play'
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
 // Helpers
 import { useGameState } from '@/utils/context/GameStateContext';
+import AudioPlayer from '@/components/common/AudioPlayer';
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
@@ -86,8 +87,6 @@ export default function Home({
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
 
-  const [selectedMusic, setSelectedMusic] = useState("01_magikarp.mp3");
-
   // Skip landing if user is logged in
   useEffect(() => {
     if (user) {
@@ -95,9 +94,6 @@ export default function Home({
     }
   }, [user]);
 
-  useEffect(() => {
-    setSelectedMusic(gameState.currentRoom.music);
-  }, [gameState.currentRoom]);
 
   return (
     <div className="app-wrapper">
@@ -106,6 +102,7 @@ export default function Home({
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
+            audioRef={audioRef}
             mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
@@ -114,6 +111,7 @@ export default function Home({
         )}
         {mode === 'PLAY' && (
           <Play
+            audioRef={audioRef}
             mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
@@ -121,12 +119,6 @@ export default function Home({
           />
         )}
       </div>
-      {mode === 'DASH' && (
-        <audio ref={audioRef} src={"audio/00_pokemon_center.mp3"} loop />
-      )}
-      {mode === "PLAY" && (
-        <audio ref={audioRef} src={`audio/${selectedMusic}`} loop />
-      )}
     </div>
   );
 }
