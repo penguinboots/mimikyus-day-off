@@ -45,6 +45,8 @@ export function GameStateProvider({ children }) {
   const [showPlayer, setShowPlayer] = useState(false);
   const [showOpponent, setShowOpponent] = useState(false);
 
+  const [selectedMusic, setSelectedMusic] = useState("00_pokemon_center.mp3");
+
   function nextFloor(nextFl) {
     const nextFloor = dungeon[nextFl];
     setGameState((prev) => ({
@@ -151,6 +153,8 @@ export function GameStateProvider({ children }) {
     showOpponent,
     setShowOpponent,
     loseGame,
+    selectedMusic,
+    setSelectedMusic
   };
   return (
     <GameStateContext.Provider value={value}>

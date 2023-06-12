@@ -6,11 +6,11 @@ import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
 import Play from '@/components/play/Play'
-// Assets
-import dashboardMusic from '../public/audio/DashboardMusic.mp3';
-import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
+// Helpers
+import { useGameState } from '@/utils/context/GameStateContext';
+import AudioPlayer from '@/components/common/AudioPlayer';
 import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
 
@@ -19,13 +19,11 @@ export default function Home(props) {
   const { user, error, isLoading } = useUser();
   // View Mode
   const [mode, setMode] = useState("LANDING");
+  // Game State
+  const { gameState, setSelectedMusic } = useGameState();
   // Music
-  const dashboardAudioRef = useRef(null);
-  const playAudioRef = useRef(null);
-  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(
-    mode === 'DASH' ? dashboardAudioRef : playAudioRef,
-    mode
-  );
+  const audioRef = useRef(null);
+  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
 
   console.log("Auth0 user:", user)
   useEffect(() => {
@@ -46,6 +44,13 @@ export default function Home(props) {
     initializeUser();
   }, [user]);
 
+  // Change music if room changes in Play
+  useEffect(() => {
+    if (mode === "PLAY") {
+      setSelectedMusic(gameState.currentRoom.music);
+    }
+  }, [gameState.currentRoom, setSelectedMusic, mode]);
+
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
@@ -58,22 +63,20 @@ export default function Home(props) {
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
+            setSelectedMusic={setSelectedMusic}
           />
         )}
         {mode === 'PLAY' && (
           <Play
+            audioRef={audioRef}
+            mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
           />
         )}
       </div>
-      {mode === 'DASH' && (
-        <audio ref={dashboardAudioRef} src={dashboardMusic} loop />
-      )}
-      {mode === 'PLAY' && (
-        <audio ref={playAudioRef} src={playMusic} loop />
-      )}
+      <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />
     </div>
   );
 }

@@ -5,12 +5,13 @@ import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
 export default function Play(props) {
-  let { mode, setMode, isMusicPlaying, handleMusicToggle, } = props;
-  const returnToDash = () => {
-      setMode("DASH");
-  };
+  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+  const { gameState, nextRoom, setSelectedMusic } = useGameState();
 
-  const { gameState, nextRoom } = useGameState();
+  const returnToDash = () => {
+    setMode("DASH");
+    setSelectedMusic("00_pokemon_center.mp3");
+  };
 
   return (
     <div className="play-container">
@@ -25,11 +26,7 @@ export default function Play(props) {
           <FontAwesomeIcon icon={faArrowLeft} />
           <FontAwesomeIcon icon={faHouse} />
         </button>
-        {gameState.roomType === "battle" && (
-          <BattleRoom
-            setMode={setMode}
-          />
-        )}
+        {gameState.roomType === "battle" && <BattleRoom setMode={setMode} />}
         {gameState.roomType === "treasure" && (
           <TreasureRoom
             returnToDash={returnToDash}

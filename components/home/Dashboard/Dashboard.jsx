@@ -3,10 +3,13 @@ import Nav from "../../common/Nav";
 import EnterGame from "./EnterGame";
 
 export default function Dashboard(props) {
-  let { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
-  
-  
-  
+  const {
+    mode,
+    setMode,
+    isMusicPlaying,
+    handleMusicToggle,
+    setSelectedMusic,
+  } = props;
 
   return (
     <div className="dashboard">
@@ -18,7 +21,7 @@ export default function Dashboard(props) {
       />
       <div className="dash-body">
         <CharSection />
-        <EnterGame setMode={setMode} />
+        <EnterGame setMode={setMode} setSelectedMusic={setSelectedMusic}/>
       </div>
     </div>
   );

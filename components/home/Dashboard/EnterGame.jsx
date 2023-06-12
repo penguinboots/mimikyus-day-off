@@ -1,9 +1,13 @@
+import { useGameState } from "@/utils/context/GameStateContext";
+
 export default function EnterGame(props) {
-  const { setMode } = props;
+  const { setMode, setSelectedMusic } = props;
+  const { gameState } = useGameState();
 
   const handleClick = () => {
     setMode("PLAY");
-  }
+    setSelectedMusic(gameState.currentRoom.music);
+  };
 
   return (
     <div className="enter-game-container">
