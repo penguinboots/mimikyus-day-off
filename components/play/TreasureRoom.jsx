@@ -5,7 +5,7 @@ export default function Room(props) {
   return (
     <div className="treasure-room">
       <div className="treasure-floor">
-        <button onClick={earnAchievement}>
+        <button onClick={()=> {earnAchievement(db_user, "crimes against munchlax")}}>
           Click to Update Achievement
         </button>
         <br></br>
