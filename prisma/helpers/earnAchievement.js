@@ -1,10 +1,9 @@
 export const earnAchievement = async (user, achievementName) => {
   //Post request to update the Achievement
-  const userId = user.id
   try {
     const response = await fetch('/api/achievement', {
       method: 'POST',
-      body: JSON.stringify({ userId, achievementName }),
+      body: JSON.stringify({ user, achievementName }),
       headers: {
         'Content-Type': 'application/json',
       },

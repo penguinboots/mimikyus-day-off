@@ -25,12 +25,16 @@ export default async function handler(req, res) {
 
   // POST request for achievements
   if (req.method === 'POST') {
-    const { userId, achievementName } = req.body;
-    // find achievement
+    const { user, achievementName } = req.body;
+    //select user based on sub
+    const db_user = await prisma.user.findFirst({
+      where: {auth0Sub: user.sub}
+    })
+    // find achievement using db_user id
     try {
       const achievement = await prisma.achievement.findFirst({
         where: {
-          userId: parseInt(userId),
+          userId: parseInt(db_user.id),
           name: achievementName,
         },
       });

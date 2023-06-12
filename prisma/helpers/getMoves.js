@@ -1,7 +1,7 @@
 export const getMoves = async (user) => {
   try {
       //Get request to refresh User Data
-      const getMovesDataResponse = await fetch(`/api/move?auth0Sub=auth0sub123`, {
+      const getMovesDataResponse = await fetch(`/api/move?auth0Sub=${user.sub}`, {
         method: 'GET',
       });
   

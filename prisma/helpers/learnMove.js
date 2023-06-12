@@ -1,10 +1,9 @@
 export const learnMove = async (user, moveName) => {
   //Post request to update the Move
-  const userId = user.id
   try {
     const response = await fetch('/api/move', {
       method: 'POST',
-      body: JSON.stringify({ userId, moveName }),
+      body: JSON.stringify({ user, moveName }),
       headers: {
         'Content-Type': 'application/json',
       },

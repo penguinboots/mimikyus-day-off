@@ -1,7 +1,7 @@
 export const getAchievements = async (user) => {
   try {
       //Get request to refresh User Data
-      const getAchievementsDataResponse = await fetch(`/api/achievement?auth0Sub=auth0sub123`, {
+      const getAchievementsDataResponse = await fetch(`/api/achievement?auth0Sub=${user.sub}`, {
         method: 'GET',
       });
   

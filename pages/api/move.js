@@ -25,15 +25,20 @@ export default async function handler(req, res) {
 
   // POST request for moves
   if (req.method === 'POST') {
-    const { userId, moveName } = req.body;
+    const { user, moveName } = req.body;
+    //find user based on auth0Sub
+    const db_user = await prisma.user.findFirst({
+      where: {auth0Sub: user.sub}
+    })
     try {
+      //find move using db_user id
       const move = await prisma.move.findFirst({
         where: {
-          userId: parseInt(userId),
+          userId: parseInt(db_user.id),
           name: moveName,
         },
       });
-      // update moves
+      // update move
       if (move) {
         const updatedmove = await prisma.move.update({
           where: {
