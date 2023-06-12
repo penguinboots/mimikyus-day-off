@@ -8,9 +8,6 @@ import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
 import Login from '@/components/home/Login';
 import Play from '@/components/play/Play'
-// Assets
-import dashboardMusic from '../public/audio/DashboardMusic.mp3';
-import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
 // Helpers
@@ -83,17 +80,14 @@ export default function Home({
   const { user, error, isLoading } = useUser();
   // View Mode
   const [mode, setMode] = useState("LANDING");
+  // Game State
+  const { gameState } = useGameState();
   // Music
-  const dashboardAudioRef = useRef(null);
-  const playAudioRef = useRef(null);
-  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(
-    mode === 'DASH' ? dashboardAudioRef : playAudioRef,
-    mode
-  );
+  const audioRef = useRef(null);
+  const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
 
   const [selectedMusic, setSelectedMusic] = useState("01_magikarp.mp3");
 
-  const { gameState } = useGameState();
   // Skip landing if user is logged in
   useEffect(() => {
     if (user) {
@@ -120,7 +114,6 @@ export default function Home({
         )}
         {mode === 'PLAY' && (
           <Play
-            setSelectedMusic={setSelectedMusic}
             mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
@@ -129,10 +122,10 @@ export default function Home({
         )}
       </div>
       {mode === 'DASH' && (
-        <audio ref={dashboardAudioRef} src={"audio/00_pokemon_center.mp3"} loop />
+        <audio ref={audioRef} src={"audio/00_pokemon_center.mp3"} loop />
       )}
-      {mode === 'PLAY' && (
-        <audio ref={playAudioRef} src={`audio/${selectedMusic}`} loop />
+      {mode === "PLAY" && (
+        <audio ref={audioRef} src={`audio/${selectedMusic}`} loop />
       )}
     </div>
   );
