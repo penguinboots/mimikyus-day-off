@@ -3,12 +3,10 @@ import Nav from "../../common/Nav";
 import EnterGame from "./EnterGame";
 
 export default function Dashboard(props) {
-  const {
-    mode,
-    setMode,
-    isMusicPlaying,
-    handleMusicToggle
-  } = props;
+  let { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+  
+  
+  
 
   return (
     <div className="dashboard">

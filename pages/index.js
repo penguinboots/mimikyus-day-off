@@ -1,9 +1,6 @@
-import { PrismaClient } from '@prisma/client';
 import { useState, useEffect, useRef } from 'react';
 // Auth0
 import { useUser } from '@auth0/nextjs-auth0/client';
-import achievements from '../game/data/achievements.json'
-import { unlockables } from '@/game/data/unlockableMoves';
 // Components
 import Landing from '@/components/home/Landing';
 import Dashboard from '@/components/home/Dashboard/Dashboard';
@@ -14,94 +11,10 @@ import dashboardMusic from '../public/audio/DashboardMusic.mp3';
 import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
+import { getUserData } from '@/prisma/helpers/getUserData';
+import { createUser } from '@/prisma/helpers/createUser';
 
-export async function getStaticProps() {
-  const prisma = new PrismaClient();
-  let db_user = null
-  let db_character = null
-  let db_achievements = []
-  let db_moves = []
-  //check if user exists
-  db_user = await prisma.user.findUnique({
-    where: { auth0Sub: 'auth0sub123' },
-  });
-  //If user exists, execute select statements and append them to export variables
-  if (db_user) {
-    db_character = await prisma.character.findFirst({
-      where: { userId: db_user.id }
-    })
-    db_achievements = await prisma.achievement.findMany({
-        where: { userId: db_user.id }
-    })
-    db_moves = await prisma.move.findMany({
-      where: { userId: db_user.id }
-    })
-  //If user doesn't exist, create them and all relevent data, append to export variables
-  } else {
-    db_user = await prisma.user.create({
-      // data for the new user entered here
-      data: {
-        email: "example@example.com",
-        auth0Sub: "auth0sub123",
-        password: "password123",
-        name: "John Doe",
-      }
-    });
-    db_character = await prisma.character.create({
-      data:{
-        move_1: "Move 1",
-        move_2: "Move 2",
-        move_3: "Move 3",
-        move_4: "Move 4",
-        userId: db_user.id
-      }
-    })
-    const achievementArray = Object.values(achievements)
-    for (let i = 0; i < achievementArray.length; i++) {
-      let achievement = achievementArray[i]
-      const db_achievement = await prisma.achievement.create({
-        data:{
-          name: achievement.name,
-          collected: achievement.collected,
-          date_get: null,
-          userId: db_user.id,
-        },
-      })
-      db_achievements.push(db_achievement)
-    };
-    for (let i = 0; i < unlockables.length; i++) {
-      let move = unlockables[i];
-      const db_move = await prisma.move.create({
-        data: {
-          name: move.name,
-          collected: move.collected,
-          date_get: null,
-          userId: db_user.id,
-        },
-      });
-      db_moves.push(db_move);
-    }
-  }
-  async function db_achievementUpdate(achievementName) { await prisma.achievement.update({ 
-    where: { userId: db_user.id, name: achievementName },
-    data: { collected: true}
-  })}
-  return {
-    props: {
-      db_user,
-      db_character,
-      db_achievements,
-      db_moves,
-    },
-  };
-}
-
-export default function Home({
-  db_user,
-  db_character,
-  db_achievements,
-  db_moves,
-}) {
+export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
   // View Mode
@@ -114,16 +27,24 @@ export default function Home({
     mode
   );
 
-  // Skip landing if user is logged in
+  console.log("Auth0 user:", user)
   useEffect(() => {
-    if (user) {
-      setMode("DASH");
-    }
+    const initializeUser = async () => {
+      if (user) {
+        try {
+          let dbData = await getUserData(user);
+          if (!dbData) {
+            dbData = await createUser(user);
+          }
+          setMode("DASH");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    };
+
+    initializeUser();
   }, [user]);
-  console.log("DB_USER: ", db_user);
-  console.log("DB_CHARACTER: ", db_character)
-  console.log("DB_ACHIEVEMENTS?", db_achievements)
-  console.log("DB_MOVES?", db_moves)
 
   return (
     <div className="app-wrapper">
@@ -132,6 +53,8 @@ export default function Home({
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
+            user={user}
+            mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}

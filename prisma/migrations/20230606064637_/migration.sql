@@ -28,6 +28,14 @@ CREATE TABLE "Character" (
     CONSTRAINT "Character_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+CREATE TABLE "Move"(
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "date_get" DATETIME,
+    "userId" INTEGER NOT NULL,
+    "name" TEXT NOT NULL,
+    "collected" BOOLEAN NOT NULL,
+    CONSTRAINT "Move_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
