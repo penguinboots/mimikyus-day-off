@@ -5,7 +5,7 @@ import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
 export default function Play(props) {
-  let { mode, setMode, isMusicPlaying, handleMusicToggle, db_user, db_character, db_moves, db_achievements } = props;
+  let { mode, setMode, isMusicPlaying, handleMusicToggle, } = props;
   const returnToDash = () => {
       setMode("DASH");
   };
@@ -35,7 +35,6 @@ export default function Play(props) {
             returnToDash={returnToDash}
             nextRoom={nextRoom}
             gameState={gameState}
-            db_user={db_user}
           />
         )}
       </div>
