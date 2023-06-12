@@ -13,6 +13,8 @@ import dashboardMusic from '../public/audio/DashboardMusic.mp3';
 import playMusic from '../public/audio/PlayMusic.mp3';
 // Hooks
 import useIsMusicPlaying from "@/utils/hooks/isMusicPlaying";
+// Helpers
+import { useGameState } from '@/utils/context/GameStateContext';
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
@@ -27,41 +29,41 @@ export async function getStaticProps() {
       where: { userId: db_user.id }
     })
     db_achievements = await prisma.achievement.findMany({
-        where: { userId: db_user.id }
-      })
-    } else {
-      db_user = await prisma.user.create({
-        // data for the new user entered here
+      where: { userId: db_user.id }
+    })
+  } else {
+    db_user = await prisma.user.create({
+      // data for the new user entered here
+      data: {
+        email: "example@example.com",
+        auth0Sub: "auth0sub123",
+        password: "password123",
+        name: "John Doe",
+      }
+    });
+    db_character = await prisma.character.create({
+      data: {
+        move_1: "Move 1",
+        move_2: "Move 2",
+        move_3: "Move 3",
+        move_4: "Move 4",
+        userId: db_user.id
+      }
+    })
+    const achievementArray = Object.values(achievements)
+    console.log(achievementArray)
+    for (let i = 0; i < achievementArray.length; i++) {
+      let achievement = achievementArray[i]
+      const db_achievement = await prisma.achievement.create({
         data: {
-          email: "example@example.com",
-          auth0Sub: "auth0sub123",
-          password: "password123",
-          name: "John Doe",
-        }
-      });
-      db_character = await prisma.character.create({
-        data:{
-          move_1: "Move 1",
-          move_2: "Move 2",
-          move_3: "Move 3",
-          move_4: "Move 4",
-          userId: db_user.id
-        }
+          name: achievement.name,
+          collected: achievement.collected,
+          date_get: null,
+          userId: db_user.id,
+        },
       })
-      const achievementArray = Object.values(achievements)
-      console.log(achievementArray)
-      for (let i = 0; i < achievementArray.length; i++) {
-        let achievement = achievementArray[i]
-        const db_achievement = await prisma.achievement.create({
-          data:{
-            name: achievement.name,
-            collected: achievement.collected,
-            date_get: null,
-            userId: db_user.id,
-          },
-        })
-        db_achievements.push(db_achievement)
-      };
+      db_achievements.push(db_achievement)
+    };
   }
   return {
     props: {
@@ -89,15 +91,20 @@ export default function Home({
     mode
   );
 
+  const [selectedMusic, setSelectedMusic] = useState("01_magikarp.mp3");
+
+  const { gameState } = useGameState();
   // Skip landing if user is logged in
   useEffect(() => {
     if (user) {
       setMode("DASH");
     }
   }, [user]);
-  console.log("DB_USER INFO: ", db_user);
-  console.log("DB_Character:", db_character)
-  console.log("DB_achievements?", db_achievements)
+
+  useEffect(() => {
+    setSelectedMusic(gameState.currentRoom.music);
+  }, [gameState.currentRoom]);
+
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
@@ -113,6 +120,7 @@ export default function Home({
         )}
         {mode === 'PLAY' && (
           <Play
+            setSelectedMusic={setSelectedMusic}
             mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
@@ -121,10 +129,10 @@ export default function Home({
         )}
       </div>
       {mode === 'DASH' && (
-        <audio ref={dashboardAudioRef} src={dashboardMusic} loop />
+        <audio ref={dashboardAudioRef} src={"audio/00_pokemon_center.mp3"} loop />
       )}
       {mode === 'PLAY' && (
-        <audio ref={playAudioRef} src={playMusic} loop />
+        <audio ref={playAudioRef} src={`audio/${selectedMusic}`} loop />
       )}
     </div>
   );
