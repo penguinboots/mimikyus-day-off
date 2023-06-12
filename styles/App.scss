@@ -621,3 +621,32 @@ body {
     }
   }
 }
+
+/** INVENTORY INFO **/
+
+.item-button {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  z-index: 10;
+}
+
+.item-list {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.item-quantity {
+  color: #999;
+}
