@@ -1,4 +1,6 @@
 const unlockables = [
+ {"name":"astonish", "collected": true},
+ {"name":"quick-attack", "collected": true},
  {"name":"play-rough", "collected": false},
  {"name":"shadow-sneak", "collected": false},
  {"name":"shadow-claw", "collected": false},

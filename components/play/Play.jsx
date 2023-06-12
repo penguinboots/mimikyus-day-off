@@ -4,7 +4,6 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
-
 export default function Play(props) {
   const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
   const { gameState, nextRoom, setSelectedMusic } = useGameState();
