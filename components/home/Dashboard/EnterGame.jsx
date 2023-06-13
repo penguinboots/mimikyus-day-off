@@ -2,7 +2,7 @@ import { useGameState } from "@/utils/context/GameStateContext";
 
 export default function EnterGame(props) {
   const { setMode, setSelectedMusic } = props;
-  const { gameState } = useGameState();
+  const { gameState, setSplash } = useGameState();
 
   const handleClick = () => {
     setMode("PLAY");

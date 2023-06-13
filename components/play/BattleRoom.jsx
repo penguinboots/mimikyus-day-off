@@ -12,6 +12,7 @@ import MoveItem from "../common/MoveItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
+import Image from "next/image";
 
 export default function Room(props) {
   const { setMode } = props;
@@ -43,12 +44,23 @@ export default function Room(props) {
     showOpponent,
     setShowOpponent,
     loseGame,
+    splash,
+    setSplash,
+    flashSplash,
   } = useGameState();
 
   const PLAYER = gameState.player.sprites[sprites.player].url; // idle, attack, hit
   const OPPONENT = gameState.opponent.sprites[sprites.opponent].url;
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
+
+  // Briefly shows VS splash on entering Play or new room
+  useEffect(() => {
+    flashSplash();
+    return () => {
+      setSplash(false);
+    };
+  }, [gameState.currentRoom]);
 
   // Resets gif animations to beginning after changes
   useEffect(() => {
@@ -76,6 +88,21 @@ export default function Room(props) {
       }, 1500);
     }
   }, [gameState]);
+
+  // Triggers popup based on battle outcome
+  function endBattle(win) {
+    if (win) {
+      setPopup((prev) => ({
+        ...prev,
+        victory: true,
+      }));
+    } else if (!win) {
+      setPopup((prev) => ({
+        ...prev,
+        defeat: true,
+      }));
+    }
+  }
 
   // Play animations for attack
   async function playAttack(attacker, defender) {
@@ -142,21 +169,6 @@ export default function Room(props) {
       await playStatUp(self);
     }
     return false;
-  }
-
-  // Triggers popup based on battle outcome
-  function endBattle(win) {
-    if (win) {
-      setPopup((prev) => ({
-        ...prev,
-        victory: true,
-      }));
-    } else if (!win) {
-      setPopup((prev) => ({
-        ...prev,
-        defeat: true,
-      }));
-    }
   }
 
   // Executes player move selection, calling previously defined helpers
@@ -236,6 +248,16 @@ export default function Room(props) {
         backgroundColor: BACKGROUND_COL,
       }}
     >
+      <div className="splash-wrapper">
+        <Image
+          className={`splash ${splash ? "show" : "hide"}`}
+          alt="vs-splash"
+          src={gameState.currentRoom.intro}
+          width={1100}
+          height={700}
+        />
+        <div className={`splash-shadow ${splash ? "show" : "hide"}`}></div>
+      </div>
       {popup.victory && (
         <ResultPopup result="win" setMode={setMode} nextRoom={nextRoom} />
       )}
