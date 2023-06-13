@@ -69,22 +69,26 @@ export default function MoveEdit(props) {
   // Generates MoveItems from array of move objects
   const activeMoveItems = padMoves(
     Object.values(chosenMoveObjs).map((move) => {
-      return (
-        <button key={move.name} onClick={() => removeChosenMove(move)}>
-          <MoveItem id={move.name} move={move} loc="moveEdit" />
-        </button>
-      );
+      if (move) {
+        return (
+          <button key={move.name} onClick={() => removeChosenMove(move)}>
+            <MoveItem id={move.name} move={move} loc="moveEdit" />
+          </button>
+        );
+      }
     }),
     "button"
   );
 
   const knownMoveItems = padMoves(
     Object.values(knownMoveObjs).map((move) => {
-      return (
-        <button key={move.name} onClick={() => chooseNewMove(move)}>
-          <MoveItem id={move.name} move={move} loc="moveEdit" />
-        </button>
-      );
+      if (move) {
+        return (
+          <button key={move.name} onClick={() => chooseNewMove(move)}>
+            <MoveItem id={move.name} move={move} loc="moveEdit" />
+          </button>
+        );
+      }
     }),
     "button"
   );
