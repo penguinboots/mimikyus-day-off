@@ -103,7 +103,7 @@ export default function MoveEdit(props) {
       </div>
       <div className="window-controls">
         <button className="save">SAVE</button>
-        <button className="cancel">CANCEL</button>
+        <button className="cancel" onClick={props.handleClose}>CANCEL</button>
       </div>
     </div>
   );
