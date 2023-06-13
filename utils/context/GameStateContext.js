@@ -1,19 +1,19 @@
 import React, { createContext, useContext, useState } from 'react';
 import { dungeon } from '@/game/pregenerated/dungeon1';
 
-// Create the context
 const GameStateContext = createContext();
 
-// Create a custom hook to access the context
+// Context state
 export function useGameState() {
   return useContext(GameStateContext);
 }
 
-// Create a provider component
+// Provider component
 export function GameStateProvider({ children }) {
   const { mimikyu } = require("../../game/pregenerated/fakePlayer");
   const player = mimikyu;
 
+  // General dungeon position states
   const [gameState, setGameState] = useState({
     currentFloor: dungeon.floor_1,
     currentRoom: dungeon.floor_1.room_1,
@@ -22,10 +22,16 @@ export function GameStateProvider({ children }) {
     player: player,
   });
 
+  // Battle history logs
   const [battleHistory, setBattleHistory] = useState([]);
 
+  // State managing allowable user actions
   const [turnMode, setTurnMode] = useState('player');
+
+  // Battle result state
   const [battleWon, setBattleWon] = useState(false);
+
+  // State managing Play-related popup windows
   const [popup, setPopup] = useState({
     intro: false,
     victory: false,
@@ -33,6 +39,7 @@ export function GameStateProvider({ children }) {
     treasure: false,
   });
 
+  // Currently active animations for player and opponent
   const [sprites, setSprites] = useState({
     player: "idle",
     opponent: "idle",
@@ -40,13 +47,27 @@ export function GameStateProvider({ children }) {
     opponentBuff: null,
   });
 
+  // States managing character animations
   const [gifReloadKeyPlayer, setGifReloadKeyPlayer] = useState(0);
   const [gifReloadKeyOpponent, setGifReloadKeyOpponent] = useState(0);
   const [showPlayer, setShowPlayer] = useState(false);
   const [showOpponent, setShowOpponent] = useState(false);
 
+  // State managing music per room
   const [selectedMusic, setSelectedMusic] = useState("00_pokemon_center.mp3");
 
+  // State managing VS splash
+  const [splash, setSplash] = useState(false);
+
+  // Show splash, hide splash
+  function flashSplash() {
+    setSplash(true);
+    setTimeout(() => {
+      setSplash(false);
+    }, 2500);
+  }
+
+  // Sets state to the first room of next floor, sets opponent, resets player HP/stats
   function nextFloor(nextFl) {
     const nextFloor = dungeon[nextFl];
     setGameState((prev) => ({
@@ -63,7 +84,7 @@ export function GameStateProvider({ children }) {
     setBattleWon(false);
   }
 
-  // Sets current room/floor to next in list, resets player HP/stats, 
+  // Sets state to next room, resets player HP/stats, 
   function nextRoom() {
     if (gameState.currentRoom.next_room) {
       const nextRoom = gameState.currentFloor[gameState.currentRoom.next_room];
@@ -90,6 +111,7 @@ export function GameStateProvider({ children }) {
     });
   }
 
+  // Reset room progress to beginning (called from defeat popup)
   function loseGame() {
     setGameState({
       currentFloor: dungeon.floor_1,
@@ -111,6 +133,8 @@ export function GameStateProvider({ children }) {
     });
   }
 
+  // Sets current_hp in state for target to new value
+  // Returns calculated new value using old state for combat processing
   const dealDamage = (target, amt) => {
     setGameState((prev) => ({
       ...prev,
@@ -119,8 +143,10 @@ export function GameStateProvider({ children }) {
         current_hp: Math.floor(prev[target]["current_hp"] - amt),
       },
     }));
+    return (Math.floor(gameState[target].current_hp - amt));
   }
 
+  // Sets current_hp in state for target to new value
   const dealHeal = (target, amt) => {
     setGameState((prev) => ({
       ...prev,
@@ -131,6 +157,7 @@ export function GameStateProvider({ children }) {
     }));
   }
 
+  // Set state for sprite, given the character and action (idle, attack, hit)
   const playAnim = (char, anim) => {
     setSprites((prev) => ({
       ...prev,
@@ -166,7 +193,10 @@ export function GameStateProvider({ children }) {
     setShowOpponent,
     loseGame,
     selectedMusic,
-    setSelectedMusic
+    setSelectedMusic,
+    splash,
+    setSplash,
+    flashSplash,
   };
   return (
     <GameStateContext.Provider value={value}>
