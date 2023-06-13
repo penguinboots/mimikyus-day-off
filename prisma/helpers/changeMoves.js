@@ -1,9 +1,5 @@
 export const changeMoves = async (user, newMoveArray) => {
   //Post request to update the Move
-  let paddedArray = newMoveArray;
-  while (paddedArray.length < 4) {
-    paddedArray.push(null);
-  }
 
   try {
     const response = await fetch('/api/character', {

@@ -37,9 +37,9 @@ export default async function handler(req, res) {
         where: { userId: db_user.id },
         data:{
           move_1:newMoveArray[0],
-          move_2:newMoveArray[1],
-          move_3:newMoveArray[2],
-          move_4:newMoveArray[3],
+          move_2:newMoveArray[1] || null,
+          move_3:newMoveArray[2] || null,
+          move_4:newMoveArray[3] || null,
         }
       });
 
