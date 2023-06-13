@@ -45,7 +45,9 @@ export default async function handler(req, res) {
             id: item.id,
           },
           data: {
-            quantity: quantity,
+            quantity: {
+              increment: quantity,
+            },
           },
         });
         res.status(200).json({ success: true, item: updatedItem });
