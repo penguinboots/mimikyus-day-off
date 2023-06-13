@@ -38,7 +38,6 @@ export default function MoveEdit(props) {
         const knownMoveObjects = knownMoves.map((move) =>
           moveFetcher(move.name)
         );
-
         setKnownMoveObjs(knownMoveObjects);
       } catch (error) {
         console.error("Error fetching moves:", error);
@@ -69,7 +68,9 @@ export default function MoveEdit(props) {
   }
 
   // Take array of move objects, return array of move names
-  const chosenMoveStr = Object.values(chosenMoveObjs).map((obj) => obj.name);
+  const chosenMoveStr = chosenMoveObjs
+    .map((obj) => obj.name)
+    .filter((name) => name !== null);
 
   // Generates MoveItems from array of move objects (chosen moves) in state
   const activeMoveItems = padMoves(
