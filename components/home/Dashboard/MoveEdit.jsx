@@ -7,6 +7,7 @@ import { moveFetcher } from "@/game/helpers/combat";
 import { padMoves } from "@/utils/helpers/padMoves";
 import { getMoves } from "@/prisma/helpers/getMoves";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { changeMoves } from "@/prisma/helpers/changeMoves";
 
 export default function MoveEdit(props) {
   const { gameState } = useGameState();
@@ -60,6 +61,11 @@ export default function MoveEdit(props) {
     setChosenMoveObjs((prev) => prev.filter((moveObj) => moveObj !== move));
   }
 
+  const chosenMoveArray = Object.values(chosenMoveObjs).map(obj => obj.name);
+  if (chosenMoveArray.length < 4) {
+    const remainingSpots = 4 - chosenMoveArray.length;
+    chosenMoveArray.push(...Array.from({ length: remainingSpots }, () => null));
+  }
   // Generates MoveItems from array of move objects
   const activeMoveItems = padMoves(
     Object.values(chosenMoveObjs).map((move) => {
@@ -100,7 +106,7 @@ export default function MoveEdit(props) {
         </div>
       </div>
       <div className="window-controls">
-        <button className="save">SAVE</button>
+        <button className="save" onClick={() => {changeMoves(user, chosenMoveArray); props.handleClose()}}>SAVE</button>
         <button className="cancel" onClick={props.handleClose}>CANCEL</button>
       </div>
     </div>
