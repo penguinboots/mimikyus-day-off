@@ -121,9 +121,14 @@ export default function Room(props) {
   // Executes the move, applying hp/stat changes
   async function doMove(move, moveEffects, target, self) {
     if (move.category.includes("damage")) {
+      let resultHP = null;
       await playAttack(self, target);
+      // Instead of checking current_hp (cannot get newest state), check math of damage dealt against old current_hp state
       if (moveEffects.damage) {
-        dealDamage(target, moveEffects.damage);
+        resultHP = dealDamage(target, moveEffects.damage);
+        if (resultHP <= 0) {
+          return true;
+        }
       }
       if (moveEffects.heal) {
         dealHeal(self, moveEffects.heal);
@@ -135,14 +140,6 @@ export default function Room(props) {
       await playStatUp(self);
     } else if (move.category === "unique") {
       await playStatUp(self);
-    }
-    return checkBattleOver(target.current_hp, self.current_hp);
-  }
-
-  // Check if battle is over ** bug: currently receiving old current_hp state
-  function checkBattleOver(opponentHP, playerHP) {
-    if (opponentHP <= 0 || playerHP <= 0) {
-      return true;
     }
     return false;
   }
@@ -168,20 +165,37 @@ export default function Room(props) {
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     for (let turn of turns) {
       let moveEffects = calculateMove(turn.move, turn.user, turn.target);
+      // Execute the 2 moves in order, only if battle is not over
       if (!isBattleOver) {
         setBattleHistory((prev) => [
           ...prev,
           `${turn.user.name} used ${turn.move.name}!\n`,
         ]);
+        // doMove calculates whether damage dealt will kill the target this turn
         if (turn.user === gameState.player) {
-          if (doMove(turn.move, moveEffects, "opponent", "player")) {
+          if (
+            (await doMove(turn.move, moveEffects, "opponent", "player")) ===
+            true
+          ) {
             isBattleOver = true;
+            // Assumes target of attack is the only one taking damage (no recoil/struggle/poison effects)
+            setBattleHistory((prev) => [
+              ...prev,
+              `${gameState.opponent.name} fainted!\n`,
+            ]);
           }
         }
         if (turn.user === gameState.opponent) {
-          if (doMove(turn.move, moveEffects, "player", "opponent")) {
+          if (
+            (await doMove(turn.move, moveEffects, "player", "opponent")) ===
+            true
+          ) {
             isBattleOver = true;
-          };
+            setBattleHistory((prev) => [
+              ...prev,
+              `${gameState.player.name} fainted!\n`,
+            ]);
+          }
         }
       }
     }

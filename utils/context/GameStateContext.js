@@ -107,6 +107,7 @@ export function GameStateProvider({ children }) {
         current_hp: Math.floor(prev[target]["current_hp"] - amt),
       },
     }));
+    return (Math.floor(gameState[target].current_hp - amt));
   }
 
   const dealHeal = (target, amt) => {
