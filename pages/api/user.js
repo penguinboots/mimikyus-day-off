@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import achievements from '../../game/data/achievements.json'
 import { unlockables } from '@/game/data/unlockableMoves';
+import { items } from '@/game/data/items';
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
@@ -33,11 +34,17 @@ export default async function handler(req, res) {
         where: { userId: db_user.id },
       });
 
+      // find items
+      const db_items = await prisma.item.findMany({
+        where: { userId: db_user.id },
+      });
+
       res.status(200).json({
-        db_user,
-        db_character,
-        db_achievements,
-        db_moves,
+        user: db_user,
+        character: db_character,
+        achievements: db_achievements,
+        moves: db_moves,
+        items: db_items
       });
     } catch (error) {
       console.error('Failed to fetch user data:', error);
@@ -96,11 +103,27 @@ export default async function handler(req, res) {
         });
         db_moves.push(db_move);
       }
+
+      //create items
+      const db_items = []
+      for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        const db_item = await prisma.item.create({
+          data: {
+            name: item.name,
+            quantity: item.quantity,
+            date_get: null,
+            userId: db_user.id,
+          },
+        });
+        db_items.push(db_item);
+      }
       res.status(200).json({
         user: db_user,
         character: db_character,
         achievements: db_achievements,
         moves: db_moves,
+        items: db_items
       });    
     } catch (error) {
       console.error('Failed to create user:', error);
