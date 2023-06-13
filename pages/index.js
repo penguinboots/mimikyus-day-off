@@ -45,7 +45,10 @@ export default function Home(props) {
             db_data = await createUser(user);
           }
           setMode("DASH");
-          setItemList(db_data.items)
+          setGameState((prev) => ({
+            ...prev,
+            itemList: db_data.items
+          }));
         } catch (error) {
           console.error("Error:", error);
         }
@@ -98,7 +101,7 @@ export default function Home(props) {
               style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(4px)', borderRight: 'none' }}
             >
             <div className="item-list">
-              {itemList.map((item) => (
+              {gameState.itemList.map((item) => (
                 <div key={item.name} className="item">
                   <span className="item-name">{item.name}</span>
                   <span className="item-quantity">{item.quantity}</span>
