@@ -91,7 +91,7 @@ export default function Home(props) {
             <Drawer
               title="ITEMS"
               placement="left"
-              visible={isDrawerVisible}
+              open={isDrawerVisible}
               onClose={handleDrawerToggle}
               width={320}
               bodyStyle={{ padding: 0 }}
