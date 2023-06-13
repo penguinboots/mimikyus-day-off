@@ -24,41 +24,31 @@ export default async function handler(req, res) {
 
   // POST request for characters
   if (req.method === 'POST') {
-    const { userId, characterName } = req.body;
-
+    const { user, newMoveArray } = req.body;
+    const db_user = await prisma.user.findFirst({
+      where: {auth0Sub: user.sub}
+    })
     // find user
     try {
       const user = await prisma.user.findUnique({
-        where: { id: parseInt(userId) },
+        where: { id: parseInt(db_user.id) },
       });
 
-      if (!user) {
-        res.status(404).json({ error: 'User not found' });
-        return;
-      }
-
-      // find character
-      const character = await prisma.character.findFirst({
+      // update moves per array from paramater
+      const character = await prisma.character.updateFirst({
         where: { userId: user.id },
-      });
-
-      if (character) {
-        res.status(400).json({ error: 'User already has a character' });
-        return;
-      }
-
-      // create new character
-      const newCharacter = await prisma.character.create({
-        data: {
-          userId: user.id,
-          name: characterName,
-        },
+        data:{
+          move1:newMoveArray[0],
+          move2:newMoveArray[1],
+          move3:newMoveArray[2],
+          move4:newMoveArray[3],
+        }
       });
 
       res.status(201).json({ success: true, character: newCharacter });
     } catch (error) {
-      console.error('Failed to create character:', error);
-      res.status(500).json({ error: 'Failed to create character' });
+      console.error('Failed to edit character:', error);
+      res.status(500).json({ error: 'Failed to edit character' });
     }
   }
 }
