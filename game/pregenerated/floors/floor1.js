@@ -12,7 +12,7 @@ const floor_1 = {
     background: `url("/backgrounds/new_bark_town.png")`,
     color: "#1f89aa",
     music: "01_magikarp.mp3",
-    intro: "",
+    intro: `/splashes/vs_magikarp.png`,
     next_room: "room_2",
   },
   room_2: {
@@ -23,8 +23,8 @@ const floor_1 = {
       sprite: "",
       reward: {},
     },
-    background: `url("/grass_bg.png")`,
-    color: "#316698",
+    background: `url("/backgrounds/cherrygrove.png")`,
+    color: "#ffafde",
     music: "02_cherrygrove.mp3",
     intro: "",
     next_room: "room_3",
@@ -40,7 +40,7 @@ const floor_1 = {
     background: `url("/backgrounds/route_30.png")`,
     color: "#7f9b63",
     music: "03_snorlax1.mp3",
-    intro: "",
+    intro: `/splashes/00_splash.png`,
     next_room: null,
   },
   next_floor: "floor_2"
