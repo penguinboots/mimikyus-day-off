@@ -10,7 +10,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { changeMoves } from "@/prisma/helpers/changeMoves";
 
 export default function MoveEdit(props) {
-  const { gameState } = useGameState();
+  const { gameState, setGameState } = useGameState();
   const { user, error, isLoading } = useUser();
 
   // Introduce state for available moves, as array of objects
@@ -88,7 +88,7 @@ export default function MoveEdit(props) {
     }),
     "button"
   );
-
+  
   return (
     <div className="popup move-edit-window">
       <div className="close-window" onClick={props.handleClose}>
@@ -106,7 +106,18 @@ export default function MoveEdit(props) {
         </div>
       </div>
       <div className="window-controls">
-        <button className="save" onClick={() => {changeMoves(user, chosenMoveArray); props.handleClose()}}>SAVE</button>
+        <button className="save" onClick={() => {
+          changeMoves(user, chosenMoveArray);
+          props.handleClose();
+          setGameState((prev) => ({
+            ...prev,
+            player: {
+              ...prev.player,
+              moves: chosenMoveArray,
+            },
+          }))
+          console.log(gameState.player)
+          }}>SAVE</button>
         <button className="cancel" onClick={props.handleClose}>CANCEL</button>
       </div>
     </div>
