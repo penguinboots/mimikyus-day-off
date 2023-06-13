@@ -49,11 +49,24 @@ export default function MoveEdit(props) {
     fetchData();
   }, [user]);
 
+  function chooseNewMove(move) {
+    if (chosenMoveObjs.length === 4) {
+      console.log("Too many moves");
+    } else if (chosenMoveObjs.some((moveObj) => moveObj === move)) {
+      console.log("Move already exists");
+    } else {
+      setChosenMoveObjs((prev) => [...prev, move]);
+    }
+  }
+  function removeChosenMove(move) {
+    setChosenMoveObjs((prev) => prev.filter((moveObj) => moveObj !== move));
+  }
+
   // Generates MoveItems from array of move objects
   const activeMoveItems = padMoves(
     Object.values(chosenMoveObjs).map((move) => {
       return (
-        <button key={move.name}>
+        <button key={move.name} onClick={() => removeChosenMove(move)}>
           <MoveItem id={move.name} move={move} loc="moveEdit" />
         </button>
       );
@@ -64,7 +77,7 @@ export default function MoveEdit(props) {
   const knownMoveItems = padMoves(
     Object.values(knownMoveObjs).map((move) => {
       return (
-        <button key={move.name}>
+        <button key={move.name} onClick={() => chooseNewMove(move)}>
           <MoveItem id={move.name} move={move} loc="moveEdit" />
         </button>
       );
