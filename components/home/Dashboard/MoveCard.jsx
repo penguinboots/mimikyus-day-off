@@ -6,7 +6,6 @@ import MoveItem from "../../common/MoveItem";
 import MoveEdit from "./MoveEdit";
 
 export default function MoveCard(props) {
-  const { db_moves } = props
   const { isMenuOpen, windowToggle } = useIsMenuOpen();
 
   const { gameState } = useGameState();
@@ -19,9 +18,11 @@ export default function MoveCard(props) {
   // Generates MoveItems from array of move objects
   const playerMoves = padMoves(
     Object.values(playerMoveArray).map((move, index) => {
-      return (
-        <MoveItem key={index} id={move.name} move={move} loc="moveCard" />
-      );
+      if (move){
+        return (
+          <MoveItem key={index} id={move.name} move={move} loc="moveCard" />
+        );
+      }
     }), "none");
 
   return (
@@ -30,7 +31,7 @@ export default function MoveCard(props) {
       {playerMoves}
       <button onClick={() => windowToggle("editMoves")}>EDIT MOVES</button>
       {isMenuOpen.editMoves && (
-        <MoveEdit handleClose={() => windowToggle("editMoves")} db_moves={db_moves}/>
+        <MoveEdit handleClose={() => windowToggle("editMoves")} />
       )}
     </div>
   );

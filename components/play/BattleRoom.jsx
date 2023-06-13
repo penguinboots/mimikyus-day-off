@@ -221,21 +221,23 @@ export default function Room(props) {
   // Generates MoveItems from array of move objects
   let playerMoves = padMoves(
     playerMoveArray.map((move) => {
-      return (
-        <button
-          key={move.name}
-          onClick={() =>
-            executeTurn(
-              move,
-              gameState.player,
-              opponentMoveSelect(gameState.opponent),
-              gameState.opponent
-            )
-          }
-        >
-          <MoveItem id={move.name} move={move} loc="game" />
-        </button>
-      );
+      if (move) {
+        return (
+          <button
+            key={move.name}
+            onClick={() =>
+              executeTurn(
+                move,
+                gameState.player,
+                opponentMoveSelect(gameState.opponent),
+                gameState.opponent
+              )
+            }
+          >
+            <MoveItem id={move.name} move={move} loc="game" />
+          </button>
+        );
+      }
     }),
     "button"
   );
