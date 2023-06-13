@@ -36,7 +36,9 @@ export default function MoveEdit(props) {
         const knownMoves = db_moves.filter(
           (db_move) => db_move.collected === true
         );
-        const knownMoveObjects= knownMoves.map((move) => moveFetcher(move.name));
+        const knownMoveObjects = knownMoves.map((move) =>
+          moveFetcher(move.name)
+        );
 
         setKnownMoveObjs(knownMoveObjects);
       } catch (error) {
@@ -51,19 +53,23 @@ export default function MoveEdit(props) {
   const activeMoveItems = padMoves(
     Object.values(chosenMoveObjs).map((move) => {
       return (
-        <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />
+        <button key={move.name}>
+          <MoveItem id={move.name} move={move} loc="moveEdit" />
+        </button>
       );
     }),
-    "none"
+    "button"
   );
 
   const knownMoveItems = padMoves(
     Object.values(knownMoveObjs).map((move) => {
       return (
-        <MoveItem key={move.name} id={move.name} move={move} loc="moveEdit" />
+        <button key={move.name}>
+          <MoveItem id={move.name} move={move} loc="moveEdit" />
+        </button>
       );
     }),
-    "none"
+    "button"
   );
 
   return (
@@ -73,14 +79,18 @@ export default function MoveEdit(props) {
       </div>
       <h2>Edit Moves</h2>
       <div className="move-edit-menu">
-        <div className="moves-selected">
+        <div className="moves-selected-container">
           <h3>Moves Selected</h3>
-          {activeMoveItems}
+          <div className="moves-selected">{activeMoveItems}</div>
         </div>
-        <div className="moves-avail">
+        <div className="moves-avail-container">
           <h3>Moves Available</h3>
-          {knownMoveItems}
+          <div className="moves-avail">{knownMoveItems}</div>
         </div>
+      </div>
+      <div className="window-controls">
+        <button className="save">SAVE</button>
+        <button className="cancel">CANCEL</button>
       </div>
     </div>
   );

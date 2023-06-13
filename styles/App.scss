@@ -385,28 +385,55 @@ body {
 /** EDIT MOVES **/
 .move-edit-window {
   position: absolute;
+  left: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 500px;
-  height: 400px;
+  width: 800px;
+  height: 450px;
   .move-edit-menu {
     display: flex;
-    gap: 200px;
-    .moves-selected,
-    .moves-avail {
+    gap: 180px;
+    .moves-selected-container,
+    .moves-avail-container {
       background-color: $off-white;
     }
+    .moves-selected {
+      width: 180px;
+    }
+    .moves-avail {
+      width: 360px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    button {
+      width: 140px;
+      border: none;
+      margin: 10px 20px;
+    }
     .move-item {
-      width: 120px;
+      width: 140px;
+      margin: 0;
+      font-size: 16px;
     }
   }
   .move-detail {
     position: absolute;
     width: 170px;
     top: 80px;
-    left: 160px;
+    left: 220px;
+  }
+  .window-controls {
+    display: flex;
+    width: 50%;
+    gap: 50px;
+    .save {
+      background-color: $pdex-green;
+    }
+    .cancel {
+      background-color: $pdex-red;
+    }
   }
 }
 
