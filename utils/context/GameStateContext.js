@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { dungeon } from '@/game/pregenerated/dungeon1';
+import { items } from '@/game/data/items';
 
 // Create the context
 const GameStateContext = createContext();
@@ -11,6 +12,7 @@ export function useGameState() {
 
 // Create a provider component
 export function GameStateProvider({ children }) {
+  const [itemList, setItemList] = useState(items)
   const { mimikyu } = require("../../game/pregenerated/fakePlayer");
   const player = mimikyu;
 
@@ -20,6 +22,7 @@ export function GameStateProvider({ children }) {
     roomType: dungeon.floor_1.room_1.type,
     opponent: dungeon.floor_1.room_1.opponent,
     player: player,
+    itemList: itemList
   });
 
   const [battleHistory, setBattleHistory] = useState([]);
