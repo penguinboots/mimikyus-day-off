@@ -34,10 +34,10 @@ export default async function handler(req, res) {
       });
 
       res.status(200).json({
-        db_user,
-        db_character,
-        db_achievements,
-        db_moves,
+        user: db_user,
+        character: db_character,
+        achievements: db_achievements,
+        moves: db_moves,
       });
     } catch (error) {
       console.error('Failed to fetch user data:', error);
