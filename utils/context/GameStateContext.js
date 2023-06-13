@@ -54,7 +54,11 @@ export function GameStateProvider({ children }) {
       currentFloor: nextFloor,
       currentRoom: nextFloor.room_1,
       opponent: nextFloor.room_1.opponent,
-      player: player,
+      player: {
+        ...prev.player,
+        current_hp: player.current_hp,
+        stat_changes: player.stat_changes
+      }
     }));
     setBattleWon(false);
   }
@@ -68,7 +72,11 @@ export function GameStateProvider({ children }) {
         currentRoom: nextRoom,
         roomType: nextRoom.type,
         opponent: nextRoom.opponent,
-        player: player,
+        player: {
+          ...prev.player,
+          current_hp: player.current_hp,
+          stat_changes: player.stat_changes
+        }
       }));
     } else {
       nextFloor(gameState.currentFloor.next_floor);
@@ -88,7 +96,11 @@ export function GameStateProvider({ children }) {
       currentRoom: dungeon.floor_1.room_1,
       roomType: dungeon.floor_1.room_1.type,
       opponent: dungeon.floor_1.room_1.opponent,
-      player: player,
+      player: {
+          ...prev.player,
+          current_hp: player.current_hp,
+          stat_changes: player.stat_changes
+        }
     });
     setBattleWon(false);
     setPopup({
