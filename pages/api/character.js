@@ -5,13 +5,15 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   // GET request for characters
   if (req.method === "GET") {
-    const { userId } = req.query;
-
+    const { auth0Sub }  = req.query;
+    const db_user = await prisma.user.findUnique({
+      where: { auth0Sub: auth0Sub },
+    });
     // find characters
     try {
       const characters = await prisma.character.findMany({
         where: {
-          userId: parseInt(userId),
+          userId: parseInt(db_user.id),
         },
       });
 
@@ -30,22 +32,18 @@ export default async function handler(req, res) {
     })
     // find user
     try {
-      const user = await prisma.user.findUnique({
-        where: { id: parseInt(db_user.id) },
-      });
-
       // update moves per array from paramater
-      const character = await prisma.character.updateFirst({
-        where: { userId: user.id },
+      const character = await prisma.character.updateMany({
+        where: { userId: db_user.id },
         data:{
-          move1:newMoveArray[0],
-          move2:newMoveArray[1],
-          move3:newMoveArray[2],
-          move4:newMoveArray[3],
+          move_1:newMoveArray[0],
+          move_2:newMoveArray[1],
+          move_3:newMoveArray[2],
+          move_4:newMoveArray[3],
         }
       });
 
-      res.status(201).json({ success: true, character: newCharacter });
+      res.status(200).json({ success: true, character: character });
     } catch (error) {
       console.error('Failed to edit character:', error);
       res.status(500).json({ error: 'Failed to edit character' });
