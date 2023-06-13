@@ -48,6 +48,7 @@ export default function MoveEdit(props) {
     fetchData();
   }, [user]);
 
+  // Add new move to chosenMoves state if length < 4 and contains no duplicates
   function chooseNewMove(move) {
     if (chosenMoveObjs.length === 4) {
       console.log("Too many moves");
@@ -57,16 +58,20 @@ export default function MoveEdit(props) {
       setChosenMoveObjs((prev) => [...prev, move]);
     }
   }
+
+  // Remove move from choseMoves state, reset length
   function removeChosenMove(move) {
-    setChosenMoveObjs((prev) => prev.filter((moveObj) => moveObj !== move));
+    setChosenMoveObjs((prev) => {
+      const newChosen = prev.filter((moveObj) => moveObj !== move);
+      newChosen.length = Math.max(newChosen.length, 0);
+      return newChosen;
+    });
   }
 
-  const chosenMoveArray = Object.values(chosenMoveObjs).map(obj => obj.name);
-  if (chosenMoveArray.length < 4) {
-    const remainingSpots = 4 - chosenMoveArray.length;
-    chosenMoveArray.push(...Array.from({ length: remainingSpots }, () => null));
-  }
-  // Generates MoveItems from array of move objects
+  // Take array of move objects, return array of move names
+  const chosenMoveStr = Object.values(chosenMoveObjs).map((obj) => obj.name);
+
+  // Generates MoveItems from array of move objects (chosen moves) in state
   const activeMoveItems = padMoves(
     Object.values(chosenMoveObjs).map((move) => {
       if (move) {
@@ -80,6 +85,7 @@ export default function MoveEdit(props) {
     "button"
   );
 
+  // Generates MoveItems from array of move objects (known moves) in state
   const knownMoveItems = padMoves(
     Object.values(knownMoveObjs).map((move) => {
       if (move) {
@@ -92,7 +98,7 @@ export default function MoveEdit(props) {
     }),
     "button"
   );
-  
+
   return (
     <div className="popup move-edit-window">
       <div className="close-window" onClick={props.handleClose}>
@@ -110,19 +116,25 @@ export default function MoveEdit(props) {
         </div>
       </div>
       <div className="window-controls">
-        <button className="save" onClick={() => {
-          changeMoves(user, chosenMoveArray);
-          props.handleClose();
-          setGameState((prev) => ({
-            ...prev,
-            player: {
-              ...prev.player,
-              moves: chosenMoveArray,
-            },
-          }))
-          console.log(gameState.player)
-          }}>SAVE</button>
-        <button className="cancel" onClick={props.handleClose}>CANCEL</button>
+        <button
+          className="save"
+          onClick={() => {
+            changeMoves(user, chosenMoveStr);
+            props.handleClose();
+            setGameState((prev) => ({
+              ...prev,
+              player: {
+                ...prev.player,
+                moves: chosenMoveStr,
+              },
+            }));
+          }}
+        >
+          SAVE
+        </button>
+        <button className="cancel" onClick={props.handleClose}>
+          CANCEL
+        </button>
       </div>
     </div>
   );
