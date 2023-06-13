@@ -24,8 +24,6 @@ export default function MoveEdit(props) {
   // Initial state of chosenMoves (left of menu) is player moves (objects) from state
   const [chosenMoveObjs, setChosenMoveObjs] = useState(activeMoveObjs);
 
-  console.log(chosenMoveObjs);
-
   // Fetch a new moves variable using a helper
   useEffect(() => {
     const fetchData = async () => {
