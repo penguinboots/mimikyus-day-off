@@ -49,7 +49,7 @@ export default function Home(props) {
               characterData.move_2,
               characterData.move_3,
               characterData.move_4
-            ].filter(move => move !== null);
+            ].filter(move => move);
 
             const updatedPlayerTemplate = {
               ...playerTemplate,
