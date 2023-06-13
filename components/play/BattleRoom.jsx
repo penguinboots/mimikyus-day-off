@@ -136,6 +136,7 @@ export default function Room(props) {
     } else if (move.category === "unique") {
       await playStatUp(self);
     }
+    return checkBattleOver(target.current_hp, self.current_hp);
   }
 
   // Check if battle is over ** bug: currently receiving old current_hp state
@@ -167,21 +168,21 @@ export default function Room(props) {
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     for (let turn of turns) {
       let moveEffects = calculateMove(turn.move, turn.user, turn.target);
-      setBattleHistory((prev) => [
-        ...prev,
-        `${turn.user.name} used ${turn.move.name}!\n`,
-      ]);
       if (!isBattleOver) {
+        setBattleHistory((prev) => [
+          ...prev,
+          `${turn.user.name} used ${turn.move.name}!\n`,
+        ]);
         if (turn.user === gameState.player) {
-          await doMove(turn.move, moveEffects, "opponent", "player");
+          if (doMove(turn.move, moveEffects, "opponent", "player")) {
+            isBattleOver = true;
+          }
         }
         if (turn.user === gameState.opponent) {
-          await doMove(turn.move, moveEffects, "player", "opponent");
+          if (doMove(turn.move, moveEffects, "player", "opponent")) {
+            isBattleOver = true;
+          };
         }
-        isBattleOver = checkBattleOver(
-          gameState.opponent.current_hp,
-          gameState.player.current_hp
-        );
       }
     }
   }
