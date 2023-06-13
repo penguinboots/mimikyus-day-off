@@ -30,29 +30,31 @@ export default function Home(props) {
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
   // Drawer State
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const [itemList, setItemList] = useState(items);
-
+  const [itemList, setItemList] = useState();
+  
   const handleDrawerToggle = () => {
     setIsDrawerVisible(!isDrawerVisible);
   };
-
+  
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
         try {
-          let dbData = await getUserData(user);
-          if (!dbData) {
-            dbData = await createUser(user);
+          let db_data = await getUserData(user);
+          if (!db_data) {
+            db_data = await createUser(user);
           }
           setMode("DASH");
+          setItemList(db_data.items)
         } catch (error) {
           console.error("Error:", error);
         }
       }
     };
-
+    
     initializeUser();
   }, [user]);
+  
 
   // Change music if room changes in Play
   useEffect(() => {
@@ -60,7 +62,7 @@ export default function Home(props) {
       setSelectedMusic(gameState.currentRoom.music);
     }
   }, [gameState.currentRoom, setSelectedMusic, mode]);
-
+  
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
