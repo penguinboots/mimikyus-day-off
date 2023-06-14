@@ -1,5 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
 /** VARIABLES **/
+
+$title-font: "VT323", monospace;
 
 $dark-gray: #403c3e;
 $gray-shad: #332f31;
@@ -131,6 +134,14 @@ body {
   background-color: $off-white;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 // button {
 //   width: 200px;
 //   height: 48px;
@@ -152,22 +163,60 @@ body {
   border-radius: 36px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  button {
-    background: $dash-card-bg;
-    padding: 1rem 3rem;
-    border-radius: 3rem;
+  border: 8px solid $dash-border;
+  outline: 8px solid $border;
+  background-image: url("../public/backgrounds/splash-bg.png");
 
-    font-size: 3rem;
-    color: white;
+  h1 {
+    font-size: 60px;
+    color: $pdex-shadow-text;
+    margin: 20px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 80px;
+    border-radius: 36px;
+    color: $pdex-shadow-text;
+    border: 4px solid $pdex-shadow-border;
+    outline: 4px solid $pdex-black-highlight;
+    font-size: 48px;
+    font-weight: 700;
+  }
+
+  .loading {
+    width: 85px;
+    animation: spin 2s linear infinite;
+    font-size: 60px;
+    color: $pdex-shadow-text;
   }
 }
 
-.login-container {
+.landing-container {
+  background-color: $pdex-red;
+  h1 {
+    margin-top: 200px;
+  }
   button {
-    background: $dash-card-bg;
+    background-color: $pdex-blue;
+  }
+  .mimikyu-sprite {
+    position: absolute;
+    left: 350px;
+    top: -100px;
+  }
+}
+.login-container {
+  background-color: $pdex-yellow;
+  button {
+    background-color: $pdex-green;
   }
 }
 
@@ -195,7 +244,7 @@ body {
         border: 5px solid $pdex-shadow-border;
         outline: 5px solid $border;
         font-size: 48px;
-        font-family: "VT323", sans-serif;
+        // font-family: $title-font;
       }
     }
     .nav-right {
@@ -568,7 +617,7 @@ body {
     align-items: center;
     justify-content: center;
     h2 {
-      font-family: "VT323", sans-serif;
+      // font-family: $title-font;
       font-size: 48px;
       text-align: center;
     }
@@ -587,7 +636,7 @@ body {
         border: 5px solid $pdex-shadow-border;
         outline: 5px solid $pdex-black-highlight;
         h3 {
-          font-family: "VT323", sans-serif;
+          // font-family: $title-font;
           font-size: 36px;
           margin-top: 24px;
           color: $pdex-shadow-text;

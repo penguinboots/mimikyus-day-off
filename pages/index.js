@@ -19,6 +19,7 @@ import { mimikyu } from '@/game/pregenerated/fakePlayer';
 export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
+  console.log(user);
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
@@ -33,6 +34,7 @@ export default function Home(props) {
     const initializeUser = async () => {
       if (user) {
         try {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           db_data = await getUserData(user);
           if (!db_data) {
             db_data = await createUser(user);
@@ -90,7 +92,7 @@ export default function Home(props) {
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
-        {mode === 'LANDING' && <Landing setMode={setMode} user={user} />}
+        {mode === 'LANDING' && <Landing setMode={setMode} user={user} isLoading={isLoading}/>}
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard

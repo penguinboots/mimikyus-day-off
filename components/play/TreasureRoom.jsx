@@ -6,6 +6,9 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useGameState } from "@/utils/context/GameStateContext";
 import StoreCard from "./StoreCard";
 import { useState, useEffect } from "react";
+import localFont from "next/font/local";
+const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
+
 export default function Room(props) {
   const { user, error, isLoading } = useUser();
   const { gameState } = useGameState();
@@ -30,7 +33,13 @@ export default function Room(props) {
       className="treasure-room"
     >
       <div className="treasure-floor">
-        <h2>PICK A REWARD!</h2>
+        <h2
+          style={{
+            fontFamily: vt.style.fontFamily,
+          }}
+        >
+          PICK A REWARD!
+        </h2>
         <div className="store-cards">
           <StoreCard
             type="pokemon-center"
