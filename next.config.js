@@ -9,6 +9,7 @@ module.exports = {
         name: '[name].[ext]',
         esModule: false,
       },
+      optimizeFonts: false,
     });
 
     return config;
