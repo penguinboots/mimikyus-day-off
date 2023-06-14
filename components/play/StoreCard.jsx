@@ -1,4 +1,8 @@
 import StoreOption from "./StoreOption";
+import localFont from "next/font/local";
+
+const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
+
 
 export default function StoreCard(props) {
   const { name, color, options, chosenOption, setChosenOption } = props;
@@ -25,7 +29,13 @@ export default function StoreCard(props) {
         backgroundColor: `${color}`,
       }}
     >
-      <h3>{name}</h3>
+      <h3
+        style={{
+          fontFamily: vt.style.fontFamily,
+        }}
+      >
+        {name}
+      </h3>
       {optionItems}
     </div>
   );
