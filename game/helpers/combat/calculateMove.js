@@ -17,7 +17,7 @@ function calculateMove(move, user, target) {
   let userMoveStat = user.stats[userStat]
   let targetMoveStat = target.stats[targetStat]
   let output = {
-    damage: null,
+    damage: 0,
     critical: false,
     effectiveness: "neutral",
   };
