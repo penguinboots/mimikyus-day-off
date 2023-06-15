@@ -4,8 +4,18 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
+import InventoryWindow from "./InventoryWindow";
+import InventoryButton from "./InventoryButton";
 export default function Play(props) {
-  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+  const {
+    mode,
+    setMode,
+    isMusicPlaying,
+    handleMusicToggle,
+    windowToggle,
+    windowClose,
+    isMenuOpen,
+  } = props;
   const { gameState, nextRoom, setSelectedMusic } = useGameState();
 
   const returnToDash = () => {
@@ -20,6 +30,7 @@ export default function Play(props) {
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
         windowTitle="ROUTE 1"
+        windowToggle={windowToggle}
       />
       <div className="play-viewport">
         <button className="dash-return" onClick={returnToDash}>
@@ -34,6 +45,13 @@ export default function Play(props) {
             gameState={gameState}
           />
         )}
+        {mode === "PLAY" && (
+          <InventoryWindow
+            handleClick={() => windowClose("inventory")}
+            isMenuOpen={isMenuOpen}
+          />
+        )}
+        <InventoryButton handleClick={() => windowToggle("inventory")} />
       </div>
     </div>
   );
