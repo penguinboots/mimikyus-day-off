@@ -1,4 +1,4 @@
-export const getUserData = async (user) => {
+export const getUserData = async(user) => {
   //Get request to refresh User Data
   const getUserDataResponse = await fetch(`/api/user?auth0Sub=${user.sub}`, {
     method: 'GET',
@@ -8,4 +8,4 @@ export const getUserData = async (user) => {
     const userData = await getUserDataResponse.json();
     return userData;
   }
-}
+};
