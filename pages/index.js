@@ -31,7 +31,6 @@ export default function Home(props) {
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
     // Drawer State
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-    const [itemList, setItemList] = useState();
     
     const handleDrawerToggle = () => {
       setIsDrawerVisible(!isDrawerVisible);
@@ -67,7 +66,7 @@ export default function Home(props) {
             setGameState((prev) => ({
               ...prev,
               player: updatedPlayerTemplate,
-              itemList: dbData.items
+              itemList: dbData.items,
             }));
           } else {
             console.error("Character data is missing or invalid");
