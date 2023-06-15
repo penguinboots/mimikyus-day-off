@@ -15,7 +15,7 @@ import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
 // Drawer
 import { Drawer, Button } from 'antd';
-import { ShoppingOutlined } from '@ant-design/icons';
+import { ShoppingOutlined, CloseOutlined } from '@ant-design/icons';
 import { items } from '@/game/data/items';
 
 export default function Home(props) {
@@ -89,25 +89,53 @@ export default function Home(props) {
               shape="circle"
               icon={<ShoppingOutlined style={{ fontSize: '2.3rem' }} />}
               onClick={handleDrawerToggle}
-              style={{ boxShadow: 'none', border: 'none', backgroundColor: 'transparent' }}
+              style={{
+                position: 'absolute',
+                bottom: '55px', // Adjust the value as per your requirement
+                left: '55px', // Adjust the value as per your requirement
+                boxShadow: 'none',
+                border: 'none',
+                backgroundColor: 'transparent',
+              }}
             />
             <Drawer
-              title="ITEMS"
-              placement="left"
+              title={<span style={{ fontSize: '14px' }}>ITEMS</span>}
+              placement="center"
               open={isDrawerVisible}
               onClose={handleDrawerToggle}
-              width={320}
-              bodyStyle={{ padding: 0 }}
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', backdropFilter: 'blur(4px)', borderRight: 'none' }}
+              width={300}
+              bodyStyle={{
+                height: '100px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0',
+              }}
+              headerStyle={{
+                paddingBottom: '15px',
+                paddingRight: '32px',
+              }}
+              closeIcon={<CloseOutlined style={{ fontSize: '16px' }} />}
+              style={{
+                position: 'fixed',
+                top: '45%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '300px',
+                height: '260px',
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                backdropFilter: 'blur(4px)',
+                border: 'none',
+              }}
             >
-            <div className="item-list">
-              {gameState.itemList.map((item) => (
-                <div key={item.name} className="item">
-                  <span className="item-name">{item.name}</span>
-                  <span className="item-quantity">{item.quantity}</span>
-                </div>
-              ))}
-            </div>
+              <div className="item-list">
+                {gameState.itemList.map((item) => (
+                  <div key={item.name} className="item">
+                    <span className="item-name">{item.name}</span>
+                    <span className="item-quantity">{item.quantity}</span>
+                  </div>
+                ))}
+              </div>
             </Drawer>
             <Play
               audioRef={audioRef}
