@@ -19,6 +19,7 @@ import { mimikyu } from '@/game/pregenerated/fakePlayer';
 export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
+  console.log(user);
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
