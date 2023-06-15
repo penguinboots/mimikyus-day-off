@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFan } from "@fortawesome/free-solid-svg-icons";
-
+import mimikyu from "@/public/sprites/mimikyu-idl.gif"
 import localFont from "next/font/local";
 import Image from "next/image";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
@@ -21,7 +21,7 @@ export default function Landing(props) {
     <div className="landing-container">
       <Image
         className="mimikyu-sprite"
-        src="/../public/sprites/mimikyu-idl.gif"
+        src={mimikyu}
         width={500}
         height={500}
         alt="Mimikyu"
