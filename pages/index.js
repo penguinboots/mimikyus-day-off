@@ -21,7 +21,6 @@ import { items } from '@/game/data/items';
 export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
-  console.log(user);
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
@@ -47,8 +46,8 @@ export default function Home(props) {
           }
           setMode("DASH");
            // Get user's character from db_data
-           if (db_data && db_data.character) {
-            const characterData = db_data.character;
+           if (dbData && dbData.character) {
+            const characterData = dbData.character;
 
             // Update the moves array of playerTemplate with non-null values from characterData
             const updatedMoves = [
@@ -72,7 +71,8 @@ export default function Home(props) {
             console.error("Character data is missing or invalid");
             setGameState((prev) => ({
               ...prev,
-              player: playerTemplate
+              player: playerTemplate,
+              itemList: dbData.items,
             }));
           }
         } catch (error) {
@@ -80,7 +80,8 @@ export default function Home(props) {
           console.error("Error fetching data:", error);
           setGameState((prev) => ({
             ...prev,
-            player: playerTemplate
+            player: playerTemplate,
+            itemList: dbData.items,
           }));
         }
       }
