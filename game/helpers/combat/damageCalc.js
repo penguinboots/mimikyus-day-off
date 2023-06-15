@@ -48,5 +48,3 @@ const damageCalc = function(
 };
 
 module.exports = { damageCalc };
-
-module.exports = { damageCalc };
