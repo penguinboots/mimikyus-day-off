@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
+import BattleHistory from "./BattleHistory";
 
 export default function Room(props) {
   const { setMode } = props;
@@ -181,7 +182,7 @@ export default function Room(props) {
       if (!isBattleOver) {
         setBattleHistory((prev) => [
           ...prev,
-          `${turn.user.name} used ${turn.move.name}!\n`,
+          `${turn.user.proper_name} used ${turn.move.proper_name}!\n`,
         ]);
         // doMove calculates whether damage dealt will kill the target this turn
         if (turn.user === gameState.player) {
@@ -193,7 +194,7 @@ export default function Room(props) {
             // Assumes target of attack is the only one taking damage (no recoil/struggle/poison effects)
             setBattleHistory((prev) => [
               ...prev,
-              `${gameState.opponent.name} fainted!\n`,
+              `${gameState.opponent.proper_name} fainted!\n`,
             ]);
           }
         }
@@ -205,11 +206,35 @@ export default function Room(props) {
             isBattleOver = true;
             setBattleHistory((prev) => [
               ...prev,
-              `${gameState.player.name} fainted!\n`,
+              `${gameState.player.proper_name} fainted!\n`,
             ]);
           }
         }
       }
+      if(moveEffects.effectiveness === "immune"){
+        setBattleHistory((prev) => [
+        ...prev,
+        `It had no effect!\n`,
+      ])} else if(moveEffects.effectiveness === "not-very"){
+        setBattleHistory((prev) => [
+        ...prev,
+        `It's not very effective on ${gameState.opponent.proper_name}\n`,
+      ])} else if(moveEffects.effectiveness === "super"){
+        setBattleHistory((prev) => [
+        ...prev,
+        `It's super effective on ${gameState.opponent.proper_name}\n`,
+      ])}
+      if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
+        setBattleHistory((prev) => [
+        ...prev,
+        `A critical hit!\n`,
+      ])};
+
+      // if(moveEffects.statChanges !== {}){
+      // setBattleHistory((prev) => [
+      //   ...prev,
+      //   `${moveEffects.statChanges.stat.target.proper_name}'s ${moveEffects.statChanges.stat} went up!}\n`,
+      // ])};
     }
   }
 
@@ -302,7 +327,9 @@ export default function Room(props) {
           </div>
         </div>
       </div>
-
+      <div className="battle-history-menu">
+        <BattleHistory />          
+      </div>
       <div className="move-select">
         {playerMoves}
         <button onClick={nextRoom}>NEXT</button>
