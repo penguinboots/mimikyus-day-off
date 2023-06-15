@@ -8,11 +8,12 @@ import { useGameState } from "@/utils/context/GameStateContext";
 import StoreCard from "./StoreCard";
 import { useState, useEffect } from "react";
 import localFont from "next/font/local";
+import { getItems } from "@/prisma/helpers/getItems";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room(props) {
   const { user, error, isLoading } = useUser();
-  const { gameState } = useGameState();
+  const { gameState, setGameState } = useGameState();
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
 
@@ -28,8 +29,16 @@ export default function Room(props) {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
       case "Berry":
-        console.log("Berry Get!")
         earnItem(user, "berry", 1)
+        .then(() => {
+          return getItems(user);
+        })
+        .then(({ items }) => {
+          setGameState((prev) => ({
+            ...prev,
+            itemList: items,
+          }))
+        })
         break;
       case "Play Rough":
         learnMove(user, "play-rough")
@@ -85,7 +94,7 @@ export default function Room(props) {
         type="pokemart"
         name="POKEMART"
         color="#4dbefc"
-        options={["Move 1", "Move 2"]}
+        options={["Play Rough", "Shadow Sneak"]}
         chosenOption={chosenOption}
         setChosenOption={(option) => {
           setChosenOption(option);
