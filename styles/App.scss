@@ -80,7 +80,7 @@ body {
 
   background-color: $pdex-light-gray;
   border-radius: 36px;
-  border: 5px solid $pdex-light-gray-shadow;
+  border: 5px solid $pdex-shadow-border;
   outline: 5px solid $pdex-black-highlight;
 
   display: flex;
@@ -807,55 +807,50 @@ body {
 
 /** INVENTORY INFO **/
 
-.item-button {
-  position: fixed;
-  z-index: 10;
-}
+.inventory-wrapper {
+  position: absolute;
+  bottom: 145px;
+  left: 50px;
+  width: 90px;
+  height: 320px;
+  border-radius: 16px;
 
-.item-list {
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
-}
+  overflow: hidden;
 
-.item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px;
 }
-
-.item-name {
-  font-weight: bold;
-  font-size: 16px;
+.inv-open {
+  height: 300px;
+  transition: ease height 1s;
 }
-
-.item-quantity {
-  color: #999;
+.inv-closed {
+  height: 0px;
+  transition: ease height 1s;
 }
 
 .inventory-window {
+  position: relative;
+  left: 5px;
+  top: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  position: absolute;
-  bottom: 165px;
-  left: 50px;
+  height: 280px;
   width: 80px;
-  border-radius: 16px;
-  background-color: white;
-  overflow: hidden;
-  border: none;
-  outline: 4px solid $pdex-black-highlight;
+  border-radius: 10px;
 
   .close-window {
-    position: static;
+    position: relative;
+    top: -5px;
+    left: 0px;
     width: 80px;
     border: none;
     outline: none;
     margin: none;
-    border-radius: 0;
+    border-radius: 10px 10px 0 0;
+    border: 5px solid $pdex-shadow-border;
   }
 
   .item {
@@ -868,21 +863,10 @@ body {
   }
 }
 
-.inv-open {
-  height: 300px;
-  transition: ease height 1s, border 0.5s, outline 0.5s;
-}
-
-.inv-closed {
-  height: 0px;
-  outline: 0px solid rgb(255, 255, 255, 0);
-  transition: ease height 1s, border 0.8s, outline 0.8s;
-}
-
 .inventory-button {
   position: absolute;
   bottom: 55px;
-  left: 50px;
+  left: 55px;
   width: 80px;
   height: 80px;
   background-color: white;

@@ -14,17 +14,15 @@ export default function InventoryWindow(props) {
   ));
 
   return (
-    <div
-      className={`popup inventory-window ${
-        isMenuOpen.inventory ? "inv-open" : "inv-closed"
-      }`}
-    >
-      <>
+    <div className={`inventory-wrapper ${isMenuOpen.inventory ? "inv-open" : "inv-closed"}`}>
+      <div
+        className={`popup inventory-window`}
+      >
         <div className="close-window" onClick={handleClick}>
           <FontAwesomeIcon icon={faXmark} />
         </div>
         {items}
-      </>
+      </div>
     </div>
   );
 }
