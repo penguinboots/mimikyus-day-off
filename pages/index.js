@@ -119,72 +119,16 @@ export default function Home(props) {
           />
         )}
         {mode === 'PLAY' && (
-          <>
-            {/* <Button
-              className="item-button"
-              type="primary"
-              shape="circle"
-              icon={<ShoppingOutlined style={{ fontSize: '2.3rem' }} />}
-              onClick={handleDrawerToggle}
-              style={{
-                position: 'absolute',
-                bottom: '55px', // Adjust the value as per your requirement
-                left: '55px', // Adjust the value as per your requirement
-                boxShadow: 'none',
-                border: 'none',
-                backgroundColor: 'transparent',
-              }}
-            />
-            <Drawer
-              title={<span style={{ fontSize: '14px' }}>ITEMS</span>}
-              placement="center"
-              open={isDrawerVisible}
-              onClose={handleDrawerToggle}
-              width={300}
-              bodyStyle={{
-                height: '100px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0',
-              }}
-              headerStyle={{
-                paddingBottom: '15px',
-                paddingRight: '32px',
-              }}
-              closeIcon={<CloseOutlined style={{ fontSize: '16px' }} />}
-              style={{
-                position: 'fixed',
-                top: '45%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '300px',
-                height: '260px',
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                backdropFilter: 'blur(4px)',
-                border: 'none',
-              }}
-            >
-              <div className="item-list">
-                {gameState.itemList.map((item) => (
-                  <div key={item.name} className="item">
-                    <span className="item-name">{item.name}</span>
-                    <span className="item-quantity">{item.quantity}</span>
-                  </div>
-                ))}
-              </div>
-            </Drawer> */}
-            <Play
-              audioRef={audioRef}
-              mode={mode}
-              setMode={setMode}
-              isMusicPlaying={isMusicPlaying}
-              handleMusicToggle={handleMusicToggle}
-              windowToggle={windowToggle}
-              windowClose={windowClose}
-              isMenuOpen={isMenuOpen}
-            />
-          </>
+          <Play
+            audioRef={audioRef}
+            mode={mode}
+            setMode={setMode}
+            isMusicPlaying={isMusicPlaying}
+            handleMusicToggle={handleMusicToggle}
+            windowToggle={windowToggle}
+            windowClose={windowClose}
+            isMenuOpen={isMenuOpen}
+          />
         )}
         {isMenuOpen.achievements && (
           <AchievementsMenu handleClick={() => windowClose("achievements")} />

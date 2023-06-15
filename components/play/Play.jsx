@@ -51,7 +51,9 @@ export default function Play(props) {
             isMenuOpen={isMenuOpen}
           />
         )}
-        <InventoryButton handleClick={() => windowToggle("inventory")} />
+        {gameState.roomType === "battle" && (
+          <InventoryButton handleClick={() => windowToggle("inventory")} />
+        )}
       </div>
     </div>
   );

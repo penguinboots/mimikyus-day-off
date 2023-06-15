@@ -117,6 +117,7 @@ export function GameStateProvider({ children }) {
   // Reset room progress to beginning (called from defeat popup)
   function loseGame() {
     setGameState((prev) => ({
+      ...prev,
       currentFloor: dungeon.floor_1,
       currentRoom: dungeon.floor_1.room_1,
       roomType: dungeon.floor_1.room_1.type,
