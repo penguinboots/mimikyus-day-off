@@ -13,13 +13,14 @@ import { useGameState } from '@/utils/context/GameStateContext';
 import AudioPlayer from '@/components/common/AudioPlayer';
 import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
-import { getCharacter } from '@/prisma/helpers/getCharacter';
 import { mimikyu } from '@/game/pregenerated/fakePlayer';
-
+// Drawer
+import { Drawer, Button } from 'antd';
+import { ShoppingOutlined, CloseOutlined } from '@ant-design/icons';
+import { items } from '@/game/data/items';
 export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
-  console.log(user);
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
@@ -27,23 +28,26 @@ export default function Home(props) {
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
+    // Drawer State
+    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    
+    const handleDrawerToggle = () => {
+      setIsDrawerVisible(!isDrawerVisible);
+    };
   const playerTemplate = { ...mimikyu }
-  let db_data = null
-  
+  let dbData = null
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
         try {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          db_data = await getUserData(user);
-          if (!db_data) {
-            db_data = await createUser(user);
+          dbData = await getUserData(user);
+          if (!dbData) {
+            dbData = await createUser(user);
           }
           setMode("DASH");
-
-          // Get user's character from db_data
-          if (db_data && db_data.character) {
-            const characterData = db_data.character;
+           // Get user's character from db_data
+           if (dbData && dbData.character) {
+            const characterData = dbData.character;
 
             // Update the moves array of playerTemplate with non-null values from characterData
             const updatedMoves = [
@@ -60,13 +64,15 @@ export default function Home(props) {
 
             setGameState((prev) => ({
               ...prev,
-              player: updatedPlayerTemplate
+              player: updatedPlayerTemplate,
+              itemList: dbData.items,
             }));
           } else {
             console.error("Character data is missing or invalid");
             setGameState((prev) => ({
               ...prev,
-              player: playerTemplate
+              player: playerTemplate,
+              itemList: dbData.items,
             }));
           }
         } catch (error) {
@@ -74,21 +80,23 @@ export default function Home(props) {
           console.error("Error fetching data:", error);
           setGameState((prev) => ({
             ...prev,
-            player: playerTemplate
+            player: playerTemplate,
+            itemList: dbData.items,
           }));
         }
       }
     };
-
+    
     initializeUser();
   }, [user]);
+
   // Change music if room changes in Play
   useEffect(() => {
     if (mode === "PLAY") {
       setSelectedMusic(gameState.currentRoom.music);
     }
   }, [gameState.currentRoom, setSelectedMusic, mode]);
-
+  
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
@@ -105,13 +113,69 @@ export default function Home(props) {
           />
         )}
         {mode === 'PLAY' && (
-          <Play
-            audioRef={audioRef}
-            mode={mode}
-            setMode={setMode}
-            isMusicPlaying={isMusicPlaying}
-            handleMusicToggle={handleMusicToggle}
-          />
+          <>
+            <Button
+              className="item-button"
+              type="primary"
+              shape="circle"
+              icon={<ShoppingOutlined style={{ fontSize: '2.3rem' }} />}
+              onClick={handleDrawerToggle}
+              style={{
+                position: 'absolute',
+                bottom: '55px', // Adjust the value as per your requirement
+                left: '55px', // Adjust the value as per your requirement
+                boxShadow: 'none',
+                border: 'none',
+                backgroundColor: 'transparent',
+              }}
+            />
+            <Drawer
+              title={<span style={{ fontSize: '14px' }}>ITEMS</span>}
+              placement="center"
+              open={isDrawerVisible}
+              onClose={handleDrawerToggle}
+              width={300}
+              bodyStyle={{
+                height: '100px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0',
+              }}
+              headerStyle={{
+                paddingBottom: '15px',
+                paddingRight: '32px',
+              }}
+              closeIcon={<CloseOutlined style={{ fontSize: '16px' }} />}
+              style={{
+                position: 'fixed',
+                top: '45%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '300px',
+                height: '260px',
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                backdropFilter: 'blur(4px)',
+                border: 'none',
+              }}
+            >
+              <div className="item-list">
+                {gameState.itemList.map((item) => (
+                  <div key={item.name} className="item">
+                    <span className="item-name">{item.name}</span>
+                    <span className="item-quantity">{item.quantity}</span>
+                  </div>
+                ))}
+              </div>
+            </Drawer>
+            <Play
+              audioRef={audioRef}
+              mode={mode}
+              setMode={setMode}
+              isMusicPlaying={isMusicPlaying}
+              handleMusicToggle={handleMusicToggle}
+            />
+          </>
         )}
       </div>
       <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />

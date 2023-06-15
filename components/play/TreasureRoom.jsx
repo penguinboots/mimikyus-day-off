@@ -2,16 +2,18 @@ import { learnMove } from "@/prisma/helpers/learnMove";
 import { earnAchievement } from "@/prisma/helpers/earnAchievement";
 import { createUser } from "@/prisma/helpers/createUser";
 import { changeMoves } from "@/prisma/helpers/changeMoves";
+import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useGameState } from "@/utils/context/GameStateContext";
 import StoreCard from "./StoreCard";
 import { useState, useEffect } from "react";
 import localFont from "next/font/local";
+import { getItems } from "@/prisma/helpers/getItems";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room(props) {
   const { user, error, isLoading } = useUser();
-  const { gameState } = useGameState();
+  const { gameState, setGameState } = useGameState();
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
 
@@ -23,7 +25,43 @@ export default function Room(props) {
       setHasSelected(true);
     }
   }, [chosenOption]);
+  const handleContinue = () => {
+    // Fire different functions based on chosenOption
+    switch (chosenOption) {
+      case "Berry":
+        earnItem(user, "berry", 1)
+        .then(() => {
+          return getItems(user);
+        })
+        .then(({ items }) => {
+          setGameState((prev) => ({
+            ...prev,
+            itemList: items,
+          }))
+        })
+        break;
+      case "Play Rough":
+        learnMove(user, "play-rough")
+        break;
+      case "Shadow Sneak":
+        learnMove(user, "shadow-sneak")
+        break;
+      case "Stat 1":
+        // Call function for Stat 1 option
+        break;
+      case "Stat 2":
+        // Call function for Stat 2 option
+        break;
+      default:
+        // Handle the default case if needed
+        break;
+    }
 
+    // Continue to the next room (if hasSelected is true)
+    if (hasSelected) {
+      props.nextRoom();
+    }
+  };
   return (
     <div
       style={{
@@ -41,32 +79,44 @@ export default function Room(props) {
           PICK A REWARD!
         </h2>
         <div className="store-cards">
-          <StoreCard
-            type="pokemon-center"
-            name="POKEMON CENTER"
-            color="#e24631"
-            options={["Berry"]}
-            chosenOption={chosenOption}
-            setChosenOption={setChosenOption}
-          />
-          <StoreCard
-            type="pokemart"
-            name="POKEMART"
-            color="#4dbefc"
-            options={["Move 1", "Move 2"]}
-            chosenOption={chosenOption}
-            setChosenOption={setChosenOption}
-          />
-          <StoreCard
-            type="gym-store"
-            name="GYM"
-            color="#fbb012"
-            options={["Stat 1", "Stat 2"]}
-            chosenOption={chosenOption}
-            setChosenOption={setChosenOption}
-          />
-        </div>
-        {/* <button onClick={()=> {changeMoves(user, ["play-rough","charm","swords-dance","draining-kiss",])}}>
+      <StoreCard
+        type="pokemon-center"
+        name="POKEMON CENTER"
+        color="#e24631"
+        options={["Berry"]}
+        chosenOption={chosenOption}
+        setChosenOption={(option) => {
+          setChosenOption(option);
+          setHasSelected(true); // Update hasSelected immediately
+        }}
+      />
+      <StoreCard
+        type="pokemart"
+        name="POKEMART"
+        color="#4dbefc"
+        options={["Play Rough", "Shadow Sneak"]}
+        chosenOption={chosenOption}
+        setChosenOption={(option) => {
+          setChosenOption(option);
+          setHasSelected(true); // Update hasSelected immediately
+        }}
+      />
+      <StoreCard
+        type="gym-store"
+        name="GYM"
+        color="#fbb012"
+        options={["Stat 1", "Stat 2"]}
+        chosenOption={chosenOption}
+        setChosenOption={(option) => {
+          setChosenOption(option);
+          setHasSelected(true); // Update hasSelected immediately
+        }}
+      />
+    </div>
+        {/* <button onClick={()=> {earnItem(user, "berry", 1)}}>
+            Click to get a berry
+            </button>
+            <button onClick={()=> {changeMoves(user, ["play-rough","charm","swords-dance","draining-kiss",])}}>
           Click to get new moveset
         </button>
         <br></br>
@@ -101,11 +151,11 @@ export default function Room(props) {
         <div>THIS IS A TREASURE CHEST</div> */}
       </div>
       <button
-        className={`continue ${hasSelected ? "active" : "inactive"}`}
-        onClick={hasSelected ? props.nextRoom : null}
-      >
-        CONTINUE
-      </button>
+      className={`continue ${hasSelected ? "active" : "inactive"}`}
+      onClick={handleContinue}
+    >
+      CONTINUE
+    </button>
     </div>
   );
 }
