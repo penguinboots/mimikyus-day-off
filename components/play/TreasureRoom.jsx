@@ -2,8 +2,8 @@ import { learnMove } from "@/prisma/helpers/learnMove";
 import { earnAchievement } from "@/prisma/helpers/earnAchievement";
 import { createUser } from "@/prisma/helpers/createUser";
 import { changeMoves } from "@/prisma/helpers/changeMoves";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { earnItem } from "@/prisma/helpers/earnItem";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { useGameState } from "@/utils/context/GameStateContext";
 import StoreCard from "./StoreCard";
 import { useState, useEffect } from "react";
@@ -34,6 +34,7 @@ export default function Room(props) {
       className="treasure-room"
     >
       <div className="treasure-floor">
+        <h2
           style={{
             fontFamily: vt.style.fontFamily,
           }}
@@ -66,11 +67,10 @@ export default function Room(props) {
             setChosenOption={setChosenOption}
           />
         </div>
-        {/* 
-        <button onClick={()=> {earnItem(user, "berry", 1)}}>
+        {/* <button onClick={()=> {earnItem(user, "berry", 1)}}>
             Click to get a berry
-        </button><h2
-        <button onClick={()=> {changeMoves(user, ["play-rough","charm","swords-dance","draining-kiss",])}}>
+            </button>
+            <button onClick={()=> {changeMoves(user, ["play-rough","charm","swords-dance","draining-kiss",])}}>
           Click to get new moveset
         </button>
         <br></br>
