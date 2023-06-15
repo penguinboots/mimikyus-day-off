@@ -8,8 +8,15 @@ import localFont from "next/font/local";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Nav(props) {
-  const { mode, isMusicPlaying, handleMusicToggle, windowTitle } = props;
-  const { isMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
+  const {
+    mode,
+    isMusicPlaying,
+    handleMusicToggle,
+    windowTitle,
+    isMenuOpen,
+    windowToggle,
+    windowClose,
+  } = props;
   const { gameState } = useGameState();
 
   return (
@@ -40,12 +47,6 @@ export default function Nav(props) {
             buttonName={isMusicPlaying ? "MUTE_OFF" : "MUTE_ON"}
             handleClick={handleMusicToggle}
           />
-          {isMenuOpen.achievements && (
-            <AchievementsMenu handleClick={() => windowClose("achievements")} />
-          )}
-          {isMenuOpen.settings && (
-            <Settings handleClick={() => windowClose("settings")} />
-          )}
         </div>
       </nav>
     </div>

@@ -18,6 +18,10 @@ import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import { Drawer, Button } from 'antd';
 import { ShoppingOutlined, CloseOutlined } from '@ant-design/icons';
 import { items } from '@/game/data/items';
+import AchievementsMenu from '@/components/common/AchievementsMenu';
+import Settings from '@/components/common/Settings';
+import useIsMenuOpen from '@/utils/hooks/isMenuOpen';
+import InventoryWindow from '@/components/play/InventoryWindow';
 export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
@@ -28,12 +32,13 @@ export default function Home(props) {
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
-    // Drawer State
-    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-    
-    const handleDrawerToggle = () => {
-      setIsDrawerVisible(!isDrawerVisible);
-    };
+  // Drawer State
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const { isMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
+
+  const handleDrawerToggle = () => {
+    setIsDrawerVisible(!isDrawerVisible);
+  };
   const playerTemplate = { ...mimikyu }
   let dbData = null
   useEffect(() => {
@@ -45,8 +50,8 @@ export default function Home(props) {
             dbData = await createUser(user);
           }
           setMode("DASH");
-           // Get user's character from db_data
-           if (dbData && dbData.character) {
+          // Get user's character from db_data
+          if (dbData && dbData.character) {
             const characterData = dbData.character;
 
             // Update the moves array of playerTemplate with non-null values from characterData
@@ -86,7 +91,7 @@ export default function Home(props) {
         }
       }
     };
-    
+
     initializeUser();
   }, [user]);
 
@@ -96,11 +101,11 @@ export default function Home(props) {
       setSelectedMusic(gameState.currentRoom.music);
     }
   }, [gameState.currentRoom, setSelectedMusic, mode]);
-  
+
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
-        {mode === 'LANDING' && <Landing setMode={setMode} user={user} isLoading={isLoading}/>}
+        {mode === 'LANDING' && <Landing setMode={setMode} user={user} isLoading={isLoading} />}
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
@@ -110,72 +115,26 @@ export default function Home(props) {
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
             setSelectedMusic={setSelectedMusic}
+            windowToggle={windowToggle}
           />
         )}
         {mode === 'PLAY' && (
-          <>
-            <Button
-              className="item-button"
-              type="primary"
-              shape="circle"
-              icon={<ShoppingOutlined style={{ fontSize: '2.3rem' }} />}
-              onClick={handleDrawerToggle}
-              style={{
-                position: 'absolute',
-                bottom: '55px', // Adjust the value as per your requirement
-                left: '55px', // Adjust the value as per your requirement
-                boxShadow: 'none',
-                border: 'none',
-                backgroundColor: 'transparent',
-              }}
-            />
-            <Drawer
-              title={<span style={{ fontSize: '14px' }}>ITEMS</span>}
-              placement="center"
-              open={isDrawerVisible}
-              onClose={handleDrawerToggle}
-              width={300}
-              bodyStyle={{
-                height: '100px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0',
-              }}
-              headerStyle={{
-                paddingBottom: '15px',
-                paddingRight: '32px',
-              }}
-              closeIcon={<CloseOutlined style={{ fontSize: '16px' }} />}
-              style={{
-                position: 'fixed',
-                top: '45%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '300px',
-                height: '260px',
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                backdropFilter: 'blur(4px)',
-                border: 'none',
-              }}
-            >
-              <div className="item-list">
-                {gameState.itemList.map((item) => (
-                  <div key={item.name} className="item">
-                    <span className="item-name">{item.name}</span>
-                    <span className="item-quantity">{item.quantity}</span>
-                  </div>
-                ))}
-              </div>
-            </Drawer>
-            <Play
-              audioRef={audioRef}
-              mode={mode}
-              setMode={setMode}
-              isMusicPlaying={isMusicPlaying}
-              handleMusicToggle={handleMusicToggle}
-            />
-          </>
+          <Play
+            audioRef={audioRef}
+            mode={mode}
+            setMode={setMode}
+            isMusicPlaying={isMusicPlaying}
+            handleMusicToggle={handleMusicToggle}
+            windowToggle={windowToggle}
+            windowClose={windowClose}
+            isMenuOpen={isMenuOpen}
+          />
+        )}
+        {isMenuOpen.achievements && (
+          <AchievementsMenu handleClick={() => windowClose("achievements")} />
+        )}
+        {isMenuOpen.settings && (
+          <Settings handleClick={() => windowClose("settings")} />
         )}
       </div>
       <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />

@@ -80,7 +80,7 @@ body {
 
   background-color: $pdex-light-gray;
   border-radius: 36px;
-  border: 5px solid $pdex-light-gray-shadow;
+  border: 5px solid $pdex-shadow-border;
   outline: 5px solid $pdex-black-highlight;
 
   display: flex;
@@ -274,8 +274,8 @@ body {
 .settings-container {
   width: 400px;
   height: 250px;
-  left: 300px;
-  top: 250px;
+  left: 350px;
+  top: 200px;
   ul {
     height: 80%;
     width: 50%;
@@ -300,8 +300,8 @@ body {
   flex-direction: column;
   width: 800px;
   height: 500px;
-  left: 100px;
-  top: 130px;
+  left: 150px;
+  top: 100px;
 
   .ach-list {
     width: 700px;
@@ -738,7 +738,6 @@ body {
 }
 
 /** GAME POPUPS **/
-
 .splash-wrapper {
   overflow: hidden;
   .splash {
@@ -808,29 +807,72 @@ body {
 
 /** INVENTORY INFO **/
 
-.item-button {
-  position: fixed;
-  z-index: 10;
-}
+.inventory-wrapper {
+  position: absolute;
+  bottom: 145px;
+  left: 50px;
+  width: 90px;
+  height: 320px;
+  border-radius: 16px;
 
-.item-list {
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
-}
+  overflow: hidden;
 
-.item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px;
+}
+.inv-open {
+  height: 300px;
+  transition: ease height 1s;
+}
+.inv-closed {
+  height: 0px;
+  transition: ease height 1s;
 }
 
-.item-name {
-  font-weight: bold;
-  font-size: 16px;
+.inventory-window {
+  position: relative;
+  left: 5px;
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 280px;
+  width: 80px;
+  border-radius: 10px;
+
+  .close-window {
+    position: relative;
+    top: -5px;
+    left: 0px;
+    width: 80px;
+    border: none;
+    outline: none;
+    margin: none;
+    border-radius: 10px 10px 0 0;
+    border: 5px solid $pdex-shadow-border;
+  }
+
+  .item {
+    min-height: 60px;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: red;
+  }
 }
 
-.item-quantity {
-  color: #999;
+.inventory-button {
+  position: absolute;
+  bottom: 55px;
+  left: 55px;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 50%;
+  border: 4px solid $pdex-shadow-border;
+  outline: 4px solid $pdex-black-highlight;
+  font-size: 20px;
+  font-weight: 700;
 }
