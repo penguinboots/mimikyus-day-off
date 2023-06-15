@@ -822,11 +822,11 @@ body {
 }
 .inv-open {
   height: 300px;
-  transition: ease height 1s;
+  transition: ease 1s;
 }
 .inv-closed {
   height: 0px;
-  transition: ease height 1s;
+  transition: ease 1s;
 }
 
 .inventory-window {
@@ -861,6 +861,16 @@ body {
     margin: 10px;
     background-color: red;
   }
+}
+
+.inv-up {
+  position: absolute;
+  transition: 1s ease;
+}
+
+.inv-down {
+  position: absolute;
+  transition: 1s ease;
 }
 
 .inventory-button {
