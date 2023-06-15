@@ -90,7 +90,7 @@ export default function Home(props) {
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
-        {mode === 'LANDING' && <Landing setMode={setMode} user={user} />}
+        {mode === 'LANDING' && <Landing setMode={setMode} user={user} isLoading={isLoading}/>}
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
