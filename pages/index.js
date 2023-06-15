@@ -13,51 +13,82 @@ import { useGameState } from '@/utils/context/GameStateContext';
 import AudioPlayer from '@/components/common/AudioPlayer';
 import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
+import { mimikyu } from '@/game/pregenerated/fakePlayer';
 // Drawer
 import { Drawer, Button } from 'antd';
 import { ShoppingOutlined, CloseOutlined } from '@ant-design/icons';
 import { items } from '@/game/data/items';
-
 export default function Home(props) {
   // Authentication
   const { user, error, isLoading } = useUser();
+  console.log(user);
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
-  const { gameState, setSelectedMusic } = useGameState();
+  const { gameState, setGameState, setSelectedMusic } = useGameState();
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
-  // Drawer State
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const [itemList, setItemList] = useState();
-  
-  const handleDrawerToggle = () => {
-    setIsDrawerVisible(!isDrawerVisible);
-  };
-  
+    // Drawer State
+    const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+    const [itemList, setItemList] = useState();
+    
+    const handleDrawerToggle = () => {
+      setIsDrawerVisible(!isDrawerVisible);
+    };
+  const playerTemplate = { ...mimikyu }
+  let dbData = null
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
         try {
-          let db_data = await getUserData(user);
-          if (!db_data) {
-            db_data = await createUser(user);
+          dbData = await getUserData(user);
+          if (!dbData) {
+            dbData = await createUser(user);
           }
           setMode("DASH");
+           // Get user's character from db_data
+           if (db_data && db_data.character) {
+            const characterData = db_data.character;
+
+            // Update the moves array of playerTemplate with non-null values from characterData
+            const updatedMoves = [
+              characterData.move_1,
+              characterData.move_2,
+              characterData.move_3,
+              characterData.move_4
+            ].filter(move => move);
+
+            const updatedPlayerTemplate = {
+              ...playerTemplate,
+              moves: updatedMoves
+            };
+
+            setGameState((prev) => ({
+              ...prev,
+              player: updatedPlayerTemplate,
+              itemList: dbData.items
+            }));
+          } else {
+            console.error("Character data is missing or invalid");
+            setGameState((prev) => ({
+              ...prev,
+              player: playerTemplate
+            }));
+          }
+        } catch (error) {
+          // If there's an error fetching user data or character data
+          console.error("Error fetching data:", error);
           setGameState((prev) => ({
             ...prev,
-            itemList: db_data.items
+            player: playerTemplate
           }));
-        } catch (error) {
-          console.error("Error:", error);
         }
       }
     };
     
     initializeUser();
   }, [user]);
-  
 
   // Change music if room changes in Play
   useEffect(() => {
@@ -69,7 +100,7 @@ export default function Home(props) {
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
-        {mode === 'LANDING' && <Landing setMode={setMode} user={user} />}
+        {mode === 'LANDING' && <Landing setMode={setMode} user={user} isLoading={isLoading}/>}
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
@@ -151,4 +182,3 @@ export default function Home(props) {
     </div>
   );
 }
-

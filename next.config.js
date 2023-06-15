@@ -8,6 +8,7 @@ module.exports = {
         outputPath: 'static/sounds/',
         name: '[name].[ext]',
         esModule: false,
+        optimizeFonts: false,
       },
     });
 

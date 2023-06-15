@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   // GET method acquires user data
   if (req.method === "GET") {
-    const { auth0Sub } = req.query;
+    const { auth0Sub } = req.query; 
 
     try {
       const db_user = await prisma.user.findUnique({
