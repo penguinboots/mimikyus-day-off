@@ -33,6 +33,7 @@ export default function Home(props) {
     const initializeUser = async () => {
       if (user) {
         try {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           db_data = await getUserData(user);
           if (!db_data) {
             db_data = await createUser(user);
