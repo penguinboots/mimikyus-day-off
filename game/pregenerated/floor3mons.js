@@ -165,15 +165,15 @@ const snorlax3 = {
   "sprites": {
     "idle": {
       url: `/sprites/snorlax-idl.gif`,
-      length: 1000,
+      length: 920,
     },
     "attack": {
       url: `/sprites/snorlax-atk.gif`,
-      length: 1050,
+      length: 1120,
     },
     "hit": {
       url: `/sprites/snorlax-hit.gif`,
-      length: 720,
+      length: 760,
     },
   }
 }
