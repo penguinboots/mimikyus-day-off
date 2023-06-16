@@ -52,11 +52,17 @@ model Item {
 }
 
 model Character {
-  id     Int     @id @default(autoincrement())
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int
-  move_1 String
-  move_2 String?
-  move_3 String?
-  move_4 String?
+  id      Int     @id @default(autoincrement())
+  user    User    @relation(fields: [userId], references: [id])
+  userId  Int
+  hp      Int
+  attack  Int
+  defense Int
+  sp_atk  Int
+  sp_def  Int
+  speed   Int
+  move_1  String
+  move_2  String?
+  move_3  String?
+  move_4  String?
 }
