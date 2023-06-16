@@ -20,15 +20,8 @@ const floor_3 = {
     type: "battle",
     opponent: munchlax2,
     treasure: {
-      items:["sitrus-berry"],
-      moves:[
-        "thunderbolt",
-        "swords-dance",
-        "drain-punch",
-        "dazzling-gleam",
-        "shadow-claw",
-        "play-rough",
-      ]
+      sprite: "",
+      reward: {},
     },
     background: `url("/grass_bg.png")`,
     color: "#dda2a7",
@@ -55,8 +48,15 @@ const floor_3 = {
     type: "treasure",
     opponent: null,
     treasure: {
-      sprite: "",
-      reward: {},
+      items:["sitrus-berry"],
+      moves:[
+        "thunderbolt",
+        "swords-dance",
+        "drain-punch",
+        "dazzling-gleam",
+        "shadow-claw",
+        "play-rough",
+      ]
     },
     background: `url("/backgrounds/ecruteak.png")`,
     color: "#907969",
