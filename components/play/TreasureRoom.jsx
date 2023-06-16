@@ -11,6 +11,8 @@ import localFont from "next/font/local";
 import { getItems } from "@/prisma/helpers/getItems";
 import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFan } from "@fortawesome/free-solid-svg-icons";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room(props) {
@@ -22,6 +24,7 @@ export default function Room(props) {
   const [chosenOption, setChosenOption] = useState(null);
   const [hasSelected, setHasSelected] = useState(false);
   const [storeMoves, setStoreMoves] = useState([]);
+  const [isStoreLoading, setIsStoreLoading] = useState(true);
 
 
   useEffect(() => {
@@ -138,32 +141,41 @@ export default function Room(props) {
     }
   };
   const roomMoves = gameState.currentRoom.treasure.moves
+
   useEffect(() => {
     const dbMoves = [];
-    getMoves(user)
-      .then((movesObject) => {
-        const { moves } = movesObject;
-        moves.forEach((move) => {
-          if (move.collected === false && roomMoves.includes(move.name)) {
-            dbMoves.push(move);
+    if (isLoading) {
+      setIsStoreLoading(true);
+    } else {
+      getMoves(user)
+        .then((movesObject) => {
+          const { moves } = movesObject;
+          moves.forEach((move) => {
+            if (move.collected === false && roomMoves.includes(move.name)) {
+              dbMoves.push(move);
+            }
+          });
+          while (dbMoves.length > 2) {
+            const randomIndex = Math.floor(Math.random() * dbMoves.length);
+            dbMoves.splice(randomIndex, 1);
           }
+          const formattedMoves = dbMoves.map((move) => properName(move.name));
+          setStoreMoves(formattedMoves);
+          setIsStoreLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setIsStoreLoading(false);
         });
-        while (dbMoves.length > 2) {
-          const randomIndex = Math.floor(Math.random() * dbMoves.length);
-          dbMoves.splice(randomIndex, 1);
-        }
-        const formattedMoves = dbMoves.map((move) => properName(move.name));
-        setStoreMoves(formattedMoves);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    }
   }, [user]);
+
   return (
     <div
       style={{
         backgroundImage: BACKGROUND,
         backgroundColor: BACKGROUND_COL,
+        position: "relative",
       }}
       className="treasure-room"
     >
@@ -176,47 +188,72 @@ export default function Room(props) {
           PICK A REWARD!
         </h2>
         <div className="store-cards">
-      <StoreCard
-        type="pokemon-center"
-        name="POKEMON CENTER"
-        color="#e24631"
-        options={["Oran Berry"]}
-        chosenOption={chosenOption}
-        setChosenOption={(option) => {
-          setChosenOption(option);
-          setHasSelected(true); // Update hasSelected immediately
-        }}
-      />
-      <StoreCard
-        type="gym-store"
-        name="GYM"
-        color="#fbb012"
-        options={storeMoves}
-        chosenOption={chosenOption}
-        setChosenOption={(option) => {
-          setChosenOption(option);
-          setHasSelected(true); // Update hasSelected immediately
-        }}
-        />
-      <StoreCard
-        type="pokemart"
-        name="POKEMART"
-        color="#4dbefc"
-        options={["Stat 1", "Stat 2"]}
-        chosenOption={chosenOption}
-        setChosenOption={(option) => {
-          setChosenOption(option);
-          setHasSelected(true); // Update hasSelected immediately
-        }}
-      />
-    </div>
+          <StoreCard
+            type="pokemon-center"
+            name="POKEMON CENTER"
+            color="#e24631"
+            options={["Oran Berry"]}
+            chosenOption={chosenOption}
+            setChosenOption={(option) => {
+              setChosenOption(option);
+              setHasSelected(true); // Update hasSelected immediately
+            }}
+          />
+          <StoreCard
+            type="gym-store"
+            name="GYM"
+            color="#fbb012"
+            options={storeMoves}
+            chosenOption={chosenOption}
+            setChosenOption={(option) => {
+              setChosenOption(option);
+              setHasSelected(true); // Update hasSelected immediately
+            }}
+          />
+          <StoreCard
+            type="pokemart"
+            name="POKEMART"
+            color="#4dbefc"
+            options={["Stat 1", "Stat 2"]}
+            chosenOption={chosenOption}
+            setChosenOption={(option) => {
+              setChosenOption(option);
+              setHasSelected(true); // Update hasSelected immediately
+            }}
+          />
+        </div>
       </div>
       <button
-      className={`continue ${hasSelected ? "active" : "inactive"}`}
-      onClick={handleContinue}
-    >
-      CONTINUE
-    </button>
+        className={`continue ${hasSelected ? "active" : "inactive"}`}
+        onClick={handleContinue}
+      >
+        CONTINUE
+      </button>
+      {isStoreLoading && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faFan}
+            spin
+            size="3x"
+            style={{ color: "white" }}
+          />
+            <h4
+              style={{
+                fontFamily: vt.style.fontFamily,
+                fontSize: "16px",
+              }}
+            >
+              LOADING...
+            </h4>
+        </div>
+      )}
     </div>
   );
 }
