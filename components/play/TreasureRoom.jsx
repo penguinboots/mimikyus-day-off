@@ -32,6 +32,7 @@ export default function Room(props) {
   const handleContinue = () => {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
+      //Item Cases
       case "Berry":
         earnItem(user, "berry", 1)
         .then(() => {
@@ -44,6 +45,7 @@ export default function Room(props) {
           }))
         })
         break;
+      //Move Cases
       case "Swords Dance":
         learnMove(user, "swords-dance")
         break;
@@ -51,25 +53,41 @@ export default function Room(props) {
         learnMove(user, "draining-kiss")
         break;
       case "Play Rough":
-          learnMove(user, "play-rough")
-          break;
+        learnMove(user, "play-rough")
+        break;
       case "Shadow Sneak":
-          learnMove(user, "shadow-sneak")
-          break;
+        learnMove(user, "shadow-sneak")
+        break;
       case "Charm":
-          learnMove(user, "charm")
-          break;
+        learnMove(user, "charm")
+        break;
       case "Drain Punch":
-          learnMove(user, "drain-punch")
-          break;  
-      case "Stat 1":
-        // Call function for Stat 1 option
+        learnMove(user, "drain-punch")
         break;
-      case "Stat 2":
-        // Call function for Stat 2 option
+      case "Shadow Ball":
+        learnMove(user, "shadow-ball")
+        break; 
+      case "Shadow Claw":
+        learnMove(user, "shadow-claw")
         break;
-      default:
-        // Handle the default case if needed
+      //Stat Cases
+      case "HP Up":
+        // Call function for HP +10
+        break;
+      case "Protein":
+        // Call function for Atk +10
+        break;
+      case "Iron":
+        // Call function for Def +10
+        break;
+      case "Calcium":
+        // Call function for SpAtk +10 
+        break;
+      case "Zinc":
+        // Call function for SpDef +10
+        break;
+      case "Carbos":
+        // Call function for Speed +10
         break;
     }
     // Continue to the next room (if hasSelected is true)
