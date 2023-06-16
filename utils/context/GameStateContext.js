@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 import { dungeon } from '@/game/pregenerated/dungeon1';
 import { items } from '@/game/data/items';
+import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
+
 
 const GameStateContext = createContext();
 
@@ -11,9 +13,9 @@ export function useGameState() {
 
 // Provider component
 export function GameStateProvider({ children }) {
-  const [itemList, setItemList] = useState(items)
   const { mimikyu } = require("../../game/pregenerated/fakePlayer");
   const player = mimikyu;
+  const [itemList, setItemList] = useState(items)
 
   // General dungeon position states
   const [gameState, setGameState] = useState({
@@ -24,6 +26,8 @@ export function GameStateProvider({ children }) {
     player: player,
     itemList: itemList
   });
+
+  // Inventory
 
   // Battle history logs
   const [battleHistory, setBattleHistory] = useState([]);
@@ -61,6 +65,9 @@ export function GameStateProvider({ children }) {
 
   // State managing VS splash
   const [splash, setSplash] = useState(false);
+
+  // Use menu hook
+  const { isMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
 
   // Show splash, hide splash
   function flashSplash() {
@@ -201,6 +208,9 @@ export function GameStateProvider({ children }) {
     splash,
     setSplash,
     flashSplash,
+    isMenuOpen,
+    windowToggle,
+    windowClose
   };
   return (
     <GameStateContext.Provider value={value}>

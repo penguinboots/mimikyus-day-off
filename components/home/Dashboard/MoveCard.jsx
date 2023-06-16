@@ -6,8 +6,7 @@ import MoveItem from "../../common/MoveItem";
 import MoveEdit from "./MoveEdit";
 
 export default function MoveCard() {
-  const { isMenuOpen, windowToggle } = useIsMenuOpen();
-  const { gameState } = useGameState();
+  const { gameState, isMenuOpen, windowToggle } = useGameState();
 
   const playerMoveArray = [];
 

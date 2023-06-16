@@ -13,11 +13,8 @@ export default function Nav(props) {
     isMusicPlaying,
     handleMusicToggle,
     windowTitle,
-    isMenuOpen,
-    windowToggle,
-    windowClose,
   } = props;
-  const { gameState } = useGameState();
+  const { gameState, windowToggle } = useGameState();
 
   return (
     <div className="nav-container">
