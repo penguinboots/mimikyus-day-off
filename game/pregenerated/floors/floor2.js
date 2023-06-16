@@ -34,8 +34,15 @@ const floor_2 = {
     type: "treasure",
     opponent: null,
     treasure: {
-      sprite: "",
-      reward: {},
+      items:["oran-berry"],
+      moves:[
+        "leech-life",
+        "charm",
+        "trailblaze",
+        "wood-hammer",
+        "screech",
+        "shadow-ball",
+      ]
     },
     background: `url("/backgrounds/violet.png")`,
     color: "#c9b7db",

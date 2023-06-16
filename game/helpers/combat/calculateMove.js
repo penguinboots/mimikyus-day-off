@@ -74,10 +74,11 @@ function calculateMove(move, user, target) {
     }
   }
   if (output.damage !== 0) {
-    results.damage = output.damage * 0.02;
+    results.damage = output.damage
   }
   if (heal !== 0) {
-    results.heal = heal}
+    results.heal = heal
+  }
   if (statChanges.target) {
     results.statChanges = statChanges
   }

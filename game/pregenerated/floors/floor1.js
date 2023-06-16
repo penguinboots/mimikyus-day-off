@@ -20,8 +20,15 @@ const floor_1 = {
     type: "treasure",
     opponent: null,
     treasure: {
-      sprite: "",
-      reward: {},
+      items:["oran-berry"],
+      moves:[
+        "shadow-sneak",
+        "psychic",
+        "draining-kiss",
+        "charge-beam",
+        "giga-drain",
+        "dark-pulse",
+      ]
     },
     background: `url("/backgrounds/cherrygrove.png")`,
     color: "#ffafde",

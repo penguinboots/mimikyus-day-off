@@ -32,8 +32,9 @@ export default function Room(props) {
   const handleContinue = () => {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
-      case "Berry":
-        earnItem(user, "berry", 1)
+      //Item Cases
+      case "Oran Berry":
+        earnItem(user, "oran-berry", 1)
         .then(() => {
           return getItems(user);
         })
@@ -44,32 +45,91 @@ export default function Room(props) {
           }))
         })
         break;
-      case "Swords Dance":
-        learnMove(user, "swords-dance")
+      case "Sitrus Berry":
+        earnItem(user, "sitrus-berry", 1)
+        .then(() => {
+          return getItems(user);
+        })
+        .then(({ items }) => {
+          setGameState((prev) => ({
+            ...prev,
+            itemList: items,
+          }))
+        })
+        break;
+      //Move Cases
+      case "Shadow Sneak":
+        learnMove(user, "shadow-sneak")
+        break;
+      case "Psychic":
+        learnMove(user, "psychic")
         break;
       case "Draining Kiss":
         learnMove(user, "draining-kiss")
         break;
-      case "Play Rough":
-          learnMove(user, "play-rough")
-          break;
-      case "Shadow Sneak":
-          learnMove(user, "shadow-sneak")
-          break;
+      case "Charge Beam":
+        learnMove(user, "charge-beam")
+        break;
+      case "Giga Drain":
+        learnMove(user, "giga-drain")
+        break;
+      case "Dark Pulse":
+        learnMove(user, "dark-pulse")
+        break;
+      case "Leech Life":
+        learnMove(user, "leech-life")
+        break;
       case "Charm":
-          learnMove(user, "charm")
-          break;
+        learnMove(user, "charm")
+        break;
+      case "Trailblaze":
+        learnMove(user, "trailblaze")
+        break;
+      case "Wood Hammer":
+        learnMove(user, "wood-hammer")
+        break; 
+      case "Screech":
+        learnMove(user, "screech")
+        break;
+      case "Shadow Ball":
+        learnMove(user, "shadow-ball")
+        break; 
+      case "Thunderbolt":
+        learnMove(user, "thunderbolt")
+        break;
+      case "Swords Dance":
+        learnMove(user, "swords-dance")
+        break;
       case "Drain Punch":
-          learnMove(user, "drain-punch")
-          break;  
-      case "Stat 1":
-        // Call function for Stat 1 option
+        learnMove(user, "drain-punch")
         break;
-      case "Stat 2":
-        // Call function for Stat 2 option
+      case "Dazzling Gleam":
+        learnMove(user, "dazzling-gleam")
         break;
-      default:
-        // Handle the default case if needed
+      case "Shadow Claw":
+        learnMove(user, "shadow-claw")
+        break;
+      case "Play Rough":
+        learnMove(user, "play-rough")
+        break;
+      //Stat Cases
+      case "HP Up":
+        // Call function for HP +10
+        break;
+      case "Protein":
+        // Call function for Atk +10
+        break;
+      case "Iron":
+        // Call function for Def +10
+        break;
+      case "Calcium":
+        // Call function for SpAtk +10 
+        break;
+      case "Zinc":
+        // Call function for SpDef +10
+        break;
+      case "Carbos":
+        // Call function for Speed +10
         break;
     }
     // Continue to the next room (if hasSelected is true)
@@ -77,25 +137,23 @@ export default function Room(props) {
       props.nextRoom();
     }
   };
+  const roomMoves = gameState.currentRoom.treasure.moves
   useEffect(() => {
     const dbMoves = [];
-
     getMoves(user)
       .then((movesObject) => {
         const { moves } = movesObject;
         moves.forEach((move) => {
-          if (move.collected === false) {
+          if (move.collected === false && roomMoves.includes(move.name)) {
             dbMoves.push(move);
           }
         });
-
         while (dbMoves.length > 2) {
           const randomIndex = Math.floor(Math.random() * dbMoves.length);
           dbMoves.splice(randomIndex, 1);
         }
-
         const formattedMoves = dbMoves.map((move) => properName(move.name));
-        setStoreMoves(formattedMoves); // Update storeMoves with the formatted moves
+        setStoreMoves(formattedMoves);
       })
       .catch((error) => {
         console.error(error);
@@ -122,7 +180,7 @@ export default function Room(props) {
         type="pokemon-center"
         name="POKEMON CENTER"
         color="#e24631"
-        options={["Berry"]}
+        options={["Oran Berry"]}
         chosenOption={chosenOption}
         setChosenOption={(option) => {
           setChosenOption(option);

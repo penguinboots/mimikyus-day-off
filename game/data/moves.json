@@ -2490,5 +2490,119 @@
     ],
     "target": "user",
     "type": "steel"
+  },
+  "psychic":{
+    "name": "psychic",
+    "proper_name": "Psychic",
+    "accuracy": 100,
+    "damage_class": "special",
+    "effect_chance": 10,
+    "effect_changes": [],
+    "effect_entries": [
+      {
+        "effect": "Inflicts regular damage.  Has a chance to lower the target's Special Defense by one stage.",
+        "short_effect": "Has a chance to lower the target's Special Defense by one stage."
+      }
+    ],
+    "id": 94,
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+lower",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 10,
+    "stat_changes": [
+      {
+        "change": -1,
+        "stat": "special-defense"
+      }
+    ],
+    "power": 90,
+    "pp": 10,
+    "priority": 0,
+    "target": "selected-pokemon",
+    "type": "psychic"
+  },
+  "screech":{
+    "name": "screech",
+    "proper_name": "Screech",
+    "accuracy": 85,
+    "damage_class": "status",
+    "effect_chance": null,
+    "effect_changes": [],
+    "effect_entries": [
+      {
+        "effect": "Lowers the target's Defense by two stages.",
+        "short_effect": "Lowers the target's Defense by two stages."
+      }
+    ],
+    "id": 103,
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "net-good-stats",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
+    "power": null,
+    "pp": 40,
+    "priority": 0,
+    "stat_changes": [
+      {
+        "change": -2,
+        "stat": "defense"
+      }
+    ],
+    "target": "selected-pokemon",
+    "type": "normal"
+  },
+  "trailblaze": {
+    "name": "trailblaze",
+    "proper_name": "Trailblaze",
+    "accuracy": 100,
+    "damage_class": "physical",
+    "effect_chance": null,
+    "effect_changes": [],
+    "effect_entries": [
+      {
+        "effect": "Inflicts regular damage.  Raises the user's Speed by one stage.",
+        "short_effect": "Raises the user's Speed by one stage after inflicting damage."
+      }
+    ],
+    "id": 885,
+    "ailment": "none",
+    "ailment_chance": 0,
+    "category": "damage+raise",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 0,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 100,
+    "power": 50,
+    "pp": 20,
+    "priority": 0,
+    "stat_changes": [ 
+      {
+        "change": 1,
+        "stat": "speed"
+      }
+    ],
+    "target": "selected-pokemon",
+    "type": "grass"
   }
 }
