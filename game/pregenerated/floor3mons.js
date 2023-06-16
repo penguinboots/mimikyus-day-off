@@ -34,11 +34,11 @@ const munchlax1 = {
     },
     "attack": {
       url: `/sprites/munchlax-atk.gif`,
-      length: 1050,
+      length: 800,
     },
     "hit": {
       url: `/sprites/munchlax-hit.gif`,
-      length: 720,
+      length: 880,
     },
   }
 }
@@ -79,11 +79,11 @@ const munchlax2 = {
     },
     "attack": {
       url: `/sprites/munchlax-atk.gif`,
-      length: 1050,
+      length: 800,
     },
     "hit": {
       url: `/sprites/munchlax-hit.gif`,
-      length: 720,
+      length: 880,
     },
   }
 }
@@ -124,11 +124,11 @@ const munchlax3 = {
     },
     "attack": {
       url: `/sprites/munchlax-atk.gif`,
-      length: 1050,
+      length: 800,
     },
     "hit": {
       url: `/sprites/munchlax-hit.gif`,
-      length: 720,
+      length: 880,
     },
   }
 }

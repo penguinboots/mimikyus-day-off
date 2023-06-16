@@ -83,7 +83,7 @@ const dugtrio = {
     },
     "hit": {
       url: `/sprites/dugtrio-hit.gif`,
-      length: 720,
+      length: 750,
     },
   }
 }
