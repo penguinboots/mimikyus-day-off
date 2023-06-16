@@ -3,7 +3,7 @@ const unlockables = [
  {"name":"quick-attack", "collected": true},
  //First Store
  {"name":"shadow-sneak", "collected": false},
- {"name":"shadow-ball", "collected": false},
+ {"name":"psychic", "collected": false},
  {"name":"draining-kiss", "collected": false},
  {"name":"charge-beam", "collected": false},
  {"name":"giga-drain", "collected": false},
@@ -13,11 +13,11 @@ const unlockables = [
  {"name":"charm", "collected": false},
  {"name":"trailblaze", "collected": false},
  {"name":"wood-hammer", "collected": false},
- {"name":"thunderbolt", "collected": false},
- {"name":"psychic", "collected": false},
- //Third Store
- {"name":"swords-dance", "collected": false},
  {"name":"screech", "collected": false},
+ {"name":"shadow-ball", "collected": false},
+ //Third Store
+ {"name":"thunderbolt", "collected": false},
+ {"name":"swords-dance", "collected": false},
  {"name":"drain-punch", "collected": false},
  {"name":"dazzling-gleam", "collected": false},
  {"name":"shadow-claw", "collected": false},
