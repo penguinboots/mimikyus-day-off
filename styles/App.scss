@@ -300,11 +300,15 @@ body {
 
 .achievement-container {
   flex-direction: column;
+  justify-content: flex-start;
   width: 800px;
   height: 500px;
   left: 150px;
   top: 100px;
-
+  h2 {
+    font-size: 36px;
+    color: $pdex-black-highlight;
+  }
   .ach-list {
     width: 700px;
     display: flex;
@@ -324,6 +328,13 @@ body {
       border: 1px solid $border;
       border-radius: 24px;
     }
+  }
+  .spinner-container {
+    margin: 100px;
+  }
+  .spinner {
+    font-size: 60px;
+    margin: 20px;
   }
 }
 
@@ -452,9 +463,6 @@ body {
     font-size: 24px;
     color: $pdex-black-highlight;
   }
-  h4 {
-    color: $pdex-shadow-text;
-  }
   .move-arrows {
     z-index: 96;
     position: absolute;
@@ -514,6 +522,7 @@ body {
       font-size: 18px;
     }
     h4 {
+      color: $pdex-black-highlight;
       font-size: 16px;
       line-height: 16px;
       margin: 6px 0;
