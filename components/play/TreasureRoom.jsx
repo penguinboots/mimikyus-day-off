@@ -11,6 +11,7 @@ import localFont from "next/font/local";
 import { getItems } from "@/prisma/helpers/getItems";
 import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
+import { updateStats } from "@/prisma/helpers/updateStats";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room(props) {
@@ -29,6 +30,10 @@ export default function Room(props) {
       setHasSelected(true);
     }
   }, [chosenOption]);
+  useEffect(() => {
+    updateStats(user, gameState.player.stats);
+  }, [gameState.player.stats, updateStats]);
+  
   const handleContinue = () => {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
@@ -114,22 +119,70 @@ export default function Room(props) {
         break;
       //Stat Cases
       case "HP Up":
-        // Call function for HP +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "hp": prev.player.stats["hp"] + 10} 
+          }
+        }))
         break;
       case "Protein":
-        // Call function for Atk +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "attack": prev.player.stats["attack"] + 10} 
+          }
+        }))
         break;
       case "Iron":
-        // Call function for Def +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "defense": prev.player.stats["defense"] + 10} 
+          }
+        }))
         break;
       case "Calcium":
-        // Call function for SpAtk +10 
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "special-attack": prev.player.stats["special-attack"] + 10} 
+          }
+        }))
         break;
       case "Zinc":
-        // Call function for SpDef +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "special-defense": prev.player.stats["special-defense"] + 10} 
+          }
+        }))
         break;
       case "Carbos":
-        // Call function for Speed +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "speed": prev.player.stats["speed"] + 10} 
+          }
+        }))
         break;
     }
     // Continue to the next room (if hasSelected is true)
@@ -138,6 +191,7 @@ export default function Room(props) {
     }
   };
   const roomMoves = gameState.currentRoom.treasure.moves
+  const vitamins = ["HP Up", "Protein", "Iron", "Calcium", "Zinc", "Carbos"]
   useEffect(() => {
     const dbMoves = [];
     getMoves(user)
@@ -158,7 +212,11 @@ export default function Room(props) {
       .catch((error) => {
         console.error(error);
       });
-  }, [user]);
+    }, [user]);
+    while (vitamins.length > 2) {
+      const randomIndex = Math.floor(Math.random() * vitamins.length);
+      vitamins.splice(randomIndex, 1);
+    }
   return (
     <div
       style={{
@@ -202,7 +260,7 @@ export default function Room(props) {
         type="pokemart"
         name="POKEMART"
         color="#4dbefc"
-        options={["Stat 1", "Stat 2"]}
+        options={vitamins}
         chosenOption={chosenOption}
         setChosenOption={(option) => {
           setChosenOption(option);
