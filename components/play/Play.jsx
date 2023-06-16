@@ -44,7 +44,7 @@ export default function Play(props) {
             gameState={gameState}
           />
         )}
-        {mode === "PLAY" && (
+        {mode === "PLAY" && gameState.roomType === "battle" && (
           <InventoryWindow
             handleClick={() => windowClose("inventory")}
             isMenuOpen={isMenuOpen}
