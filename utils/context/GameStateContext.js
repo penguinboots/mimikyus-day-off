@@ -15,6 +15,8 @@ export function useGameState() {
 export function GameStateProvider({ children }) {
   const { mimikyu } = require("../../game/pregenerated/fakePlayer");
   const player = mimikyu;
+
+  // Inventory
   const [itemList, setItemList] = useState(items)
 
   // General dungeon position states
@@ -26,8 +28,6 @@ export function GameStateProvider({ children }) {
     player: player,
     itemList: itemList
   });
-
-  // Inventory
 
   // Battle history logs
   const [battleHistory, setBattleHistory] = useState([]);
@@ -67,7 +67,7 @@ export function GameStateProvider({ children }) {
   const [splash, setSplash] = useState(false);
 
   // Use menu hook
-  const { isMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
+  const { isMenuOpen, setMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
 
   // Show splash, hide splash
   function flashSplash() {
@@ -91,6 +91,12 @@ export function GameStateProvider({ children }) {
         stat_changes: player.stat_changes
       }
     }));
+    setMenuOpen({
+      achievements: false,
+      settings: false,
+      editMoves: false,
+      inventory: false,
+    });
     setBattleWon(false);
   }
 
@@ -109,6 +115,12 @@ export function GameStateProvider({ children }) {
           stat_changes: player.stat_changes
         }
       }));
+      setMenuOpen({
+        achievements: false,
+        settings: false,
+        editMoves: false,
+        inventory: false,
+      });
     } else {
       nextFloor(gameState.currentFloor.next_floor);
     }
