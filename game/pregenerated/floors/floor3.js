@@ -12,7 +12,7 @@ const floor_3 = {
     background: `url("/grass_bg.png")`,
     color: "#dda2a7",
     music: "08_munchlax1.mp3",
-    intro: `/splashes/00_splash.png`,
+    intro: `/splashes/vs_munchlax1.png`,
     next_room: "room_2",
   },
   room_2: {
