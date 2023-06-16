@@ -91,6 +91,7 @@ export function GameStateProvider({ children }) {
         statChanges: player.statChanges
       }
     }));
+    setBattleHistory([]);
     setMenuOpen({
       achievements: false,
       settings: false,
@@ -115,6 +116,7 @@ export function GameStateProvider({ children }) {
           statChanges: player.statChanges
         }
       }));
+      setBattleHistory([]);
       setMenuOpen({
         achievements: false,
         settings: false,
