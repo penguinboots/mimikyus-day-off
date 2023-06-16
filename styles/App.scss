@@ -121,6 +121,7 @@ body {
   outline: 4px solid $pdex-black-highlight;
 
   font-weight: 700;
+  line-height: 16px;
   color: $pdex-shadow-text;
   color: $pdex-shadow-text;
 }
@@ -323,6 +324,7 @@ body {
 .achievement-container {
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   width: 800px;
   height: 500px;
   left: 150px;
@@ -332,24 +334,31 @@ body {
     color: $pdex-black-highlight;
   }
   .ach-list {
-    width: 700px;
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
-    padding: 40px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 20px;
     gap: 20px;
+    width: 620px;
 
     li {
       display: flex;
       align-items: center;
       justify-content: center;
 
+      margin: 20px;
+
       width: 140px;
       height: 140px;
       background-color: $label-bg;
       border: 1px solid $border;
-      border-radius: 24px;
+      border-radius: 50%;
     }
+  }
+  .ach-list::-webkit-scrollbar {
+    display: none;
   }
   .spinner-container {
     margin: 100px;
