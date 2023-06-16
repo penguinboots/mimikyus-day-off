@@ -8,7 +8,7 @@ const damageCalc = function(
   targetTypes
 ) {
   //if we implement levelling at any point, replace the 50 below with the user's level
-  let baseDamage = ((2 + 50) / 2) * move.power * (userStat / targetStat);
+  let baseDamage = ((((2 * 50) / 5) + 2) * move.power * (userStat / targetStat) / 50 );
   const results = {
     damage: null,
     critical: false,
@@ -42,7 +42,7 @@ const damageCalc = function(
     results.effectiveness = 'super';
   }
   totalMultiplier *= typeMultiplier;
-  const finalDamage = baseDamage * totalMultiplier;
+  const finalDamage = (baseDamage * totalMultiplier) + 2;
   results.damage = finalDamage;
   return results;
 };
