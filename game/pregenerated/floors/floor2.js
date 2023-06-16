@@ -20,8 +20,15 @@ const floor_2 = {
     type: "battle",
     opponent: dugtrio,
     treasure: {
-      sprite: "",
-      reward: {},
+      items:["oran-berry"],
+      moves:[
+        "leech-life",
+        "charm",
+        "trailblaze",
+        "wood-hammer",
+        "screech",
+        "shadow-ball",
+      ]
     },
     background: `url("/backgrounds/dark_cave.png")`,
     color: "#49443e",
