@@ -12,7 +12,7 @@ const floor_2 = {
     background: `url("/backgrounds/route_31.png")`,
     color: "#7e6a56",
     music: "04_goomy.mp3",
-    intro: `/splashes/00_splash.png`,
+    intro: `/splashes/vs_goomy.png`,
     next_room: "room_2",
   },
   room_2: {
@@ -26,7 +26,7 @@ const floor_2 = {
     background: `url("/backgrounds/dark_cave.png")`,
     color: "#49443e",
     music: "05_dugtrio.mp3",
-    intro: `/splashes/00_splash.png`,
+    intro: `/splashes/vs_dugtrio.png`,
     next_room: "room_3",
   },
   room_3: {

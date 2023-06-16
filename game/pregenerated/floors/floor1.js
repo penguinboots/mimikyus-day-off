@@ -40,7 +40,7 @@ const floor_1 = {
     background: `url("/backgrounds/route_30.png")`,
     color: "#7f9b63",
     music: "03_snorlax1.mp3",
-    intro: `/splashes/00_splash.png`,
+    intro: `/splashes/vs_snorlax1.png`,
     next_room: null,
   },
   next_floor: "floor_2"
