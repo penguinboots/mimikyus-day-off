@@ -14,31 +14,21 @@ import AudioPlayer from '@/components/common/AudioPlayer';
 import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
 import { mimikyu } from '@/game/pregenerated/fakePlayer';
-// Drawer
-import { Drawer, Button } from 'antd';
-import { ShoppingOutlined, CloseOutlined } from '@ant-design/icons';
-import { items } from '@/game/data/items';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
 import Settings from '@/components/common/Settings';
-import useIsMenuOpen from '@/utils/hooks/isMenuOpen';
-import InventoryWindow from '@/components/play/InventoryWindow';
-export default function Home(props) {
+
+export default function Home() {
   // Authentication
   const { user, error, isLoading } = useUser();
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
-  const { gameState, setGameState, setSelectedMusic } = useGameState();
+  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowToggle, windowClose } = useGameState();
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
-  // Drawer State
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const { isMenuOpen, windowToggle, windowClose } = useIsMenuOpen();
-
-  const handleDrawerToggle = () => {
-    setIsDrawerVisible(!isDrawerVisible);
-  };
+  
+  // Initial player values, fill player values from database
   const playerTemplate = { ...mimikyu }
   let dbData = null
   useEffect(() => {
@@ -109,13 +99,11 @@ export default function Home(props) {
         {mode === 'LOGIN' && <Login />}
         {mode === 'DASH' && (
           <Dashboard
-            user={user}
             mode={mode}
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
             setSelectedMusic={setSelectedMusic}
-            windowToggle={windowToggle}
           />
         )}
         {mode === 'PLAY' && (
@@ -125,9 +113,6 @@ export default function Home(props) {
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
-            windowToggle={windowToggle}
-            windowClose={windowClose}
-            isMenuOpen={isMenuOpen}
           />
         )}
         {isMenuOpen.achievements && (
