@@ -3,8 +3,20 @@ export default function MoveDetail(props) {
 
   return (
     <div className="move-detail">
-      <h3>{moveName}</h3>
-      { power ? <p>Power: {power}</p> : "" }
+      <h3>{moveName.toUpperCase()}</h3>
+      {power ? (
+        <h4>
+          {power}
+          <br />
+          POWER
+        </h4>
+      ) : (
+        <h4>
+          --
+          <br />
+          POWER
+        </h4>
+      )}
       <p>{description}</p>
     </div>
   );

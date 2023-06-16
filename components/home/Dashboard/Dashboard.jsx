@@ -9,7 +9,6 @@ export default function Dashboard(props) {
     isMusicPlaying,
     handleMusicToggle,
     setSelectedMusic,
-    windowToggle,
   } = props;
 
   return (
@@ -18,7 +17,6 @@ export default function Dashboard(props) {
         mode={mode}
         isMusicPlaying={isMusicPlaying}
         handleMusicToggle={handleMusicToggle}
-        windowToggle={windowToggle}
         windowTitle="POKÉDEX"
       />
       <div className="dash-body">

@@ -142,6 +142,33 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.spinner {
+  animation: spin 2s linear infinite;
+  color: $pdex-shadow-text;
+}
+
+.move-detail {
+  text-align: center;
+  color: $pdex-black-highlight;
+  padding: 10px;
+  background-color: $pdex-shadow-text;
+  outline: $pdex-black-highlight;
+  h3 {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  h4 {
+    color: $pdex-black-highlight;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 6px 0;
+  }
+  p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
 // button {
 //   width: 200px;
 //   height: 48px;
@@ -190,12 +217,9 @@ body {
     font-size: 48px;
     font-weight: 700;
   }
-
-  .loading {
+  .spinner {
     width: 85px;
-    animation: spin 2s linear infinite;
     font-size: 60px;
-    color: $pdex-shadow-text;
   }
 }
 
@@ -298,11 +322,15 @@ body {
 
 .achievement-container {
   flex-direction: column;
+  justify-content: flex-start;
   width: 800px;
   height: 500px;
   left: 150px;
   top: 100px;
-
+  h2 {
+    font-size: 36px;
+    color: $pdex-black-highlight;
+  }
   .ach-list {
     width: 700px;
     display: flex;
@@ -322,6 +350,13 @@ body {
       border: 1px solid $border;
       border-radius: 24px;
     }
+  }
+  .spinner-container {
+    margin: 100px;
+  }
+  .spinner {
+    font-size: 60px;
+    margin: 20px;
   }
 }
 
@@ -367,7 +402,12 @@ body {
   gap: 20px;
 
   h2 {
+    color: $pdex-black-highlight;
     font-size: 24px;
+    font-weight: 700;
+  }
+  h3 {
+    font-weight: 500;
   }
 }
 
@@ -417,6 +457,9 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 12px;
+    h3, h4 {
+      font-weight: 700;
+    }
   }
   button {
     width: 70%;
@@ -435,19 +478,45 @@ body {
 /** EDIT MOVES **/
 .move-edit-window {
   position: absolute;
-  left: 150px;
+  left: 125px;
+  top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 800px;
-  height: 450px;
+  width: 850px;
+  h2 {
+    font-size: 36px;
+    color: $pdex-black-highlight;
+  }
+  h3 {
+    font-size: 24px;
+    color: $pdex-black-highlight;
+  }
+  .move-arrows {
+    z-index: 96;
+    position: absolute;
+    font-size: 80px;
+    top: 100px;
+    left: 290px;
+    color: $pdex-shadow-text;
+  }
   .move-edit-menu {
     display: flex;
     gap: 180px;
     .moves-selected-container,
     .moves-avail-container {
-      background-color: $off-white;
+      border: 4px solid $pdex-shadow-text;
+      border-radius: 24px;
+      padding: 6px;
+      height: 330px;
+    }
+    .moves-selected-container {
+      background-color: $pdex-green-highlight;
+    }
+    .moves-avail-container {
+      background-color: $pdex-shadow-border;
+      width: 380px;
     }
     .moves-selected {
       width: 180px;
@@ -456,6 +525,7 @@ body {
       width: 360px;
       display: flex;
       flex-wrap: wrap;
+      overflow-y: scroll;
     }
     button {
       width: 140px;
@@ -469,21 +539,42 @@ body {
     }
   }
   .move-detail {
+    z-index: 97;
     position: absolute;
     width: 170px;
     top: 80px;
-    left: 220px;
+    left: 245px;
+    h3 {
+      font-size: 18px;
+    }
+    h4 {
+      color: $pdex-black-highlight;
+      font-size: 16px;
+      line-height: 16px;
+      margin: 6px 0;
+    }
+    p {
+      font-size: 12px;
+      font-weight: 400;
+    }
   }
   .window-controls {
     display: flex;
     width: 50%;
     gap: 50px;
+    margin: 24px;
     .save {
+      margin: 0;
       background-color: $pdex-green;
     }
     .cancel {
+      margin: 0;
       background-color: $pdex-red;
     }
+  }
+  .spinner {
+    font-size: 60px;
+    margin: 20px;
   }
 }
 
@@ -603,11 +694,17 @@ body {
       }
       .move-detail {
         position: absolute;
-        top: -110px;
+        bottom: 80px;
         left: 100px;
         width: 300px;
-        height: 100px;
         border-radius: 12px;
+        h3 {
+          font-size: 18px;
+          font-weight: 700;
+        }
+        h4 {
+          font-weight: 700;
+        }
       }
     }
   }
@@ -885,4 +982,24 @@ body {
   outline: 4px solid $pdex-black-highlight;
   font-size: 20px;
   font-weight: 700;
+}
+
+/** BATTLE HISTORY **/
+
+.battle-history-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  position: absolute;
+  left: 350px;
+  bottom: 150px;
+  width: 400px;
+  max-height: 100px;
+  background-color: $pdex-shadow-text;
+  border-radius: 12px;
+  
+  .battle-history-item {
+    margin: 0 16px;
+  }
 }
