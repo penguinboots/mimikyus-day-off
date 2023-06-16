@@ -33,8 +33,20 @@ export default function Room(props) {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
       //Item Cases
-      case "Berry":
-        earnItem(user, "berry", 1)
+      case "Oran Berry":
+        earnItem(user, "oran-berry", 1)
+        .then(() => {
+          return getItems(user);
+        })
+        .then(({ items }) => {
+          setGameState((prev) => ({
+            ...prev,
+            itemList: items,
+          }))
+        })
+        break;
+      case "Sitrus Berry":
+        earnItem(user, "sitrus-berry", 1)
         .then(() => {
           return getItems(user);
         })
@@ -140,7 +152,7 @@ export default function Room(props) {
         type="pokemon-center"
         name="POKEMON CENTER"
         color="#e24631"
-        options={["Berry"]}
+        options={["Oran Berry"]}
         chosenOption={chosenOption}
         setChosenOption={(option) => {
           setChosenOption(option);

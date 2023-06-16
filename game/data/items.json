@@ -1,0 +1,66 @@
+{
+  "oran-berry": {
+    "name": "oran-berry",
+    "proper_name": "Oran Berry",
+    "accuracy": 100,
+    "damage_class": "item",
+    "effect_chance": 0,
+    "effect_entries": [
+      {
+        "effect": "Heals the user for a small amount",
+        "short_effect": "Heals the user for a small amount"
+      }
+    ],
+    "id": 1,
+    "ailment": null,
+    "ailment_chance": 0,
+    "category": "healing",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 25,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
+    "power": 0,
+    "pp": 0,
+    "priority": 0,
+    "stat_changes": [],
+    "target": "self",
+    "type": null
+  },
+  "sitrus-berry": {
+    "name": "sitrus-berry",
+    "proper_name": "Sitrus Berry",
+    "accuracy": 100,
+    "damage_class": "item",
+    "effect_chance": 0,
+    "effect_entries": [
+      {
+        "effect": "Heals the user for a large amount",
+        "short_effect": "Heals the user for a large amount"
+      }
+    ],
+    "id": 2,
+    "ailment": null,
+    "ailment_chance": 0,
+    "category": "healing",
+    "crit_rate": 0,
+    "drain": 0,
+    "flinch_chance": 0,
+    "healing": 50,
+    "max_hits": null,
+    "max_turns": null,
+    "min_hits": null,
+    "min_turns": null,
+    "stat_chance": 0,
+    "power": 0,
+    "pp": 0,
+    "priority": 0,
+    "stat_changes": [],
+    "target": "self",
+    "type": null
+  }
+}
