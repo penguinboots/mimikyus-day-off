@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client';
 import achievements from '../../game/data/achievements.json'
 import { unlockables } from '@/game/data/unlockableMoves';
 import { items } from '@/game/data/items';
-const prisma = new PrismaClient();
+import prisma from '@/prisma';
 
 export default async function handler(req, res) {
   // GET method acquires user data
