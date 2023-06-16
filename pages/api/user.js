@@ -117,7 +117,6 @@ export default async function handler(req, res) {
           data: {
             name: item.name,
             quantity: item.quantity,
-            date_get: null,
             userId: db_user.id,
           },
         });
