@@ -58,29 +58,59 @@ export default function Room(props) {
         })
         break;
       //Move Cases
-      case "Swords Dance":
-        learnMove(user, "swords-dance")
+      case "Shadow Sneak":
+        learnMove(user, "shadow-sneak")
+        break;
+      case "Psychic":
+        learnMove(user, "psychic")
         break;
       case "Draining Kiss":
         learnMove(user, "draining-kiss")
         break;
-      case "Play Rough":
-        learnMove(user, "play-rough")
+      case "Charge Beam":
+        learnMove(user, "charge-beam")
         break;
-      case "Shadow Sneak":
-        learnMove(user, "shadow-sneak")
+      case "Giga Drain":
+        learnMove(user, "giga-drain")
+        break;
+      case "Dark Pulse":
+        learnMove(user, "dark-pulse")
+        break;
+      case "Leech Life":
+        learnMove(user, "leech-life")
         break;
       case "Charm":
         learnMove(user, "charm")
         break;
-      case "Drain Punch":
-        learnMove(user, "drain-punch")
+      case "Trailblaze":
+        learnMove(user, "trailblaze")
+        break;
+      case "Wood Hammer":
+        learnMove(user, "wood-hammer")
+        break; 
+      case "Screech":
+        learnMove(user, "screech")
         break;
       case "Shadow Ball":
         learnMove(user, "shadow-ball")
         break; 
+      case "Thunderbolt":
+        learnMove(user, "thunderbolt")
+        break;
+      case "Swords Dance":
+        learnMove(user, "swords-dance")
+        break;
+      case "Drain Punch":
+        learnMove(user, "drain-punch")
+        break;
+      case "Dazzling Gleam":
+        learnMove(user, "dazzling-gleam")
+        break;
       case "Shadow Claw":
         learnMove(user, "shadow-claw")
+        break;
+      case "Play Rough":
+        learnMove(user, "play-rough")
         break;
       //Stat Cases
       case "HP Up":
@@ -107,25 +137,23 @@ export default function Room(props) {
       props.nextRoom();
     }
   };
+  const roomMoves = gameState.currentRoom.treasure.moves
   useEffect(() => {
     const dbMoves = [];
-
     getMoves(user)
       .then((movesObject) => {
         const { moves } = movesObject;
         moves.forEach((move) => {
-          if (move.collected === false) {
+          if (move.collected === false && roomMoves.includes(move.name)) {
             dbMoves.push(move);
           }
         });
-
         while (dbMoves.length > 2) {
           const randomIndex = Math.floor(Math.random() * dbMoves.length);
           dbMoves.splice(randomIndex, 1);
         }
-
         const formattedMoves = dbMoves.map((move) => properName(move.name));
-        setStoreMoves(formattedMoves); // Update storeMoves with the formatted moves
+        setStoreMoves(formattedMoves);
       })
       .catch((error) => {
         console.error(error);
