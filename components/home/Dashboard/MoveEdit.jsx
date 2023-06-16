@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faXmark,
+  faFan,
+  faArrowsLeftRight,
+} from "@fortawesome/free-solid-svg-icons";
 import MoveItem from "@/components/common/MoveItem";
 import { useGameState } from "@/utils/context/GameStateContext";
 import { moveFetcher } from "@/game/helpers/combat";
@@ -8,6 +12,9 @@ import { padMoves } from "@/utils/helpers/padMoves";
 import { getMoves } from "@/prisma/helpers/getMoves";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { changeMoves } from "@/prisma/helpers/changeMoves";
+import localFont from "next/font/local";
+
+const vt = localFont({ src: "../../../public/fonts/VT323-Regular.ttf" });
 
 export default function MoveEdit(props) {
   const { gameState, setGameState } = useGameState();
@@ -102,15 +109,50 @@ export default function MoveEdit(props) {
       <div className="close-window" onClick={props.handleClose}>
         <FontAwesomeIcon icon={faXmark} />
       </div>
-      <h2>Edit Moves</h2>
+      <h2
+        style={{
+          fontFamily: vt.style.fontFamily,
+        }}
+      >
+        EDIT MOVES
+      </h2>
       <div className="move-edit-menu">
         <div className="moves-selected-container">
-          <h3>Moves Selected</h3>
+          <h3
+            style={{
+              fontFamily: vt.style.fontFamily,
+            }}
+          >
+            SELECTED
+          </h3>
           <div className="moves-selected">{activeMoveItems}</div>
         </div>
+        <div className="move-arrows">
+          <FontAwesomeIcon icon={faArrowsLeftRight} />
+        </div>
         <div className="moves-avail-container">
-          <h3>Moves Available</h3>
-          <div className="moves-avail">{knownMoveItems}</div>
+          <h3
+            style={{
+              fontFamily: vt.style.fontFamily,
+            }}
+          >
+            AVAILABLE
+          </h3>
+          {knownMoveItems.length > 0 ? (
+            <div className="moves-avail">{knownMoveItems}</div>
+          ) : (
+            <>
+              <FontAwesomeIcon className="spinner" icon={faFan} />
+              <h4
+                style={{
+                  fontFamily: vt.style.fontFamily,
+                  fontSize: "16px"
+                }}
+              >
+                LOADING...
+              </h4>
+            </>
+          )}
         </div>
       </div>
       <div className="window-controls">

@@ -43,7 +43,7 @@ export default function Landing(props) {
           Enter
         </button>
       )}
-      {isLoading || user && <FontAwesomeIcon className="loading" icon={faFan} />}
+      {isLoading || user && <FontAwesomeIcon className="spinner" icon={faFan} />}
     </div>
   );
 }
