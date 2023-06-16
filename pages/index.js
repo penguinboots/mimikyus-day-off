@@ -43,7 +43,7 @@ export default function Home() {
           // Get user's character from db_data
           if (dbData && dbData.character) {
             const characterData = dbData.character;
-
+            console.log(characterData)
             // Update the moves array of playerTemplate with non-null values from characterData
             const updatedMoves = [
               characterData.move_1,
@@ -54,6 +54,14 @@ export default function Home() {
 
             const updatedPlayerTemplate = {
               ...playerTemplate,
+              stats:{
+                "hp": characterData.hp,
+                "attack": characterData.attack,
+                "defense": characterData.defense,
+                "special-attack": characterData.sp_atk,
+                "special-defense": characterData.sp_def,
+                "speed": characterData.speed,
+              },
               moves: updatedMoves
             };
 

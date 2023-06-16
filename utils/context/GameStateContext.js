@@ -88,7 +88,7 @@ export function GameStateProvider({ children }) {
       player: {
         ...prev.player,
         current_hp: player.current_hp,
-        stat_changes: player.stat_changes
+        statChanges: player.statChanges
       }
     }));
     setMenuOpen({
@@ -112,7 +112,7 @@ export function GameStateProvider({ children }) {
         player: {
           ...prev.player,
           current_hp: player.current_hp,
-          stat_changes: player.stat_changes
+          statChanges: player.statChanges
         }
       }));
       setMenuOpen({
@@ -144,7 +144,7 @@ export function GameStateProvider({ children }) {
       player: {
         ...prev.player,
         current_hp: player.current_hp,
-        stat_changes: player.stat_changes
+        statChanges: player.statChanges
       }
     }));
     setBattleWon(false);

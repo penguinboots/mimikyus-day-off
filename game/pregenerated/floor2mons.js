@@ -30,15 +30,15 @@ const goomy = {
   "sprites": {
     "idle": {
       url: `/sprites/goomy-idl.gif`,
-      length: 1000,
+      length: 960,
     },
     "attack": {
       url: `/sprites/goomy-atk.gif`,
-      length: 1050,
+      length: 980,
     },
     "hit": {
       url: `/sprites/goomy-hit.gif`,
-      length: 720,
+      length: 680,
     },
   }
 }
@@ -75,15 +75,15 @@ const dugtrio = {
   "sprites": {
     "idle": {
       url: `/sprites/dugtrio-idl.gif`,
-      length: 1000,
+      length: 920,
     },
     "attack": {
       url: `/sprites/dugtrio-atk.gif`,
-      length: 1050,
+      length: 1120,
     },
     "hit": {
       url: `/sprites/dugtrio-hit.gif`,
-      length: 720,
+      length: 750,
     },
   }
 }
@@ -120,15 +120,15 @@ const snorlax2= {
   "sprites": {
     "idle": {
       url: `/sprites/snorlax-idl.gif`,
-      length: 1000,
+      length: 920,
     },
     "attack": {
       url: `/sprites/snorlax-atk.gif`,
-      length: 1050,
+      length: 1120,
     },
     "hit": {
       url: `/sprites/snorlax-hit.gif`,
-      length: 720,
+      length: 760,
     },
   }
 }

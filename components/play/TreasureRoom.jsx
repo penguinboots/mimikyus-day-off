@@ -13,6 +13,7 @@ import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFan } from "@fortawesome/free-solid-svg-icons";
+import { updateStats } from "@/prisma/helpers/updateStats";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room(props) {
@@ -32,6 +33,7 @@ export default function Room(props) {
       setHasSelected(true);
     }
   }, [chosenOption]);
+
   const handleContinue = () => {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
@@ -117,31 +119,88 @@ export default function Room(props) {
         break;
       //Stat Cases
       case "HP Up":
-        // Call function for HP +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "hp": prev.player.stats["hp"] + 10} 
+          }
+        }))
         break;
       case "Protein":
-        // Call function for Atk +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "attack": prev.player.stats["attack"] + 10} 
+          }
+        }))
         break;
       case "Iron":
-        // Call function for Def +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "defense": prev.player.stats["defense"] + 10} 
+          }
+        }))
         break;
       case "Calcium":
-        // Call function for SpAtk +10 
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "special-attack": prev.player.stats["special-attack"] + 10} 
+          }
+        }))
         break;
       case "Zinc":
-        // Call function for SpDef +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "special-defense": prev.player.stats["special-defense"] + 10} 
+          }
+        }))
         break;
       case "Carbos":
-        // Call function for Speed +10
+        setGameState((prev) => ({
+          ...prev,
+          player:{
+            ...prev.player,
+            stats:{
+              ...prev.player.stats,
+              "speed": prev.player.stats["speed"] + 10} 
+          }
+        }))
         break;
     }
     // Continue to the next room (if hasSelected is true)
     if (hasSelected) {
-      props.nextRoom();
+      updateStats(user, gameState.player.stats).then(() => {
+        props.nextRoom();
+      });
     }
   };
+  
+  useEffect(() => {
+    // Update stats after hasSelected is true
+    if (hasSelected) {
+      updateStats(user, gameState.player.stats);
+    }
+  }, [hasSelected, user, gameState.player.stats]);
   const roomMoves = gameState.currentRoom.treasure.moves
-
+  const vitamins = ["HP Up", "Protein", "Iron", "Calcium", "Zinc", "Carbos"]
   useEffect(() => {
     const dbMoves = [];
     if (isLoading) {
@@ -167,9 +226,12 @@ export default function Room(props) {
           console.error(error);
           setIsStoreLoading(false);
         });
+      }
+    }, [user]);
+    while (vitamins.length > 2) {
+      const randomIndex = Math.floor(Math.random() * vitamins.length);
+      vitamins.splice(randomIndex, 1);
     }
-  }, [user]);
-
   return (
     <div
       style={{
@@ -214,7 +276,7 @@ export default function Room(props) {
             type="pokemart"
             name="POKEMART"
             color="#4dbefc"
-            options={["Stat 1", "Stat 2"]}
+            options={vitamins}
             chosenOption={chosenOption}
             setChosenOption={(option) => {
               setChosenOption(option);

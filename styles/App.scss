@@ -121,6 +121,7 @@ body {
   outline: 4px solid $pdex-black-highlight;
 
   font-weight: 700;
+  line-height: 16px;
   color: $pdex-shadow-text;
   color: $pdex-shadow-text;
 }
@@ -323,6 +324,7 @@ body {
 .achievement-container {
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   width: 800px;
   height: 500px;
   left: 150px;
@@ -332,24 +334,31 @@ body {
     color: $pdex-black-highlight;
   }
   .ach-list {
-    width: 700px;
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
-    padding: 40px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 20px;
     gap: 20px;
+    width: 620px;
 
     li {
       display: flex;
       align-items: center;
       justify-content: center;
 
+      margin: 20px;
+
       width: 140px;
       height: 140px;
       background-color: $label-bg;
       border: 1px solid $border;
-      border-radius: 24px;
+      border-radius: 50%;
     }
+  }
+  .ach-list::-webkit-scrollbar {
+    display: none;
   }
   .spinner-container {
     margin: 100px;
@@ -457,7 +466,8 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 12px;
-    h3, h4 {
+    h3,
+    h4 {
       font-weight: 700;
     }
   }
@@ -492,24 +502,37 @@ body {
   h3 {
     font-size: 24px;
     color: $pdex-black-highlight;
+    width: 50%;
   }
   .move-arrows {
     z-index: 96;
     position: absolute;
     font-size: 80px;
     top: 100px;
-    left: 290px;
+    left: 285px;
     color: $pdex-shadow-text;
   }
   .move-edit-menu {
     display: flex;
     gap: 180px;
+    button {
+      width: 140px;
+      border: none;
+      margin: 8px 20px;
+    }
+    .move-item {
+      width: 140px;
+      margin: 0;
+      font-size: 16px;
+    }
     .moves-selected-container,
     .moves-avail-container {
       border: 4px solid $pdex-shadow-text;
       border-radius: 24px;
-      padding: 6px;
-      height: 330px;
+      height: 315px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .moves-selected-container {
       background-color: $pdex-green-highlight;
@@ -522,20 +545,20 @@ body {
       width: 180px;
     }
     .moves-avail {
-      width: 360px;
+      width: 340px;
       display: flex;
       flex-wrap: wrap;
-      overflow-y: scroll;
+
+      overflow-y: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      button {
+        margin: 8px 15px;
+      }
     }
-    button {
-      width: 140px;
-      border: none;
-      margin: 10px 20px;
-    }
-    .move-item {
-      width: 140px;
-      margin: 0;
-      font-size: 16px;
+    .moves-avail::-webkit-scrollbar {
+      display: none;
     }
   }
   .move-detail {
@@ -543,7 +566,7 @@ body {
     position: absolute;
     width: 170px;
     top: 80px;
-    left: 245px;
+    left: 240px;
     h3 {
       font-size: 18px;
     }
@@ -998,7 +1021,7 @@ body {
   max-height: 100px;
   background-color: $pdex-shadow-text;
   border-radius: 12px;
-  
+
   .battle-history-item {
     margin: 0 16px;
   }

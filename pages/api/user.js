@@ -66,6 +66,12 @@ export default async function handler(req, res) {
       //create character
       const db_character = await prisma.character.create({
         data:{
+          hp: 55,
+          attack: 90,
+          defense: 80,
+          sp_atk: 50,
+          sp_def: 105,
+          speed: 96,
           move_1: "astonish",
           move_2: "quick-attack",
           userId: db_user.id
@@ -111,7 +117,6 @@ export default async function handler(req, res) {
           data: {
             name: item.name,
             quantity: item.quantity,
-            date_get: null,
             userId: db_user.id,
           },
         });
