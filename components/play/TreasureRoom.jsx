@@ -30,10 +30,7 @@ export default function Room(props) {
       setHasSelected(true);
     }
   }, [chosenOption]);
-  useEffect(() => {
-    updateStats(user, gameState.player.stats);
-  }, [gameState.player.stats, updateStats]);
-  
+
   const handleContinue = () => {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
@@ -187,9 +184,18 @@ export default function Room(props) {
     }
     // Continue to the next room (if hasSelected is true)
     if (hasSelected) {
-      props.nextRoom();
+      updateStats(user, gameState.player.stats).then(() => {
+        props.nextRoom();
+      });
     }
   };
+  
+  useEffect(() => {
+    // Update stats after hasSelected is true
+    if (hasSelected) {
+      updateStats(user, gameState.player.stats);
+    }
+  }, [hasSelected, user, gameState.player.stats]);
   const roomMoves = gameState.currentRoom.treasure.moves
   const vitamins = ["HP Up", "Protein", "Iron", "Calcium", "Zinc", "Carbos"]
   useEffect(() => {
