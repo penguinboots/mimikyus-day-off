@@ -380,7 +380,12 @@ body {
   gap: 20px;
 
   h2 {
+    color: $pdex-black-highlight;
     font-size: 24px;
+    font-weight: 700;
+  }
+  h3 {
+    font-weight: 500;
   }
 }
 

@@ -1,7 +1,6 @@
 import { moveFetcher } from "@/game/helpers/combat";
 import { useGameState } from "@/utils/context/GameStateContext";
 import { padMoves } from "@/utils/helpers/padMoves";
-import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
 import MoveItem from "../../common/MoveItem";
 import MoveEdit from "./MoveEdit";
 
