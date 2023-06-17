@@ -14,6 +14,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
+import { properName } from "@/utils/helpers/properName";
 
 export default function Room(props) {
   const { setMode } = props;
@@ -215,6 +216,19 @@ export default function Room(props) {
           ...prev,
           `A critical hit!\n`,
         ])};
+        if(moveEffects.statChanges){
+          if(moveEffects.statChanges.target === "self") {
+            setBattleHistory((prev) => [
+            ...prev,
+            `${turn.user.proper_name}'s ${properName(turn.move.stat_changes[0].stat)} went up!\n`,
+            ])
+          } else {
+            setBattleHistory((prev) => [
+              ...prev,
+              `${turn.target.proper_name}'s ${properName(turn.move.stat_changes[0].stat)} went down!\n`,
+            ])
+          }
+        };
         // doMove calculates whether damage dealt will kill the target this turn
         if (turn.user === gameState.player) {
           if (
@@ -243,11 +257,6 @@ export default function Room(props) {
         }
       }
 
-      // if(moveEffects.statChanges !== {}){
-      // setBattleHistory((prev) => [
-      //   ...prev,
-      //   `${moveEffects.statChanges.stat.target.proper_name}'s ${moveEffects.statChanges.stat} went up!}\n`,
-      // ])};
     }
     console.log("Player in state:", gameState.player)
     console.log("Opponent in state:", gameState.opponent)
