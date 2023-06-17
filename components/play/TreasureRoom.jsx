@@ -1,7 +1,4 @@
 import { learnMove } from "@/prisma/helpers/learnMove";
-import { earnAchievement } from "@/prisma/helpers/earnAchievement";
-import { createUser } from "@/prisma/helpers/createUser";
-import { changeMoves } from "@/prisma/helpers/changeMoves";
 import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useGameState } from "@/utils/context/GameStateContext";
@@ -11,29 +8,42 @@ import localFont from "next/font/local";
 import { getItems } from "@/prisma/helpers/getItems";
 import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFan } from "@fortawesome/free-solid-svg-icons";
 import { updateStat } from "@/prisma/helpers/updateStat";
-import { getCharacter } from "@/prisma/helpers/getCharacter";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
-export default function Room(props) {
+export default function Room() {
   const { user, error, isLoading } = useUser();
-  const { gameState, setGameState } = useGameState();
+  const { gameState, setGameState, nextRoom } = useGameState();
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
 
-  const [chosenOption, setChosenOption] = useState(null);
+  // Actively selected item
+  const [chosenOption, setChosenOption] = useState({
+    store: null,
+    item: null,
+  });
+  // Player has made any choice
   const [hasSelected, setHasSelected] = useState(false);
+  // Available moves in store
   const [storeMoves, setStoreMoves] = useState([]);
   const [isStoreLoading, setIsStoreLoading] = useState(true);
-  const [vitamins, setVitamins] = useState(["HP Up", "Protein", "Iron", "Calcium", "Zinc", "Carbos"])
+  // Vitamins available in store
+  const [vitamins, setVitamins] = useState([
+    "HP Up",
+    "Protein",
+    "Iron",
+    "Calcium",
+    "Zinc",
+    "Carbos",
+  ]);
 
+  // Makes continue button when any choice is made
   useEffect(() => {
-    if (chosenOption !== null) {
+    if (chosenOption.item !== null) {
       setHasSelected(true);
     }
   }, [chosenOption]);
+
   useEffect(() => {
     if (vitamins.length > 2) {
       const randomIndexes = [];
@@ -43,12 +53,12 @@ export default function Room(props) {
           randomIndexes.push(randomIndex);
         }
       }
-  
       const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
       setVitamins(selectedVitamins);
     }
   }, [user]);
-    const roomMoves = gameState.currentRoom.treasure.moves
+  const roomMoves = gameState.currentRoom.treasure.moves;
+
   useEffect(() => {
     const dbMoves = [];
     if (isLoading) {
@@ -74,211 +84,82 @@ export default function Room(props) {
           console.error(error);
           setIsStoreLoading(false);
         });
-      }
-    }, [user]);
-  
-  const handleContinue = () => {
-    // Fire different functions based on chosenOption
-    switch (chosenOption) {
-      //Item Cases
-      case "Oran Berry":
-        earnItem(user, "oran-berry", 1)
-        .then(() => {
-          return getItems(user);
-        })
-        .then(({ items }) => {
-          setGameState((prev) => ({
-            ...prev,
-            itemList: items,
-          }))
-        })
-        break;
-      case "Sitrus Berry":
-        earnItem(user, "sitrus-berry", 1)
-        .then(() => {
-          return getItems(user);
-        })
-        .then(({ items }) => {
-          setGameState((prev) => ({
-            ...prev,
-            itemList: items,
-          }))
-        })
-        break;
-      //Move Cases
-      case "Shadow Sneak":
-        learnMove(user, "shadow-sneak")
-        break;
-      case "Psychic":
-        learnMove(user, "psychic")
-        break;
-      case "Draining Kiss":
-        learnMove(user, "draining-kiss")
-        break;
-      case "Charge Beam":
-        learnMove(user, "charge-beam")
-        break;
-      case "Giga Drain":
-        learnMove(user, "giga-drain")
-        break;
-      case "Dark Pulse":
-        learnMove(user, "dark-pulse")
-        break;
-      case "Leech Life":
-        learnMove(user, "leech-life")
-        break;
-      case "Charm":
-        learnMove(user, "charm")
-        break;
-      case "Trailblaze":
-        learnMove(user, "trailblaze")
-        break;
-      case "Wood Hammer":
-        learnMove(user, "wood-hammer")
-        break; 
-      case "Screech":
-        learnMove(user, "screech")
-        break;
-      case "Shadow Ball":
-        learnMove(user, "shadow-ball")
-        break; 
-      case "Thunderbolt":
-        learnMove(user, "thunderbolt")
-        break;
-      case "Swords Dance":
-        learnMove(user, "swords-dance")
-        break;
-      case "Drain Punch":
-        learnMove(user, "drain-punch")
-        break;
-      case "Dazzling Gleam":
-        learnMove(user, "dazzling-gleam")
-        break;
-      case "Shadow Claw":
-        learnMove(user, "shadow-claw")
-        break;
-      case "Play Rough":
-        learnMove(user, "play-rough")
-        break;
-      //Stat Cases
+    }
+  }, [user]);
+
+  // Takes full name, reduces to query string
+  function reduceName(name) {
+    return name.replace(/\s+/g, "-").toLowerCase();
+  }
+
+  // Returns stat related to given vitamin
+  function getVitaminStat(vitamin) {
+    switch (vitamin) {
       case "HP Up":
-        updateStat(user, "hp", 10)
-        .then(() => {
-          return getCharacter(user)
-        })
-        .then(({ characters }) => {
-          console.log(characters)
-          let character = characters[0]
+        return "hp";
+      case "Protein":
+        return "attack";
+      case "Iron":
+        return "defense";
+      case "Calcium":
+        return "special-attack";
+      case "Zinc":
+        return "special-defense";
+      case "Carbos":
+        return "speed";
+    }
+  }
+
+  // Executes action based on store and option selected
+  function executeChoice(store, choice) {
+    return new Promise((resolve, reject) => {
+      switch (store) {
+        case "pokemon-center":
+          earnItem(user, reduceName(choice), 1)
+            .then(() => getItems(user))
+            .then(({ items }) => {
+              setGameState((prev) => ({
+                ...prev,
+                itemList: items,
+              }));
+              resolve();
+            })
+            .catch((error) => reject(error));
+          break;
+        case "gym-store":
+          learnMove(user, reduceName(choice))
+            .then(() => resolve())
+            .catch((error) => reject(error));
+          break;
+        case "pokemart":
+          let statToRaise = getVitaminStat(choice);
           setGameState((prev) => ({
             ...prev,
             player: {
               ...prev.player,
-              "hp": character["hp"]
-            }
-          }))
-        })
-        break;
-      case "Protein":
-        updateStat(user, "attack", 10)
-          .then(() => getCharacter(user))
-          .then(({ characters }) => {
-            console.log(characters);
-            let character = characters[0];
-            setGameState((prev) => ({
-              ...prev,
-              player: {
-                ...prev.player,
-                stats: {
-                  ...prev.player.stats,
-                  "attack": character["attack"],
-                },
-              },
-            }));
-          });
-        break;
-      case "Iron":
-        updateStat(user, "defense", 10)
-          .then(() => getCharacter(user))
-          .then(({ characters }) => {
-            console.log(characters);
-            let character = characters[0];
-            setGameState((prev) => ({
-              ...prev,
-              player: {
-                ...prev.player,
-                stats: {
-                  ...prev.player.stats,
-                  "defense": character["defense"],
-                },
-              },
-            }));
-          });
-        break;
-      case "Calcium":
-        updateStat(user, "special-attack", 10)
-          .then(() => getCharacter(user))
-          .then(({ characters }) => {
-            console.log(characters);
-            let character = characters[0];
-            setGameState((prev) => ({
-              ...prev,
-              player: {
-                ...prev.player,
-                stats: {
-                  ...prev.player.stats,
-                  "special-attack": character["special-attack"],
-                },
-              },
-            }));
-          });
-        break;
-      
-      case "Zinc":
-        updateStat(user, "special-defense", 10)
-          .then(() => getCharacter(user))
-          .then(({ characters }) => {
-            console.log(characters);
-            let character = characters[0];
-            setGameState((prev) => ({
-              ...prev,
-              player: {
-                ...prev.player,
-                stats: {
-                  ...prev.player.stats,
-                  "special-defense": character["special-defense"],
-                },
-              },
-            }));
-          });
-        break;
-      
-      case "Carbos":
-        updateStat(user, "speed", 10)
-          .then(() => getCharacter(user))
-          .then(({ characters }) => {
-            console.log(characters);
-            let character = characters[0];
-            setGameState((prev) => ({
-              ...prev,
-              player: {
-                ...prev.player,
-                stats: {
-                  ...prev.player.stats,
-                  "speed": character["speed"],
-                },
-              },
-            }));
-          });
-        break;
-    }
-    // Continue to the next room (if hasSelected is true)
-  };
-  const handleButtonClick = async () => {
-    if (hasSelected) {
-      await handleContinue();
-      props.nextRoom();
+              [statToRaise]: prev.player[statToRaise] + 10,
+            },
+          }));
+          updateStat(user, statToRaise, 10)
+            .then(() => resolve())
+            .catch((error) => reject(error));
+          break;
+        default:
+          reject(new Error("Invalid store"));
+      }
+    });
+  }
+
+  // Only calls nextRoom when executeChoice is complete
+  const handleContinue = async () => {
+    try {
+      await executeChoice(chosenOption.store, chosenOption.item);
+      nextRoom();
+    } catch (error) {
+      console.error("Error handling continue:", error);
     }
   };
+
   return (
     <div
       style={{
@@ -303,10 +184,10 @@ export default function Room(props) {
             color="#e24631"
             options={["Oran Berry"]}
             chosenOption={chosenOption}
-            setChosenOption={(option) => {
-              setChosenOption(option);
-              setHasSelected(true); // Update hasSelected immediately
+            setChosenOption={(choice) => {
+              setChosenOption({ store: "pokemon-center", item: choice });
             }}
+            isStoreLoading={false}
           />
           <StoreCard
             type="gym-store"
@@ -314,10 +195,10 @@ export default function Room(props) {
             color="#fbb012"
             options={storeMoves}
             chosenOption={chosenOption}
-            setChosenOption={(option) => {
-              setChosenOption(option);
-              setHasSelected(true); // Update hasSelected immediately
+            setChosenOption={(choice) => {
+              setChosenOption({ store: "gym-store", item: choice });
             }}
+            isStoreLoading={isStoreLoading} // The only store that needs to load
           />
           <StoreCard
             type="pokemart"
@@ -325,44 +206,19 @@ export default function Room(props) {
             color="#4dbefc"
             options={vitamins}
             chosenOption={chosenOption}
-            setChosenOption={(option) => {
-              setChosenOption(option);
-              setHasSelected(true); // Update hasSelected immediately
+            setChosenOption={(choice) => {
+              setChosenOption({ store: "pokemart", item: choice });
             }}
+            isStoreLoading={false}
           />
         </div>
       </div>
       <button
         className={`continue ${hasSelected ? "active" : "inactive"}`}
-        onClick={handleButtonClick}
+        onClick={handleContinue}
       >
         CONTINUE
       </button>
-      {isStoreLoading && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <FontAwesomeIcon
-            icon={faFan}
-            spin
-            size="3x"
-            style={{ color: "white" }}
-          />
-            <h4
-              style={{
-                fontFamily: vt.style.fontFamily,
-                fontSize: "16px",
-              }}
-            >
-              LOADING...
-            </h4>
-        </div>
-      )}
     </div>
   );
 }
