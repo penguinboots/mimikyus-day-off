@@ -111,7 +111,8 @@ export function GameStateProvider({ children }) {
         opponent: nextRoom.opponent,
         player: {
           ...prev.player,
-          current_hp: player.current_hp,
+          current_hp: gameState.player.stats.hp,
+          stats: gameState.player.stats,
           statChanges: player.statChanges
         }
       }));
