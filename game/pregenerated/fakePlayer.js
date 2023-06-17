@@ -11,7 +11,6 @@ const mimikyu = {
     "speed": 96
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
