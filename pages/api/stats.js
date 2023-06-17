@@ -24,22 +24,27 @@ export default async function handler(req, res) {
 
   // POST request for stats
   if (req.method === 'POST') {
-    const { user, newStatsObj } = req.body;
+    const { user, stat, amount } = req.body;
     const db_user = await prisma.user.findFirst({
       where: {auth0Sub: user.sub}
     })
     // find user
     try {
       // update moves per array from paramater
+      let db_stat;
+      if (stat === "special-attack") {
+        db_stat = "sp_atk";
+      } else if (stat === "special-defense") {
+        db_stat = "sp_def";
+      } else {
+        db_stat = stat;
+      }
       const character = await prisma.character.updateMany({
         where: { userId: db_user.id },
         data:{
-          hp:newStatsObj["hp"] || 55,
-          attack:newStatsObj["attack"] || 90,
-          defense:newStatsObj["defense"] || 80,
-          sp_atk:newStatsObj["special-attack"] || 50,
-          sp_def:newStatsObj["special-defense"] || 105,
-          speed:newStatsObj["speed"] || 96,
+          [db_stat]:{
+            increment: amount
+          }
         }
       });
 

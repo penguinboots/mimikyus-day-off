@@ -54,6 +54,7 @@ export default function Home() {
 
             const updatedPlayerTemplate = {
               ...playerTemplate,
+              current_hp: characterData.hp,
               stats:{
                 "hp": characterData.hp,
                 "attack": characterData.attack,

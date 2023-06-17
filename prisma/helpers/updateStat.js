@@ -1,10 +1,10 @@
-export const updateStats = async (user, newStatsObj) => {
+export const updateStat = async (user, stat, amount) => {
   //Post request to update the Move
 
   try {
     const response = await fetch('/api/stats', {
       method: 'POST',
-      body: JSON.stringify({ user, newStatsObj }),
+      body: JSON.stringify({ user, stat, amount }),
       headers: {
         'Content-Type': 'application/json',
       },
