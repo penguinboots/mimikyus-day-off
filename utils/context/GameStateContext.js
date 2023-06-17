@@ -149,6 +149,7 @@ export function GameStateProvider({ children }) {
         statChanges: player.statChanges
       }
     }));
+    setBattleHistory([]);
     setBattleWon(false);
     setPopup({
       intro: false,
