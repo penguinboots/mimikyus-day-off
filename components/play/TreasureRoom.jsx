@@ -44,21 +44,21 @@ export default function Room() {
     }
   }, [chosenOption]);
 
-  useEffect(() => {
-    if (vitamins.length > 2) {
-      const randomIndexes = [];
-      while (randomIndexes.length < 2) {
-        const randomIndex = Math.floor(Math.random() * vitamins.length);
-        if (!randomIndexes.includes(randomIndex)) {
-          randomIndexes.push(randomIndex);
-        }
+  // Pick available vitamins
+  if (vitamins.length > 2) {
+    const randomIndexes = [];
+    while (randomIndexes.length < 2) {
+      const randomIndex = Math.floor(Math.random() * vitamins.length);
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
       }
-      const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
-      setVitamins(selectedVitamins);
     }
-  }, [user]);
-  const roomMoves = gameState.currentRoom.treasure.moves;
+    const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
+    setVitamins(selectedVitamins);
+  }
 
+  // Pick available moves based on room's rewards and player's known moves
+  const roomMoves = gameState.currentRoom.treasure.moves;
   useEffect(() => {
     const dbMoves = [];
     if (isLoading) {
