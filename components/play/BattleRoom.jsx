@@ -1,5 +1,5 @@
 import { useGameState } from "../../utils/context/GameStateContext";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   moveOrder,
   calculateMove,
@@ -10,10 +10,11 @@ import { padMoves } from "@/utils/helpers/padMoves";
 import HealthBar from "./HealthBar";
 import MoveItem from "../common/MoveItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
+import { dungeon } from "@/game/pregenerated/dungeon1";
 
 export default function Room(props) {
   const { setMode } = props;
@@ -267,14 +268,86 @@ export default function Room(props) {
     "button"
   );
 
+  // state for popup, current image, and continue button
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showContinueButton, setShowContinueButton] = useState(false);
+  const images = ['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oxford_blue.png/220px-Oxford_blue.png', 'https://htmlcolorcodes.com/assets/images/colors/orange-color-solid-background-1920x1080.png'];
+
+  // navigate through the current images
+  const navigateImages = (direction) => {
+    if (direction === 'prev') {
+      setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    } else if (direction === 'next') {
+      setCurrentImageIndex((prevIndex) => {
+        const newIndex = prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+        setShowContinueButton(newIndex > 0); // show continue button if newIndex is greater than 0
+        return newIndex;
+      });
+    }
+  };
+
+  // show comics popup on room_1 of floor_1
+  useEffect(() => {
+    flashSplash();
+    if (gameState.currentRoom === dungeon.floor_1.room_1) {
+      setShowPopup(true);
+    }
+    return () => {
+      setSplash(false);
+      setShowPopup(false); // Hide the popup when leaving room_1
+    };
+  }, [gameState.currentRoom]);
+
   return (
-    <div
-      className="battle-room"
+    <div className={`battle-room ${showPopup ? "comics" : ""}`} 
       style={{
         backgroundImage: BACKGROUND,
-        backgroundColor: BACKGROUND_COL,
-      }}
-    >
+        backgroundColor: BACKGROUND_COL
+      }}>
+      {showPopup && (
+        <div className={`popup ${showPopup ? "comics" : ""}`}>
+          <div className="popup-content">
+            <div className="image-slot">
+              <div
+                className={`arrow left ${currentImageIndex === 0 ? "disabled" : ""}`}
+                onClick={() => {
+                  if (currentImageIndex !== 0) {
+                    navigateImages("prev");
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowLeft} />
+              </div>
+              <img
+                src={images[currentImageIndex]}
+                alt="Popup Image"
+                style={{ width: "450px", height: "450px" }}
+              />
+              <div
+                className={`arrow right ${
+                  currentImageIndex === images.length - 1 ? "disabled" : ""
+                }`}
+                onClick={() => {
+                  if (currentImageIndex !== images.length - 1) {
+                    navigateImages("next");
+                  }
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowRight} />
+              </div>
+            </div>
+            {showContinueButton && (
+              <button
+                className="continue-button"
+                onClick={() => setShowPopup(false)}
+              >
+                CONTINUE
+              </button>
+            )}
+          </div>
+        </div>
+      )}
       <div className="splash-wrapper">
         <Image
           className={`splash ${splash ? "show" : "hide"}`}
