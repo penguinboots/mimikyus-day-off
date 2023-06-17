@@ -149,6 +149,12 @@ body {
   color: $pdex-shadow-text;
 }
 
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .move-detail {
   text-align: center;
   color: $pdex-black-highlight;
@@ -756,7 +762,6 @@ body {
         border: 5px solid $pdex-shadow-border;
         outline: 5px solid $pdex-black-highlight;
         h3 {
-          // font-family: $title-font;
           font-size: 36px;
           margin-top: 24px;
           color: $pdex-shadow-text;
@@ -780,6 +785,13 @@ body {
         }
         .option.chosen {
           background-color: $pdex-green-highlight;
+        }
+        .spinner-container {
+          margin: 50px;
+        }
+        .spinner {
+          width: 85px;
+          font-size: 60px;
         }
       }
     }
