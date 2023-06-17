@@ -13,7 +13,8 @@ import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFan } from "@fortawesome/free-solid-svg-icons";
-import { updateStats } from "@/prisma/helpers/updateStats";
+import { updateStat } from "@/prisma/helpers/updateStat";
+import { getCharacter } from "@/prisma/helpers/getCharacter";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room(props) {
@@ -26,14 +27,56 @@ export default function Room(props) {
   const [hasSelected, setHasSelected] = useState(false);
   const [storeMoves, setStoreMoves] = useState([]);
   const [isStoreLoading, setIsStoreLoading] = useState(true);
-
+  const [vitamins, setVitamins] = useState(["HP Up", "Protein", "Iron", "Calcium", "Zinc", "Carbos"])
 
   useEffect(() => {
     if (chosenOption !== null) {
       setHasSelected(true);
     }
   }, [chosenOption]);
-
+  useEffect(() => {
+    if (vitamins.length > 2) {
+      const randomIndexes = [];
+      while (randomIndexes.length < 2) {
+        const randomIndex = Math.floor(Math.random() * vitamins.length);
+        if (!randomIndexes.includes(randomIndex)) {
+          randomIndexes.push(randomIndex);
+        }
+      }
+  
+      const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
+      setVitamins(selectedVitamins);
+    }
+  }, [user]);
+    const roomMoves = gameState.currentRoom.treasure.moves
+  useEffect(() => {
+    const dbMoves = [];
+    if (isLoading) {
+      setIsStoreLoading(true);
+    } else {
+      getMoves(user)
+        .then((movesObject) => {
+          const { moves } = movesObject;
+          moves.forEach((move) => {
+            if (move.collected === false && roomMoves.includes(move.name)) {
+              dbMoves.push(move);
+            }
+          });
+          while (dbMoves.length > 2) {
+            const randomIndex = Math.floor(Math.random() * dbMoves.length);
+            dbMoves.splice(randomIndex, 1);
+          }
+          const formattedMoves = dbMoves.map((move) => properName(move.name));
+          setStoreMoves(formattedMoves);
+          setIsStoreLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setIsStoreLoading(false);
+        });
+      }
+    }, [user]);
+  
   const handleContinue = () => {
     // Fire different functions based on chosenOption
     switch (chosenOption) {
@@ -119,119 +162,123 @@ export default function Room(props) {
         break;
       //Stat Cases
       case "HP Up":
-        setGameState((prev) => ({
-          ...prev,
-          player:{
-            ...prev.player,
-            stats:{
-              ...prev.player.stats,
-              "hp": prev.player.stats["hp"] + 10} 
-          }
-        }))
+        updateStat(user, "hp", 10)
+        .then(() => {
+          return getCharacter(user)
+        })
+        .then(({ characters }) => {
+          console.log(characters)
+          let character = characters[0]
+          setGameState((prev) => ({
+            ...prev,
+            player: {
+              ...prev.player,
+              "hp": character["hp"]
+            }
+          }))
+        })
         break;
       case "Protein":
-        setGameState((prev) => ({
-          ...prev,
-          player:{
-            ...prev.player,
-            stats:{
-              ...prev.player.stats,
-              "attack": prev.player.stats["attack"] + 10} 
-          }
-        }))
+        updateStat(user, "attack", 10)
+          .then(() => getCharacter(user))
+          .then(({ characters }) => {
+            console.log(characters);
+            let character = characters[0];
+            setGameState((prev) => ({
+              ...prev,
+              player: {
+                ...prev.player,
+                stats: {
+                  ...prev.player.stats,
+                  "attack": character["attack"],
+                },
+              },
+            }));
+          });
         break;
       case "Iron":
-        setGameState((prev) => ({
-          ...prev,
-          player:{
-            ...prev.player,
-            stats:{
-              ...prev.player.stats,
-              "defense": prev.player.stats["defense"] + 10} 
-          }
-        }))
+        updateStat(user, "defense", 10)
+          .then(() => getCharacter(user))
+          .then(({ characters }) => {
+            console.log(characters);
+            let character = characters[0];
+            setGameState((prev) => ({
+              ...prev,
+              player: {
+                ...prev.player,
+                stats: {
+                  ...prev.player.stats,
+                  "defense": character["defense"],
+                },
+              },
+            }));
+          });
         break;
       case "Calcium":
-        setGameState((prev) => ({
-          ...prev,
-          player:{
-            ...prev.player,
-            stats:{
-              ...prev.player.stats,
-              "special-attack": prev.player.stats["special-attack"] + 10} 
-          }
-        }))
+        updateStat(user, "special-attack", 10)
+          .then(() => getCharacter(user))
+          .then(({ characters }) => {
+            console.log(characters);
+            let character = characters[0];
+            setGameState((prev) => ({
+              ...prev,
+              player: {
+                ...prev.player,
+                stats: {
+                  ...prev.player.stats,
+                  "special-attack": character["special-attack"],
+                },
+              },
+            }));
+          });
         break;
+      
       case "Zinc":
-        setGameState((prev) => ({
-          ...prev,
-          player:{
-            ...prev.player,
-            stats:{
-              ...prev.player.stats,
-              "special-defense": prev.player.stats["special-defense"] + 10} 
-          }
-        }))
+        updateStat(user, "special-defense", 10)
+          .then(() => getCharacter(user))
+          .then(({ characters }) => {
+            console.log(characters);
+            let character = characters[0];
+            setGameState((prev) => ({
+              ...prev,
+              player: {
+                ...prev.player,
+                stats: {
+                  ...prev.player.stats,
+                  "special-defense": character["special-defense"],
+                },
+              },
+            }));
+          });
         break;
+      
       case "Carbos":
-        setGameState((prev) => ({
-          ...prev,
-          player:{
-            ...prev.player,
-            stats:{
-              ...prev.player.stats,
-              "speed": prev.player.stats["speed"] + 10} 
-          }
-        }))
+        updateStat(user, "speed", 10)
+          .then(() => getCharacter(user))
+          .then(({ characters }) => {
+            console.log(characters);
+            let character = characters[0];
+            setGameState((prev) => ({
+              ...prev,
+              player: {
+                ...prev.player,
+                stats: {
+                  ...prev.player.stats,
+                  "speed": character["speed"],
+                },
+              },
+            }));
+          });
         break;
     }
     // Continue to the next room (if hasSelected is true)
+  };
+  const handleButtonClick = async () => {
     if (hasSelected) {
-      updateStats(user, gameState.player.stats).then(() => {
-        props.nextRoom();
-      });
+      await handleContinue();
+      props.nextRoom();
     }
   };
-  
-  useEffect(() => {
-    // Update stats after hasSelected is true
-    if (hasSelected) {
-      updateStats(user, gameState.player.stats);
-    }
-  }, [hasSelected, user, gameState.player.stats]);
-  const roomMoves = gameState.currentRoom.treasure.moves
-  const vitamins = ["HP Up", "Protein", "Iron", "Calcium", "Zinc", "Carbos"]
-  useEffect(() => {
-    const dbMoves = [];
-    if (isLoading) {
-      setIsStoreLoading(true);
-    } else {
-      getMoves(user)
-        .then((movesObject) => {
-          const { moves } = movesObject;
-          moves.forEach((move) => {
-            if (move.collected === false && roomMoves.includes(move.name)) {
-              dbMoves.push(move);
-            }
-          });
-          while (dbMoves.length > 2) {
-            const randomIndex = Math.floor(Math.random() * dbMoves.length);
-            dbMoves.splice(randomIndex, 1);
-          }
-          const formattedMoves = dbMoves.map((move) => properName(move.name));
-          setStoreMoves(formattedMoves);
-          setIsStoreLoading(false);
-        })
-        .catch((error) => {
-          console.error(error);
-          setIsStoreLoading(false);
-        });
-      }
-    }, [user]);
-    while (vitamins.length > 2) {
-      const randomIndex = Math.floor(Math.random() * vitamins.length);
-      vitamins.splice(randomIndex, 1);
-    }
   return (
     <div
       style={{
@@ -287,7 +334,7 @@ export default function Room(props) {
       </div>
       <button
         className={`continue ${hasSelected ? "active" : "inactive"}`}
-        onClick={handleContinue}
+        onClick={handleButtonClick}
       >
         CONTINUE
       </button>
