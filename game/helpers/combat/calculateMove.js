@@ -16,6 +16,7 @@ function calculateMove(move, user, target) {
   }
   let userMoveStat = user.stats[userStat]
   let targetMoveStat = target.stats[targetStat]
+  console.log(user.name, " is using their ", userMoveStat, " to hit ", target.name, "'s ", targetMoveStat)
   let output = {
     damage: 0,
     critical: false,
@@ -32,19 +33,19 @@ function calculateMove(move, user, target) {
   }
   //check user for stat changes and apply them to the stat
   if (user.statChanges[userStat] > 0) {
-    console.log("Multiplier: ", (user.statChanges[userStat] + 2) / 2)
+    console.log(user.name, "'s ", userStat," Multiplier: ", (user.statChanges[userStat] + 2) / 2)
     userMoveStat *= (user.statChanges[userStat] + 2) / 2
   } else if (user.statChanges[userStat] < 0) {
-    console.log("Multiplier: ", 2 / (user.statChanges[userStat] + 2))
-    userMoveStat *= 2 / (user.statChanges[userStat] + 2)
+    console.log(user.name, "'s ", userStat," Multiplier: ", 2 / (Math.abs(user.statChanges[userStat]) + 2))
+    userMoveStat *= 2 / (Math.abs(user.statChanges[userStat]) + 2)
   }
-  //check user for stat changes and apply them to the stat
-  if (user.statChanges[userStat] > 0) {
-    console.log("Multiplier: ", (user.statChanges[userStat] + 2) / 2)
-    userMoveStat *= (user.statChanges[userStat] + 2) / 2
-  } else if (user.statChanges[userStat] < 0) {
-    console.log("Multiplier: ", 2 / (user.statChanges[userStat] + 2))
-    userMoveStat *= 2 / (user.statChanges[userStat] + 2)
+  //check target for stat changes and apply them to the stat
+  if (target.statChanges[targetStat] > 0) {
+    console.log(target.name, "'s ", targetStat," Multiplier: ", (target.statChanges[targetStat] + 2) / 2)
+    targetMoveStat *= (target.statChanges[targetStat] + 2) / 2
+  } else if (target.statChanges[targetStat] < 0) {
+    console.log(target.name, "'s ", targetStat," Multiplier: ", 2 / (Math.abs(target.statChanges[targetStat]) + 2))
+    targetMoveStat *= 2 / (Math.abs(target.statChanges[targetStat]) + 2)
   }
   //check move category and perform appropriate actions
   if (move.category === "damage") {
@@ -52,20 +53,19 @@ function calculateMove(move, user, target) {
   }
   else if (move.category === "damage+lower") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = calcStat(target, move)
+    statChanges = calcStat("target", move)
   } else if (move.category === "damage+raise") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = calcStat(user, move)
+    statChanges = calcStat("self", move)
   } else if (move.category === "damage+heal") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     heal = drainCalc(output.damage, move.drain)
-  } 
-  else if (move.category === "net-good-stats") {
-    let changeStatOf = {}
+  } else if (move.category === "net-good-stats") {
+    let changeStatOf = ""
     if (move.target === 'user') {
-      changeStatOf = user
+      changeStatOf = "self"
     } else if (move.target === 'selected-pokemon') {
-      changeStatOf = target
+      changeStatOf = "target"
     }
     statChanges = calcStat(changeStatOf, move)
   } else if (move.category === "unique") {
