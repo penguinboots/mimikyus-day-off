@@ -34,6 +34,7 @@ export default function Room(props) {
     playAnim,
     dealDamage,
     dealHeal,
+    changeStat,
     battleHistory,
     setBattleHistory,
     gifReloadKeyPlayer,
@@ -162,10 +163,22 @@ export default function Room(props) {
         dealHeal(self, moveEffects.heal);
       }
       if (moveEffects.statChanges) {
-        // apply stat changes
+        if(moveEffects.statChanges.target === "target"){
+          changeStat(target, moveEffects.statChanges)
+        } else if (moveEffects.statChanges.target === "self") {
+          await playStatUp(self)
+          changeStat(self, moveEffects.statChanges)
+        }
       }
     } else if (move.category.includes("stats")) {
       await playStatUp(self);
+      if (moveEffects.statChanges) {
+        if(moveEffects.statChanges.target === "target"){
+          changeStat(target, moveEffects.statChanges)
+        } else if (moveEffects.statChanges.target === "self") {
+          changeStat(self, moveEffects.statChanges)
+        }
+      }
     } else if (move.category === "unique") {
       await playStatUp(self);
     }
@@ -184,6 +197,24 @@ export default function Room(props) {
           ...prev,
           `${turn.user.proper_name} used ${turn.move.proper_name}!\n`,
         ]);
+        if(moveEffects.effectiveness === "immune"){
+          setBattleHistory((prev) => [
+          ...prev,
+          `It had no effect on ${turn.target.proper_name}!\n`,
+        ])} else if(moveEffects.effectiveness === "not-very"){
+          setBattleHistory((prev) => [
+          ...prev,
+          `It's not very effective on ${turn.target.proper_name}\n`,
+        ])} else if(moveEffects.effectiveness === "super"){
+          setBattleHistory((prev) => [
+          ...prev,
+          `It's super effective on ${turn.target.proper_name}\n`,
+        ])}
+        if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
+          setBattleHistory((prev) => [
+          ...prev,
+          `A critical hit!\n`,
+        ])};
         // doMove calculates whether damage dealt will kill the target this turn
         if (turn.user === gameState.player) {
           if (
@@ -211,24 +242,6 @@ export default function Room(props) {
           }
         }
       }
-      if(moveEffects.effectiveness === "immune"){
-        setBattleHistory((prev) => [
-        ...prev,
-        `It had no effect!\n`,
-      ])} else if(moveEffects.effectiveness === "not-very"){
-        setBattleHistory((prev) => [
-        ...prev,
-        `It's not very effective on ${gameState.opponent.proper_name}\n`,
-      ])} else if(moveEffects.effectiveness === "super"){
-        setBattleHistory((prev) => [
-        ...prev,
-        `It's super effective on ${gameState.opponent.proper_name}\n`,
-      ])}
-      if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
-        setBattleHistory((prev) => [
-        ...prev,
-        `A critical hit!\n`,
-      ])};
 
       // if(moveEffects.statChanges !== {}){
       // setBattleHistory((prev) => [
@@ -236,6 +249,8 @@ export default function Room(props) {
       //   `${moveEffects.statChanges.stat.target.proper_name}'s ${moveEffects.statChanges.stat} went up!}\n`,
       // ])};
     }
+    console.log("Player in state:", gameState.player)
+    console.log("Opponent in state:", gameState.opponent)
   }
 
   // Generates array of move objects from array of move name strings
