@@ -1,26 +1,32 @@
 {
   "01_magikarp": {
-    "name": "What Have You Done?",
+    "name": "01_magikarp",
+    "title": "What Have You Done?",
     "collected": false
   },
   "02_store": {
-    "name": "Wait, You Didn't Pay-",
+    "name": "02_store",
+    "title": "Wait, You Didn't Pay-",
     "collected": false
   },
   "03_snorlax1": {
-    "name": "",
+    "name": "03_snorlax1",
+    "title": "You Can't Run!",
     "collected": false
   },
   "04_dugtrio": {
-    "name": "Bad Hair Day",
+    "name": "04_dugtrio",
+    "title": "Bad Hair Day",
     "collected": false
   },
   "05_snorlax2": {
-    "name": "",
+    "name": "05_snorlax2",
+    "title": "You Can't Hide!",
     "collected": false
   },
   "06_snorlax3": {
-    "name": "The True Meaning of Day Off",
+    "name": "06_snorlax3",
+    "title": "The True Meaning of Day Off",
     "collected": false
   }
 }
