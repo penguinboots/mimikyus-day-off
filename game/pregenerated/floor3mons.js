@@ -11,7 +11,6 @@ const munchlax1 = {
     "speed": 5,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
@@ -56,7 +55,6 @@ const munchlax2 = {
     "speed": 5,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
@@ -101,7 +99,6 @@ const munchlax3 = {
     "speed": 5,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
@@ -146,7 +143,6 @@ const snorlax3 = {
     "speed": 100,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,

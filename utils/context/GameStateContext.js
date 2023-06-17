@@ -91,6 +91,7 @@ export function GameStateProvider({ children }) {
         statChanges: player.statChanges
       }
     }));
+    setBattleHistory([]);
     setMenuOpen({
       achievements: false,
       settings: false,
@@ -115,6 +116,7 @@ export function GameStateProvider({ children }) {
           statChanges: player.statChanges
         }
       }));
+      setBattleHistory([]);
       setMenuOpen({
         achievements: false,
         settings: false,
@@ -147,6 +149,7 @@ export function GameStateProvider({ children }) {
         statChanges: player.statChanges
       }
     }));
+    setBattleHistory([]);
     setBattleWon(false);
     setPopup({
       intro: false,
@@ -180,6 +183,23 @@ export function GameStateProvider({ children }) {
     }));
   }
 
+  // Set statChanges
+  const changeStat = (target, obj) => {
+    setGameState((prev) => ({
+      ...prev,
+      [target]: {
+        ...prev[target],
+        statChanges:{
+          "attack": prev[target].statChanges["attack"] += obj["attack"],
+          "defense": prev[target].statChanges["defense"] += obj["defense"],
+          "special-attack": prev[target].statChanges["special-attack"] += obj["special-attack"],
+          "special-defense": prev[target].statChanges["special-defense"] += obj["special-defense"],
+          "speed": prev[target].statChanges["speed"] += obj["speed"],
+        }
+      },
+    }));
+  }
+
   // Set state for sprite, given the character and action (idle, attack, hit)
   const playAnim = (char, anim) => {
     setSprites((prev) => ({
@@ -204,6 +224,7 @@ export function GameStateProvider({ children }) {
     nextRoom,
     dealDamage,
     dealHeal,
+    changeStat,
     battleHistory,
     setBattleHistory,
     gifReloadKeyPlayer,
