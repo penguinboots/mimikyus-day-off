@@ -9,6 +9,7 @@ import { getItems } from "@/prisma/helpers/getItems";
 import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
 import { updateStat } from "@/prisma/helpers/updateStat";
+import { getCharacter } from "@/prisma/helpers/getCharacter";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room() {
@@ -134,15 +135,40 @@ export default function Room() {
           break;
         case "pokemart":
           let statToRaise = getVitaminStat(choice);
-          setGameState((prev) => ({
-            ...prev,
-            player: {
-              ...prev.player,
-              [statToRaise]: prev.player[statToRaise] + 10,
-            },
-          }));
+          // setGameState((prev) => ({
+          //   ...prev,
+          //   player: {
+          //     ...prev.player,
+          //     [statToRaise]: prev.player[statToRaise] + 10,
+          //   },
+          // }));
+          // updateStat(user, statToRaise, 10)
+          //   .then(() => resolve())
+          //   .catch((error) => reject(error));
           updateStat(user, statToRaise, 10)
-            .then(() => resolve())
+            .then(() => {
+              return getCharacter(user);
+            })
+            .then(({ characters }) => {
+              console.log(characters);
+              let character = characters[0];
+              setGameState((prev) => ({
+                ...prev,
+                player: {
+                  ...prev.player,
+                  current_hp: character.hp,
+                  stats: {
+                    hp: character.hp,
+                    attack: character.attack,
+                    defense: character.defense,
+                    "special-attack": character.sp_atk,
+                    "special-defense": character.sp_def,
+                    speed: character.speed,
+                  },
+                },
+              }));
+              resolve();
+            })
             .catch((error) => reject(error));
           break;
         default:

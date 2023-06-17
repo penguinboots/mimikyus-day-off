@@ -87,7 +87,7 @@ export function GameStateProvider({ children }) {
       opponent: nextFloor.room_1.opponent,
       player: {
         ...prev.player,
-        current_hp: player.current_hp,
+        current_hp: gameState.player.stats.hp,
         statChanges: player.statChanges
       }
     }));
@@ -112,7 +112,6 @@ export function GameStateProvider({ children }) {
         player: {
           ...prev.player,
           current_hp: gameState.player.stats.hp,
-          stats: gameState.player.stats,
           statChanges: player.statChanges
         }
       }));
