@@ -27,6 +27,7 @@ export default function Room() {
   // Available moves in store
   const [storeMoves, setStoreMoves] = useState([]);
   const [isStoreLoading, setIsStoreLoading] = useState(true);
+  const [loadingNext, setLoadingNext] = useState(false);
   // Vitamins available in store
   const [vitamins, setVitamins] = useState([
     "HP Up",
@@ -152,6 +153,7 @@ export default function Room() {
 
   // Only calls nextRoom when executeChoice is complete
   const handleContinue = async () => {
+    setLoadingNext(true);
     try {
       await executeChoice(chosenOption.store, chosenOption.item);
       nextRoom();
@@ -213,12 +215,25 @@ export default function Room() {
           />
         </div>
       </div>
-      <button
-        className={`continue ${hasSelected ? "active" : "inactive"}`}
-        onClick={handleContinue}
-      >
-        CONTINUE
-      </button>
+      <div className="store-controls">
+        {!loadingNext ? (
+          <button
+            className={`continue ${hasSelected ? "active" : "inactive"}`}
+            onClick={handleContinue}
+          >
+            CONTINUE
+          </button>
+        ) : (
+          <h4
+            style={{
+              fontFamily: vt.style.fontFamily,
+            }}
+            className="loading-msg"
+          >
+            LOADING...
+          </h4>
+        )}
+      </div>
     </div>
   );
 }

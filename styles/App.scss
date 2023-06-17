@@ -737,13 +737,13 @@ body {
       }
     }
   }
+
   .treasure-room {
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
     h2 {
-      // font-family: $title-font;
       font-size: 48px;
       text-align: center;
     }
@@ -814,6 +814,15 @@ body {
     button.continue.active {
       background-color: $pdex-green;
       cursor: pointer;
+    }
+    .store-controls {
+      .loading-msg {
+        text-align: center;
+        width: 200px;
+        height: 56px;
+        margin-top: 16px;
+        font-size: 32px;
+      }
     }
   }
 }
