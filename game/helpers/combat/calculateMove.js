@@ -1,3 +1,4 @@
+const { accuracyCheck } = require('./accuracyCheck.js')
 const { calcStat } = require('./calcStat.js')
 const { damageCalc } = require('./damageCalc.js')
 const { drainCalc } = require('./drainCalc.js')
@@ -29,8 +30,14 @@ function calculateMove(move, user, target) {
     heal: null, 
     statChanges: null,
     critical: false,
-    effectiveness: "neutral"
+    effectiveness: "neutral",
+    miss: false,
   }
+  //check move accuracy to see if it hits
+  if (!accuracyCheck(move.accuracy)){
+    results.miss = true;
+    return results
+  } 
   //check user for stat changes and apply them to the stat
   if (user.statChanges[userStat] > 0) {
     console.log(user.name, "'s ", userStat," Multiplier: ", (user.statChanges[userStat] + 2) / 2)
@@ -50,17 +57,30 @@ function calculateMove(move, user, target) {
   //check move category and perform appropriate actions
   if (move.category === "damage") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+    //recoil
+    if (move.drain < 0){
+      heal = 0 - drainCalc(output.damage, move.drain)
+    }
   }
   else if (move.category === "damage+lower") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = calcStat("target", move)
+    if (accuracyCheck(move.stat_chance)){
+      statChanges = calcStat("target", move)
+    }
   } else if (move.category === "damage+raise") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = calcStat("self", move)
+    if (accuracyCheck(move.stat_chance)){
+      statChanges = calcStat("self", move)
+    }
   } else if (move.category === "damage+heal") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     heal = drainCalc(output.damage, move.drain)
-  } else if (move.category === "net-good-stats") {
+  } else if (move.category === "damage+ailment") {
+    output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+    // if (accuracyCheck(move.ailment_chance)){
+    //   Ailments don't exist yet ;)
+    // }
+  }  else if (move.category === "net-good-stats") {
     let changeStatOf = ""
     if (move.target === 'user') {
       changeStatOf = "self"
@@ -70,8 +90,10 @@ function calculateMove(move, user, target) {
     statChanges = calcStat(changeStatOf, move)
   } else if (move.category === "unique") {
     if (move.name === "splash") {
-       results.damage = 0
+       results.damage = null;
     }
+  } else if (move.category === "healing"){
+    heal = drainCalc(user.stats.hp, move.healing)
   }
   if (output.damage !== 0) {
     results.damage = output.damage
@@ -84,7 +106,6 @@ function calculateMove(move, user, target) {
   }
   results.critical = output.critical;
   results.effectiveness = output.effectiveness;
-  console.log(results)
   return results
 }
 

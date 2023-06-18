@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     })
     // find user
     try {
-      // update moves per array from paramater
+      // update stats from paramaters
       let db_stat;
       if (stat === "special-attack") {
         db_stat = "sp_atk";
