@@ -176,6 +176,15 @@ body {
     font-weight: 400;
   }
 }
+
+@keyframes fade-in-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 // button {
 //   width: 200px;
 //   height: 48px;
@@ -1059,6 +1068,8 @@ body {
   background-color: $pdex-light-gray;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  animation: fade-in-animation 0.2s ease-in forwards;
 
   .comic-container {
     width: 700px;
@@ -1088,46 +1099,4 @@ body {
   .turnPage.next {
     background-color: $pdex-red;
   }
-}
-
-.arrow {
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: white;
-  font-size: 50px;
-}
-
-.arrow.left {
-  left: -90px;
-}
-
-.arrow.right {
-  right: -90px;
-}
-
-.arrow.disabled {
-  color: $gray-shad;
-  cursor: not-allowed;
-}
-
-.continue-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 40px;
-  border-radius: 36px;
-  color: $dark-gray;
-  border: 4px solid $pdex-shadow-border;
-  outline: 4px solid $pdex-black-highlight;
-  background: white;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 20px auto 0;
 }
