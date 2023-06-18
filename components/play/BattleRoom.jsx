@@ -10,7 +10,7 @@ import { padMoves } from "@/utils/helpers/padMoves";
 import HealthBar from "./HealthBar";
 import MoveItem from "../common/MoveItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
@@ -57,13 +57,32 @@ export default function Room(props) {
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
 
-  // Briefly shows VS splash on entering Play or new room
+  // state for popup, current image
+  const [showStory, setShowStory] = useState(false);
+  const pages = [
+    "/../public/story/intro_comic1.png",
+    "/../public/story/intro_comic2.png",
+  ];
+
+  // Story for Floor 1, Room 1
   useEffect(() => {
-    flashSplash();
+    if (gameState.currentRoom === dungeon.floor_1.room_1) {
+      setShowStory(true);
+    }
     return () => {
-      setSplash(false);
+      setShowStory(false);
     };
   }, [gameState.currentRoom]);
+
+  // Briefly shows VS splash on entering Play or new room, once any stories have been closed
+  useEffect(() => {
+    if (!showStory) {
+      flashSplash();
+      return () => {
+        setSplash(false);
+      };
+    }
+  }, [gameState.currentRoom, showStory]);
 
   // Resets gif animations to beginning after changes
   useEffect(() => {
@@ -213,24 +232,25 @@ export default function Room(props) {
           }
         }
       }
-      if(moveEffects.effectiveness === "immune"){
+      if (moveEffects.effectiveness === "immune") {
+        setBattleHistory((prev) => [...prev, `It had no effect!\n`]);
+      } else if (moveEffects.effectiveness === "not-very") {
         setBattleHistory((prev) => [
-        ...prev,
-        `It had no effect!\n`,
-      ])} else if(moveEffects.effectiveness === "not-very"){
+          ...prev,
+          `It's not very effective on ${gameState.opponent.proper_name}\n`,
+        ]);
+      } else if (moveEffects.effectiveness === "super") {
         setBattleHistory((prev) => [
-        ...prev,
-        `It's not very effective on ${gameState.opponent.proper_name}\n`,
-      ])} else if(moveEffects.effectiveness === "super"){
-        setBattleHistory((prev) => [
-        ...prev,
-        `It's super effective on ${gameState.opponent.proper_name}\n`,
-      ])}
-      if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
-        setBattleHistory((prev) => [
-        ...prev,
-        `A critical hit!\n`,
-      ])};
+          ...prev,
+          `It's super effective on ${gameState.opponent.proper_name}\n`,
+        ]);
+      }
+      if (
+        moveEffects.critical === true &&
+        moveEffects.effectiveness !== "immune"
+      ) {
+        setBattleHistory((prev) => [...prev, `A critical hit!\n`]);
+      }
 
       // if(moveEffects.statChanges !== {}){
       // setBattleHistory((prev) => [
@@ -269,27 +289,12 @@ export default function Room(props) {
     "button"
   );
 
-  // state for popup, current image
-  const [showPopup, setShowPopup] = useState(false);
-  const images = ['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oxford_blue.png/220px-Oxford_blue.png', 'https://htmlcolorcodes.com/assets/images/colors/orange-color-solid-background-1920x1080.png'];
-
-  // show comics popup on room_1 of floor_1
-  useEffect(() => {
-    flashSplash();
-    if (gameState.currentRoom === dungeon.floor_1.room_1) {
-      setShowPopup(true);
-    }
-    return () => {
-      setSplash(false);
-      setShowPopup(false); // Hide the popup when leaving room_1
-    };
-  }, [gameState.currentRoom]);
-
   return (
-    <div className={`battle-room ${showPopup ? "comics" : ""}`} style={{ backgroundImage: BACKGROUND, backgroundColor: BACKGROUND_COL }}>
-      {showPopup && (
-        <ComicPopup images={images} setShowPopup={setShowPopup} />
-      )}
+    <div
+      className="battle-room"
+      style={{ backgroundImage: BACKGROUND, backgroundColor: BACKGROUND_COL }}
+    >
+      {showStory && <ComicPopup pages={pages} setShowStory={setShowStory} />}
       <div className="splash-wrapper">
         <Image
           className={`splash ${splash ? "show" : "hide"}`}
@@ -343,7 +348,7 @@ export default function Room(props) {
         </div>
       </div>
       <div className="battle-history-menu">
-        <BattleHistory />          
+        <BattleHistory />
       </div>
       <div className="move-select">
         {playerMoves}
