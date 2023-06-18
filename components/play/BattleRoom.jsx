@@ -10,7 +10,7 @@ import { padMoves } from "@/utils/helpers/padMoves";
 import HealthBar from "./HealthBar";
 import MoveItem from "../common/MoveItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
@@ -150,11 +150,29 @@ export default function Room(props) {
     });
   }
 
+  async function playStatDown(self) {
+    let key = `${self}Nerf`;
+    setSprites((prev) => ({
+      ...prev,
+      [key]: true,
+    }));
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setSprites((prev) => ({
+          ...prev,
+          [key]: false,
+        }));
+        resolve();
+      }, 1500);
+    });
+  }
+
   // Executes the move, applying hp/stat changes
   async function doMove(move, moveEffects, target, self) {
     if (move.category.includes("damage")) {
       let resultHP = null;
-      await playAttack(self, target);
+      const playAttackPromise = playAttack(self, target);
+    
       // Instead of checking current_hp (cannot get newest state), check math of damage dealt against old current_hp state
       if (moveEffects.damage) {
         resultHP = dealDamage(target, moveEffects.damage);
@@ -165,20 +183,25 @@ export default function Room(props) {
       if (moveEffects.heal) {
         dealHeal(self, moveEffects.heal);
       }
+      const statPromises = [];
       if (moveEffects.statChanges) {
-        if(moveEffects.statChanges.target === "target"){
-          changeStat(target, moveEffects.statChanges)
+        if (moveEffects.statChanges.target === "target") {
+          statPromises.push(playStatDown(target));
+          changeStat(target, moveEffects.statChanges);
         } else if (moveEffects.statChanges.target === "self") {
-          await playStatUp(self)
-          changeStat(self, moveEffects.statChanges)
+          statPromises.push(playStatUp(self));
+          changeStat(self, moveEffects.statChanges);
         }
       }
+      // Execute playAttack and statPromises concurrently
+      await Promise.all([playAttackPromise, ...statPromises]);
     } else if (move.category.includes("stats")) {
-      await playStatUp(self);
       if (moveEffects.statChanges) {
         if(moveEffects.statChanges.target === "target"){
+          await playStatDown(target);
           changeStat(target, moveEffects.statChanges)
         } else if (moveEffects.statChanges.target === "self") {
+          await playStatUp(self);
           changeStat(self, moveEffects.statChanges)
         }
       }
@@ -339,6 +362,9 @@ export default function Room(props) {
           <div className="effects">
             {sprites.playerBuff && <FontAwesomeIcon icon={faArrowUp} />}
           </div>
+          <div className="effects">
+            {sprites.playerNerf && <FontAwesomeIcon icon={faArrowDown} />}
+          </div>
         </div>
         <div
           className={`pokemon opponent ${showOpponent ? "show" : ""}`}
@@ -355,6 +381,9 @@ export default function Room(props) {
           />
           <div className="effects">
             {sprites.opponentBuff && <FontAwesomeIcon icon={faArrowUp} />}
+          </div>
+          <div className="effects">
+            {sprites.opponentNerf && <FontAwesomeIcon icon={faArrowDown} />}
           </div>
         </div>
       </div>
