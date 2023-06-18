@@ -5,16 +5,21 @@ import {
   calculateMove,
   opponentMoveSelect,
   moveFetcher,
+  itemFetcher,
 } from "../../game/helpers/combat";
 import { padMoves } from "@/utils/helpers/padMoves";
 import HealthBar from "./HealthBar";
 import MoveItem from "../common/MoveItem";
+import InventoryWindow from "./InventoryWindow";
+import InventoryButton from "./InventoryButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
 import { properName } from "@/utils/helpers/properName";
+import { earnItem } from "@/prisma/helpers/earnItem";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Room(props) {
   const { setMode } = props;
@@ -50,8 +55,11 @@ export default function Room(props) {
     splash,
     setSplash,
     flashSplash,
+    windowClose,
+    windowToggle,
+    isMenuOpen,
   } = useGameState();
-
+  const { user } = useUser();
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
   const PLAYER = gameState.player.sprites[sprites.player].url; // idle, attack, hit
@@ -202,7 +210,10 @@ export default function Room(props) {
         }
       }
     } else if (move.category === "unique") {
+      await playAttack(self, self)
+    } else if (move.category === "healing"){
       await playStatUp(self);
+      dealHeal(self, moveEffects.heal)
     }
     return false;
   }
@@ -244,6 +255,11 @@ export default function Room(props) {
           setBattleHistory((prev) => [
           ...prev,
           `It's super effective on ${turn.target.proper_name}\n`,
+        ])}
+        if(moveEffects.heal > 0){
+          setBattleHistory((prev) => [
+            ...prev,
+            `${turn.user.proper_name} recovered some HP!\n`,
         ])}
         if(moveEffects.heal < 0){
           setBattleHistory((prev) => [
@@ -334,6 +350,33 @@ export default function Room(props) {
     "button"
   );
 
+  const items = gameState.itemList.map((item) => (
+    <button
+    key={item.name}
+    onClick={() => {
+      if (buttonsDisabled) return;
+      if (item.quantity < 1) return;
+      const itemObj = itemFetcher(item.name)
+      executeTurn(
+        itemObj,
+        gameState.player,
+        opponentMoveSelect(gameState.opponent),
+        gameState.opponent,
+        )
+      //decrement item in db and state
+      earnItem(user, item.name, -1)
+      item.quantity --
+      windowClose("inventory")
+      }}
+      disabled={buttonsDisabled}
+      className={buttonsDisabled || item.quantity < 1 ? "disabled-button" : ""}
+    >
+      <div className="item">
+        <span className="item-name">{item.name}</span>
+        <span className="item-quantity">{item.quantity}</span>
+      </div>
+    </button>
+  ));
   return (
     <div
       className="battle-room"
@@ -403,6 +446,12 @@ export default function Room(props) {
       <div className="battle-history-menu">
         <BattleHistory />          
       </div>
+        <InventoryWindow
+          handleClick={() => windowClose("inventory")}
+          isMenuOpen={isMenuOpen}
+          items={items}
+        />
+        <InventoryButton handleClick={() => windowToggle("inventory")} />
       <div className="move-select">
         {playerMoves}
         <button onClick={nextRoom}>NEXT</button>
