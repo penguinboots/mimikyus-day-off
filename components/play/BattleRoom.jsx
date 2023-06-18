@@ -221,10 +221,18 @@ export default function Room(props) {
           `${turn.user.proper_name} used ${turn.move.proper_name}!\n`,
         ]);
         if(moveEffects.miss === true){
-          setBattleHistory((prev) => [
-          ...prev,
-          `${turn.target.proper_name} avoided the attack!\n`,
-        ])} else if(moveEffects.effectiveness === "immune"){
+          if(turn.move.target === "user"){
+            setBattleHistory((prev) => [
+              ...prev,
+              `But it failed!\n`,
+            ])
+          } else {
+            setBattleHistory((prev) => [
+              ...prev,
+              `${turn.target.proper_name} avoided the attack!\n`,
+            ])
+          }
+        } else if(moveEffects.effectiveness === "immune"){
           setBattleHistory((prev) => [
           ...prev,
           `It had no effect on ${turn.target.proper_name}!\n`,
@@ -236,6 +244,11 @@ export default function Room(props) {
           setBattleHistory((prev) => [
           ...prev,
           `It's super effective on ${turn.target.proper_name}\n`,
+        ])}
+        if(moveEffects.heal < 0){
+          setBattleHistory((prev) => [
+            ...prev,
+            `${turn.user.proper_name} is damaged by recoil!\n`,
         ])}
         if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
           setBattleHistory((prev) => [
