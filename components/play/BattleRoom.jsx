@@ -10,7 +10,7 @@ import { padMoves } from "@/utils/helpers/padMoves";
 import HealthBar from "./HealthBar";
 import MoveItem from "../common/MoveItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
@@ -150,6 +150,23 @@ export default function Room(props) {
     });
   }
 
+  async function playStatDown(self) {
+    let key = `${self}Nerf`;
+    setSprites((prev) => ({
+      ...prev,
+      [key]: true,
+    }));
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        setSprites((prev) => ({
+          ...prev,
+          [key]: false,
+        }));
+        resolve();
+      }, 1500);
+    });
+  }
+
   // Executes the move, applying hp/stat changes
   async function doMove(move, moveEffects, target, self) {
     if (move.category.includes("damage")) {
@@ -167,6 +184,7 @@ export default function Room(props) {
       }
       if (moveEffects.statChanges) {
         if(moveEffects.statChanges.target === "target"){
+          await playStatDown(target)
           changeStat(target, moveEffects.statChanges)
         } else if (moveEffects.statChanges.target === "self") {
           await playStatUp(self)
@@ -174,11 +192,12 @@ export default function Room(props) {
         }
       }
     } else if (move.category.includes("stats")) {
-      await playStatUp(self);
       if (moveEffects.statChanges) {
         if(moveEffects.statChanges.target === "target"){
+          await playStatDown(target);
           changeStat(target, moveEffects.statChanges)
         } else if (moveEffects.statChanges.target === "self") {
+          await playStatUp(self);
           changeStat(self, moveEffects.statChanges)
         }
       }
@@ -201,7 +220,19 @@ export default function Room(props) {
           ...prev,
           `${turn.user.proper_name} used ${turn.move.proper_name}!\n`,
         ]);
-        if(moveEffects.effectiveness === "immune"){
+        if(moveEffects.miss === true){
+          if(turn.move.target === "user"){
+            setBattleHistory((prev) => [
+              ...prev,
+              `But it failed!\n`,
+            ])
+          } else {
+            setBattleHistory((prev) => [
+              ...prev,
+              `${turn.target.proper_name} avoided the attack!\n`,
+            ])
+          }
+        } else if(moveEffects.effectiveness === "immune"){
           setBattleHistory((prev) => [
           ...prev,
           `It had no effect on ${turn.target.proper_name}!\n`,
@@ -213,6 +244,11 @@ export default function Room(props) {
           setBattleHistory((prev) => [
           ...prev,
           `It's super effective on ${turn.target.proper_name}\n`,
+        ])}
+        if(moveEffects.heal < 0){
+          setBattleHistory((prev) => [
+            ...prev,
+            `${turn.user.proper_name} is damaged by recoil!\n`,
         ])}
         if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
           setBattleHistory((prev) => [
@@ -339,6 +375,9 @@ export default function Room(props) {
           <div className="effects">
             {sprites.playerBuff && <FontAwesomeIcon icon={faArrowUp} />}
           </div>
+          <div className="effects">
+            {sprites.playerNerf && <FontAwesomeIcon icon={faArrowDown} />}
+          </div>
         </div>
         <div
           className={`pokemon opponent ${showOpponent ? "show" : ""}`}
@@ -355,6 +394,9 @@ export default function Room(props) {
           />
           <div className="effects">
             {sprites.opponentBuff && <FontAwesomeIcon icon={faArrowUp} />}
+          </div>
+          <div className="effects">
+            {sprites.opponentNerf && <FontAwesomeIcon icon={faArrowDown} />}
           </div>
         </div>
       </div>

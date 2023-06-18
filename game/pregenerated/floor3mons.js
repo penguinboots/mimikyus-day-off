@@ -151,7 +151,7 @@ const snorlax3 = {
   },
   "moves": [
     "gunk-shot",
-    "iron-head",
+    "wild-charge",
     "shadow-ball",
     "swords-dance",
   ],
