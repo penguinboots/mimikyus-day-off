@@ -23,6 +23,11 @@ import { properName } from "@/utils/helpers/properName";
 import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
+// Import comics
+import intro1 from "@/public/story/intro_comic1.png";
+import intro2 from "@/public/story/intro_comic2.png";
+
+
 export default function Room(props) {
   const { setMode } = props;
   const {
@@ -72,8 +77,8 @@ export default function Room(props) {
   // state for popup, current image
   const [showStory, setShowStory] = useState(false);
   const pages = [
-    "/../public/story/intro_comic1.png",
-    "/../public/story/intro_comic2.png",
+    intro1,
+    intro2,
   ];
 
   // Story for Floor 1, Room 1
