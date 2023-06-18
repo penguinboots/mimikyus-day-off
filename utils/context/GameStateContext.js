@@ -174,14 +174,17 @@ export function GameStateProvider({ children }) {
 
   // Sets current_hp in state for target to new value
   const dealHeal = (target, amt) => {
-    setGameState((prev) => ({
-      ...prev,
-      [target]: {
-        ...prev[target],
-        current_hp: Math.floor(prev[target]["current_hp"] + amt),
-      },
-    }));
-  }
+    setGameState((prev) => {
+      const maxHP = prev[target]["stats"]["hp"];
+      return {
+        ...prev,
+        [target]: {
+          ...prev[target],
+          current_hp: Math.min(Math.floor(prev[target]["current_hp"] + amt), maxHP)
+        },
+      };
+    });
+  };
 
   // Set statChanges
   const changeStat = (target, obj) => {
