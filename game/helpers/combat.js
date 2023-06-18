@@ -5,6 +5,7 @@ const {drainCalc} = require('../helpers/combat/drainCalc')
 const {calcStat} = require('../helpers/combat/calcStat')
 const {opponentMoveSelect} = require('../helpers/combat/opponentMoveSelect')
 const {moveFetcher} = require('../helpers/combat/moveFetcher')
+const { itemFetcher } = require('./combat/itemFetcher')
 module.exports = {
   moveOrder,
   calculateMove,
@@ -13,4 +14,5 @@ module.exports = {
   calcStat,
   opponentMoveSelect,
   moveFetcher,
+  itemFetcher,
 }
