@@ -1,6 +1,5 @@
 function calcStat(target, move) {
   let statChanges = {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,

@@ -91,6 +91,7 @@ export function GameStateProvider({ children }) {
         statChanges: player.statChanges
       }
     }));
+    setBattleHistory([]);
     setMenuOpen({
       achievements: false,
       settings: false,
@@ -115,6 +116,7 @@ export function GameStateProvider({ children }) {
           statChanges: player.statChanges
         }
       }));
+      setBattleHistory([]);
       setMenuOpen({
         achievements: false,
         settings: false,
@@ -147,6 +149,7 @@ export function GameStateProvider({ children }) {
         statChanges: player.statChanges
       }
     }));
+    setBattleHistory([]);
     setBattleWon(false);
     setPopup({
       intro: false,
@@ -171,11 +174,31 @@ export function GameStateProvider({ children }) {
 
   // Sets current_hp in state for target to new value
   const dealHeal = (target, amt) => {
+    setGameState((prev) => {
+      const maxHP = prev[target]["stats"]["hp"];
+      return {
+        ...prev,
+        [target]: {
+          ...prev[target],
+          current_hp: Math.min(Math.floor(prev[target]["current_hp"] + amt), maxHP)
+        },
+      };
+    });
+  };
+
+  // Set statChanges
+  const changeStat = (target, obj) => {
     setGameState((prev) => ({
       ...prev,
       [target]: {
         ...prev[target],
-        current_hp: Math.floor(prev[target]["current_hp"] + amt),
+        statChanges: {
+          "attack": Math.max(Math.min(prev[target].statChanges["attack"] + obj["attack"], 6), -6),
+          "defense": Math.max(Math.min(prev[target].statChanges["defense"] + obj["defense"], 6), -6),
+          "special-attack": Math.max(Math.min(prev[target].statChanges["special-attack"] + obj["special-attack"], 6), -6),
+          "special-defense": Math.max(Math.min(prev[target].statChanges["special-defense"] + obj["special-defense"], 6), -6),
+          "speed": Math.max(Math.min(prev[target].statChanges["speed"] + obj["speed"], 6), -6),
+        }
       },
     }));
   }
@@ -204,6 +227,7 @@ export function GameStateProvider({ children }) {
     nextRoom,
     dealDamage,
     dealHeal,
+    changeStat,
     battleHistory,
     setBattleHistory,
     gifReloadKeyPlayer,
