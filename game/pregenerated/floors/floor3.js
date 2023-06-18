@@ -13,6 +13,7 @@ const floor_3 = {
     color: "#dda2a7",
     music: "08_munchlax1.mp3",
     intro: `/splashes/vs_munchlax1.png`,
+    achievement: null,
     next_room: "room_2",
   },
   room_2: {
@@ -27,6 +28,7 @@ const floor_3 = {
     color: "#dda2a7",
     music: "09_munchlax2.mp3",
     intro: `/splashes/00_splash.png`,
+    achievement: null,
     next_room: "room_3",
   },
   room_3: {
@@ -41,6 +43,7 @@ const floor_3 = {
     color: "#dda2a7",
     music: "10_munchlax3.mp3",
     intro: `/splashes/00_splash.png`,
+    achievement: null,
     next_room: "room_4",
   },
   room_4: {
@@ -62,6 +65,7 @@ const floor_3 = {
     color: "#907969",
     music: "11_ecruteak.mp3",
     intro: "",
+    achievement: null,
     next_room: "room_5",
   },
   room_5: {
@@ -76,6 +80,7 @@ const floor_3 = {
     color: "#dda2a7",
     music: "12_snorlax3.mp3",
     intro: `/splashes/00_splash.png`,
+    achievement: null,
     next_room: null,
   },
   next_floor: null,

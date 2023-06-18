@@ -11,7 +11,6 @@ const magikarp = {
     "speed": 80
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
@@ -56,7 +55,6 @@ const snorlax1 = {
     "speed": 30,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
