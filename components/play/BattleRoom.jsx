@@ -171,8 +171,7 @@ export default function Room(props) {
   async function doMove(move, moveEffects, target, self) {
     if (move.category.includes("damage")) {
       let resultHP = null;
-      const playAttackPromise = playAttack(self, target);
-    
+      await playAttack(self, target);
       // Instead of checking current_hp (cannot get newest state), check math of damage dealt against old current_hp state
       if (moveEffects.damage) {
         resultHP = dealDamage(target, moveEffects.damage);
@@ -183,18 +182,15 @@ export default function Room(props) {
       if (moveEffects.heal) {
         dealHeal(self, moveEffects.heal);
       }
-      const statPromises = [];
       if (moveEffects.statChanges) {
-        if (moveEffects.statChanges.target === "target") {
-          statPromises.push(playStatDown(target));
-          changeStat(target, moveEffects.statChanges);
+        if(moveEffects.statChanges.target === "target"){
+          await playStatDown(target)
+          changeStat(target, moveEffects.statChanges)
         } else if (moveEffects.statChanges.target === "self") {
-          statPromises.push(playStatUp(self));
-          changeStat(self, moveEffects.statChanges);
+          await playStatUp(self)
+          changeStat(self, moveEffects.statChanges)
         }
       }
-      // Execute playAttack and statPromises concurrently
-      await Promise.all([playAttackPromise, ...statPromises]);
     } else if (move.category.includes("stats")) {
       if (moveEffects.statChanges) {
         if(moveEffects.statChanges.target === "target"){
