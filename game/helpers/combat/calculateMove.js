@@ -57,13 +57,21 @@ function calculateMove(move, user, target) {
   //check move category and perform appropriate actions
   if (move.category === "damage") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+    //recoil
+    if (move.drain < 0){
+      heal = 0 - drainCalc(output.damage, move.drain)
+    }
   }
   else if (move.category === "damage+lower") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = calcStat("target", move)
+    if (accuracyCheck(move.stat_chance)){
+      statChanges = calcStat("target", move)
+    }
   } else if (move.category === "damage+raise") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
-    statChanges = calcStat("self", move)
+    if (accuracyCheck(move.stat_chance)){
+      statChanges = calcStat("self", move)
+    }
   } else if (move.category === "damage+heal") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     heal = drainCalc(output.damage, move.drain)
