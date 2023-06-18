@@ -1008,6 +1008,11 @@ body {
     margin: 10px;
     background-color: red;
   }
+  
+  .disabled-button {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 
 .inv-up {

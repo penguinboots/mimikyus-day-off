@@ -50,12 +50,12 @@ model Item {
 model Character {
   id      Int     @id @default(autoincrement())
   userId  Int
-  hp      Int
-  attack  Int
-  defense Int
-  sp_atk  Int
-  sp_def  Int
-  speed   Int
+  hp      Int     @max(255)
+  attack  Int     @max(255)
+  defense Int     @max(255)
+  sp_atk  Int     @max(255)
+  sp_def  Int     @max(255)
+  speed   Int     @max(255)
   move_1  String
   move_2  String?
   move_3  String?

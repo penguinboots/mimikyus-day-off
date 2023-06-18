@@ -174,14 +174,17 @@ export function GameStateProvider({ children }) {
 
   // Sets current_hp in state for target to new value
   const dealHeal = (target, amt) => {
-    setGameState((prev) => ({
-      ...prev,
-      [target]: {
-        ...prev[target],
-        current_hp: Math.floor(prev[target]["current_hp"] + amt),
-      },
-    }));
-  }
+    setGameState((prev) => {
+      const maxHP = prev[target]["stats"]["hp"];
+      return {
+        ...prev,
+        [target]: {
+          ...prev[target],
+          current_hp: Math.min(Math.floor(prev[target]["current_hp"] + amt), maxHP)
+        },
+      };
+    });
+  };
 
   // Set statChanges
   const changeStat = (target, obj) => {
@@ -189,12 +192,12 @@ export function GameStateProvider({ children }) {
       ...prev,
       [target]: {
         ...prev[target],
-        statChanges:{
-          "attack": prev[target].statChanges["attack"] += obj["attack"],
-          "defense": prev[target].statChanges["defense"] += obj["defense"],
-          "special-attack": prev[target].statChanges["special-attack"] += obj["special-attack"],
-          "special-defense": prev[target].statChanges["special-defense"] += obj["special-defense"],
-          "speed": prev[target].statChanges["speed"] += obj["speed"],
+        statChanges: {
+          "attack": Math.max(Math.min(prev[target].statChanges["attack"] + obj["attack"], 6), -6),
+          "defense": Math.max(Math.min(prev[target].statChanges["defense"] + obj["defense"], 6), -6),
+          "special-attack": Math.max(Math.min(prev[target].statChanges["special-attack"] + obj["special-attack"], 6), -6),
+          "special-defense": Math.max(Math.min(prev[target].statChanges["special-defense"] + obj["special-defense"], 6), -6),
+          "speed": Math.max(Math.min(prev[target].statChanges["speed"] + obj["speed"], 6), -6),
         }
       },
     }));
