@@ -92,6 +92,8 @@ function calculateMove(move, user, target) {
     if (move.name === "splash") {
        results.damage = null;
     }
+  } else if (move.category === "healing"){
+    heal = drainCalc(user.stats.hp, move.healing)
   }
   if (output.damage !== 0) {
     results.damage = output.damage
@@ -104,7 +106,6 @@ function calculateMove(move, user, target) {
   }
   results.critical = output.critical;
   results.effectiveness = output.effectiveness;
-  console.log(results)
   return results
 }
 
