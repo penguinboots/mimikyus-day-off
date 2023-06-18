@@ -220,7 +220,11 @@ export default function Room(props) {
           ...prev,
           `${turn.user.proper_name} used ${turn.move.proper_name}!\n`,
         ]);
-        if(moveEffects.effectiveness === "immune"){
+        if(moveEffects.miss === true){
+          setBattleHistory((prev) => [
+          ...prev,
+          `${turn.target.proper_name} avoided the attack!\n`,
+        ])} else if(moveEffects.effectiveness === "immune"){
           setBattleHistory((prev) => [
           ...prev,
           `It had no effect on ${turn.target.proper_name}!\n`,

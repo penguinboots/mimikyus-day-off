@@ -1,3 +1,4 @@
+const { accuracyCheck } = require('./accuracyCheck.js')
 const { calcStat } = require('./calcStat.js')
 const { damageCalc } = require('./damageCalc.js')
 const { drainCalc } = require('./drainCalc.js')
@@ -29,8 +30,14 @@ function calculateMove(move, user, target) {
     heal: null, 
     statChanges: null,
     critical: false,
-    effectiveness: "neutral"
+    effectiveness: "neutral",
+    miss: false,
   }
+  //check move accuracy to see if it hits
+  if (!accuracyCheck(move.accuracy)){
+    results.miss = true;
+    return results
+  } 
   //check user for stat changes and apply them to the stat
   if (user.statChanges[userStat] > 0) {
     console.log(user.name, "'s ", userStat," Multiplier: ", (user.statChanges[userStat] + 2) / 2)
@@ -70,7 +77,7 @@ function calculateMove(move, user, target) {
     statChanges = calcStat(changeStatOf, move)
   } else if (move.category === "unique") {
     if (move.name === "splash") {
-       results.damage = 0
+       results.damage = null;
     }
   }
   if (output.damage !== 0) {
