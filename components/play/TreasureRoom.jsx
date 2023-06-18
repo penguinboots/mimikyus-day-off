@@ -58,7 +58,9 @@ export default function Room() {
     const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
     setVitamins(selectedVitamins);
   }
-  const roomItems = gameState.currentRoom.treasure.items.map((item)=>properName(item))
+  const roomItems = gameState.currentRoom.treasure.items.map((item) =>
+    properName(item)
+  );
   // Pick available moves based on room's rewards and player's known moves
   const roomMoves = gameState.currentRoom.treasure.moves;
   useEffect(() => {
@@ -245,7 +247,7 @@ export default function Room() {
         {!loadingNext ? (
           <button
             className={`continue ${hasSelected ? "active" : "inactive"}`}
-            onClick={handleContinue}
+            onClick={hasSelected ? handleContinue : undefined}
           >
             CONTINUE
           </button>
