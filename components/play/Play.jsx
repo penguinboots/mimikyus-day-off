@@ -88,6 +88,9 @@ export default function Play(props) {
             returnToDash={returnToDash}
             nextRoom={nextRoom}
             gameState={gameState}
+            setMode={setMode}
+            setSelectedMusic={setSelectedMusic}
+            setShowStory={setShowStory}
           />
         )}
       </div>
