@@ -1,5 +1,5 @@
 import { useGameState } from "../../utils/context/GameStateContext";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   moveOrder,
   calculateMove,
@@ -51,6 +51,8 @@ export default function Room(props) {
     setSplash,
     flashSplash,
   } = useGameState();
+
+  const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
   const PLAYER = gameState.player.sprites[sprites.player].url; // idle, attack, hit
   const OPPONENT = gameState.opponent.sprites[sprites.opponent].url;
@@ -188,6 +190,7 @@ export default function Room(props) {
 
   // Executes player move selection, calling previously defined helpers
   async function executeTurn(charMove, char, opponentMove, opponent) {
+    setButtonsDisabled(true)
     let isBattleOver = false;
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     for (let turn of turns) {
@@ -260,6 +263,7 @@ export default function Room(props) {
     }
     console.log("Player in state:", gameState.player)
     console.log("Opponent in state:", gameState.opponent)
+    setButtonsDisabled(false)
   }
 
   // Generates array of move objects from array of move name strings
@@ -274,14 +278,17 @@ export default function Room(props) {
         return (
           <button
             key={move.name}
-            onClick={() =>
+            onClick={() => {
+              if (buttonsDisabled) return;
               executeTurn(
                 move,
                 gameState.player,
                 opponentMoveSelect(gameState.opponent),
                 gameState.opponent
-              )
-            }
+              );
+            }}
+            disabled={buttonsDisabled}
+            className={buttonsDisabled ? "disabled-button" : ""}
           >
             <MoveItem id={move.name} move={move} loc="game" />
           </button>
