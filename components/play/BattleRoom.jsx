@@ -269,7 +269,7 @@ export default function Room(props) {
     "button"
   );
 
-  // state for popup, current image, and continue button
+  // state for popup, current image
   const [showPopup, setShowPopup] = useState(false);
   const images = ['https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oxford_blue.png/220px-Oxford_blue.png', 'https://htmlcolorcodes.com/assets/images/colors/orange-color-solid-background-1920x1080.png'];
 
