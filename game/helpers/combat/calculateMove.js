@@ -75,7 +75,12 @@ function calculateMove(move, user, target) {
   } else if (move.category === "damage+heal") {
     output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
     heal = drainCalc(output.damage, move.drain)
-  } else if (move.category === "net-good-stats") {
+  } else if (move.category === "damage+ailment") {
+    output = damageCalc(move, userMoveStat, targetMoveStat, user.types, target.types)
+    // if (accuracyCheck(move.ailment_chance)){
+    //   Ailments don't exist yet ;)
+    // }
+  }  else if (move.category === "net-good-stats") {
     let changeStatOf = ""
     if (move.target === 'user') {
       changeStatOf = "self"
