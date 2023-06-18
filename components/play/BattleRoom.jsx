@@ -17,6 +17,8 @@ import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
+import ComicPopup from "../common/ComicPopup";
+import { dungeon } from "@/game/pregenerated/dungeon1";
 import { properName } from "@/utils/helpers/properName";
 import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -67,13 +69,32 @@ export default function Room(props) {
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
 
-  // Briefly shows VS splash on entering Play or new room
+  // state for popup, current image
+  const [showStory, setShowStory] = useState(false);
+  const pages = [
+    "/../public/story/intro_comic1.png",
+    "/../public/story/intro_comic2.png",
+  ];
+
+  // Story for Floor 1, Room 1
   useEffect(() => {
-    flashSplash();
+    if (gameState.currentRoom === dungeon.floor_1.room_1) {
+      setShowStory(true);
+    }
     return () => {
-      setSplash(false);
+      setShowStory(false);
     };
   }, [gameState.currentRoom]);
+
+  // Briefly shows VS splash on entering Play or new room, once any stories have been closed
+  useEffect(() => {
+    if (!showStory) {
+      flashSplash();
+      return () => {
+        setSplash(false);
+      };
+    }
+  }, [gameState.currentRoom, showStory]);
 
   // Resets gif animations to beginning after changes
   useEffect(() => {
@@ -311,7 +332,25 @@ export default function Room(props) {
           }
         }
       }
-
+      if (moveEffects.effectiveness === "immune") {
+        setBattleHistory((prev) => [...prev, `It had no effect!\n`]);
+      } else if (moveEffects.effectiveness === "not-very") {
+        setBattleHistory((prev) => [
+          ...prev,
+          `It's not very effective on ${gameState.opponent.proper_name}\n`,
+        ]);
+      } else if (moveEffects.effectiveness === "super") {
+        setBattleHistory((prev) => [
+          ...prev,
+          `It's super effective on ${gameState.opponent.proper_name}\n`,
+        ]);
+      }
+      if (
+        moveEffects.critical === true &&
+        moveEffects.effectiveness !== "immune"
+      ) {
+        setBattleHistory((prev) => [...prev, `A critical hit!\n`]);
+      }
     }
     console.log("Player in state:", gameState.player)
     console.log("Opponent in state:", gameState.opponent)
@@ -380,11 +419,9 @@ export default function Room(props) {
   return (
     <div
       className="battle-room"
-      style={{
-        backgroundImage: BACKGROUND,
-        backgroundColor: BACKGROUND_COL,
-      }}
+      style={{ backgroundImage: BACKGROUND, backgroundColor: BACKGROUND_COL }}
     >
+      {showStory && <ComicPopup pages={pages} setShowStory={setShowStory} />}
       <div className="splash-wrapper">
         <Image
           className={`splash ${splash ? "show" : "hide"}`}
@@ -444,7 +481,7 @@ export default function Room(props) {
         </div>
       </div>
       <div className="battle-history-menu">
-        <BattleHistory />          
+        <BattleHistory />
       </div>
         <InventoryWindow
           handleClick={() => windowClose("inventory")}
