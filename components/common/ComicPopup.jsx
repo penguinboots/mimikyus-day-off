@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-const ComicPopup = ({ images }) => {
+const ComicPopup = (props) => {
+  const { images } = props;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
