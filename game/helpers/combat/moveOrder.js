@@ -8,6 +8,23 @@ function moveOrder(move1, player, move2, opponent) {
     return move2First
   } else {
     //if the priority is the same, compare the user's speed and return the moves ordered by greater user's speed
+    //first, apply stat changes to speed:
+    //check user for stat changes and apply them to speed
+    if (player.statChanges.speed > 0) {
+      console.log(player.name, "'s speed Multiplier: ", (player.statChanges.speed + 2) / 2)
+      player.stats.speed *= (player.statChanges.speed + 2) / 2
+    } else if (player.statChanges.speed < 0) {
+      console.log(player.name, "'s speed Multiplier: ", 2 / (Math.abs(player.statChanges.speed) + 2))
+      player.stats.speed *= 2 / (Math.abs(player.statChanges.speed) + 2)
+    }
+    //check target for speed changes and apply them to speed
+    if (opponent.statChanges.speed > 0) {
+      console.log(opponent.name, "'s speed Multiplier: ", (opponent.statChanges.speed + 2) / 2)
+      opponent.stats.speed *= (opponent.statChanges.speed + 2) / 2
+    } else if (opponent.statChanges.speed < 0) {
+      console.log(opponent.name, "'s speed Multiplier: ", 2 / (Math.abs(opponent.statChanges.speed) + 2))
+      opponent.stats.speed *= 2 / (Math.abs(opponent.statChanges.speed) + 2)
+    }
     if (player.stats.speed > opponent.stats.speed) {
       return move1First
     } else if (player.stats.speed < opponent.stats.speed) {

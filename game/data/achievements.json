@@ -1,50 +1,32 @@
 {
-  "crimes against magikarp": {
-    "name": "crimes against magikarp",
+  "01_magikarp": {
+    "name": "01_magikarp",
+    "title": "What Have You Done?",
     "collected": false
   },
-  "something shiny": {
-    "name": "something shiny",
+  "02_store": {
+    "name": "02_store",
+    "title": "Wait, You Didn't Pay-",
     "collected": false
   },
-  "crimes against snorlax": {
-    "name": "crimes against snorlax",
+  "03_snorlax1": {
+    "name": "03_snorlax1",
+    "title": "You Can't Run!",
     "collected": false
   },
-  "crimes against goomy": {
-    "name": "crimes against goomy",
+  "04_dugtrio": {
+    "name": "04_dugtrio",
+    "title": "Bad Hair Day",
     "collected": false
   },
-  "crimes against dugtrio": {
-    "name": "crimes against dugtrio",
+  "05_snorlax2": {
+    "name": "05_snorlax2",
+    "title": "You Can't Hide!",
     "collected": false
   },
-  "repeat offender": {
-    "name": "repeat offender",
-    "collected": false
-  },
-  "crimes against munchlax": {
-    "name": "crimes against munchlax",
-    "collected": false
-  },
-  "and your little dog too": {
-    "name": "and your little dog too",
-    "collected": false
-  },
-  "third time's the charm?": {
-    "name": "third time's the charm?",
-    "collected": false
-  },
-  "treasure hunter": {
-    "name": "treasure hunter",
-    "collected": false
-  },
-  "enemy vanquished": {
-    "name": "enemy vanquished",
-    "collected": false
-  },
-  "the true meaning of day off": {
-    "name": "the true meaning of day off",
+  "06_snorlax3": {
+    "name": "06_snorlax3",
+    "title": "The True Meaning of Day Off",
     "collected": false
   }
 }

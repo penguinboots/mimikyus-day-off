@@ -11,7 +11,6 @@ const goomy = {
     "speed": 40,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
@@ -56,7 +55,6 @@ const dugtrio = {
     "speed": 110,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
@@ -101,7 +99,6 @@ const snorlax2= {
     "speed": 96,
   },
   "statChanges": {
-    "hp": 0,
     "attack": 0,
     "defense": 0,
     "special-attack": 0,
