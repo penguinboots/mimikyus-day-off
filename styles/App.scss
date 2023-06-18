@@ -671,7 +671,8 @@ body {
     font-size: 28px;
   }
   .battle-room,
-  .treasure-room {
+  .treasure-room,
+  .end-game-room {
     height: 100%;
     width: 100%;
     border-radius: 36px;
@@ -839,6 +840,10 @@ body {
         font-size: 32px;
       }
     }
+  }
+  
+  .end-game-room {
+    background-color: $off-white;
   }
 }
 
