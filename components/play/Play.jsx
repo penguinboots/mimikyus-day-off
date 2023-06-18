@@ -4,8 +4,6 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
-import InventoryWindow from "./InventoryWindow";
-import InventoryButton from "./InventoryButton";
 
 export default function Play(props) {
   const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
@@ -43,15 +41,6 @@ export default function Play(props) {
             nextRoom={nextRoom}
             gameState={gameState}
           />
-        )}
-        {mode === "PLAY" && gameState.roomType === "battle" && (
-          <InventoryWindow
-            handleClick={() => windowClose("inventory")}
-            isMenuOpen={isMenuOpen}
-          />
-        )}
-        {gameState.roomType === "battle" && (
-          <InventoryButton handleClick={() => windowToggle("inventory")} />
         )}
       </div>
     </div>
