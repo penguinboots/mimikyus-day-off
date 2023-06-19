@@ -72,16 +72,16 @@ const munchlax2 = {
   "weight": 1050,
   "sprites": {
     "idle": {
-      url: `/sprites/munchlax-idl.gif`,
-      length: 1000,
+      url: `/sprites/munchlax2-idl.gif`,
+      length: 840,
     },
     "attack": {
-      url: `/sprites/munchlax-atk.gif`,
-      length: 800,
+      url: `/sprites/munchlax2-atk.gif`,
+      length: 900,
     },
     "hit": {
-      url: `/sprites/munchlax-hit.gif`,
-      length: 880,
+      url: `/sprites/munchlax2-hit.gif`,
+      length: 640,
     },
   }
 }
@@ -116,16 +116,16 @@ const munchlax3 = {
   "weight": 1050,
   "sprites": {
     "idle": {
-      url: `/sprites/munchlax-idl.gif`,
-      length: 1000,
+      url: `/sprites/munchlax3-idl.gif`,
+      length: 1040,
     },
     "attack": {
-      url: `/sprites/munchlax-atk.gif`,
+      url: `/sprites/munchlax3-atk.gif`,
       length: 800,
     },
     "hit": {
-      url: `/sprites/munchlax-hit.gif`,
-      length: 880,
+      url: `/sprites/munchlax3-hit.gif`,
+      length: 760,
     },
   }
 }
