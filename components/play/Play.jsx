@@ -16,21 +16,19 @@ import { dungeon } from "@/game/pregenerated/dungeon1";
 
 export default function Play(props) {
   const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
-  const {
-    gameState,
-    nextRoom,
-    setSelectedMusic,
-    flashSplash,
-    setSplash,
-  } = useGameState();
+  const { gameState, nextRoom, setSelectedMusic, flashSplash, setSplash } =
+    useGameState();
 
   // state for popup, current image
   const [showStory, setShowStory] = useState(false);
   const pages = [intro1, intro2];
 
-  // Story for Floor 1, Room 1
+  // Story for Floor 1, Room 1 (Introduction) and Floor 3, Room 6 (Ending)
   useEffect(() => {
     if (gameState.currentRoom === dungeon.floor_1.room_1) {
+      setShowStory(true);
+    }
+    if (gameState.currentRoom === dungeon.floor_3.room_6) {
       setShowStory(true);
     }
     return () => {
@@ -67,6 +65,7 @@ export default function Play(props) {
             pages={pages}
             showStory={showStory}
             setShowStory={setShowStory}
+            type={gameState.currentRoom.type}
           />
         )}
         <button className="dash-return" onClick={returnToDash}>
