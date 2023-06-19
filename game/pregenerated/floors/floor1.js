@@ -14,6 +14,8 @@ const floor_1 = {
     music: "01_magikarp.mp3",
     intro: `/splashes/vs_magikarp.png`,
     achievement: null,
+    winMessage: "That'll teach him to splash where you're walking!",
+    lossMessage: "How did you manage that one...?",
     next_room: "room_2",
   },
   room_2: {
@@ -36,6 +38,8 @@ const floor_1 = {
     music: "02_cherrygrove.mp3",
     intro: "",
     achievement: null,
+    winMessage: "",
+    lossMessage: "",
     next_room: "room_3",
   },
   room_3: {
@@ -51,6 +55,8 @@ const floor_1 = {
     music: "03_snorlax1.mp3",
     intro: `/splashes/vs_snorlax1.png`,
     achievement: null,
+    winMessage: "The thief ran away! After him!",
+    lossMessage: "Oh no! Beaten down by a petty thief...",
     next_room: null,
   },
   next_floor: "floor_2"

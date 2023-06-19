@@ -749,7 +749,7 @@ body {
         height: 56px;
         width: 120px;
       }
-      
+
       .disabled-button {
         opacity: 0.6;
         cursor: not-allowed;
@@ -859,7 +859,7 @@ body {
       }
     }
   }
-  
+
   .end-game-room {
     background-color: $off-white;
   }
@@ -964,12 +964,36 @@ body {
   height: 500px;
   display: flex;
   flex-direction: column;
+  h2 {
+    position: absolute;
+    top: 50px;
+    width: 800px;
+    border: 4px solid $pdex-shadow-border;
+    font-size: 60px;
+    color: $pdex-shadow-text;
+  }
+  .win-title {
+    background-color: $pdex-green;
+  }
+  .loss-title {
+    background-color: $pdex-red;
+  }
+  h3 {
+    background-color: $pdex-shadow-text;
+    width: 50%;
+    padding: 20px;
+    border-radius: 24px;
+    color: $pdex-black-highlight;
+    font-size: 24px;
+    font-weight: 600;
+  }
   .window-controls {
+    position: absolute;
+    bottom: 50px;
     display: flex;
     justify-content: center;
     width: 60%;
     gap: 50px;
-
     button {
       width: 200px;
       height: 48px;
@@ -1040,7 +1064,7 @@ body {
     margin: 10px;
     background-color: red;
   }
-  
+
   .disabled-button {
     opacity: 0.6;
     cursor: not-allowed;
