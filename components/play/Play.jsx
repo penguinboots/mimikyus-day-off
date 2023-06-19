@@ -4,9 +4,11 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
+import AchievementPopup from "./AchievementPopup";
+import { achievementFetcher } from "@/game/helpers/combat/achievementFetcher";
 
 export default function Play(props) {
-  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+  const { mode, setMode, isMusicPlaying, handleMusicToggle, userAchievements } = props;
   const {
     gameState,
     nextRoom,
@@ -20,7 +22,19 @@ export default function Play(props) {
     setMode("DASH");
     setSelectedMusic("00_pokemon_center.mp3");
   };
-
+  console.log(userAchievements)
+  //check if AchievementPopup needs to be rendered
+  const achievementRender =  () => {
+    // Find the matching achievement object in userAchievements
+    const matchingAchievement = userAchievements.find(
+      (achievement) => achievement.name === gameState.currentRoom.achievement
+    ); 
+    if (matchingAchievement && !matchingAchievement.collected) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <div className="play-container">
       <Nav
@@ -40,6 +54,13 @@ export default function Play(props) {
             returnToDash={returnToDash}
             nextRoom={nextRoom}
             gameState={gameState}
+          />
+        )}
+      </div>
+      <div className="achievement-pop">
+        {achievementRender() && ( 
+          <AchievementPopup 
+            achievement={achievementFetcher(gameState.currentRoom.achievement)}
           />
         )}
       </div>
