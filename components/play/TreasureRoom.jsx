@@ -31,13 +31,13 @@ export default function Room() {
   const [loadingNext, setLoadingNext] = useState(false);
   // Vitamins available in store
   const [vitamins, setVitamins] = useState([
-    "HP Up",
-    "Protein",
-    "Iron",
-    "Calcium",
-    "Zinc",
-    "Carbos",
-  ]);
+    gameState.player.stats["hp"] < 255 ? "HP Up" : null,
+    gameState.player.stats["attack"] < 255 ? "Protein" : null,
+    gameState.player.stats["defense"] < 255 ? "Iron" : null,
+    gameState.player.stats["special-attack"] < 255 ? "Calcium" : null,
+    gameState.player.stats["special-defense"] < 255 ? "Zinc" : null,
+    gameState.player.stats["speed"] < 255 ? "Carbos" : null,
+  ].filter((value) => value !== null)); 
 
   // Makes continue button when any choice is made
   useEffect(() => {
@@ -137,16 +137,6 @@ export default function Room() {
           break;
         case "pokemart":
           let statToRaise = getVitaminStat(choice);
-          // setGameState((prev) => ({
-          //   ...prev,
-          //   player: {
-          //     ...prev.player,
-          //     [statToRaise]: prev.player[statToRaise] + 10,
-          //   },
-          // }));
-          // updateStat(user, statToRaise, 10)
-          //   .then(() => resolve())
-          //   .catch((error) => reject(error));
           updateStat(user, statToRaise, 10)
             .then(() => {
               return getCharacter(user);
