@@ -16,7 +16,6 @@ const ComicPopup = (props) => {
   // Changes comic page if exists, closes story at last page
   function changePage(dir) {
     let nextPage = currentPage + dir;
-    console.log(nextPage);
     if (nextPage >= 0 && nextPage <= lastPage) {
       setCurrentPage(nextPage);
     } else if (nextPage >= pages.length) {
