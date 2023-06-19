@@ -123,7 +123,7 @@ export default function Home() {
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
-            userAchievements={dbData.achievements}
+            // userAchievements={dbData.achievements}
           />
         )}
         {isMenuOpen.achievements && (
