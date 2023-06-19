@@ -16,7 +16,9 @@ import { createUser } from '@/prisma/helpers/createUser';
 import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
 import Settings from '@/components/common/Settings';
+import { items } from '@/game/data/items';
 
+let dbData = null
 export default function Home() {
   // Authentication
   const { user, error, isLoading } = useUser();
@@ -30,7 +32,6 @@ export default function Home() {
   
   // Initial player values, fill player values from database
   const playerTemplate = { ...mimikyu }
-  let dbData = null
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
@@ -76,7 +77,7 @@ export default function Home() {
             setGameState((prev) => ({
               ...prev,
               player: playerTemplate,
-              itemList: dbData.items,
+              itemList: items,
             }));
           }
         } catch (error) {
@@ -85,7 +86,7 @@ export default function Home() {
           setGameState((prev) => ({
             ...prev,
             player: playerTemplate,
-            itemList: dbData.items,
+            itemList: items,
           }));
         }
       }
@@ -122,6 +123,7 @@ export default function Home() {
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
+            userAchievements={dbData.achievements}
           />
         )}
         {isMenuOpen.achievements && (
