@@ -17,15 +17,10 @@ import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import ResultPopup from "./ResultPopup";
 import Image from "next/image";
 import BattleHistory from "./BattleHistory";
-import ComicPopup from "../common/ComicPopup";
-import { dungeon } from "@/game/pregenerated/dungeon1";
 import { properName } from "@/utils/helpers/properName";
 import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-// Import comics
-import intro1 from "@/public/story/intro_comic1.png";
-import intro2 from "@/public/story/intro_comic2.png";
 
 
 export default function Room(props) {
@@ -65,6 +60,7 @@ export default function Room(props) {
     windowClose,
     windowToggle,
     isMenuOpen,
+    skipToBoss
   } = useGameState();
   const { user } = useUser();
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
@@ -73,33 +69,6 @@ export default function Room(props) {
   const OPPONENT = gameState.opponent.sprites[sprites.opponent].url;
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
-
-  // state for popup, current image
-  const [showStory, setShowStory] = useState(false);
-  const pages = [
-    intro1,
-    intro2,
-  ];
-
-  // Story for Floor 1, Room 1
-  useEffect(() => {
-    if (gameState.currentRoom === dungeon.floor_1.room_1) {
-      setShowStory(true);
-    }
-    return () => {
-      setShowStory(false);
-    };
-  }, [gameState.currentRoom]);
-
-  // Briefly shows VS splash on entering Play or new room, once any stories have been closed
-  useEffect(() => {
-    if (!showStory) {
-      flashSplash();
-      return () => {
-        setSplash(false);
-      };
-    }
-  }, [gameState.currentRoom, showStory]);
 
   // Resets gif animations to beginning after changes
   useEffect(() => {
@@ -407,7 +376,6 @@ export default function Room(props) {
       className="battle-room"
       style={{ backgroundImage: BACKGROUND, backgroundColor: BACKGROUND_COL }}
     >
-      {showStory && <ComicPopup pages={pages} setShowStory={setShowStory} />}
       <div className="splash-wrapper">
         <Image
           className={`splash ${splash ? "show" : "hide"}`}
@@ -469,15 +437,16 @@ export default function Room(props) {
       <div className="battle-history-menu">
         <BattleHistory />
       </div>
-        <InventoryWindow
-          handleClick={() => windowClose("inventory")}
-          isMenuOpen={isMenuOpen}
-          items={items}
-        />
-        <InventoryButton handleClick={() => windowToggle("inventory")} />
+      <InventoryWindow
+        handleClick={() => windowClose("inventory")}
+        isMenuOpen={isMenuOpen}
+        items={items}
+      />
+      <InventoryButton handleClick={() => windowToggle("inventory")} />
       <div className="move-select">
         {playerMoves}
-        <button onClick={nextRoom}>NEXT</button>
+        <button onClick={nextRoom}>NEXT</button>{" "}
+        <button onClick={skipToBoss}>SKIP TO BOSS</button>
       </div>
     </div>
   );

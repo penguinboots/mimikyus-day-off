@@ -16,7 +16,9 @@ import { createUser } from '@/prisma/helpers/createUser';
 import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
 import Settings from '@/components/common/Settings';
+import { items } from '@/game/data/items';
 
+let dbData = null
 export default function Home() {
   // Authentication
   const { user, error, isLoading } = useUser();
@@ -30,7 +32,6 @@ export default function Home() {
   
   // Initial player values, fill player values from database
   const playerTemplate = { ...mimikyu }
-  let dbData = null
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
@@ -72,20 +73,20 @@ export default function Home() {
               itemList: dbData.items,
             }));
           } else {
-            console.error("Character data is missing or invalid");
+            console.warn("Character data is missing or invalid");
             setGameState((prev) => ({
               ...prev,
               player: playerTemplate,
-              itemList: dbData.items,
+              itemList: items,
             }));
           }
         } catch (error) {
           // If there's an error fetching user data or character data
-          console.error("Error fetching data:", error);
+          console.warn("Error fetching data:", error);
           setGameState((prev) => ({
             ...prev,
             player: playerTemplate,
-            itemList: dbData.items,
+            itemList: items,
           }));
         }
       }

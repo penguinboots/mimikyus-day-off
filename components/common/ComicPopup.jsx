@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight, faSkull } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faSkull,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
 const ComicPopup = (props) => {
-  const { pages, setShowStory } = props;
+  const { pages, setShowStory, type } = props;
   const [currentPage, setCurrentPage] = useState(0);
   const lastPage = pages.length - 1;
 
   // Changes comic page if exists, closes story at last page
   function changePage(dir) {
     let nextPage = currentPage + dir;
-    console.log(nextPage);
     if (nextPage >= 0 && nextPage <= lastPage) {
       setCurrentPage(nextPage);
     } else if (nextPage >= pages.length) {
@@ -38,7 +42,15 @@ const ComicPopup = (props) => {
           className={`turnPage ${currentPage === lastPage ? "next" : "active"}`}
           onClick={() => changePage(1)}
         >
-          {currentPage === lastPage ? <FontAwesomeIcon icon={faSkull} /> : <FontAwesomeIcon icon={faArrowRight} />}
+          {currentPage === lastPage ? (
+            type === "battle" ? (
+              <FontAwesomeIcon icon={faSkull} />
+            ) : (
+              <FontAwesomeIcon icon={faHeart} />
+            )
+          ) : (
+            <FontAwesomeIcon icon={faArrowRight} />
+          )}
         </button>
       </div>
     </div>

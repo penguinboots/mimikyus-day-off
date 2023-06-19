@@ -135,6 +135,22 @@ export function GameStateProvider({ children }) {
     });
   }
 
+  // FOR TESTING: Skips to snorlax3
+  function skipToBoss() {
+    setGameState((prev) => ({
+      ...prev,
+      currentFloor: dungeon.floor_3,
+      currentRoom: dungeon.floor_3.room_5,
+      roomType: dungeon.floor_3.room_5.type,
+      opponent: dungeon.floor_3.room_5.opponent,
+      player: {
+        ...prev.player,
+        current_hp: gameState.player.stats.hp,
+        statChanges: player.statChanges
+      }
+    }));
+  }
+
   // Reset room progress to beginning (called from defeat popup)
   function loseGame() {
     setGameState((prev) => ({
@@ -145,7 +161,31 @@ export function GameStateProvider({ children }) {
       opponent: dungeon.floor_1.room_1.opponent,
       player: {
         ...prev.player,
-        current_hp: player.current_hp,
+        current_hp: gameState.player.stats.hp,
+        statChanges: player.statChanges
+      }
+    }));
+    setBattleHistory([]);
+    setBattleWon(false);
+    setPopup({
+      intro: false,
+      victory: false,
+      defeat: false,
+      treasure: false,
+    });
+  }
+
+  // Reset room progress to beginning (called from game-end room)
+  function winGame() {
+    setGameState((prev) => ({
+      ...prev,
+      currentFloor: dungeon.floor_1,
+      currentRoom: dungeon.floor_1.room_1,
+      roomType: dungeon.floor_1.room_1.type,
+      opponent: dungeon.floor_1.room_1.opponent,
+      player: {
+        ...prev.player,
+        current_hp: gameState.player.stats.hp,
         statChanges: player.statChanges
       }
     }));
@@ -246,7 +286,9 @@ export function GameStateProvider({ children }) {
     flashSplash,
     isMenuOpen,
     windowToggle,
-    windowClose
+    windowClose,
+    skipToBoss,
+    winGame
   };
   return (
     <GameStateContext.Provider value={value}>

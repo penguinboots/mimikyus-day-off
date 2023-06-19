@@ -14,6 +14,8 @@ const floor_2 = {
     music: "04_goomy.mp3",
     intro: `/splashes/vs_goomy.png`,
     achievement: null,
+    winMessage: "Sure wiped that smile off his face!",
+    lossMessage: "How did you lose to a purple stress ball?",
     next_room: "room_2",
   },
   room_2: {
@@ -29,6 +31,8 @@ const floor_2 = {
     music: "05_dugtrio.mp3",
     intro: `/splashes/vs_dugtrio.png`,
     achievement: "04_dugtrio",
+    winMessage: "Maybe he's born with it, maybe it's A BEATDOWN.",
+    lossMessage: "Well, technically, it was three on one...",
     next_room: "room_3",
   },
   room_3: {
@@ -51,6 +55,8 @@ const floor_2 = {
     music: "06_violet.mp3",
     intro: "",
     achievement: null,
+    winMessage: "",
+    lossMessage: "",
     next_room: "room_4",
   },
   room_4: {
@@ -66,6 +72,8 @@ const floor_2 = {
     music: "07_snorlax2.mp3",
     intro: `/splashes/00_splash.png`,
     achievement: "05_snorlax2",
+    winMessage: "The thief ran away! Where did he go?",
+    lossMessage: "Oh no! He can't get away with this!",
     next_room: null,
   },
   next_floor: "floor_3"
