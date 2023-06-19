@@ -25,6 +25,7 @@ export default async function handler(req, res) {
   // POST request for stats
   if (req.method === 'POST') {
     const { user, stat, amount } = req.body;
+    let character = null;
     const db_user = await prisma.user.findFirst({
       where: {auth0Sub: user.sub}
     })
@@ -39,14 +40,26 @@ export default async function handler(req, res) {
       } else {
         db_stat = stat;
       }
-      const character = await prisma.character.updateMany({
-        where: { userId: db_user.id },
-        data:{
-          [db_stat]:{
-            increment: amount
+      const statCheck = await prisma.character.findFirst({
+        where: {userId: db_user.id}
+      })
+      if (statCheck[db_stat] > 245){
+        character = await prisma.character.updateMany({
+          where: { userId: db_user.id },
+          data:{
+            [db_stat]: 255
           }
-        }
-      });
+        });
+      }else{
+        character = await prisma.character.updateMany({
+          where: { userId: db_user.id },
+          data:{
+            [db_stat]:{
+              increment: amount
+            }
+          }
+        });
+      }
 
       res.status(200).json({ success: true, character: character });
     } catch (error) {

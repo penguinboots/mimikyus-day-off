@@ -23,7 +23,7 @@ const munchlax1 = {
     "defense-curl",
     "charm",
   ],
-  "types": ["dark"],
+  "types": ["normal"],
   "height": 6,
   "weight": 1050,
   "sprites": {
@@ -62,12 +62,12 @@ const munchlax2 = {
     "speed": 0,
   },
   "moves": [
-    "poison-jab",
+    "crunch",
     "bulldoze",
     "defense-curl",
     "charm",
   ],
-  "types": ["poison"],
+  "types": ["dark"],
   "height": 6,
   "weight": 1050,
   "sprites": {
@@ -106,12 +106,12 @@ const munchlax3 = {
     "speed": 0,
   },
   "moves": [
-    "iron-head",
+    "fire-punch",
     "bulldoze",
     "defense-curl",
     "charm",
   ],
-  "types": ["steel"],
+  "types": ["fire"],
   "height": 6,
   "weight": 1050,
   "sprites": {
