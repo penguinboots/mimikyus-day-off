@@ -24,7 +24,7 @@ const ComicPopup = (props) => {
   }
 
   return (
-    <div className="popup comic">
+    <div className={`popup comic ${type === "end" ? "end-bg" : ""}`}>
       <div className="comic-container">
         <button
           className={`turnPage ${currentPage === 0 ? "disabled" : "active"}`}
