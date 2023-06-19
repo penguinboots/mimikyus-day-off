@@ -1,6 +1,8 @@
 import { useGameState } from "@/utils/context/GameStateContext";
 import { useState } from "react";
 import EndGamePopup from "./EndGamePopup";
+import endBackground from "@/public/backgrounds/end_bg.png";
+import Image from "next/image";
 
 export default function EndGameRoom(props) {
   const { setMode, setSelectedMusic } = props;
@@ -19,14 +21,26 @@ export default function EndGameRoom(props) {
 
   return (
     <div
-      className="end-game-room"
+      className={`end-game-room ${endPopUp ? "dark" : ""}`}
       style={{
         backgroundImage: BACKGROUND,
         backgroundColor: BACKGROUND_COL,
         position: "relative",
       }}
     >
-      {endPopUp && <EndGamePopup handleGameComplete={handleGameComplete} />}
+      {endPopUp && (
+        <EndGamePopup
+          handleGameComplete={handleGameComplete}
+          endPopUp={endPopUp}
+        />
+      )}
+      <Image
+        src={endBackground}
+        width="1100"
+        height="700"
+        className={`pseudo-bg ${endPopUp ? "grayscale" : ""}`}
+        alt="Sunset background"
+      />
       <button
         className={`complete-button ${endPopUp ? "disabled" : ""}`}
         onClick={endPopUp ? undefined : () => setEndPopUp(true)}
