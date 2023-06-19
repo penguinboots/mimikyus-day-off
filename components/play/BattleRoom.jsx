@@ -306,25 +306,6 @@ export default function Room(props) {
           }
         }
       }
-      if (moveEffects.effectiveness === "immune") {
-        setBattleHistory((prev) => [...prev, `It had no effect!\n`]);
-      } else if (moveEffects.effectiveness === "not-very") {
-        setBattleHistory((prev) => [
-          ...prev,
-          `It's not very effective on ${gameState.opponent.proper_name}\n`,
-        ]);
-      } else if (moveEffects.effectiveness === "super") {
-        setBattleHistory((prev) => [
-          ...prev,
-          `It's super effective on ${gameState.opponent.proper_name}\n`,
-        ]);
-      }
-      if (
-        moveEffects.critical === true &&
-        moveEffects.effectiveness !== "immune"
-      ) {
-        setBattleHistory((prev) => [...prev, `A critical hit!\n`]);
-      }
     }
     console.log("Player in state:", gameState.player)
     console.log("Opponent in state:", gameState.opponent)
