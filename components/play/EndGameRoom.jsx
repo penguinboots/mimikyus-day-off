@@ -1,8 +1,11 @@
 import { useGameState } from "@/utils/context/GameStateContext";
+import { useState } from "react";
+import EndGamePopup from "./EndGamePopup";
 
 export default function EndGameRoom(props) {
   const { setMode, setSelectedMusic } = props;
   const { gameState, winGame } = useGameState();
+  const [endPopUp, setEndPopUp] = useState(false);
 
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
@@ -23,8 +26,12 @@ export default function EndGameRoom(props) {
         position: "relative",
       }}
     >
-      <button className="complete-button" onClick={handleGameComplete}>
-        COMPLETE GAME
+      {endPopUp && <EndGamePopup handleGameComplete={handleGameComplete} />}
+      <button
+        className={`complete-button ${endPopUp ? "disabled" : ""}`}
+        onClick={endPopUp ? undefined : () => setEndPopUp(true)}
+      >
+        THE END!
       </button>
     </div>
   );

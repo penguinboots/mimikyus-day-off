@@ -1,7 +1,4 @@
-import Settings from "./Settings";
 import IconButton from "./IconButton";
-import AchievementsMenu from "./AchievementsMenu";
-import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
 import { useGameState } from "@/utils/context/GameStateContext";
 import localFont from "next/font/local";
 
