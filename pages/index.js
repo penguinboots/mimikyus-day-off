@@ -73,7 +73,7 @@ export default function Home() {
               itemList: dbData.items,
             }));
           } else {
-            console.error("Character data is missing or invalid");
+            console.warn("Character data is missing or invalid");
             setGameState((prev) => ({
               ...prev,
               player: playerTemplate,
@@ -82,7 +82,7 @@ export default function Home() {
           }
         } catch (error) {
           // If there's an error fetching user data or character data
-          console.error("Error fetching data:", error);
+          console.warn("Error fetching data:", error);
           setGameState((prev) => ({
             ...prev,
             player: playerTemplate,
