@@ -101,7 +101,7 @@ const floor_3 = {
       sprite: "",
       reward: {},
     },
-    background: `url("/grass_bg.png")`,
+    background: `url("/backgrounds/end_bg.png")`,
     color: "",
     music: "13_endgame.mp3",
     intro: "",
