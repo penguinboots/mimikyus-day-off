@@ -151,7 +151,6 @@ export function GameStateProvider({ children }) {
     }));
   }
 
-
   // Reset room progress to beginning (called from defeat popup)
   function loseGame() {
     setGameState((prev) => ({
@@ -162,7 +161,7 @@ export function GameStateProvider({ children }) {
       opponent: dungeon.floor_1.room_1.opponent,
       player: {
         ...prev.player,
-        current_hp: player.current_hp,
+        current_hp: gameState.player.stats.hp,
         statChanges: player.statChanges
       }
     }));
@@ -186,7 +185,7 @@ export function GameStateProvider({ children }) {
       opponent: dungeon.floor_1.room_1.opponent,
       player: {
         ...prev.player,
-        current_hp: player.current_hp,
+        current_hp: gameState.player.stats.hp,
         statChanges: player.statChanges
       }
     }));
