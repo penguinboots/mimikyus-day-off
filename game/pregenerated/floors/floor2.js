@@ -28,7 +28,7 @@ const floor_2 = {
     color: "#49443e",
     music: "05_dugtrio.mp3",
     intro: `/splashes/vs_dugtrio.png`,
-    achievement: null,
+    achievement: "04_dugtrio",
     next_room: "room_3",
   },
   room_3: {
@@ -65,7 +65,7 @@ const floor_2 = {
     color: "#dda2a7",
     music: "07_snorlax2.mp3",
     intro: `/splashes/00_splash.png`,
-    achievement: null,
+    achievement: "05_snorlax2",
     next_room: null,
   },
   next_floor: "floor_3"

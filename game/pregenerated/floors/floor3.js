@@ -80,7 +80,7 @@ const floor_3 = {
     color: "#dda2a7",
     music: "12_snorlax3.mp3",
     intro: `/splashes/00_splash.png`,
-    achievement: null,
+    achievement: "06_snorlax3",
     next_room: null,
   },
   next_floor: null,
