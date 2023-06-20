@@ -5,8 +5,6 @@ import Nav from "../common/Nav";
 import BattleRoom from "./BattleRoom";
 import TreasureRoom from "./TreasureRoom";
 import { useGameState } from "../../utils/context/GameStateContext";
-import AchievementPopup from "./AchievementPopup";
-import { achievementFetcher } from "@/game/helpers/combat/achievementFetcher";
 import EndGameRoom from "./EndGameRoom";
 
 // Import comics
@@ -19,7 +17,7 @@ import ComicPopup from "../common/ComicPopup";
 import { dungeon } from "@/game/pregenerated/dungeon1";
 
 export default function Play(props) {
-  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+  const { mode, setMode, isMusicPlaying, handleMusicToggle, setShowAchievementPopup} = props;
   const { gameState, nextRoom, setSelectedMusic, flashSplash, setSplash } =
     useGameState();
 
@@ -28,7 +26,6 @@ export default function Play(props) {
   const endComic = [end1, end2];
   const [showStory, setShowStory] = useState(false);
   const [storyChapter, setStoryChapter] = useState(introComic);
-
   // Story for Floor 1, Room 1 (Introduction) and Floor 3, Room 6 (Ending)
   useEffect(() => {
     if (gameState.currentRoom === dungeon.floor_1.room_1) {
@@ -58,19 +55,7 @@ export default function Play(props) {
     setMode("DASH");
     setSelectedMusic("00_pokemon_center.mp3");
   };
-  console.log(userAchievements)
-  //check if AchievementPopup needs to be rendered
-  const achievementRender =  () => {
-    // Find the matching achievement object in userAchievements
-    const matchingAchievement = userAchievements.find(
-      (achievement) => achievement.name === gameState.currentRoom.achievement
-    ); 
-    if (matchingAchievement && !matchingAchievement.collected) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+
   return (
     <div className="play-container">
       <Nav
@@ -93,13 +78,14 @@ export default function Play(props) {
           <FontAwesomeIcon icon={faHouse} />
         </button>
         {gameState.roomType === "battle" && (
-          <BattleRoom setMode={setMode} setShowStory={setShowStory} />
+          <BattleRoom setMode={setMode} setShowStory={setShowStory} setShowAchievementPopup={setShowAchievementPopup}/>
         )}
         {gameState.roomType === "treasure" && (
           <TreasureRoom
             returnToDash={returnToDash}
             nextRoom={nextRoom}
             gameState={gameState}
+            setShowAchievementPopup={setShowAchievementPopup}
           />
         )}
         {gameState.roomType === "end" && (
@@ -110,20 +96,6 @@ export default function Play(props) {
             setMode={setMode}
             setSelectedMusic={setSelectedMusic}
             setShowStory={setShowStory}
-          />
-        )}
-      </div>
-      <div className="achievement-pop">
-        {achievementRender() && ( 
-          <AchievementPopup 
-            achievement={achievementFetcher(gameState.currentRoom.achievement)}
-          />
-        )}
-      </div>
-      <div className="achievement-pop">
-        {achievementRender() && ( 
-          <AchievementPopup 
-            achievement={achievementFetcher(gameState.currentRoom.achievement)}
           />
         )}
       </div>
