@@ -27,13 +27,7 @@ export default function Room(props) {
   const { setMode } = props;
   const {
     gameState,
-    setGameState,
-    roomType,
-    setRoomType,
     nextRoom,
-    turnMode,
-    setTurnMode,
-    battleWon,
     setBattleWon,
     popup,
     setPopup,
@@ -43,7 +37,6 @@ export default function Room(props) {
     dealDamage,
     dealHeal,
     changeStat,
-    battleHistory,
     setBattleHistory,
     gifReloadKeyPlayer,
     setGifReloadKeyPlayer,
@@ -55,8 +48,6 @@ export default function Room(props) {
     setShowOpponent,
     loseGame,
     splash,
-    setSplash,
-    flashSplash,
     windowClose,
     windowToggle,
     isMenuOpen,
@@ -399,7 +390,6 @@ export default function Room(props) {
             backgroundImage: `url(${PLAYER}?${gifReloadKeyPlayer})`,
           }}
         >
-          {gameState.player.current_hp}/{gameState.player.stats.hp}
           <HealthBar
             player={true}
             poke={gameState.player.name}
@@ -419,7 +409,6 @@ export default function Room(props) {
             backgroundImage: `url(${OPPONENT}?${gifReloadKeyOpponent})`,
           }}
         >
-          {gameState.opponent.current_hp}/{gameState.opponent.stats.hp}
           <HealthBar
             player={false}
             poke={gameState.opponent.name}

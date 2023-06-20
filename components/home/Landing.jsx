@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFan } from "@fortawesome/free-solid-svg-icons";
-import mimikyu from "@/public/sprites/mimikyu-idl.gif"
+import mimikyu from "@/public/sprites/mimikyu-idl.gif";
 import localFont from "next/font/local";
 import Image from "next/image";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
@@ -43,7 +43,20 @@ export default function Landing(props) {
           Enter
         </button>
       )}
-      {isLoading || user && <FontAwesomeIcon className="spinner" icon={faFan} />}
+      {isLoading ||
+        (user && (
+          <>
+            <FontAwesomeIcon className="spinner" icon={faFan} />
+            <h4
+              style={{
+                fontFamily: vt.style.fontFamily,
+                fontSize: "22px",
+              }}
+            >
+              LOADING...
+            </h4>
+          </>
+        ))}
     </div>
   );
 }
