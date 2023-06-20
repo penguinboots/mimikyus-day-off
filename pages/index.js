@@ -15,10 +15,11 @@ import { getUserData } from '@/prisma/helpers/getUserData';
 import { createUser } from '@/prisma/helpers/createUser';
 import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
+const achievements = require('@/game/data/achievements.json')
 import Settings from '@/components/common/Settings';
 import { items } from '@/game/data/items';
 import AchievementPopup from '@/components/play/AchievementPopup';
-
+const defaultAchievements = Object.values(achievements)
 let dbData = null
 export default function Home() {
   // Authentication
@@ -68,11 +69,12 @@ export default function Home() {
               },
               moves: updatedMoves
             };
-
+            console.log(dbData.achievements)
             setGameState((prev) => ({
               ...prev,
               player: updatedPlayerTemplate,
               itemList: dbData.items,
+              achievements: dbData.achievements,
             }));
           } else {
             console.warn("Character data is missing or invalid");
@@ -80,6 +82,7 @@ export default function Home() {
               ...prev,
               player: playerTemplate,
               itemList: items,
+              achievements: defaultAchievements,
             }));
           }
         } catch (error) {
@@ -89,6 +92,7 @@ export default function Home() {
             ...prev,
             player: playerTemplate,
             itemList: items,
+            achievements: defaultAchievements,
           }));
         }
       }
