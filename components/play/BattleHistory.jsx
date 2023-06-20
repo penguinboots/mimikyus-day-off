@@ -1,14 +1,15 @@
 import { useGameState } from "@/utils/context/GameStateContext";
 
 export default function BattleHistory() {
-  const { battleHistory, setBattleHistory } = useGameState();
-  const currentHistory = battleHistory.slice(-4);
+  const { battleHistory } = useGameState();
+  const currentHistory = battleHistory.slice(-6);
 
   const displayHistory = currentHistory.map((historyItem, index) => {
-    const darknessLevel = 200 - (index + 1) * 40; // Calculate the darkness level for each item
+    const baseText = 0;
+    const opacity = index / battleHistory.length + 0.6;
 
     const itemStyle = {
-      color: `rgb(${darknessLevel}, ${darknessLevel}, ${darknessLevel})`,
+      color: `rgb(${baseText}, ${baseText}, ${baseText}, ${opacity})`,
     };
 
     return (
