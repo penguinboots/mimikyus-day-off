@@ -409,7 +409,7 @@ export default function Room(props) {
         >
           <HealthBar
             player={true}
-            poke={gameState.player.name}
+            poke={gameState.player.proper_name}
             value={gameState.player.current_hp}
             maxValue={gameState.player.stats.hp}
           />
@@ -428,7 +428,7 @@ export default function Room(props) {
         >
           <HealthBar
             player={false}
-            poke={gameState.opponent.name}
+            poke={gameState.opponent.proper_name}
             value={gameState.opponent.current_hp}
             maxValue={gameState.opponent.stats.hp}
           />
