@@ -87,9 +87,11 @@ export function GameStateProvider({ children }) {
   const [userAchievements, setUserAchievements] = useState([]);
   // Called from Play useEffect
   async function fetchUserAchievements() {
-    getAchievements(user).then(({ achievements }) => {
+    const response = await getAchievements(user);
+    if (response && response.achievements) {
+      const { achievements } = response;
       setUserAchievements(achievements);
-    });
+    }
   }
   const [earnedAchievement, setEarnedAchievement] = useState();
   // Keeps roomAchievement updated to achievement for current room
