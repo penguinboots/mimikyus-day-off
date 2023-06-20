@@ -1,13 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { dungeon } from '@/game/pregenerated/dungeon1';
 import { items } from '@/game/data/items';
+import achievements from '@/game/data/achievements'
 import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
 import { achievementFetcher } from '@/game/helpers/combat/achievementFetcher';
 import { getAchievements } from '@/prisma/helpers/getAchievements';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { earnAchievement } from '@/prisma/helpers/earnAchievement';
 
-
+const defaultAchievements = Object.values(achievements)
 const GameStateContext = createContext();
 
 // Context state
@@ -32,7 +33,8 @@ export function GameStateProvider({ children }) {
     roomType: dungeon.floor_1.room_1.type,
     opponent: dungeon.floor_1.room_1.opponent,
     player: player,
-    itemList: itemList
+    itemList: itemList,
+    achievements: defaultAchievements
   });
 
   // Battle history logs
@@ -84,13 +86,15 @@ export function GameStateProvider({ children }) {
   }
 
   // Fetch all user achievements, set into state
-  const [userAchievements, setUserAchievements] = useState([]);
   // Called from Play useEffect
   async function fetchUserAchievements() {
     const response = await getAchievements(user);
     if (response && response.achievements) {
       const { achievements } = response;
-      setUserAchievements(achievements);
+      setGameState((prev) => ({
+        ...prev,
+        achievements: achievements
+      }));
     }
   }
   const [earnedAchievement, setEarnedAchievement] = useState();
@@ -102,9 +106,9 @@ export function GameStateProvider({ children }) {
 
   // Check if user has achievement, if not - award achievement, show popup
   function handleAchievement(achievement) {
-    if (userAchievements && achievement) {
+    if (gameState.achievements && achievement) {
       let matchingAchievement = false;
-      for (const userAchievement of userAchievements) {
+      for (const userAchievement of gameState.achievements) {
         if (userAchievement.name === achievement.name) {
           matchingAchievement = userAchievement;
           break;
@@ -334,8 +338,6 @@ export function GameStateProvider({ children }) {
     skipToBoss,
     winGame,
     handleAchievement,
-    userAchievements,
-    setUserAchievements,
     roomAchievement,
     setRoomAchievement,
     fetchUserAchievements,
