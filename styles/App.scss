@@ -628,9 +628,10 @@ body {
   .dungeon-pic {
     width: 90%;
     height: 70%;
-
-    border: 2px solid black;
     border-radius: 12px;
+    background-color: $pdex-shadow-border;
+    border: 5px solid $pdex-shadow-border;
+    outline: 5px solid $pdex-black-highlight;
   }
   button {
     width: 90%;
