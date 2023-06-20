@@ -17,9 +17,7 @@ import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
 import Settings from '@/components/common/Settings';
 import { items } from '@/game/data/items';
-import { achievementFetcher } from '@/game/helpers/combat/achievementFetcher';
 import AchievementPopup from '@/components/play/AchievementPopup';
-import { getAchievements } from '@/prisma/helpers/getAchievements';
 
 let dbData = null
 export default function Home() {
@@ -28,7 +26,7 @@ export default function Home() {
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
-  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowClose, earnedAchievement } = useGameState();
+  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowClose, earnedAchievement, fetchUserAchievements } = useGameState();
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
@@ -105,6 +103,13 @@ export default function Home() {
       setSelectedMusic(gameState.currentRoom.music);
     }
   }, [gameState.currentRoom, setSelectedMusic, mode]);
+
+  // If user changes, re-fetch achievements
+  useEffect(() => {
+    if (!isLoading) {
+      fetchUserAchievements();
+    }
+  }, [user]);
 
   return (
     <div className="app-wrapper">
