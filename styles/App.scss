@@ -383,7 +383,31 @@ body {
     margin: 20px;
   }
 }
-
+/** Achievement popup **/
+.achievement-pop{
+  border-radius: 10px;
+  border: solid grey;
+  width: 200px;
+  height: 212px;
+  background-color: #316698;
+  outline: grey;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s;
+  z-index: 9999;
+}
+.achievement-pop.fade-in {
+  visibility: visible;
+  opacity: 1;
+}
+.achievement-pop.fade-out {
+  visibility: visible;
+  opacity: 0;
+}  
 /** DASHBOARD **/
 .dashboard {
   height: 100%;
@@ -841,29 +865,7 @@ body {
       }
     }
   }
-  .achievement-pop{
-    border-radius: 10px;
-    border: solid grey;
-    width: 200px;
-    height: 212px;
-    background-color: #316698;
-    outline: grey;
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-    text-align: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.5s, opacity 0.5s;
-  }
-  .achievement-pop.fade-in {
-    visibility: visible;
-    opacity: 1;
-  }
-  .achievement-pop.fade-out {
-    visibility: visible;
-    opacity: 0;
-  }  
+
 
   .end-game-room {
     background-color: $off-white;
