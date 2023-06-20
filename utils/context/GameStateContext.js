@@ -100,7 +100,7 @@ export function GameStateProvider({ children }) {
 
   // Check if user has achievement, if not - award achievement, show popup
   function handleAchievement(achievement) {
-    if (userAchievements) {
+    if (userAchievements && achievement) {
       let matchingAchievement = false;
       for (const userAchievement of userAchievements) {
         if (userAchievement.name === achievement.name) {
