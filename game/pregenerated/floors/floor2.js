@@ -70,7 +70,7 @@ const floor_2 = {
     background: `url("/backgrounds/route_36.png")`,
     color: "#dda2a7",
     music: "07_snorlax2.mp3",
-    intro: `/splashes/00_splash.png`,
+    intro: `splashes/vs_snorlax1.png`,
     achievement: "05_snorlax2",
     winMessage: "The thief ran away! Where did he go?",
     lossMessage: "Oh no! He can't get away with this!",
