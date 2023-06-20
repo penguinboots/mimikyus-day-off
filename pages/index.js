@@ -17,6 +17,8 @@ import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
 import Settings from '@/components/common/Settings';
 import { items } from '@/game/data/items';
+import { achievementFetcher } from '@/game/helpers/combat/achievementFetcher';
+import AchievementPopup from '@/components/play/AchievementPopup';
 
 let dbData = null
 export default function Home() {
@@ -29,7 +31,8 @@ export default function Home() {
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
-  
+  const [showAchievementPopup, setShowAchievementPopup] = useState(false);
+  const roomAchievement = achievementFetcher(gameState.currentRoom.achievement)
   // Initial player values, fill player values from database
   const playerTemplate = { ...mimikyu }
   useEffect(() => {
@@ -114,6 +117,8 @@ export default function Home() {
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
             setSelectedMusic={setSelectedMusic}
+            roomAchievement={roomAchievement}
+            setShowAchievementPopup={setShowAchievementPopup}
           />
         )}
         {mode === 'PLAY' && (
@@ -123,6 +128,8 @@ export default function Home() {
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
+            roomAchievement={roomAchievement}
+            setShowAchievementPopup={setShowAchievementPopup}
           />
         )}
         {isMenuOpen.achievements && (
@@ -131,6 +138,13 @@ export default function Home() {
         {isMenuOpen.settings && (
           <Settings handleClick={() => windowClose("settings")} />
         )}
+        <div className={`achievement-pop ${showAchievementPopup ? 'fade-in' : 'fade-out'}`}>
+          {/* {showAchievementPopup && ( */}
+            <AchievementPopup 
+              achievement={roomAchievement}
+            />
+          {/* )} */}
+        </div>
       </div>
       <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />
     </div>
