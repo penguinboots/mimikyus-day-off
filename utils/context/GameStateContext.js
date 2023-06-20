@@ -1,7 +1,11 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { dungeon } from '@/game/pregenerated/dungeon1';
 import { items } from '@/game/data/items';
 import useIsMenuOpen from "@/utils/hooks/isMenuOpen";
+import { achievementFetcher } from '@/game/helpers/combat/achievementFetcher';
+import { getAchievements } from '@/prisma/helpers/getAchievements';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { earnAchievement } from '@/prisma/helpers/earnAchievement';
 
 
 const GameStateContext = createContext();
@@ -13,6 +17,8 @@ export function useGameState() {
 
 // Provider component
 export function GameStateProvider({ children }) {
+  const { user, isLoading } = useUser();
+
   const { mimikyu } = require("../../game/pregenerated/fakePlayer");
   const player = mimikyu;
 
@@ -77,6 +83,40 @@ export function GameStateProvider({ children }) {
     }, 2500);
   }
 
+  // Fetch all user achievements, set into state
+  const [userAchievements, setUserAchievements] = useState([]);
+  // Called from Play useEffect
+  async function fetchUserAchievements() {
+    getAchievements(user).then(({ achievements }) => {
+      setUserAchievements(achievements);
+    });
+  }
+  const [earnedAchievement, setEarnedAchievement] = useState();
+  // Keeps roomAchievement updated to achievement for current room
+  const [roomAchievement, setRoomAchievement] = useState(achievementFetcher(gameState.currentRoom.achievement));
+  useEffect(() => {
+    setRoomAchievement(achievementFetcher(gameState.currentRoom.achievement));
+  }, [gameState.currentRoom])
+
+  // Check if user has achievement, if not - award achievement, show popup
+  function handleAchievement(achievement) {
+    if (userAchievements) {
+      let matchingAchievement = false;
+      for (const userAchievement of userAchievements) {
+        if (userAchievement.name === achievement.name) {
+          matchingAchievement = userAchievement;
+          break;
+        }
+      }
+      if (matchingAchievement.collected === false) {
+        setEarnedAchievement(matchingAchievement);
+        windowToggle("achievementPop");
+        earnAchievement(user, achievement.name);
+        setTimeout(() => windowClose("achievementPop"), 2000);
+      }
+    }
+  };
+
   // Sets state to the first room of next floor, sets opponent, resets player HP/stats
   function nextFloor(nextFl) {
     const nextFloor = dungeon[nextFl];
@@ -92,12 +132,13 @@ export function GameStateProvider({ children }) {
       }
     }));
     setBattleHistory([]);
-    setMenuOpen({
+    setMenuOpen(prev => ({
+      ...prev,
       achievements: false,
       settings: false,
       editMoves: false,
       inventory: false,
-    });
+    }));
     setBattleWon(false);
   }
 
@@ -117,12 +158,13 @@ export function GameStateProvider({ children }) {
         }
       }));
       setBattleHistory([]);
-      setMenuOpen({
+      setMenuOpen(prev => ({
+        ...prev,
         achievements: false,
         settings: false,
         editMoves: false,
         inventory: false,
-      });
+      }));
     } else {
       nextFloor(gameState.currentFloor.next_floor);
     }
@@ -288,7 +330,15 @@ export function GameStateProvider({ children }) {
     windowToggle,
     windowClose,
     skipToBoss,
-    winGame
+    winGame,
+    handleAchievement,
+    userAchievements,
+    setUserAchievements,
+    roomAchievement,
+    setRoomAchievement,
+    fetchUserAchievements,
+    earnedAchievement,
+    setEarnedAchievement
   };
   return (
     <GameStateContext.Provider value={value}>

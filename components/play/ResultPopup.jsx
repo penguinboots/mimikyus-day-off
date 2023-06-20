@@ -1,10 +1,14 @@
 import { useGameState } from "@/utils/context/GameStateContext";
 import localFont from "next/font/local";
-
+import { useState, useEffect } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { getAchievements } from "@/prisma/helpers/getAchievements";
+import { earnAchievement } from "@/prisma/helpers/earnAchievement";
+import { achievementFetcher } from "@/game/helpers/combat/achievementFetcher";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
-
 export default function ResultPopup(props) {
-  const { result, nextRoom, setMode, loseGame } = props;
+  const { result, nextRoom, setMode, loseGame, setShowAchievementPopup } =
+    props;
   const { setSelectedMusic, gameState } = useGameState();
 
   function handleLoss() {
@@ -22,7 +26,8 @@ export default function ResultPopup(props) {
   if (result === "win") {
     return (
       <div className="popup result-window">
-        <h2 className="win-title"
+        <h2
+          className="win-title"
           style={{
             fontFamily: vt.style.fontFamily,
           }}

@@ -88,7 +88,7 @@ const floor_3 = {
     color: "#dda2a7",
     music: "12_snorlax3.mp3",
     intro: `/splashes/00_splash.png`,
-    achievement: null,
+    achievement: "06_snorlax3",
     winMessage: "Finally caught that slippery thief!",
     lossMessage: "So close... but so far...",
     next_room: "room_6",

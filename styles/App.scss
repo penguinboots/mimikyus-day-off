@@ -358,18 +358,25 @@ body {
     gap: 20px;
     width: 620px;
 
-    li {
+    li, .ach-placeholder {
       display: flex;
       align-items: center;
       justify-content: center;
 
-      margin: 20px;
+      width: 180px;
+      height: 180px;
+    }
 
+    .ach-placeholder h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 140px;
       height: 140px;
-      background-color: $label-bg;
-      border: 1px solid $border;
+      background-color: $pdex-shadow-border;
       border-radius: 50%;
+      font-size: 24px;
+      color: $pdex-shadow-text;
     }
   }
   .ach-list::-webkit-scrollbar {
@@ -382,6 +389,79 @@ body {
     font-size: 60px;
     margin: 20px;
   }
+}
+/** Achievement popup **/
+.achievement-pop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  height: 270px;
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 99;
+  pointer-events: none;
+  h3 {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 160px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 24px;
+    background-color: $pdex-shadow-text;
+    border-radius: 22px;
+    padding: 5px;
+  }
+  img {
+    position: absolute;
+    width: 220px;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+  }
+  .badge {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    margin-top: -20px;
+    width: 190px;
+    height: 190px;
+    background-color: $pdex-shadow-text;
+    border-radius: 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.achievement-pop.fade-in {
+  visibility: visible;
+  animation: fadeIn 0.5s forwards;
+}
+
+.achievement-pop.fade-out {
+  visibility: visible;
+  animation: fadeOut 0.5s forwards;
 }
 
 /** DASHBOARD **/

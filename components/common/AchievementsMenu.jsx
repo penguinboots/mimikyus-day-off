@@ -1,43 +1,36 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faFan } from "@fortawesome/free-solid-svg-icons";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { useState, useEffect } from "react";
 import Achievement from "./Achievement";
-import { getAchievements } from "@/prisma/helpers/getAchievements";
 import localFont from "next/font/local";
+import { useGameState } from "@/utils/context/GameStateContext";
+import { useEffect } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
-const achievementList = require("../../game/data/achievements.json");
 
 export default function AchievementsMenu(props) {
-  const { user, error, isLoading } = useUser();
-  // Introduce state for playerEarnedAchievementsArray
-  const [playerEarnedAchievements, setplayerEarnedAchievements] = useState([]);
-  // Fetch a new moves variable using a helper
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const db_data = await getAchievements(user);
-        const db_achievements = db_data.achievements;
-        setplayerEarnedAchievements(db_achievements);
-      } catch (error) {
-        console.error("Error fetching achievements:", error);
-      }
-    };
+  const {user, isLoading} = useUser();
+  const { userAchievements, fetchUserAchievements } = useGameState();
 
-    fetchData();
+  useEffect(() => {
+    if (!isLoading) {
+      fetchUserAchievements();
+    }
   }, [user]);
 
-  // Generates earned Achievements from array of achievements
-  const achievementsData = [];
-  for (const key in playerEarnedAchievements) {
-    if (playerEarnedAchievements.hasOwnProperty(key)) {
-      const value = playerEarnedAchievements[key];
-      achievementsData.push(value);
+  const sortedAchievements = userAchievements.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+      return -1;
     }
-  }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
 
-  const achievements = achievementsData.map((ach) => {
+  const achievements = sortedAchievements.map((ach) => {
     return <Achievement key={ach.name} achievement={ach} />;
   });
 

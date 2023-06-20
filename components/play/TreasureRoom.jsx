@@ -10,13 +10,16 @@ import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
 import { updateStat } from "@/prisma/helpers/updateStat";
 import { getCharacter } from "@/prisma/helpers/getCharacter";
+import { achievementFetcher } from "@/game/helpers/combat/achievementFetcher";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function Room() {
   const { user, error, isLoading } = useUser();
-  const { gameState, setGameState, nextRoom } = useGameState();
+  const { gameState, setGameState, nextRoom, handleAchievement } = useGameState();
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
+
+  const roomAchievement = achievementFetcher(gameState.currentRoom.achievement)
 
   // Actively selected item
   const [chosenOption, setChosenOption] = useState({
@@ -58,9 +61,11 @@ export default function Room() {
     const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
     setVitamins(selectedVitamins);
   }
+
   const roomItems = gameState.currentRoom.treasure.items.map((item) =>
     properName(item)
   );
+
   // Pick available moves based on room's rewards and player's known moves
   const roomMoves = gameState.currentRoom.treasure.moves;
   useEffect(() => {
@@ -142,7 +147,6 @@ export default function Room() {
               return getCharacter(user);
             })
             .then(({ characters }) => {
-              console.log(characters);
               let character = characters[0];
               setGameState((prev) => ({
                 ...prev,
@@ -169,10 +173,13 @@ export default function Room() {
     });
   }
 
-  // Only calls nextRoom when executeChoice is complete
+  // Only calls nextRoom when executeChoice is complete, grants achievement if available
   const handleContinue = async () => {
     setLoadingNext(true);
     try {
+      if (roomAchievement) {
+        handleAchievement(roomAchievement)
+      }
       await executeChoice(chosenOption.store, chosenOption.item);
       nextRoom();
     } catch (error) {

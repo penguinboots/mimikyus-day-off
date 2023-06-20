@@ -17,6 +17,7 @@ import { mimikyu } from '@/game/pregenerated/fakePlayer';
 import AchievementsMenu from '@/components/common/AchievementsMenu';
 import Settings from '@/components/common/Settings';
 import { items } from '@/game/data/items';
+import AchievementPopup from '@/components/play/AchievementPopup';
 
 let dbData = null
 export default function Home() {
@@ -25,13 +26,14 @@ export default function Home() {
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
-  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowToggle, windowClose } = useGameState();
+  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowClose, earnedAchievement, fetchUserAchievements } = useGameState();
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
-  
+
   // Initial player values, fill player values from database
   const playerTemplate = { ...mimikyu }
+
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
@@ -56,7 +58,7 @@ export default function Home() {
             const updatedPlayerTemplate = {
               ...playerTemplate,
               current_hp: characterData.hp,
-              stats:{
+              stats: {
                 "hp": characterData.hp,
                 "attack": characterData.attack,
                 "defense": characterData.defense,
@@ -102,6 +104,13 @@ export default function Home() {
     }
   }, [gameState.currentRoom, setSelectedMusic, mode]);
 
+  // If user changes, re-fetch achievements
+  useEffect(() => {
+    if (!isLoading) {
+      fetchUserAchievements();
+    }
+  }, [user]);
+
   return (
     <div className="app-wrapper">
       <div className="view-wrapper">
@@ -131,6 +140,9 @@ export default function Home() {
         {isMenuOpen.settings && (
           <Settings handleClick={() => windowClose("settings")} />
         )}
+        <div className={`achievement-pop ${isMenuOpen.achievementPop ? 'fade-in' : 'fade-out'}`}>
+          <AchievementPopup achievement={earnedAchievement} />
+        </div>
       </div>
       <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />
     </div>

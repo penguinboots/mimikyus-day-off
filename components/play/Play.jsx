@@ -18,8 +18,13 @@ import { dungeon } from "@/game/pregenerated/dungeon1";
 
 export default function Play(props) {
   const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
-  const { gameState, nextRoom, setSelectedMusic, flashSplash, setSplash } =
-    useGameState();
+  const {
+    gameState,
+    nextRoom,
+    setSelectedMusic,
+    flashSplash,
+    setSplash,
+  } = useGameState();
 
   // state for popup, current image
   const introComic = [intro1, intro2];
