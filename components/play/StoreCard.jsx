@@ -10,18 +10,21 @@ export default function StoreCard(props) {
   const handleChooseOption = (option) => {
     setChosenOption(option);
   };
-
-  let optionItems = options.map((option, index) => {
-    return (
-      <StoreOption
-        key={index}
-        name={option}
-        chosenOption={chosenOption}
-        handleChooseOption={handleChooseOption}
-      />
-    );
-  });
-
+  let optionItems = null;
+  if (options.length === 0 && !isStoreLoading){
+    optionItems = <span className="sold-out">Sold Out!</span>;
+  }else{
+    optionItems = options.map((option, index) => {
+      return (
+        <StoreOption
+          key={index}
+          name={option}
+          chosenOption={chosenOption}
+          handleChooseOption={handleChooseOption}
+        />
+      );
+    });
+  }
   return (
     <div
       className="store"

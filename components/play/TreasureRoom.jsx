@@ -81,6 +81,9 @@ export default function Room() {
               dbMoves.push(move);
             }
           });
+          if (dbMoves.length === 0){
+            setStoreMoves([])
+          }
           while (dbMoves.length > 2) {
             const randomIndex = Math.floor(Math.random() * dbMoves.length);
             dbMoves.splice(randomIndex, 1);
