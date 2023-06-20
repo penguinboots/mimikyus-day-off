@@ -15,10 +15,8 @@ import end2 from "@/public/story/end_comic2.png";
 import ComicPopup from "../common/ComicPopup";
 
 import { dungeon } from "@/game/pregenerated/dungeon1";
-import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Play(props) {
-  const { user, isLoading } = useUser();
   const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
   const {
     gameState,
@@ -26,7 +24,6 @@ export default function Play(props) {
     setSelectedMusic,
     flashSplash,
     setSplash,
-    fetchUserAchievements,
   } = useGameState();
 
   // state for popup, current image
@@ -64,13 +61,6 @@ export default function Play(props) {
     setMode("DASH");
     setSelectedMusic("00_pokemon_center.mp3");
   };
-
-  // If user changes, re-fetch achievements
-  useEffect(() => {
-    if (!isLoading) {
-      fetchUserAchievements();
-    }
-  }, [user]);
 
   return (
     <div className="play-container">
