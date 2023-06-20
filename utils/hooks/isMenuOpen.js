@@ -7,6 +7,7 @@ export default function useIsMenuOpen() {
     settings: false,
     editMoves: false,
     inventory: false,
+    achievementPop: false,
   });
 
   const windowToggle = (windowName) => {

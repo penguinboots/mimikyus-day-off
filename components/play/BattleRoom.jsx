@@ -21,10 +21,8 @@ import { properName } from "@/utils/helpers/properName";
 import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-
-
 export default function Room(props) {
-  const { setMode, setShowAchievementPopup} = props;
+  const { setMode, setShowAchievementPopup } = props;
   const {
     gameState,
     setGameState,
@@ -60,7 +58,9 @@ export default function Room(props) {
     windowClose,
     windowToggle,
     isMenuOpen,
-    skipToBoss
+    skipToBoss,
+    handleAchievement,
+    roomAchievement,
   } = useGameState();
   const { user } = useUser();
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
@@ -104,6 +104,8 @@ export default function Room(props) {
         ...prev,
         victory: true,
       }));
+      // let currentAchievement = {...roomAchievement};
+      handleAchievement(roomAchievement);
     } else if (!win) {
       setPopup((prev) => ({
         ...prev,
@@ -186,36 +188,36 @@ export default function Room(props) {
         dealHeal(self, moveEffects.heal);
       }
       if (moveEffects.statChanges) {
-        if(moveEffects.statChanges.target === "target"){
-          await playStatDown(target)
-          changeStat(target, moveEffects.statChanges)
+        if (moveEffects.statChanges.target === "target") {
+          await playStatDown(target);
+          changeStat(target, moveEffects.statChanges);
         } else if (moveEffects.statChanges.target === "self") {
-          await playStatUp(self)
-          changeStat(self, moveEffects.statChanges)
+          await playStatUp(self);
+          changeStat(self, moveEffects.statChanges);
         }
       }
     } else if (move.category.includes("stats")) {
       if (moveEffects.statChanges) {
-        if(moveEffects.statChanges.target === "target"){
+        if (moveEffects.statChanges.target === "target") {
           await playStatDown(target);
-          changeStat(target, moveEffects.statChanges)
+          changeStat(target, moveEffects.statChanges);
         } else if (moveEffects.statChanges.target === "self") {
           await playStatUp(self);
-          changeStat(self, moveEffects.statChanges)
+          changeStat(self, moveEffects.statChanges);
         }
       }
     } else if (move.category === "unique") {
-      await playAttack(self, self)
-    } else if (move.category === "healing"){
+      await playAttack(self, self);
+    } else if (move.category === "healing") {
       await playStatUp(self);
-      dealHeal(self, moveEffects.heal)
+      dealHeal(self, moveEffects.heal);
     }
     return false;
   }
 
   // Executes player move selection, calling previously defined helpers
   async function executeTurn(charMove, char, opponentMove, opponent) {
-    setButtonsDisabled(true)
+    setButtonsDisabled(true);
     let isBattleOver = false;
     let turns = moveOrder(charMove, char, opponentMove, opponent);
     for (let turn of turns) {
@@ -226,59 +228,66 @@ export default function Room(props) {
           ...prev,
           `${turn.user.proper_name} used ${turn.move.proper_name}!\n`,
         ]);
-        if(moveEffects.miss === true){
-          if(turn.move.target === "user"){
-            setBattleHistory((prev) => [
-              ...prev,
-              `But it failed!\n`,
-            ])
+        if (moveEffects.miss === true) {
+          if (turn.move.target === "user") {
+            setBattleHistory((prev) => [...prev, `But it failed!\n`]);
           } else {
             setBattleHistory((prev) => [
               ...prev,
               `${turn.target.proper_name} avoided the attack!\n`,
-            ])
+            ]);
           }
-        } else if(moveEffects.effectiveness === "immune"){
+        } else if (moveEffects.effectiveness === "immune") {
           setBattleHistory((prev) => [
-          ...prev,
-          `It had no effect on ${turn.target.proper_name}!\n`,
-        ])} else if(moveEffects.effectiveness === "not-very"){
+            ...prev,
+            `It had no effect on ${turn.target.proper_name}!\n`,
+          ]);
+        } else if (moveEffects.effectiveness === "not-very") {
           setBattleHistory((prev) => [
-          ...prev,
-          `It's not very effective on ${turn.target.proper_name}\n`,
-        ])} else if(moveEffects.effectiveness === "super"){
+            ...prev,
+            `It's not very effective on ${turn.target.proper_name}\n`,
+          ]);
+        } else if (moveEffects.effectiveness === "super") {
           setBattleHistory((prev) => [
-          ...prev,
-          `It's super effective on ${turn.target.proper_name}\n`,
-        ])}
-        if(moveEffects.heal > 0){
+            ...prev,
+            `It's super effective on ${turn.target.proper_name}\n`,
+          ]);
+        }
+        if (moveEffects.heal > 0) {
           setBattleHistory((prev) => [
             ...prev,
             `${turn.user.proper_name} recovered some HP!\n`,
-        ])}
-        if(moveEffects.heal < 0){
+          ]);
+        }
+        if (moveEffects.heal < 0) {
           setBattleHistory((prev) => [
             ...prev,
             `${turn.user.proper_name} is damaged by recoil!\n`,
-        ])}
-        if(moveEffects.critical === true && moveEffects.effectiveness !== "immune"){
-          setBattleHistory((prev) => [
-          ...prev,
-          `A critical hit!\n`,
-        ])};
-        if(moveEffects.statChanges){
-          if(moveEffects.statChanges.target === "self") {
+          ]);
+        }
+        if (
+          moveEffects.critical === true &&
+          moveEffects.effectiveness !== "immune"
+        ) {
+          setBattleHistory((prev) => [...prev, `A critical hit!\n`]);
+        }
+        if (moveEffects.statChanges) {
+          if (moveEffects.statChanges.target === "self") {
             setBattleHistory((prev) => [
-            ...prev,
-            `${turn.user.proper_name}'s ${properName(turn.move.stat_changes[0].stat)} went up!\n`,
-            ])
+              ...prev,
+              `${turn.user.proper_name}'s ${properName(
+                turn.move.stat_changes[0].stat
+              )} went up!\n`,
+            ]);
           } else {
             setBattleHistory((prev) => [
               ...prev,
-              `${turn.target.proper_name}'s ${properName(turn.move.stat_changes[0].stat)} went down!\n`,
-            ])
+              `${turn.target.proper_name}'s ${properName(
+                turn.move.stat_changes[0].stat
+              )} went down!\n`,
+            ]);
           }
-        };
+        }
         // doMove calculates whether damage dealt will kill the target this turn
         if (turn.user === gameState.player) {
           if (
@@ -307,7 +316,7 @@ export default function Room(props) {
         }
       }
     }
-    setButtonsDisabled(false)
+    setButtonsDisabled(false);
   }
 
   // Generates array of move objects from array of move name strings
@@ -344,21 +353,21 @@ export default function Room(props) {
 
   const items = gameState.itemList.map((item) => (
     <button
-    key={item.name}
-    onClick={() => {
-      if (buttonsDisabled) return;
-      if (item.quantity < 1) return;
-      const itemObj = itemFetcher(item.name)
-      executeTurn(
-        itemObj,
-        gameState.player,
-        opponentMoveSelect(gameState.opponent),
-        gameState.opponent,
-        )
-      //decrement item in db and state
-      earnItem(user, item.name, -1)
-      item.quantity --
-      windowClose("inventory")
+      key={item.name}
+      onClick={() => {
+        if (buttonsDisabled) return;
+        if (item.quantity < 1) return;
+        const itemObj = itemFetcher(item.name);
+        executeTurn(
+          itemObj,
+          gameState.player,
+          opponentMoveSelect(gameState.opponent),
+          gameState.opponent
+        );
+        //decrement item in db and state
+        earnItem(user, item.name, -1);
+        item.quantity--;
+        windowClose("inventory");
       }}
       disabled={buttonsDisabled}
       className={buttonsDisabled || item.quantity < 1 ? "disabled-button" : ""}
@@ -385,10 +394,20 @@ export default function Room(props) {
         <div className={`splash-shadow ${splash ? "show" : "hide"}`}></div>
       </div>
       {popup.victory && (
-        <ResultPopup result="win" setMode={setMode} nextRoom={nextRoom} setShowAchievementPopup={setShowAchievementPopup}/>
+        <ResultPopup
+          result="win"
+          setMode={setMode}
+          nextRoom={nextRoom}
+          setShowAchievementPopup={setShowAchievementPopup}
+        />
       )}
       {popup.defeat && (
-        <ResultPopup result="loss" setMode={setMode} loseGame={loseGame} setShowAchievementPopup={setShowAchievementPopup}/>
+        <ResultPopup
+          result="loss"
+          setMode={setMode}
+          loseGame={loseGame}
+          setShowAchievementPopup={setShowAchievementPopup}
+        />
       )}
       <div className="battle-floor">
         <div

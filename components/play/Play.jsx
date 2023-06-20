@@ -15,17 +15,26 @@ import end2 from "@/public/story/end_comic2.png";
 import ComicPopup from "../common/ComicPopup";
 
 import { dungeon } from "@/game/pregenerated/dungeon1";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Play(props) {
-  const { mode, setMode, isMusicPlaying, handleMusicToggle, setShowAchievementPopup} = props;
-  const { gameState, nextRoom, setSelectedMusic, flashSplash, setSplash } =
-    useGameState();
+  const { user, isLoading } = useUser();
+  const { mode, setMode, isMusicPlaying, handleMusicToggle } = props;
+  const {
+    gameState,
+    nextRoom,
+    setSelectedMusic,
+    flashSplash,
+    setSplash,
+    fetchUserAchievements,
+  } = useGameState();
 
   // state for popup, current image
   const introComic = [intro1, intro2];
   const endComic = [end1, end2];
   const [showStory, setShowStory] = useState(false);
   const [storyChapter, setStoryChapter] = useState(introComic);
+
   // Story for Floor 1, Room 1 (Introduction) and Floor 3, Room 6 (Ending)
   useEffect(() => {
     if (gameState.currentRoom === dungeon.floor_1.room_1) {
@@ -56,6 +65,13 @@ export default function Play(props) {
     setSelectedMusic("00_pokemon_center.mp3");
   };
 
+  // If user changes, re-fetch achievements
+  useEffect(() => {
+    if (!isLoading) {
+      fetchUserAchievements();
+    }
+  }, [user]);
+
   return (
     <div className="play-container">
       <Nav
@@ -78,14 +94,13 @@ export default function Play(props) {
           <FontAwesomeIcon icon={faHouse} />
         </button>
         {gameState.roomType === "battle" && (
-          <BattleRoom setMode={setMode} setShowStory={setShowStory} setShowAchievementPopup={setShowAchievementPopup}/>
+          <BattleRoom setMode={setMode} setShowStory={setShowStory} />
         )}
         {gameState.roomType === "treasure" && (
           <TreasureRoom
             returnToDash={returnToDash}
             nextRoom={nextRoom}
             gameState={gameState}
-            setShowAchievementPopup={setShowAchievementPopup}
           />
         )}
         {gameState.roomType === "end" && (

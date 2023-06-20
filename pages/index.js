@@ -19,6 +19,7 @@ import Settings from '@/components/common/Settings';
 import { items } from '@/game/data/items';
 import { achievementFetcher } from '@/game/helpers/combat/achievementFetcher';
 import AchievementPopup from '@/components/play/AchievementPopup';
+import { getAchievements } from '@/prisma/helpers/getAchievements';
 
 let dbData = null
 export default function Home() {
@@ -27,14 +28,14 @@ export default function Home() {
   // View Mode
   const [mode, setMode] = useState("LANDING");
   // Game State
-  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowToggle, windowClose } = useGameState();
+  const { gameState, setGameState, setSelectedMusic, isMenuOpen, windowClose, earnedAchievement } = useGameState();
   // Music
   const audioRef = useRef(null);
   const { isMusicPlaying, handleMusicToggle } = useIsMusicPlaying(audioRef, mode);
-  const [showAchievementPopup, setShowAchievementPopup] = useState(false);
-  const roomAchievement = achievementFetcher(gameState.currentRoom.achievement)
+
   // Initial player values, fill player values from database
   const playerTemplate = { ...mimikyu }
+
   useEffect(() => {
     const initializeUser = async () => {
       if (user) {
@@ -59,7 +60,7 @@ export default function Home() {
             const updatedPlayerTemplate = {
               ...playerTemplate,
               current_hp: characterData.hp,
-              stats:{
+              stats: {
                 "hp": characterData.hp,
                 "attack": characterData.attack,
                 "defense": characterData.defense,
@@ -117,8 +118,6 @@ export default function Home() {
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
             setSelectedMusic={setSelectedMusic}
-            roomAchievement={roomAchievement}
-            setShowAchievementPopup={setShowAchievementPopup}
           />
         )}
         {mode === 'PLAY' && (
@@ -128,8 +127,6 @@ export default function Home() {
             setMode={setMode}
             isMusicPlaying={isMusicPlaying}
             handleMusicToggle={handleMusicToggle}
-            roomAchievement={roomAchievement}
-            setShowAchievementPopup={setShowAchievementPopup}
           />
         )}
         {isMenuOpen.achievements && (
@@ -138,12 +135,8 @@ export default function Home() {
         {isMenuOpen.settings && (
           <Settings handleClick={() => windowClose("settings")} />
         )}
-        <div className={`achievement-pop ${showAchievementPopup ? 'fade-in' : 'fade-out'}`}>
-          {/* {showAchievementPopup && ( */}
-            <AchievementPopup 
-              achievement={roomAchievement}
-            />
-          {/* )} */}
+        <div className={`achievement-pop ${isMenuOpen.achievementPop ? 'fade-in' : 'fade-out'}`}>
+          <AchievementPopup achievement={earnedAchievement} />
         </div>
       </div>
       <AudioPlayer audioRef={audioRef} mode={mode} isMusicPlaying={isMusicPlaying} />

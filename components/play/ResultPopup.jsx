@@ -7,39 +7,10 @@ import { earnAchievement } from "@/prisma/helpers/earnAchievement";
 import { achievementFetcher } from "@/game/helpers/combat/achievementFetcher";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 export default function ResultPopup(props) {
-  const { result, nextRoom, setMode, loseGame, setShowAchievementPopup } = props;
+  const { result, nextRoom, setMode, loseGame, setShowAchievementPopup } =
+    props;
   const { setSelectedMusic, gameState } = useGameState();
-  const [userAchievements, setUserAchievements] = useState([]);
-  const {user, isLoading} = useUser()
-  const roomAchievement = achievementFetcher(gameState.currentRoom.achievement)
-  useEffect(() => {
-    if (!isLoading){
-    const fetchUserAchievements = async () => {
-      getAchievements(user).then(
-      ({ achievements })=>{
-        setUserAchievements(achievements)
-      }
-      );
-    };  
-      fetchUserAchievements()
-    };
-  }, [user]);
-  const handleAchievement = (achievement) => {
-    if (userAchievements) {
-      let matchingAchievement = false
-      for (const userAchievement of userAchievements) {
-        if (userAchievement.name === achievement.name) {
-          matchingAchievement = userAchievement
-        }
-        break;
-      }
-      if (matchingAchievement.collected === false) {
-        setShowAchievementPopup(true);
-        earnAchievement(user, achievement.name);
-        setTimeout(() => setShowAchievementPopup(false), 1000);
-      }
-    }
-  };
+
   function handleLoss() {
     setMode("DASH");
     setSelectedMusic("00_pokemon_center.mp3");
@@ -51,11 +22,12 @@ export default function ResultPopup(props) {
     setSelectedMusic("00_pokemon_center.mp3");
     nextRoom();
   }
+
   if (result === "win") {
-    handleAchievement(roomAchievement)
     return (
       <div className="popup result-window">
-        <h2 className="win-title"
+        <h2
+          className="win-title"
           style={{
             fontFamily: vt.style.fontFamily,
           }}

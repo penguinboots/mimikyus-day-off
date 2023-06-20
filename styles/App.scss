@@ -384,30 +384,79 @@ body {
   }
 }
 /** Achievement popup **/
-.achievement-pop{
-  border-radius: 10px;
-  border: solid grey;
-  width: 200px;
-  height: 212px;
-  background-color: #316698;
-  outline: grey;
+.achievement-pop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  height: 270px;
   position: absolute;
-  bottom: 50px;
+  bottom: 40px;
   right: 50px;
   text-align: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.5s, opacity 0.5s;
-  z-index: 9999;
+  z-index: 99;
+  pointer-events: none;
+  h3 {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 160px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 24px;
+    background-color: $pdex-shadow-text;
+    border-radius: 22px;
+    padding: 5px;
+  }
+  img {
+    position: absolute;
+    width: 220px;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+  }
+  .badge {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    margin-top: -20px;
+    width: 190px;
+    height: 190px;
+    background-color: $pdex-shadow-text;
+    border-radius: 50%;
+  }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .achievement-pop.fade-in {
   visibility: visible;
-  opacity: 1;
+  animation: fadeIn 0.5s forwards;
 }
+
 .achievement-pop.fade-out {
   visibility: visible;
-  opacity: 0;
-}  
+  animation: fadeOut 0.5s forwards;
+}
+
 /** DASHBOARD **/
 .dashboard {
   height: 100%;
@@ -865,7 +914,6 @@ body {
       }
     }
   }
-
 
   .end-game-room {
     background-color: $off-white;

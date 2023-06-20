@@ -10,18 +10,17 @@ import { getMoves } from "@/prisma/helpers/getMoves";
 import { properName } from "@/utils/helpers/properName";
 import { updateStat } from "@/prisma/helpers/updateStat";
 import { getCharacter } from "@/prisma/helpers/getCharacter";
-import { earnAchievement } from "@/prisma/helpers/earnAchievement";
-import { getAchievements } from "@/prisma/helpers/getAchievements";
 import { achievementFetcher } from "@/game/helpers/combat/achievementFetcher";
 const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
-export default function Room(props) {
-  const { setShowAchievementPopup } = props
+export default function Room() {
   const { user, error, isLoading } = useUser();
-  const { gameState, setGameState, nextRoom } = useGameState();
+  const { gameState, setGameState, nextRoom, handleAchievement } = useGameState();
   const BACKGROUND = gameState.currentRoom.background;
   const BACKGROUND_COL = gameState.currentRoom.color;
+
   const roomAchievement = achievementFetcher(gameState.currentRoom.achievement)
+
   // Actively selected item
   const [chosenOption, setChosenOption] = useState({
     store: null,
@@ -42,32 +41,7 @@ export default function Room(props) {
     gameState.player.stats["special-defense"] < 255 ? "Zinc" : null,
     gameState.player.stats["speed"] < 255 ? "Carbos" : null,
   ].filter((value) => value !== null)); 
-  const [userAchievements, setUserAchievements] = useState(null);
-  useEffect(() => {
-    if (!isLoading){
-    const fetchUserAchievements = async () => {
-      getAchievements(user).then(
-      ({ achievements })=>{
-        setUserAchievements(achievements)
-      }
-      );
-    };  
-      fetchUserAchievements()
-    };
-  }, [user]);
-  const handleAchievement = (achievement) => {
-    if (userAchievements){
-      userAchievements.forEach(userAchievement => {
-        if (userAchievement.name === achievement.name){
-          if (userAchievement.collected === false){
-            setShowAchievementPopup(true);
-            earnAchievement(user, achievement.name)
-            setTimeout(() => setShowAchievementPopup(false), 1000);
-          }
-        }
-      });
-    }
-  };
+
   // Makes continue button when any choice is made
   useEffect(() => {
     if (chosenOption.item !== null) {
@@ -87,9 +61,11 @@ export default function Room(props) {
     const selectedVitamins = randomIndexes.map((index) => vitamins[index]);
     setVitamins(selectedVitamins);
   }
+
   const roomItems = gameState.currentRoom.treasure.items.map((item) =>
     properName(item)
   );
+
   // Pick available moves based on room's rewards and player's known moves
   const roomMoves = gameState.currentRoom.treasure.moves;
   useEffect(() => {
@@ -197,7 +173,7 @@ export default function Room(props) {
     });
   }
 
-  // Only calls nextRoom when executeChoice is complete
+  // Only calls nextRoom when executeChoice is complete, grants achievement if available
   const handleContinue = async () => {
     setLoadingNext(true);
     try {
