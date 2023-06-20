@@ -10,7 +10,7 @@ const vt = localFont({ src: "../../public/fonts/VT323-Regular.ttf" });
 
 export default function AchievementsMenu(props) {
   const {user, isLoading} = useUser();
-  const { userAchievements, fetchUserAchievements } = useGameState();
+  const { gameState, fetchUserAchievements } = useGameState();
 
   useEffect(() => {
     if (!isLoading) {
@@ -18,7 +18,7 @@ export default function AchievementsMenu(props) {
     }
   }, [user]);
 
-  const sortedAchievements = userAchievements.sort((a, b) => {
+  const sortedAchievements = gameState.achievements.sort((a, b) => {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();
     if (nameA < nameB) {
