@@ -851,7 +851,7 @@ body {
 /** HEALTH BAR **/
 .health-container {
   position: relative;
-  top: -30px;
+  top: 0px;
   left: 100px;
   width: 300px;
   height: 60px;
@@ -1192,7 +1192,7 @@ body {
   background-color: #e9d4b7;
   h2 {
     font-size: 60px;
-    color: $pdex-black-highlight;
+    color: $pdex-shadow-text;
   }
   .end-image {
     border-radius: 20px;
