@@ -104,12 +104,12 @@ export default function Home() {
     }
   }, [gameState.currentRoom, setSelectedMusic, mode]);
 
-  // If user changes, re-fetch achievements
+  // If room changes, re-fetch achievements
   useEffect(() => {
     if (!isLoading) {
       fetchUserAchievements();
     }
-  }, [user]);
+  }, [gameState.currentRoom]);
 
   return (
     <div className="app-wrapper">
