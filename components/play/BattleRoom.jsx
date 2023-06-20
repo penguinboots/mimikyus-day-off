@@ -24,7 +24,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 
 export default function Room(props) {
-  const { setMode } = props;
+  const { setMode, setShowAchievementPopup} = props;
   const {
     gameState,
     setGameState,
@@ -307,8 +307,6 @@ export default function Room(props) {
         }
       }
     }
-    console.log("Player in state:", gameState.player)
-    console.log("Opponent in state:", gameState.opponent)
     setButtonsDisabled(false)
   }
 
@@ -387,10 +385,10 @@ export default function Room(props) {
         <div className={`splash-shadow ${splash ? "show" : "hide"}`}></div>
       </div>
       {popup.victory && (
-        <ResultPopup result="win" setMode={setMode} nextRoom={nextRoom} />
+        <ResultPopup result="win" setMode={setMode} nextRoom={nextRoom} setShowAchievementPopup={setShowAchievementPopup}/>
       )}
       {popup.defeat && (
-        <ResultPopup result="loss" setMode={setMode} loseGame={loseGame} />
+        <ResultPopup result="loss" setMode={setMode} loseGame={loseGame} setShowAchievementPopup={setShowAchievementPopup}/>
       )}
       <div className="battle-floor">
         <div
