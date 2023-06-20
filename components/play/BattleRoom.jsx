@@ -21,6 +21,9 @@ import { properName } from "@/utils/helpers/properName";
 import { earnItem } from "@/prisma/helpers/earnItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
+import oran from "@/public/other/icon_oran.png";
+import sitrus from "@/public/other/icon_sitrus.png";
+
 export default function Room(props) {
   const { setMode, setShowAchievementPopup } = props;
   const {
@@ -342,8 +345,12 @@ export default function Room(props) {
     "button"
   );
 
-  const items = gameState.itemList.map((item) => (
-    <button
+  const items = gameState.itemList.map((item) => {
+    let itemImg = oran;
+    if (item.name === "sitrus-berry") {
+      itemImg = sitrus;
+    }
+    return (<button
       key={item.name}
       onClick={() => {
         if (buttonsDisabled) return;
@@ -364,11 +371,11 @@ export default function Room(props) {
       className={buttonsDisabled || item.quantity < 1 ? "disabled-button" : ""}
     >
       <div className="item">
-        <span className="item-name">{item.name}</span>
-        <span className="item-quantity">{item.quantity}</span>
+        <Image src={itemImg} alt={item.name} width="80" height="80"/>
+        <div className="item-quantity">{item.quantity}</div>
       </div>
-    </button>
-  ));
+    </button>)}
+  );
   return (
     <div
       className="battle-room"

@@ -687,7 +687,7 @@ body {
       background-color: $pdex-green;
     }
     .disabled {
-      background-color: grey
+      background-color: grey;
     }
     .cancel {
       margin: 0;
@@ -1129,7 +1129,16 @@ body {
     width: 60px;
     border-radius: 30px;
     margin: 10px;
-    background-color: red;
+    .item-quantity {
+      transform: translate(40px, -13px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $pdex-shadow-text;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
   }
 
   .disabled-button {
@@ -1150,16 +1159,10 @@ body {
 
 .inventory-button {
   position: absolute;
-  bottom: 55px;
-  left: 55px;
-  width: 80px;
-  height: 80px;
-  background-color: white;
-  border-radius: 50%;
-  border: 4px solid $pdex-shadow-border;
-  outline: 4px solid $pdex-black-highlight;
-  font-size: 20px;
-  font-weight: 700;
+  bottom: 45px;
+  left: 45px;
+  width: 100px;
+  height: 100px;
 }
 
 /** BATTLE HISTORY **/
