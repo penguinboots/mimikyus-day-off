@@ -157,8 +157,12 @@ export default function MoveEdit(props) {
       </div>
       <div className="window-controls">
         <button
-          className="save"
+          className={`save${Object.keys(chosenMoveObjs).length === 0 ? ' disabled' : ''}`}
+          disabled={Object.keys(chosenMoveObjs).length === 0}
           onClick={() => {
+            if (Object.keys(chosenMoveObjs).length === 0) {
+              return; // Do nothing if there are no chosen moves
+            }
             changeMoves(user, chosenMoveStr);
             props.handleClose();
             setGameState((prev) => ({

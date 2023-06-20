@@ -254,7 +254,7 @@ export function GameStateProvider({ children }) {
       ...prev,
       [target]: {
         ...prev[target],
-        current_hp: Math.floor(prev[target]["current_hp"] - amt),
+        current_hp: Math.max(Math.floor(prev[target]["current_hp"] - amt), 0),
       },
     }));
     return (Math.floor(gameState[target].current_hp - amt));

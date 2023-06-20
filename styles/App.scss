@@ -686,6 +686,9 @@ body {
       margin: 0;
       background-color: $pdex-green;
     }
+    .disabled {
+      background-color: grey
+    }
     .cancel {
       margin: 0;
       background-color: $pdex-red;
