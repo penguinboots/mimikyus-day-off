@@ -87,7 +87,7 @@ const floor_3 = {
     background: `url("/grass_bg.png")`,
     color: "#dda2a7",
     music: "12_snorlax3.mp3",
-    intro: `splashes/vs_snorlax1.png`,
+    intro: `/splashes/vs_snorlax1.png`,
     achievement: "06_snorlax3",
     winMessage: "Finally caught that slippery thief!",
     lossMessage: "So close... but so far...",
