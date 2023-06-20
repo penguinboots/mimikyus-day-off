@@ -451,8 +451,8 @@ export default function Room(props) {
       <InventoryButton handleClick={() => windowToggle("inventory")} />
       <div className="move-select">
         {playerMoves}
-        <button onClick={nextRoom}>NEXT</button>{" "}
-        <button onClick={skipToBoss}>SKIP TO BOSS</button>
+        {/* <button onClick={nextRoom}>NEXT</button>{" "}
+        <button onClick={skipToBoss}>SKIP TO BOSS</button> */}
       </div>
     </div>
   );
