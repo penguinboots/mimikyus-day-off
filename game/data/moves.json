@@ -173,7 +173,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 29,
@@ -332,7 +332,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 44,
@@ -1014,7 +1014,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 157,
@@ -1522,7 +1522,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 310,
@@ -1664,7 +1664,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 399,
@@ -1893,7 +1893,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 428,
@@ -1957,7 +1957,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 442,
