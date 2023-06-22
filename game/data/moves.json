@@ -130,7 +130,7 @@
   "swords-dance": {
     "name": "swords-dance",
     "proper_name": "Swords Dance",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -173,7 +173,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 29,
@@ -332,7 +332,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 44,
@@ -779,7 +779,7 @@
   "mimic": {
     "name": "mimic",
     "proper_name": "Mimic",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -811,7 +811,7 @@
   "defense-curl": {
     "name": "defense-curl",
     "proper_name": "Defense Curl",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -976,7 +976,7 @@
   "splash": {
     "name": "splash",
     "proper_name": "Splash",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -1014,7 +1014,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 157,
@@ -1072,7 +1072,7 @@
   "struggle": {
     "name": "struggle",
     "proper_name": "Struggle",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "physical",
     "effect_chance": null,
     "effect_entries": [
@@ -1136,7 +1136,7 @@
   "protect": {
     "name": "protect",
     "proper_name": "Protect",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -1168,7 +1168,7 @@
   "belly-drum": {
     "name": "belly-drum",
     "proper_name": "Belly Drum",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -1522,7 +1522,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 310,
@@ -1585,7 +1585,7 @@
   "bulk-up": {
     "name": "bulk-up",
     "proper_name": "Bulk Up",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -1626,7 +1626,7 @@
   "copycat": {
     "name": "copycat",
     "proper_name": "Copycat",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -1664,7 +1664,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 399,
@@ -1893,7 +1893,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 428,
@@ -1957,7 +1957,7 @@
     "effect_entries": [
       {
         "effect": "Inflicts regular damage.  Has a chance to make the target flinch.",
-        "short_effect": "Has a chance to make the target flinch."
+        "short_effect": "Inflicts regular damage"
       }
     ],
     "id": 442,
@@ -2015,7 +2015,7 @@
   "hone-claws": {
     "name": "hone-claws",
     "proper_name": "Hone Claws",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_entries": [
@@ -2456,7 +2456,7 @@
   "iron-defense": {
     "name": "iron-defense",
     "proper_name": "Iron Defense",
-    "accuracy": null,
+    "accuracy": 100,
     "damage_class": "status",
     "effect_chance": null,
     "effect_changes": [],

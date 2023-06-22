@@ -17,7 +17,6 @@ function calculateMove(move, user, target) {
   }
   let userMoveStat = user.stats[userStat]
   let targetMoveStat = target.stats[targetStat]
-  console.log(user.name, " is using their ", userMoveStat, " to hit ", target.name, "'s ", targetMoveStat)
   let output = {
     damage: 0,
     critical: false,
@@ -40,18 +39,14 @@ function calculateMove(move, user, target) {
   } 
   //check user for stat changes and apply them to the stat
   if (user.statChanges[userStat] > 0) {
-    console.log(user.name, "'s ", userStat," Multiplier: ", (user.statChanges[userStat] + 2) / 2)
     userMoveStat *= (user.statChanges[userStat] + 2) / 2
   } else if (user.statChanges[userStat] < 0) {
-    console.log(user.name, "'s ", userStat," Multiplier: ", 2 / (Math.abs(user.statChanges[userStat]) + 2))
     userMoveStat *= 2 / (Math.abs(user.statChanges[userStat]) + 2)
   }
   //check target for stat changes and apply them to the stat
   if (target.statChanges[targetStat] > 0) {
-    console.log(target.name, "'s ", targetStat," Multiplier: ", (target.statChanges[targetStat] + 2) / 2)
     targetMoveStat *= (target.statChanges[targetStat] + 2) / 2
   } else if (target.statChanges[targetStat] < 0) {
-    console.log(target.name, "'s ", targetStat," Multiplier: ", 2 / (Math.abs(target.statChanges[targetStat]) + 2))
     targetMoveStat *= 2 / (Math.abs(target.statChanges[targetStat]) + 2)
   }
   //check move category and perform appropriate actions

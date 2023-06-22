@@ -1,6 +1,7 @@
 import { getTypeColor } from "@/utils/helpers/getTypeColor";
 import useIsHovering from "@/utils/hooks/isHovering";
 import MoveDetail from "./MoveDetail";
+import { properName } from "@/utils/helpers/properName";
 
 export default function MoveItem(props) {
   const { loc, id, move } = props;
@@ -24,6 +25,8 @@ export default function MoveItem(props) {
           <MoveDetail
             moveName={move.proper_name}
             power={move.power}
+            damageType={properName(move.damage_class)}
+            type={properName(move.type)}
             description={move.effect_entries[0].short_effect}
           />
         )}
