@@ -46,6 +46,12 @@ body {
   background-color: $background-body;
 }
 
+h5 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
 .app-wrapper {
   height: 80vh;
   width: 80%;
@@ -133,6 +139,9 @@ body {
   border: 3px solid $pdex-shadow-border;
   outline: 4px solid $pdex-black-highlight;
   background-color: $off-white;
+  p {
+    margin-top: 5px;
+  }
 }
 
 @keyframes spin {

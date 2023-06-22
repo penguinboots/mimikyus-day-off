@@ -18,10 +18,10 @@ export default function MoveDetail(props) {
         </h4>
       )}
       <h5>
-        Damage: {damageType}
+        DAMAGE: {damageType.toUpperCase()}
       </h5>
       <h5>
-        Type: {type}
+        TYPE: {type.toUpperCase()}
       </h5>
       <p>{description}</p>
     </div>
