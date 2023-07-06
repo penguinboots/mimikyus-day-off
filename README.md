@@ -1,38 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Final Project: Mimikyu's Day Off
 
-## Getting Started
+[Play it yourself](https://mimikyus-day-off.vercel.app/)!
 
-First, run the development server:
+Our Lighthouse Labs final group project - a pokemon-themed roguelite-style game.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+( NOTE: Roguelite games are designed in such a way that the game is impossible to beat on the first run. Each failed attempt gives the player new abilities or stat buffs for future attempts. )
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Experience Mimikyu's adventures on his day off - an encounter with a clueless thief!
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Art by Sabrina.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Contributors
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- 🌸 [Sabrina Wang](https://github.com/penguinboots)
+- 🗿 [David Sooley](https://github.com/DASitby)
+- 👻 [Joel Hagan](https://github.com/Jagan-creator)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Main Features
 
-## Learn More
+### Battle Pokemon!
+- Battle system features include: 
+    - basic damaging attacks
+    - buffs/debuffs
+    - attacks that heal the user
+    - attacks that damage the user (recoil)
+    - healing berries
 
-To learn more about Next.js, take a look at the following resources:
+### Customize Your Loadout
+- Pick up to 4 moves to take with you
+- Earn more moves as you play the game!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Save Your Progress
+- Learned moves, stat upgrades, berries, and achievements are saved to the database
+- Authentication is performed with Auth0
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### More Stuff
+- Music changes depending on current menu or room
+- Dozens of different moves are available to learn
+- Special story ending!
 
-## Deploy on Vercel
+## Final Product
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### First Look
+![Game intro](docs/new_account_play.gif)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Picking Rewards
+![Store](docs/new_account_store.gif)
+
+### Full Playthrough (Spoilers!)
+
+Although we encourage you to take a play for yourself, you can see a video of the full playthrough [here](https://www.youtube.com/watch?v=5-yLM4PeajA)!
+
+## The Process
+
+Take a look at our early days!
+
+### First Figma Mockup
+![Figma Mockup](docs/first_mockup.png)
+
+### Early Days
+![Early Login Demo](docs/demo_1.gif)
+![Early Room Demo](docs/demo_2.gif)
+
+### Building Battle Mechanics
+![Damage Calculation](docs/battle_1.gif)
+
+### Building Animations
+![Early Animation 1](docs/battle_2.gif)
+![Early Animation 2](docs/battle_3.gif)
+
+### Starting to Come Together
+![Mid Battle Demo](docs/demo_3.gif)
+
+## Our Stack
+
+- React
+- Node
+- Next
+- Prisma
+- Sass
+
+Authentation via Auth0.
+
+App & database hosted on Vercel.
