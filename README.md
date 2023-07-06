@@ -1,6 +1,6 @@
 # Final Project: Mimikyu's Day Off
 
-Codename: POKE-ROGUE!
+Codename: POKE-ROGUE! ⭐️
 
 [Play it yourself](https://mimikyus-day-off.vercel.app/)!
 
@@ -51,7 +51,7 @@ Art by Sabrina.
 
 ### Full Playthrough (Spoilers!)
 
-Although we encourage you to take a play for yourself, you can see a video of the full playthrough [here](https://www.youtube.com/watch?v=5-yLM4PeajA)!
+Although we encourage you to take a play for yourself, you can see a video of the full playthrough [here](https://www.youtube.com/watch?v=5-yLM4PeajA)! (no music, sorry 😢)
 
 ## The Process
 
