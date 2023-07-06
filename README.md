@@ -1,5 +1,7 @@
 # Final Project: Mimikyu's Day Off
 
+Codename: POKE-ROGUE!
+
 [Play it yourself](https://mimikyus-day-off.vercel.app/)!
 
 Our Lighthouse Labs final group project - a pokemon-themed roguelite-style game.
